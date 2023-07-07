@@ -1,21 +1,71 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+
+
+
+
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+<header>
+  <ul>
+        <li>Наша адреса</li>
+        <li>Час роботи</li>
+        <li>Доставка</li>
+        <li>Оплата</li>
+        <li>Відгуки</li>
+    </ul>
+    <ul>
+        <li>Мова</li>
+        <li>Валюта</li>
+        <li>Особистий кабінет</li>
+    </ul>
+    <div>
+        <div>logo</div>
+        <div><form><input
+        v-bind:value="searchElem" type="text" placeholder="Instrument"/>
+      <button>Search</button>
+    </form>
+  </div>
+        
+        <div>basket logo</div>
     </div>
-  </header>
+    <ul>
+    <select name='Каталог'>
+        <option>Audi</option>
+        <option>BMW</option>
+        <option>Ser</option>
+    </select>
+    <select name='Каталог'>
+        <option>Audi</option>
+        <option>BMW</option>
+        <option>Ser</option>
+    </select>
+    <select name='Каталог'>
+        <option>Audi</option>
+        <option>BMW</option>
+        <option>Ser</option>
+    </select>
+    <select name='Каталог'>
+        <option>Audi</option>
+        <option>BMW</option>
+        <option>Ser</option>
+    </select>
+    <select name='Каталог'>
+        <option>Audi</option>
+        <option>BMW</option>
+        <option>Ser</option>
+    </select>
+    <select name='Каталог'>
+        <option>Audi</option>
+        <option>BMW</option>
+        <option>Ser</option>
+    </select>
+    <li>Курс $</li>
+    </ul>
+</header>
 
   <RouterView />
 </template>

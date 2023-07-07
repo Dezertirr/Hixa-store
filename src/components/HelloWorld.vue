@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
   msg: {
-    type: String,
+    type: Number,
     required: true
   }
 })
