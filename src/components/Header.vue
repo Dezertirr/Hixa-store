@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted,watch } from 'vue';
+import { ref, onMounted } from 'vue';
 import exchangeCourse from '../services/exchangeCourse'
 
 const search = ref('');
@@ -7,8 +7,8 @@ const course = ref(0);
 
 onMounted(async () => {
   try {
-    const data = await exchangeCourse(); // Выполняем запрос и получаем данные
-    course.value = data; // Присваиваем значение курса переменной course
+    const data = await exchangeCourse(); 
+    course.value = data; 
   } catch (error) {
     console.error(error);
   }
@@ -47,10 +47,40 @@ const searchStart = async (event) => {
         <div>basket logo</div>
     </div>
     <ul>
-    <select name='Каталог'>
-        <option>Audi</option>
+    <select class="Catalog-all" name='Каталог'>
+        <option>Каталог</option>
+        <option>AISIN WARNER</option>
+        <option>ALLISON</option>
+        <option>AUDI, VOLKSWAGEN, SKODA</option>
         <option>BMW</option>
-        <option>Ser</option>
+        <option>CHINESE CARS</option>
+        <option>CHRYSLER, DODGE</option>
+        <option>CITROEN, PEUGEOT, RENAULT</option>
+        <option>FORD</option>
+        <option>GENERAL MOTORS</option>
+        <option>HALDEX</option>
+        <option>HONDA, ACURA</option>
+        <option>HYUNDAI, KIA</option>
+        <option>JAGUAR</option>
+        <option>LAND ROVER</option>
+        <option>MAZDA</option>
+        <option>MERCEDES-BENZ</option>
+        <option>MITSUBISHI</option>
+        <option>NISSAN, INFINITI, JATCO</option>
+        <option>OPEL</option>
+        <option>PORSCHE</option>
+        <option>SSANGYONG</option>
+        <option>SUBARU</option>
+        <option>SUZUKI</option>
+        <option>TOYOTA, LEXUS</option>
+        <option>VOLVO</option>
+        <option>ZF</option>
+        <option>Гідроблоки</option>
+        <option>Мастила для АКПП</option>
+        <option>Фільтра діференціалів</option>
+        <option>Запчастини для гідротрансформаторів</option>
+
+
     </select>
     <select name='Каталог'>
         <option>Audi</option>
@@ -81,4 +111,8 @@ const searchStart = async (event) => {
 </header>
 </template>
 <style scoped>
+.Catalog-all {
+    width: 80px;
+    display: flex;
+}
 </style>

@@ -6,12 +6,12 @@ async function exchangeCourse() {
     try {
       const response = await axios.get(BASE_URL);
       const data = response.data[0].rateBuy;
-      return data; // Добавьте эту строку
+      return data;
     } catch (error) {
       console.error(error);
     }
   }
   
 
-// haexchangeCourseВызов функции для получения данных
+
 export default exchangeCourse;
