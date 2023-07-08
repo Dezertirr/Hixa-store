@@ -1,9 +1,22 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted,watch } from 'vue';
+import exchangeCourse from '../services/exchangeCourse'
 
 const search = ref('');
+const course = ref(0);
 
-const searchStart = (event) => {
+onMounted(async () => {
+  try {
+    const data = await exchangeCourse(); // Выполняем запрос и получаем данные
+    course.value = data; // Присваиваем значение курса переменной course
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+
+
+const searchStart = async (event) => {
   event.preventDefault();
   console.log('Hi');
 };
@@ -19,7 +32,7 @@ const searchStart = (event) => {
     </ul>
     <ul>
         <li>Мова</li>
-        <li>Валюта</li>
+        <li>Курс $: {{ course }} UAH</li>
         <li>Особистий кабінет</li>
     </ul>
     <div>
@@ -64,7 +77,6 @@ const searchStart = (event) => {
         <option>BMW</option>
         <option>Ser</option>
     </select>
-    <li>Курс $</li>
     </ul>
 </header>
 </template>
