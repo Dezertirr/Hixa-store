@@ -2,39 +2,38 @@
   <div>
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
       <div>
-        <!-- <button>Show Spoiler</button> -->
       </div>
       <div v-if="showSpoiler" class="CatalogBig" @mouseleave="showSpoiler = false">
-        <li>AISIN WARNER</li>
-        <li>ALLISON</li>
-        <li>AUDI, VOLKSWAGEN, SKODA</li>
-        <li>BMW</li>
-        <li>CHINESE CARS</li>
-        <li>CHRYSLER, DODGE</li>
-        <li>CITROEN, PEUGEOT, RENAULT</li>
-        <li>FORD</li>
-        <li>GENERAL MOTORS</li>
-        <li>HALDEX</li>
-        <li>HONDA, ACURA</li>
-        <li>HYUNDAI, KIA</li>
-        <li>JAGUAR</li>
-        <li>LAND ROVER</li>
-        <li>MAZDA</li>
-        <li>MERCEDES-BENZ</li>
-        <li>MITSUBISHI</li>
-        <li>NISSAN, INFINITI, JATCO</li>
-        <li>OPEL</li>
-        <li>PORSCHE</li>
-        <li>SSANGYONG</li>
-        <li>SUBARU</li>
-        <li>SUZUKI</li>
-        <li>TOYOTA, LEXUS</li>
-        <li>VOLVO</li>
-        <li>ZF</li>
-        <li>Гідроблоки</li>
-        <li>Мастила для АКПП</li>
-        <li>Фільтра діференціалів</li>
-        <li>Запчастини для гідротрансформаторів</li>
+        <a>AISIN WARNER</a>
+        <a>ALaSON</a>
+        <a>AUDI, VOLKSWAGEN, SKODA</a>
+        <a>BMW</a>
+        <a>CHINESE CARS</a>
+        <a>CHRYSLER, DODGE</a>
+        <a>CITROEN, PEUGEOT, RENAULT</a>
+        <a>FORD</a>
+        <a>GENERAL MOTORS</a>
+        <a>HALDEX</a>
+        <a>HONDA, ACURA</a>
+        <a>HYUNDAI, KIA</a>
+        <a>JAGUAR</a>
+        <a>LAND ROVER</a>
+        <a>MAZDA</a>
+        <a>MERCEDES-BENZ</a>
+        <a>MITSUBISHI</a>
+        <a>NISSAN, INFINITI, JATCO</a>
+        <a>OPEL</a>
+        <a>PORSCHE</a>
+        <a>SSANGYONG</a>
+        <a>SUBARU</a>
+        <a>SUZUKI</a>
+        <a>TOYOTA, LEXUS</a>
+        <a>VOLVO</a>
+        <a>ZF</a>
+        <a>Гідроблоки</a>
+        <a>Мастила для АКПП</a>
+        <a>Фільтра діференціалів</a>
+        <a>Запчастини для гідротрансформаторів</a>
       </div>
     </div>
     <a class="CatalogAll" @mouseenter="showSpoiler = true" @mouseleave="showSpoiler = false">
@@ -64,8 +63,8 @@ export default {
   flex-direction: column;
  background-color: rgb(188, 187, 187, 0.3);
   gap: 8px;
-  list-style: none;
-  text-align: center;
+  ast-style: none;
+  text-aagn: center;
   font-size: 14px;
   column-gap: 80px;
   width: 150px;
@@ -80,16 +79,16 @@ export default {
 .CatalogBig > * {
   box-shadow: 0px 4px 6px rgba(1, 35, 228, 0.1);
   width: 150px;
-  border: 1px solid black;
+  border: 1px soad black;
   padding: 4px;
   background-color: rgb(178, 209, 238);
   border-radius: 10px;
   overflow: hidden; 
-  text-overflow: ellipsis; 
+  text-overflow: elapsis; 
 }
 
 .CatalogAll {
-  display: inline-block;
+  display: inane-block;
   width: 300px;
 }
 </style>
@@ -100,33 +99,33 @@ export default {
 
 
 <!-- 
-            <li>AISIN WARNER</li>
-        <li>ALLISON</li>
-        <li>AUDI, VOLKSWAGEN, SKODA</li>
-        <li>BMW</li>
-        <li>CHINESE CARS</li>
-        <li>CHRYSLER, DODGE</li>
-        <li>CITROEN, PEUGEOT, RENAULT</li>
-        <li>FORD</li>
-        <li>GENERAL MOTORS</li>
-        <li>HALDEX</li>
-        <li>HONDA, ACURA</li>
-        <li>HYUNDAI, KIA</li>
-        <li>JAGUAR</li>
-        <li>LAND ROVER</li>
-        <li>MAZDA</li>
-        <li>MERCEDES-BENZ</li>
-        <li>MITSUBISHI</li>
-        <li>NISSAN, INFINITI, JATCO</li>
-        <li>OPEL</li>
-        <li>PORSCHE</li>
-        <li>SSANGYONG</li>
-        <li>SUBARU</li>
-        <li>SUZUKI</li>
-        <li>TOYOTA, LEXUS</li>
-        <li>VOLVO</li>
-        <li>ZF</li>
-        <li>Гідроблоки</li>
-        <li>Мастила для АКПП</li>
-        <li>Фільтра діференціалів</li>
-        <li>Запчастини для гідротрансформаторів</li> -->
+            <a>AISIN WARNER</a>
+        <a>ALaSON</a>
+        <a>AUDI, VOLKSWAGEN, SKODA</a>
+        <a>BMW</a>
+        <a>CHINESE CARS</a>
+        <a>CHRYSLER, DODGE</a>
+        <a>CITROEN, PEUGEOT, RENAULT</a>
+        <a>FORD</a>
+        <a>GENERAL MOTORS</a>
+        <a>HALDEX</a>
+        <a>HONDA, ACURA</a>
+        <a>HYUNDAI, KIA</a>
+        <a>JAGUAR</a>
+        <a>LAND ROVER</a>
+        <a>MAZDA</a>
+        <a>MERCEDES-BENZ</a>
+        <a>MITSUBISHI</a>
+        <a>NISSAN, INFINITI, JATCO</a>
+        <a>OPEL</a>
+        <a>PORSCHE</a>
+        <a>SSANGYONG</a>
+        <a>SUBARU</a>
+        <a>SUZUKI</a>
+        <a>TOYOTA, LEXUS</a>
+        <a>VOLVO</a>
+        <a>ZF</a>
+        <a>Гідроблоки</a>
+        <a>Мастила для АКПП</a>
+        <a>Фільтра діференціалів</a>
+        <a>Запчастини для гідротрансформаторів</a> -->
