@@ -1,11 +1,16 @@
 <script setup>
-import { ref, onMounted} from "vue";
+import { ref, onMounted, computed, watch } from "vue";
 import exchangeCourse from '../services/exchangeCourse';
 import Catalogs from './Catalogs.vue';
+import jsonArray from '../services/Catalog.json';
+import { useSearchStore } from '../stores/counter';
 
 const search = ref('');
 const course = ref(0);
+const jsonData = jsonArray;
 
+const searchStore = useSearchStore();
+const searchValue = ref('');
 
 onMounted(async () => {
   try {
@@ -16,10 +21,36 @@ onMounted(async () => {
   }
 });
 
-const searchStart = async () => {
-  store.search.setSearch(search.value);
+const filteredData = computed(() => {
+  const searchText = searchStore.getSearch().toLowerCase();
+  return jsonData.filter(item => item.name.toLowerCase().includes(searchText));
+});
+
+onMounted(() => {
+  search.value = searchStore.getSearch();
+});
+
+watch(search, (newValue) => {
+  searchStore.setSearch(newValue);
+});
+
+const searchStart = () => {
+  search.value = searchValue.value;
+  filteredData.value = jsonData.filter(item => item.name.toLowerCase().includes(searchValue.value.toLowerCase()));
 };
 
+const components = {
+  Catalogs
+};
+
+const setup = () => {
+  return {
+    search,
+    course,
+    filteredData,
+    searchStart
+  };
+};
 </script>
 
 <template>
@@ -40,7 +71,7 @@ const searchStart = async () => {
       <div>logo</div>
       <div>
         <form @submit.prevent="searchStart">
-          <input v-model="search">
+          <input v-model="searchValue" placeholder="Search">
           <button type="submit">Search</button>
         </form>
       </div>

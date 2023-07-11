@@ -1,69 +1,73 @@
 <template>
-    <div>
-      <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
-        <div></div>
-        <div v-if="showSpoiler" class="CatalogBig" @mouseleave="showSpoiler = false">
-  <button v-on:click="CatalogSelect('AISIN WARNER')">AISIN WARNER</button>
-  <button v-on:click="CatalogSelect('ALASON')">ALASON</button>
-  <button v-on:click="CatalogSelect('AUDI, VOLKSWAGEN, SKODA')">AUDI, VOLKSWAGEN, SKODA</button>
-  <button v-on:click="CatalogSelect('BMW')">BMW</button>
-  <button v-on:click="CatalogSelect('CHINESE CARS')">CHINESE CARS</button>
-  <button v-on:click="CatalogSelect('CHRYSLER, DODGE')">CHRYSLER, DODGE</button>
-  <button v-on:click="CatalogSelect('CITROEN, PEUGEOT, RENAULT')">CITROEN, PEUGEOT, RENAULT</button>
-  <button v-on:click="CatalogSelect('FORD')">FORD</button>
-  <button v-on:click="CatalogSelect('GENERAL MOTORS')">GENERAL MOTORS</button>
-  <button v-on:click="CatalogSelect('HALDEX')">HALDEX</button>
-  <button v-on:click="CatalogSelect('HONDA, ACURA')">HONDA, ACURA</button>
-  <button v-on:click="CatalogSelect('HYUNDAI, KIA')">HYUNDAI, KIA</button>
-  <button v-on:click="CatalogSelect('JAGUAR')">JAGUAR</button>
-  <button v-on:click="CatalogSelect('LAND ROVER')">LAND ROVER</button>
-  <button v-on:click="CatalogSelect('MAZDA')">MAZDA</button>
-  <button v-on:click="CatalogSelect('MERCEDES-BENZ')">MERCEDES-BENZ</button>
-  <button v-on:click="CatalogSelect('MITSUBISHI')">MITSUBISHI</button>
-  <button v-on:click="CatalogSelect('NISSAN, INFINITI, JATCO')">NISSAN, INFINITI, JATCO</button>
-  <button v-on:click="CatalogSelect('OPEL')">OPEL</button>
-  <button v-on:click="CatalogSelect('PORSCHE')">PORSCHE</button>
-  <button v-on:click="CatalogSelect('SSANGYONG')">SSANGYONG</button>
-  <button v-on:click="CatalogSelect('SUBARU')">SUBARU</button>
-  <button v-on:click="CatalogSelect('SUZUKI')">SUZUKI</button>
-  <button v-on:click="CatalogSelect('TOYOTA, LEXUS')">TOYOTA, LEXUS</button>
-  <button v-on:click="CatalogSelect('VOLVO')">VOLVO</button>
-  <button v-on:click="CatalogSelect('ZF')">ZF</button>
-  <button v-on:click="CatalogSelect('Гідроблоки')">Гідроблоки</button>
-  <button v-on:click="CatalogSelect('Мастила для АКПП')">Мастила для АКПП</button>
-  <button v-on:click="CatalogSelect('Фільтра діференціалів')">Фільтра діференціалів</button>
-  <button v-on:click="CatalogSelect('Запчастини для гідротрансформаторів')">Запчастини для гідротрансформаторів</button>
-</div>
-
+  <div>
+    <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
+      <div></div>
+      <div v-if="showSpoiler" class="CatalogBig" @mouseleave="showSpoiler = false">
+        <button v-for="(catalog, index) in catalogs" :key="index" @click="catalogSelect(catalog)">{{ catalog }}</button>
       </div>
-      <a class="CatalogAll" @mouseenter="showSpoiler = true" @mouseleave="showSpoiler = false">
-        Каталог
-      </a>
     </div>
-  </template>
-  
-  <script>
-  import { ref } from 'vue';
+    <a class="CatalogAll" @mouseenter="showSpoiler = true" @mouseleave="showSpoiler = false">
+      Каталог
+    </a>
+  </div>
+</template>
 
-  
-  
-  export default {
-    data() {
-      return {
-        selectedCatalog: '',
-        showSpoiler: false,
-        
-      };
-    },
-    methods: {
-      CatalogSelect(catalog) {
-        this.selectedCatalog = catalog;
-        console.log('Выбранный каталог:', catalog);
-        this.showSpoiler = false
-      }
-    }
-  };
-  </script>
+<script>
+import { ref } from 'vue';
+import { useSearchStore } from '../stores/counter';
+
+export default {
+  setup() {
+    const showSpoiler = ref(false);
+    const catalogs = [
+      'AISIN WARNER',
+      'ALASON',
+      'AUDI, VOLKSWAGEN, SKODA',
+      'BMW',
+      'CHINESE CARS',
+      'CHRYSLER, DODGE',
+      'CITROEN, PEUGEOT, RENAULT',
+      'FORD',
+      'GENERAL MOTORS',
+      'HALDEX',
+      'HONDA, ACURA',
+      'HYUNDAI, KIA',
+      'JAGUAR',
+      'LAND ROVER',
+      'MAZDA',
+      'MERCEDES-BENZ',
+      'MITSUBISHI',
+      'NISSAN, INFINITI, JATCO',
+      'OPEL',
+      'PORSCHE',
+      'SSANGYONG',
+      'SUBARU',
+      'SUZUKI',
+      'TOYOTA, LEXUS',
+      'VOLVO',
+      'ZF',
+      'Гідроблоки',
+      'Мастила для АКПП',
+      'Фільтра діференціалів',
+      'Запчастини для гідротрансформаторів'
+    ];
+    const searchStore = useSearchStore();
+
+    const catalogSelect = (catalog) => {
+      searchStore.setSearch(catalog);
+      console.log('Выбранный каталог:', catalog);
+      showSpoiler.value = false;
+    };
+
+    return {
+      showSpoiler,
+      catalogs,
+      catalogSelect
+    };
+  }
+};
+</script>
+
   
   <style>
   .spoiler-trigger {
