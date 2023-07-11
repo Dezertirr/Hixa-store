@@ -1,13 +1,15 @@
 <template>
-    <div>
-      <ul>
-        <li v-for="(item, index) in filteredData" :key="index">
-          <p>{{ item.name}}</p>
-          <p>{{item.value}}</p>
-        </li>
-      </ul>
-    </div>
-  </template>
+  <div>
+    <h1>This Catalog:{{ search }}</h1>
+    <ul v-if="filteredData.length > 0">
+      <li v-for="(item, index) in filteredData" :key="index">
+        <p>{{ item.brand }}</p>
+        <p>{{ item.value }}</p>
+      </li>
+    </ul>
+    <p v-else>Вибачте такого товару в нас нема(</p>
+  </div>
+</template>
   
   <script>
 import { ref, onMounted, watch, computed } from 'vue';
@@ -29,6 +31,7 @@ export default {
   }
 };
 </script>
+
 
   
   <style scoped>

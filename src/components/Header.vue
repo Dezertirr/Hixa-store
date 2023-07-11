@@ -1,15 +1,17 @@
 <script setup>
-import { ref, onMounted, computed, watch } from "vue";
+import { ref, onMounted, computed, watch, provide, pushScopeId } from "vue";
 import exchangeCourse from '../services/exchangeCourse';
 import Catalogs from './Catalogs.vue';
 import jsonArray from '../services/Catalog.json';
 import { useSearchStore } from '../stores/counter';
+import { useRouter } from "vue-router";
 
 const search = ref('');
 const course = ref(0);
 const jsonData = jsonArray;
 
 const searchStore = useSearchStore();
+const router = useRouter()
 const searchValue = ref('');
 
 onMounted(async () => {
@@ -36,18 +38,24 @@ watch(search, (newValue) => {
 
 const searchStart = () => {
   search.value = searchValue.value;
-  filteredData.value = jsonData.filter(item => item.name.toLowerCase().includes(searchValue.value.toLowerCase()));
+  searchStore.setSearch(searchValue.value);
+  router.push('/Catalog')
 };
 
 const components = {
   Catalogs
 };
+const backMainPage = () => {
+  router.push('/')
+}
+
+provide('filteredData', filteredData);
 
 const setup = () => {
   return {
     search,
     course,
-    filteredData,
+    searchValue,
     searchStart
   };
 };
@@ -68,12 +76,12 @@ const setup = () => {
       <li>Особистий кабінет</li>
     </ul>
     <div>
-      <div>logo</div>
+      <a @click="backMainPage"><div>logo</div></a>
       <div>
         <form @submit.prevent="searchStart">
-          <input v-model="searchValue" placeholder="Search">
-          <button type="submit">Search</button>
-        </form>
+      <input v-model="searchValue" placeholder="Search">
+      <button type="submit">Search</button>
+    </form>
       </div>
       <Catalogs></Catalogs>
       <div>basket logo</div>

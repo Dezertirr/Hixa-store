@@ -1,87 +1,268 @@
 [
-    {
-      "name": "BMW",
-      "value": "sdasfaefdgasdfasdfasdf adsfasdfasdf adsfasdfasdf adfasdfasdf1"
-    },
-    {
-      "name": "Audi",
-      "value": "fgsdbvxcsfbs asdfaxca asdfcsfv asdfsv2"
-    },
-    {
-      "name": "Renault",
-      "value": "fsafdfvcxvc asccxzcsa asdcvcx csasd3"
-    },
-    {
-      "name": "Mercedes-Benz",
-      "value": "asdfsdfasd asdascasdfa asdfcasdcas dcasdcasdcasdc4"
-    },
-    {
-      "name": "Toyota",
-      "value": "vxcvzxcvz xcvzxcvz xcvzxcvzxcv zxcvzxcvzxcv5"
-    },
-    {
-      "name": "Ford",
-      "value": "asfasdfas asdfasdf asdfasdf asdfasdf6"
-    },
-    {
-      "name": "Chevrolet",
-      "value": "qwertyuiop asdfghjkl zxcvbnm asdfghjkl7"
-    },
-    {
-      "name": "Volkswagen",
-      "value": "zxcvzxcv asdfasdf asdfasdf asdfasdf8"
-    },
-    {
-      "name": "Honda",
-      "value": "qwerty asdfgh zxcvb asdfgh9"
-    },
-    {
-      "name": "Nissan",
-      "value": "poiuytrewq lkjhgfdsa mnbvcxzas dfghjkl0"
-    },
-    {
-      "name": "Renault",
-      "value": "fsafdfvcxvc asccxzcsa asdcvcx csasd11"
-    },
-    {
-      "name": "Ford",
-      "value": "asfasdfas asdfasdf asdfasdf asdfasdf12"
-    },
-    {
-      "name": "Mercedes-Benz",
-      "value": "asdfsdfasd asdascasdfa asdfcasdcas dcasdcasdcasdc12"
-    },
-    {
-      "name": "BMW",
-      "value": "sdasfaefdgasdfasdfasdf adsfasdfasdf adsfasdfasdf adfasdfasdf13"
-    },
-    {
-      "name": "Toyota",
-      "value": "vxcvzxcvz xcvzxcvz xcvzxcvzxcv zxcvzxcvzxcv14"
-    },
-    {
-      "name": "Audi",
-      "value": "fgsdbvxcsfbs asdfaxca asdfcsfv asdfsv15"
-    },
-    {
-      "name": "Chevrolet",
-      "value": "qwertyuiop asdfghjkl zxcvbnm asdfghjkl16"
-    },
-    {
-      "name": "Volkswagen",
-      "value": "zxcvzxcv asdfasdf asdfasdf asdfasdf17"
-    },
-    {
-      "name": "Honda",
-      "value": "qwerty asdfgh zxcvb asdfgh18"
-    },
-    {
-      "name": "Nissan",
-      "value": "poiuytrewq lkjhgfdsa mnbvcxzas dfghjkl19"
-    },
-    {
-      "name": "Ford",
-      "value": "asfasdfas asdfasdf asdfasdf asdfasdf20"
-    }
-  ]
-  
+  {
+    "name": "AISIN WARNER",
+    "brand": "BMW",
+    "mark": "X6",
+    "value": "некоторое описание BMW X6",
+    "photo": "https://example.com/bmw_x6_photo.jpg"
+  },
+  {
+    "name": "ALASON",
+    "brand": "Audi",
+    "mark": "Q5",
+    "value": "некоторое описание Audi Q5",
+    "photo": "https://example.com/audi_q5_photo.jpg"
+  },
+  {
+    "name": "AUDI, VOLKSWAGEN, SKODA",
+    "brand": "Renault",
+    "mark": "Clio",
+    "value": "некоторое описание Renault Clio",
+    "photo": "https://example.com/renault_clio_photo.jpg"
+  },
+  {
+    "name": "BMW",
+    "brand": "Mercedes-Benz",
+    "mark": "E-Class",
+    "value": "некоторое описание Mercedes-Benz E-Class",
+    "photo": "https://example.com/mercedes_e-class_photo.jpg"
+  },
+  {
+    "name": "CHINESE CARS",
+    "brand": "Toyota",
+    "mark": "Camry",
+    "value": "некоторое описание Toyota Camry",
+    "photo": "https://example.com/toyota_camry_photo.jpg"
+  },
+  {
+    "name": "CHRYSLER, DODGE",
+    "brand": "Ford",
+    "mark": "Mustang",
+    "value": "некоторое описание Ford Mustang",
+    "photo": "https://example.com/ford_mustang_photo.jpg"
+  },
+  {
+    "name": "CITROEN, PEUGEOT, RENAULT",
+    "brand": "Chevrolet",
+    "mark": "Camaro",
+    "value": "некоторое описание Chevrolet Camaro",
+    "photo": "https://example.com/chevrolet_camaro_photo.jpg"
+  },
+  {
+    "name": "FORD",
+    "brand": "Volkswagen",
+    "mark": "Golf",
+    "value": "некоторое описание Volkswagen Golf",
+    "photo": "https://example.com/volkswagen_golf_photo.jpg"
+  },
+  {
+    "name": "GENERAL MOTORS",
+    "brand": "Honda",
+    "mark": "Civic",
+    "value": "некоторое описание Honda Civic",
+    "photo": "https://example.com/honda_civic_photo.jpg"
+  },
+  {
+    "name": "HALDEX",
+    "brand": "Nissan",
+    "mark": "GT-R",
+    "value": "некоторое описание Nissan GT-R",
+    "photo": "https://example.com/nissan_gt-r_photo.jpg"
+  },
+  {
+    "name": "HONDA, ACURA",
+    "brand": "Mazda",
+    "mark": "CX-5",
+    "value": "некоторое описание Mazda CX-5",
+    "photo": "https://example.com/mazda_cx-5_photo.jpg"
+  },
+  {
+    "name": "HYUNDAI, KIA",
+    "brand": "Lexus",
+    "mark": "RX",
+    "value": "некоторое описание Lexus RX",
+    "photo": "https://example.com/lexus_rx_photo.jpg"
+  },
+  {
+    "name": "JAGUAR",
+    "brand": "Subaru",
+    "mark": "Impreza",
+    "value": "некоторое описание Subaru Impreza",
+    "photo": "https://example.com/subaru_impreza_photo.jpg"
+  },
+  {
+    "name": "LAND ROVER",
+    "brand": "Hyundai",
+    "mark": "Tucson",
+    "value": "некоторое описание Hyundai Tucson",
+    "photo": "https://example.com/hyundai_tucson_photo.jpg"
+  },
+  {
+    "name": "MAZDA",
+    "brand": "Kia",
+    "mark": "Sportage",
+    "value": "некоторое описание Kia Sportage",
+    "photo": "https://example.com/kia_sportage_photo.jpg"
+  },
+  {
+    "name": "MERCEDES-BENZ",
+    "brand": "Volvo",
+    "mark": "XC60",
+    "value": "некоторое описание Volvo XC60",
+    "photo": "https://example.com/volvo_xc60_photo.jpg"
+  },
+  {
+    "name": "MITSUBISHI",
+    "brand": "Jaguar",
+    "mark": "F-Type",
+    "value": "некоторое описание Jaguar F-Type",
+    "photo": "https://example.com/jaguar_f-type_photo.jpg"
+  },
+  {
+    "name": "NISSAN, INFINITI, JATCO",
+    "brand": "Land Rover",
+    "mark": "Range Rover",
+    "value": "некоторое описание Land Rover Range Rover",
+    "photo": "https://example.com/land_rover_range_rover_photo.jpg"
+  },
+  {
+    "name": "OPEL",
+    "brand": "Porsche",
+    "mark": "911",
+    "value": "некоторое описание Porsche 911",
+    "photo": "https://example.com/porsche_911_photo.jpg"
+  },
+  {
+    "name": "PORSCHE",
+    "brand": "SsangYong",
+    "mark": "Rexton",
+    "value": "некоторое описание SsangYong Rexton",
+    "photo": "https://example.com/ssangyong_rexton_photo.jpg"
+  },
+  {
+    "name": "SSANGYONG",
+    "brand": "Bugatti",
+    "mark": "Veyron",
+    "value": "некоторое описание Bugatti Veyron",
+    "photo": "https://example.com/bugatti_veyron_photo.jpg"
+  },
+  {
+    "name": "SUBARU",
+    "brand": "Aston Martin",
+    "mark": "DB11",
+    "value": "некоторое описание Aston Martin DB11",
+    "photo": "https://example.com/aston_martin_db11_photo.jpg"
+  },
+  {
+    "name": "SUZUKI",
+    "brand": "Tesla",
+    "mark": "Model S",
+    "value": "некоторое описание Tesla Model S",
+    "photo": "https://example.com/tesla_model_s_photo.jpg"
+  },
+  {
+    "name": "TOYOTA, LEXUS",
+    "brand": "Rolls-Royce",
+    "mark": "Phantom",
+    "value": "некоторое описание Rolls-Royce Phantom",
+    "photo": "https://example.com/rolls_royce_phantom_photo.jpg"
+  },
+  {
+    "name": "VOLVO",
+    "brand": "Bentley",
+    "mark": "Continental GT",
+    "value": "некоторое описание Bentley Continental GT",
+    "photo": "https://example.com/bentley_continental_gt_photo.jpg"
+  },
+  {
+    "name": "ZF",
+    "brand": "Alfa Romeo",
+    "mark": "Giulia",
+    "value": "некоторое описание Alfa Romeo Giulia",
+    "photo": "https://example.com/alfa_romeo_giulia_photo.jpg"
+  },
+  {
+    "name": "Гідроблоки",
+    "brand": "Acura",
+    "mark": "MDX",
+    "value": "некоторое описание Acura MDX",
+    "photo": "https://example.com/acura_mdx_photo.jpg"
+  },
+  {
+    "name": "Мастила для АКПП",
+    "brand": "Cadillac",
+    "mark": "Escalade",
+    "value": "некоторое описание Cadillac Escalade",
+    "photo": "https://example.com/cadillac_escalade_photo.jpg"
+  },
+  {
+    "name": "Фільтра діференціалів",
+    "brand": "Infiniti",
+    "mark": "Q50",
+    "value": "некоторое описание Infiniti Q50",
+    "photo": "https://example.com/infiniti_q50_photo.jpg"
+  },
+  {
+    "name": "Запчастини для гідротрансформаторів",
+    "brand": "Jeep",
+    "mark": "Wrangler",
+    "value": "некоторое описание Jeep Wrangler",
+    "photo": "https://example.com/jeep_wrangler_photo.jpg"
+  },
+  {
+    "name": "Запчастини для гідротрансформаторів",
+    "brand": "Lancia",
+    "mark": "Ypsilon",
+    "value": "некоторое описание Lancia Ypsilon",
+    "photo": "https://example.com/lancia_ypsilon_photo.jpg"
+  },
+  {
+    "name": "Запчастини для гідротрансформаторів",
+    "brand": "Lada",
+    "mark": "Vesta",
+    "value": "некоторое описание Lada Vesta",
+    "photo": "https://example.com/lada_vesta_photo.jpg"
+  },
+  {
+    "name": "Запчастини для гідротрансформаторів",
+    "brand": "Smart",
+    "mark": "ForTwo",
+    "value": "некоторое описание Smart ForTwo",
+    "photo": "https://example.com/smart_fortwo_photo.jpg"
+  },
+  {
+    "name": "Запчастини для гідротрансформаторів",
+    "brand": "Mini",
+    "mark": "Cooper",
+    "value": "некоторое описание Mini Cooper",
+    "photo": "https://example.com/mini_cooper_photo.jpg"
+  },
+  {
+    "name": "Запчастини для гідротрансформаторів",
+    "brand": "Mitsubishi",
+    "mark": "Outlander",
+    "value": "некоторое описание Mitsubishi Outlander",
+    "photo": "https://example.com/mitsubishi_outlander_photo.jpg"
+  },
+  {
+    "name": "Запчастини для гідротрансформаторів",
+    "brand": "Peugeot",
+    "mark": "308",
+    "value": "некоторое описание Peugeot 308",
+    "photo": "https://example.com/peugeot_308_photo.jpg"
+  },
+  {
+    "name": "Запчастини для гідротрансформаторів",
+    "brand": "Citroën",
+    "mark": "C3",
+    "value": "некоторое описание Citroën C3",
+    "photo": "https://example.com/citroen_c3_photo.jpg"
+  },
+  {
+    "name": "Запчастини для гідротрансформаторів",
+    "brand": "Suzuki",
+    "mark": "Swift",
+    "value": "некоторое описание Suzuki Swift",
+    "photo": "https://example.com/suzuki_swift_photo.jpg"
+  }
+]

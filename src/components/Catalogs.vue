@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
       <div></div>
       <div v-if="showSpoiler" class="CatalogBig" @mouseleave="showSpoiler = false">
@@ -15,6 +16,7 @@
 <script>
 import { ref } from 'vue';
 import { useSearchStore } from '../stores/counter';
+import { useRouter } from 'vue-router';
 
 export default {
   setup() {
@@ -52,11 +54,12 @@ export default {
       'Запчастини для гідротрансформаторів'
     ];
     const searchStore = useSearchStore();
+    const router = useRouter();
 
     const catalogSelect = (catalog) => {
       searchStore.setSearch(catalog);
-      console.log('Выбранный каталог:', catalog);
       showSpoiler.value = false;
+      router.push('/Catalog');
     };
 
     return {
@@ -107,31 +110,3 @@ export default {
   }
   </style>
   
-
-<!--
- <button v-on:click="CatalogSelect">CHINESE CARS</button>
-        <button v-on:click="CatalogSelect">CHRYSLER, DODGE</button>
-        <button v-on:click="CatalogSelect">CITROEN, PEUGEOT, RENAULT</button>
-        <button v-on:click="CatalogSelect">FORD</button>
-        <button v-on:click="CatalogSelect">GENERAL MOTORS</button>
-        <button v-on:click="CatalogSelect">HALDEX</button>
-        <button v-on:click="CatalogSelect">HONDA, ACURA</button>
-        <button v-on:click="CatalogSelect">HYUNDAI, KIA</button>
-        <button v-on:click="CatalogSelect">JAGUAR</button>
-        <button v-on:click="CatalogSelect">LAND ROVER</button>
-        <button v-on:click="CatalogSelect">MAZDA</button>
-        <button v-on:click="CatalogSelect">MERCEDES-BENZ</button>
-        <button v-on:click="CatalogSelect">MITSUBISHI</button>
-        <button v-on:click="CatalogSelect">NISSAN, INFINITI, JATCO</button>
-        <button v-on:click="CatalogSelect">OPEL</button>
-        <button v-on:click="CatalogSelect">PORSCHE</button>
-        <button v-on:click="CatalogSelect">SSANGYONG</button>
-        <button v-on:click="CatalogSelect">SUBARU</button>
-        <button v-on:click="CatalogSelect">SUZUKI</button>
-        <button v-on:click="CatalogSelect">TOYOTA, LEXUS</button>
-        <button v-on:click="CatalogSelect">VOLVO</button>
-        <button v-on:click="CatalogSelect">ZF</button>
-        <button v-on:click="CatalogSelect">Гідроблоки</button>
-        <button v-on:click="CatalogSelect">Мастила для АКПП</button>
-        <button v-on:click="CatalogSelect">Фільтра діференціалів</button>
-        <button v-on:click="CatalogSelect">Запчастини для гідротрансформаторів</button> -->
