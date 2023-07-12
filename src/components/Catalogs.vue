@@ -14,7 +14,7 @@
       </div>
     </div>
     <a class="CatalogAll" @mouseenter="showSpoiler = true" @mouseleave="showSpoiler = false">
-      Каталог
+      Запчастини для гідроблоків
     </a>
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
       <div v-if="showSpoiler" class="CatalogBig" @mouseleave="showSpoiler = false">
@@ -22,7 +22,7 @@
       </div>
     </div>
     <a class="CatalogAll" @mouseenter="showSpoiler = true" @mouseleave="showSpoiler = false">
-      Каталог
+      Охолодження та фільтрація
     </a>
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
       <div v-if="showSpoiler" class="CatalogBig" @mouseleave="showSpoiler = false">
@@ -30,7 +30,7 @@
       </div>
     </div>
     <a class="CatalogAll" @mouseenter="showSpoiler = true" @mouseleave="showSpoiler = false">
-      Каталог
+      Інструмент та обладнання
     </a>
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
       <div v-if="showSpoiler" class="CatalogBig" @mouseleave="showSpoiler = false">
@@ -38,11 +38,20 @@
       </div>
     </div>
     <a class="CatalogAll" @mouseenter="showSpoiler = true" @mouseleave="showSpoiler = false">
-      Каталог
+      Ремонт АКПП
     </a>
+    <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
+      <div v-if="showSpoiler" class="CatalogBig" @mouseleave="showSpoiler = false">
+        <button v-for="(catalog, index) in catalogs" :key="index" @click="catalogSelect(catalog)">{{ catalog }}</button>
+      </div>
+    </div>
+    <a class="CatalogAll" @mouseenter="showSpoiler = true" @mouseleave="showSpoiler = false">
+      Інформація
+    </a>
+    <p class="headerNavSecItem">Курс $: {{ course }} UAH</p>
   </div>
   
-  <p class="headerNavSecItem">Курс $: {{ course }} UAH</p>
+
 </template>
 
 <script>
@@ -124,10 +133,11 @@ export default {
     background: linear-gradient(to right, #222222, #555555);
     color: #b0b0b0;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
   }
   .spoiler-trigger {
     position: relative;
+    margin-top: 35px;
   }
   
   .CatalogBig {
@@ -159,8 +169,10 @@ export default {
   
   .CatalogAll {
     display: inline-block;
-    width: 80px;
+
     margin: 15px;
+    font-weight: 400;
+    line-height: 1.5;
   }
   </style>
   
