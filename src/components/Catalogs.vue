@@ -1,8 +1,38 @@
 <template>
-  <div>
-
+  <div class="catalogs">
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
-      <div></div>
+      <div v-if="showSpoiler" class="CatalogBig" @mouseleave="showSpoiler = false">
+        <button v-for="(catalog, index) in catalogs" :key="index" @click="catalogSelect(catalog)">{{ catalog }}</button>
+      </div>
+    </div>
+    <a class="CatalogAll" @mouseenter="showSpoiler = true" @mouseleave="showSpoiler = false">
+      Каталог
+    </a>
+    <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
+      <div v-if="showSpoiler" class="CatalogBig" @mouseleave="showSpoiler = false">
+        <button v-for="(catalog, index) in catalogs" :key="index" @click="catalogSelect(catalog)">{{ catalog }}</button>
+      </div>
+    </div>
+    <a class="CatalogAll" @mouseenter="showSpoiler = true" @mouseleave="showSpoiler = false">
+      Каталог
+    </a>
+    <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
+      <div v-if="showSpoiler" class="CatalogBig" @mouseleave="showSpoiler = false">
+        <button v-for="(catalog, index) in catalogs" :key="index" @click="catalogSelect(catalog)">{{ catalog }}</button>
+      </div>
+    </div>
+    <a class="CatalogAll" @mouseenter="showSpoiler = true" @mouseleave="showSpoiler = false">
+      Каталог
+    </a>
+    <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
+      <div v-if="showSpoiler" class="CatalogBig" @mouseleave="showSpoiler = false">
+        <button v-for="(catalog, index) in catalogs" :key="index" @click="catalogSelect(catalog)">{{ catalog }}</button>
+      </div>
+    </div>
+    <a class="CatalogAll" @mouseenter="showSpoiler = true" @mouseleave="showSpoiler = false">
+      Каталог
+    </a>
+    <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
       <div v-if="showSpoiler" class="CatalogBig" @mouseleave="showSpoiler = false">
         <button v-for="(catalog, index) in catalogs" :key="index" @click="catalogSelect(catalog)">{{ catalog }}</button>
       </div>
@@ -11,12 +41,15 @@
       Каталог
     </a>
   </div>
+  
+  <p class="headerNavSecItem">Курс $: {{ course }} UAH</p>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useSearchStore } from '../stores/counter';
 import { useRouter } from 'vue-router';
+import exchangeCourse from '../services/exchangeCourse';
 
 export default {
   setup() {
@@ -55,6 +88,7 @@ export default {
     ];
     const searchStore = useSearchStore();
     const router = useRouter();
+    const course = ref(0);
 
     const catalogSelect = (catalog) => {
       searchStore.setSearch(catalog);
@@ -62,10 +96,20 @@ export default {
       router.push('/Catalog');
     };
 
+    onMounted(async () => {
+  try {
+    const data = await exchangeCourse();
+    course.value = data;
+  } catch (error) {
+    console.error(error);
+  }
+});
+
     return {
       showSpoiler,
       catalogs,
-      catalogSelect
+      catalogSelect,
+      course
     };
   }
 };
@@ -73,6 +117,15 @@ export default {
 
   
   <style>
+
+  .catalogs{
+    display: flex;
+    height: 35px;
+    background: linear-gradient(to right, #222222, #555555);
+    color: #b0b0b0;
+    align-items: center;
+    justify-content: flex-start;
+  }
   .spoiler-trigger {
     position: relative;
   }
@@ -106,7 +159,8 @@ export default {
   
   .CatalogAll {
     display: inline-block;
-    width: 300px;
+    width: 80px;
+    margin: 15px;
   }
   </style>
   
