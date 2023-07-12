@@ -1,14 +1,26 @@
-import './assets/main.css'
+import './assets/main.css';
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import App from './App.vue';
+import router from './router/router';
 
-import App from './App.vue'
-import router from './router/router'
+const firebaseConfig = {
+  apiKey: "AIzaSyDBup_VXH-6gJf0qhuibWs1JRSomtBR6Ak",
+  authDomain: "hix-store.firebaseapp.com",
+  projectId: "hix-store",
+  storageBucket: "hix-store.appspot.com",
+  messagingSenderId: "736688927113",
+  appId: "hix-store"
+};
 
-const app = createApp(App)
 
-app.use(createPinia())
-app.use(router)
+const firebaseApp = initializeApp(firebaseConfig);
+const auth = getAuth(firebaseApp);
 
-app.mount('#app')
+const app = createApp(App);
+app.use(createPinia());
+app.use(router);
+app.mount('#app');

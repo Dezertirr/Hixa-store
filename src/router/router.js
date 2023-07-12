@@ -4,6 +4,8 @@ import Basket from '@/pages/Basket.vue'
 import Catalog from '@/pages/Catalog.vue'
 import NotFound from '@/pages/NotFound.vue'
 import Product from '@/pages/Product.vue'
+import RegistrationForm from '@/components/RegistrationForm.vue';
+
 import {createRouter, createWebHistory} from 'vue-router'
 
 const routes = [
@@ -27,7 +29,12 @@ const routes = [
   {
     path: '/Product',
     component: Product
-  }
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: RegistrationForm,
+  },
 ]
 
 const router = createRouter ({
