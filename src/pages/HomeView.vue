@@ -1,10 +1,22 @@
-<script setup>
-
-
-</script>
-
 <template>
-<h1>This main Page</h1>
-<p>Please <router-link to="/register">register</router-link> to continue.</p>
+    <div>
+      <h1>This main Page</h1>
+      <p>Please <router-link to="/register">register</router-link> to continue.</p>
+    </div>
+    <Slider></Slider>
+  </template>
+  
+  <script>
+ import Slider from '../components/Slider.vue';
 
-</template>
+export default {
+  components: {
+    Slider
+  }
+}
+  </script>
+  
+  <style>
+
+  </style>
+  

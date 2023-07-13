@@ -11,12 +11,16 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@coreui/vue": "^4.9.0",
     "axios": "^1.4.0",
     "firebase": "^10.0.0",
+    "hooper": "^0.3.4",
     "nanoid": "^4.0.2",
     "pinia": "^2.1.4",
+    "slick-carousel": "^1.8.1",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.2"
+    "vue-router": "^4.2.2",
+    "vue-ssr-carousel": "^2.3.2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",

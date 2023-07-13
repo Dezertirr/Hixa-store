@@ -9,7 +9,7 @@
 import { createApp, provide, onBeforeMount } from 'vue';
 import { createPinia } from 'pinia';
 import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue'
+import Footer from '@/components/Footer.vue';
 import ListProducts from '@/components/ListProducts.vue';
 import { RouterView } from 'vue-router';
 
