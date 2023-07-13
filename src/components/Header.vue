@@ -71,7 +71,7 @@ const goToLogin = () => {
 }
 
 const goToRegistration = () => {
-  router.push('/registration')
+  router.push('/register')
 }
 onMounted(() => {
   search.value = searchStore.getSearch()
