@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "AISIN WARNER",
     "brand": "BMW",
     "mark": "X6",
@@ -7,6 +8,7 @@
     "photo": "https://example.com/bmw_x6_photo.jpg"
   },
   {
+    "id": 2,
     "name": "ALASON",
     "brand": "Audi",
     "mark": "Q5",
@@ -14,6 +16,7 @@
     "photo": "https://example.com/audi_q5_photo.jpg"
   },
   {
+    "id": 3,
     "name": "AUDI, VOLKSWAGEN, SKODA",
     "brand": "Renault",
     "mark": "Clio",
@@ -21,6 +24,7 @@
     "photo": "https://example.com/renault_clio_photo.jpg"
   },
   {
+    "id": 4,
     "name": "BMW",
     "brand": "Mercedes-Benz",
     "mark": "E-Class",
@@ -28,6 +32,7 @@
     "photo": "https://example.com/mercedes_e-class_photo.jpg"
   },
   {
+    "id": 5,
     "name": "CHINESE CARS",
     "brand": "Toyota",
     "mark": "Camry",
@@ -35,6 +40,7 @@
     "photo": "https://example.com/toyota_camry_photo.jpg"
   },
   {
+    "id": 6,
     "name": "CHRYSLER, DODGE",
     "brand": "Ford",
     "mark": "Mustang",
@@ -42,6 +48,7 @@
     "photo": "https://example.com/ford_mustang_photo.jpg"
   },
   {
+    "id": 7,
     "name": "CITROEN, PEUGEOT, RENAULT",
     "brand": "Chevrolet",
     "mark": "Camaro",
@@ -49,6 +56,7 @@
     "photo": "https://example.com/chevrolet_camaro_photo.jpg"
   },
   {
+    "id": 8,
     "name": "FORD",
     "brand": "Volkswagen",
     "mark": "Golf",
@@ -56,6 +64,7 @@
     "photo": "https://example.com/volkswagen_golf_photo.jpg"
   },
   {
+    "id": 9,
     "name": "GENERAL MOTORS",
     "brand": "Honda",
     "mark": "Civic",
@@ -63,6 +72,7 @@
     "photo": "https://example.com/honda_civic_photo.jpg"
   },
   {
+    "id": 10,
     "name": "HALDEX",
     "brand": "Nissan",
     "mark": "GT-R",
@@ -70,6 +80,7 @@
     "photo": "https://example.com/nissan_gt-r_photo.jpg"
   },
   {
+    "id": 11,
     "name": "HONDA, ACURA",
     "brand": "Mazda",
     "mark": "CX-5",
@@ -77,6 +88,7 @@
     "photo": "https://example.com/mazda_cx-5_photo.jpg"
   },
   {
+    "id": 12,
     "name": "HYUNDAI, KIA",
     "brand": "Lexus",
     "mark": "RX",
@@ -84,6 +96,7 @@
     "photo": "https://example.com/lexus_rx_photo.jpg"
   },
   {
+    "id": 13,
     "name": "JAGUAR",
     "brand": "Subaru",
     "mark": "Impreza",
@@ -91,6 +104,7 @@
     "photo": "https://example.com/subaru_impreza_photo.jpg"
   },
   {
+    "id": 14,
     "name": "LAND ROVER",
     "brand": "Hyundai",
     "mark": "Tucson",
@@ -98,6 +112,7 @@
     "photo": "https://example.com/hyundai_tucson_photo.jpg"
   },
   {
+    "id": 15,
     "name": "MAZDA",
     "brand": "Kia",
     "mark": "Sportage",
@@ -105,6 +120,7 @@
     "photo": "https://example.com/kia_sportage_photo.jpg"
   },
   {
+    "id": 16,
     "name": "MERCEDES-BENZ",
     "brand": "Volvo",
     "mark": "XC60",
@@ -112,6 +128,7 @@
     "photo": "https://example.com/volvo_xc60_photo.jpg"
   },
   {
+    "id": 17,
     "name": "MITSUBISHI",
     "brand": "Jaguar",
     "mark": "F-Type",
@@ -119,6 +136,7 @@
     "photo": "https://example.com/jaguar_f-type_photo.jpg"
   },
   {
+    "id": 18,
     "name": "NISSAN, INFINITI, JATCO",
     "brand": "Land Rover",
     "mark": "Range Rover",
@@ -126,6 +144,7 @@
     "photo": "https://example.com/land_rover_range_rover_photo.jpg"
   },
   {
+    "id": 19,
     "name": "OPEL",
     "brand": "Porsche",
     "mark": "911",
@@ -133,6 +152,7 @@
     "photo": "https://example.com/porsche_911_photo.jpg"
   },
   {
+    "id": 20,
     "name": "PORSCHE",
     "brand": "SsangYong",
     "mark": "Rexton",
@@ -140,6 +160,7 @@
     "photo": "https://example.com/ssangyong_rexton_photo.jpg"
   },
   {
+    "id": 21,
     "name": "SSANGYONG",
     "brand": "Bugatti",
     "mark": "Veyron",
@@ -147,6 +168,7 @@
     "photo": "https://example.com/bugatti_veyron_photo.jpg"
   },
   {
+    "id": 22,
     "name": "SUBARU",
     "brand": "Aston Martin",
     "mark": "DB11",
@@ -154,6 +176,7 @@
     "photo": "https://example.com/aston_martin_db11_photo.jpg"
   },
   {
+    "id": 23,
     "name": "SUZUKI",
     "brand": "Tesla",
     "mark": "Model S",
@@ -161,6 +184,7 @@
     "photo": "https://example.com/tesla_model_s_photo.jpg"
   },
   {
+    "id": 24,
     "name": "TOYOTA, LEXUS",
     "brand": "Rolls-Royce",
     "mark": "Phantom",
@@ -168,6 +192,7 @@
     "photo": "https://example.com/rolls_royce_phantom_photo.jpg"
   },
   {
+    "id": 25,
     "name": "VOLVO",
     "brand": "Bentley",
     "mark": "Continental GT",
@@ -175,6 +200,7 @@
     "photo": "https://example.com/bentley_continental_gt_photo.jpg"
   },
   {
+    "id": 26,
     "name": "ZF",
     "brand": "Alfa Romeo",
     "mark": "Giulia",
@@ -182,6 +208,7 @@
     "photo": "https://example.com/alfa_romeo_giulia_photo.jpg"
   },
   {
+    "id": 27,
     "name": "Гідроблоки",
     "brand": "Acura",
     "mark": "MDX",
@@ -189,6 +216,7 @@
     "photo": "https://example.com/acura_mdx_photo.jpg"
   },
   {
+    "id": 28,
     "name": "Мастила для АКПП",
     "brand": "Cadillac",
     "mark": "Escalade",
@@ -196,6 +224,7 @@
     "photo": "https://example.com/cadillac_escalade_photo.jpg"
   },
   {
+    "id": 29,
     "name": "Фільтра діференціалів",
     "brand": "Infiniti",
     "mark": "Q50",
@@ -203,6 +232,7 @@
     "photo": "https://example.com/infiniti_q50_photo.jpg"
   },
   {
+    "id": 30,
     "name": "Запчастини для гідротрансформаторів",
     "brand": "Jeep",
     "mark": "Wrangler",
@@ -210,6 +240,7 @@
     "photo": "https://example.com/jeep_wrangler_photo.jpg"
   },
   {
+    "id": 31,
     "name": "Запчастини для гідротрансформаторів",
     "brand": "Lancia",
     "mark": "Ypsilon",
@@ -217,6 +248,7 @@
     "photo": "https://example.com/lancia_ypsilon_photo.jpg"
   },
   {
+    "id": 32,
     "name": "Запчастини для гідротрансформаторів",
     "brand": "Lada",
     "mark": "Vesta",
@@ -224,6 +256,7 @@
     "photo": "https://example.com/lada_vesta_photo.jpg"
   },
   {
+    "id": 33,
     "name": "Запчастини для гідротрансформаторів",
     "brand": "Smart",
     "mark": "ForTwo",
@@ -231,6 +264,7 @@
     "photo": "https://example.com/smart_fortwo_photo.jpg"
   },
   {
+    "id": 34,
     "name": "Запчастини для гідротрансформаторів",
     "brand": "Mini",
     "mark": "Cooper",
@@ -238,6 +272,7 @@
     "photo": "https://example.com/mini_cooper_photo.jpg"
   },
   {
+    "id": 35,
     "name": "Запчастини для гідротрансформаторів",
     "brand": "Mitsubishi",
     "mark": "Outlander",
@@ -245,6 +280,7 @@
     "photo": "https://example.com/mitsubishi_outlander_photo.jpg"
   },
   {
+    "id": 36,
     "name": "Запчастини для гідротрансформаторів",
     "brand": "Peugeot",
     "mark": "308",
@@ -252,6 +288,7 @@
     "photo": "https://example.com/peugeot_308_photo.jpg"
   },
   {
+    "id": 37,
     "name": "Запчастини для гідротрансформаторів",
     "brand": "Citroën",
     "mark": "C3",
@@ -259,6 +296,7 @@
     "photo": "https://example.com/citroen_c3_photo.jpg"
   },
   {
+    "id": 38,
     "name": "Запчастини для гідротрансформаторів",
     "brand": "Suzuki",
     "mark": "Swift",

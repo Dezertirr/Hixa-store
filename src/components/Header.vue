@@ -78,14 +78,14 @@ onMounted(() => {
 })
 const logout = async () => {
   try {
-    // Выполните разлогин пользователя
-    await signOut(auth) // auth - ваш объект аутентификации
 
-    // Установите значение isLoggedIn в false
+    await signOut(auth) 
+
+
     isLoggedIn.value = false
 
-    // Опционально: перенаправьте пользователя на страницу логина или на главную страницу
-    router.push('/login') // Измените '/login' на путь к вашей странице логина
+
+    router.push('/login') 
   } catch (error) {
     console.log('Ошибка при разлогине пользователя', error)
   }
@@ -115,15 +115,15 @@ provide('isLogined', isLogined)
 const auth = getAuth()
 onAuthStateChanged(auth, (user) => {
   isLoggedIn.value = user !== null
-  isLogined.value = isLoggedIn.value ? false : true // Исправленная логика
+  isLogined.value = isLoggedIn.value ? false : true 
 })
 
 const showLogin = () => {
-  isLogined.value = true // Показываем страницу логина
+  isLogined.value = true 
 }
 
 const loginSuccess = () => {
-  isLogined.value = false // При успешной авторизации скрываем страницу логина
+  isLogined.value = false 
 }
 </script>
 
@@ -152,6 +152,9 @@ const loginSuccess = () => {
 
 .headerNatItemBtn {
   padding: 10px;
+  background:inherit;
+  border: 0;
+  color: #b0b0b0;
 }
 
 .headerNavSec {
