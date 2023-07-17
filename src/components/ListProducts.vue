@@ -1,14 +1,13 @@
 <template>
   <div>
-    <h1>This Catalog: {{ search }}</h1>
     <ul v-if="filteredData.length > 0" class="productList">
       <li v-for="(item) in filteredData" :key="item.id" class="productItem">
-        <a @click="goToProduct(item)">
+        <div @click="goToProduct(item)" class="productItem">
           <h3 class="productItemTitle">{{ item.brand }}</h3>
           <p class="productItemPhoto">Тут має бути фото</p>
           <p class="productItemText">{{ item.value }}</p>
-          <button class="productItemBtn">До корзини</button>
-        </a>
+          <BasketBtn></BasketBtn>
+        </div>
       </li>
     </ul>
     <p v-else>Вибачте, такого товару в нас немає</p>
@@ -20,6 +19,7 @@ import { ref, computed } from 'vue';
 import jsonArray from '../services/Catalog.json';
 import { useSearchStore } from '../stores/counter';
 import { useRouter } from 'vue-router';
+import BasketBtn from '@/components/BasketBtn.vue' 
 
 export default {
   setup() {
@@ -31,15 +31,17 @@ export default {
       return jsonArray.filter(item => item.name.toLowerCase().includes(searchText));
     });
 
-    const goToProduct = (item) => {
-      router.push({ path: '/Product', query: { id: item.id } });
-    };
-
-    return {
+const goToProduct = (item) => {
+  router.push({ path: '/Product', query: { id: item.id } });
+};
+return {
       filteredData,
-      goToProduct
+      goToProduct,
     };
-  }
+  },
+  components: {
+    BasketBtn
+  },
 };
 
 </script>
@@ -81,7 +83,7 @@ background: linear-gradient(126deg, rgba(105,105,105,1) 0%, rgba(144,144,144,1) 
 }
 
 .productItemText{
-
+  margin: 0 15px;
 }
 
 .productItemBtn{

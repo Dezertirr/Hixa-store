@@ -27,7 +27,7 @@
       };
   
       const product = computed(() => {
-        const id = route.query.id;
+        const id = Number(route.query.id);
         return getProductById(id);
       });
   

@@ -1,5 +1,4 @@
 <template>
-    <h1><strong>This Page Catalog</strong></h1>
     <ListProducts></ListProducts>
   </template>
   
