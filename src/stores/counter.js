@@ -3,7 +3,8 @@ import { defineStore } from 'pinia';
 export const useSearchStore = defineStore({
   id: 'search',
   state: () => ({
-    search: ''
+    search: '',
+    course: 0
   }),
   getters: {},
   actions: {
@@ -12,6 +13,12 @@ export const useSearchStore = defineStore({
     },
     getSearch() {
       return this.search;
+    },
+    setCourse(course) {
+      this.course = course;
+    },
+    getCourse() {
+      return this.course;
     }
   }
 });

@@ -136,7 +136,7 @@
 import { ref, onMounted } from 'vue'
 import { useSearchStore } from '../stores/counter'
 import { useRouter } from 'vue-router'
-import exchangeCourse from '../services/exchangeCourse'
+import CurrentCourse from '@/components/CurrentCourse.vue'
 
 export default {
   setup() {
@@ -193,7 +193,7 @@ export default {
       'Радіатори трубчасті охолодження',
       'Послуги з ремонту трубок охолодження',
       'Фітинги',
-      'Хомути ',
+      'Хомути',
       'Шланги',
       'Термостати',
       'Ручний гідравлічний прес'
@@ -213,7 +213,7 @@ export default {
       'Ремонт гідротрансформатора',
       'Ремонт гідроблока',
       'Ремонт корпуса АКПП',
-      'Ремонт соленоїдів ',
+      'Ремонт соленоїдів',
       'Ремонт і прошивка ЕБУ',
       'Ремонт масляного насоса',
       'Ремонт PowerShift Ford/Volvo',
@@ -258,7 +258,6 @@ export default {
       showSpoiler,
       catalogs,
       catalogSelect,
-      course,
       hydroblocksCat,
       filtrationCat,
       instrumentCat,
@@ -278,6 +277,7 @@ export default {
   align-items: center;
   justify-content: center;
 }
+
 .spoiler-trigger {
   position: relative;
   padding-top: 35px;
@@ -314,7 +314,6 @@ export default {
 
 .CatalogAll {
   display: inline-block;
-
   padding: 15px;
   font-weight: 400;
   line-height: 1.5;
