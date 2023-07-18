@@ -137,6 +137,7 @@ import { ref, onMounted } from 'vue'
 import { useSearchStore } from '../stores/counter'
 import { useRouter } from 'vue-router'
 import CurrentCourse from '@/components/CurrentCourse.vue'
+import exchangeCourse from '@/services/exchangeCourse'
 
 export default {
   setup() {
