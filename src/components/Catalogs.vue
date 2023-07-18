@@ -2,54 +2,130 @@
   <div class="catalogs">
     <!-- Catalog 1 -->
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
-      <div v-if="showSpoiler && activeCatalog === 'Каталог'" class="CatalogBig" @mouseleave="showSpoiler = false">
-        <button v-for="(catalog, index) in catalogs" :key="index" @click="catalogSelect(catalog)">{{ catalog }}</button>
+      <div
+        v-if="showSpoiler && activeCatalog === 'Каталог'"
+        class="CatalogBig"
+        @mouseleave="showSpoiler = false"
+      >
+        <button v-for="(catalog, index) in catalogs" :key="index" @click="catalogSelect(catalog)">
+          {{ catalog }}
+        </button>
       </div>
     </div>
 
-    <a class="CatalogAll" @mouseenter="showSpoiler = true; activeCatalog = 'Каталог'" @mouseleave="showSpoiler = false">
+    <a
+      class="CatalogAll"
+      @mouseenter=";(showSpoiler = true), (activeCatalog = 'Каталог')"
+      @mouseleave="showSpoiler = false"
+    >
       Каталог
     </a>
     <!-- Catalog 2 -->
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
-      <div v-if="showSpoiler && activeCatalog === 'Гідроблоки'" class="CatalogBig" @mouseleave="showSpoiler = false">
-        <button v-for="(hydroblock, index) in hydroblocksCat" :key="index" @click="catalogSelect(hydroblock)">{{ hydroblock }}</button>
+      <div
+        v-if="showSpoiler && activeCatalog === 'Гідроблоки'"
+        class="CatalogBig"
+        @mouseleave="showSpoiler = false"
+      >
+        <button
+          v-for="(hydroblock, index) in hydroblocksCat"
+          :key="index"
+          @click="catalogSelect(hydroblock)"
+        >
+          {{ hydroblock }}
+        </button>
       </div>
     </div>
-    <a class="CatalogAll" @mouseenter="showSpoiler = true; activeCatalog = 'Гідроблоки'" @mouseleave="showSpoiler = false">
+    <a
+      class="CatalogAll"
+      @mouseenter=";(showSpoiler = true), (activeCatalog = 'Гідроблоки')"
+      @mouseleave="showSpoiler = false"
+    >
       Запчастини для гідроблоків
     </a>
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
-      <div v-if="showSpoiler && activeCatalog === 'Охолодження'" class="CatalogBig" @mouseleave="showSpoiler = false">
-        <button v-for="(filtration, index) in filtrationCat" :key="index" @click="catalogSelect(filtration)">{{ filtration }}</button>
+      <div
+        v-if="showSpoiler && activeCatalog === 'Охолодження'"
+        class="CatalogBig"
+        @mouseleave="showSpoiler = false"
+      >
+        <button
+          v-for="(filtration, index) in filtrationCat"
+          :key="index"
+          @click="catalogSelect(filtration)"
+        >
+          {{ filtration }}
+        </button>
       </div>
     </div>
-    <a class="CatalogAll" @mouseenter="showSpoiler = true; activeCatalog = 'Охолодження'" @mouseleave="showSpoiler = false">
+    <a
+      class="CatalogAll"
+      @mouseenter=";(showSpoiler = true), (activeCatalog = 'Охолодження')"
+      @mouseleave="showSpoiler = false"
+    >
       Охолодження та фільтрація
     </a>
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
-      <div v-if="showSpoiler && activeCatalog === 'Інструмент та обладнання'" class="CatalogBig" @mouseleave="showSpoiler = false">
-        <button v-for="(instrument, index) in instrumentCat" :key="index" @click="catalogSelect(instrument)">{{ instrument }}</button>
+      <div
+        v-if="showSpoiler && activeCatalog === 'Інструмент та обладнання'"
+        class="CatalogBig"
+        @mouseleave="showSpoiler = false"
+      >
+        <button
+          v-for="(instrument, index) in instrumentCat"
+          :key="index"
+          @click="catalogSelect(instrument)"
+        >
+          {{ instrument }}
+        </button>
       </div>
     </div>
-    <a class="CatalogAll" @mouseenter="showSpoiler = true; activeCatalog = 'Інструмент та обладнання'" @mouseleave="showSpoiler = false">
+    <a
+      class="CatalogAll"
+      @mouseenter=";(showSpoiler = true), (activeCatalog = 'Інструмент та обладнання')"
+      @mouseleave="showSpoiler = false"
+    >
       Інструмент та обладнання
     </a>
 
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
-      <div v-if="showSpoiler && activeCatalog === 'Ремонт АКПП'" class="CatalogBig" @mouseleave="showSpoiler = false">
-        <button v-for="(repair, index) in repairCat" :key="index" @click="catalogSelect(repair)">{{ repair }}</button>
+      <div
+        v-if="showSpoiler && activeCatalog === 'Ремонт АКПП'"
+        class="CatalogBig"
+        @mouseleave="showSpoiler = false"
+      >
+        <button v-for="(repair, index) in repairCat" :key="index" @click="catalogSelect(repair)">
+          {{ repair }}
+        </button>
       </div>
     </div>
-    <a class="CatalogAll" @mouseenter="showSpoiler = true; activeCatalog = 'Ремонт АКПП'" @mouseleave="showSpoiler = false">
+    <a
+      class="CatalogAll"
+      @mouseenter=";(showSpoiler = true), (activeCatalog = 'Ремонт АКПП')"
+      @mouseleave="showSpoiler = false"
+    >
       Ремонт АКПП
     </a>
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
-      <div v-if="showSpoiler && activeCatalog === 'Інформація'" class="CatalogBig" @mouseleave="showSpoiler = false">
-        <button v-for="(information, index) in informationCat" :key="index" @click="catalogSelect(information)">{{ information }}</button>
+      <div
+        v-if="showSpoiler && activeCatalog === 'Інформація'"
+        class="CatalogBig"
+        @mouseleave="showSpoiler = false"
+      >
+        <button
+          v-for="(information, index) in informationCat"
+          :key="index"
+          @click="catalogSelect(information)"
+        >
+          {{ information }}
+        </button>
       </div>
     </div>
-    <a class="CatalogAll" @mouseenter="showSpoiler = true; activeCatalog = 'Інформація'" @mouseleave="showSpoiler = false">
+    <a
+      class="CatalogAll"
+      @mouseenter=";(showSpoiler = true), (activeCatalog = 'Інформація')"
+      @mouseleave="showSpoiler = false"
+    >
       Інформація
     </a>
     <p class="headerNavSecItem">Курс $: <CurrentCourse></CurrentCourse> UAH</p>
@@ -57,15 +133,16 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
-import { useSearchStore } from '../stores/counter';
-import { useRouter } from 'vue-router';
-import CurrentCourse from '@/components/CurrentCourse.vue';
+import { ref, onMounted } from 'vue'
+import { useSearchStore } from '../stores/counter'
+import { useRouter } from 'vue-router'
+import CurrentCourse from '@/components/CurrentCourse.vue'
+import exchangeCourse from '@/services/exchangeCourse'
 
 export default {
   setup() {
-    const showSpoiler = ref(false);
-    const activeCatalog = ref(null);
+    const showSpoiler = ref(false)
+    const activeCatalog = ref(null)
 
     const catalogs = [
       'AISIN WARNER',
@@ -98,7 +175,7 @@ export default {
       'Мастила для АКПП',
       'Фільтра діференціалів',
       'Запчастини для гідротрансформаторів'
-    ];
+    ]
     const hydroblocksCat = [
       'Клапани в стандартному розмірі',
       'Ремонтні фтулки та клапани',
@@ -106,8 +183,8 @@ export default {
       'Інструмент',
       'Відновлення гідравлічної плити',
       'Сепараторні пластини',
-      'Втулки та плунжери',
-    ];
+      'Втулки та плунжери'
+    ]
     const filtrationCat = [
       'Адаптери АКПП',
       'Адаптери додаткового фільтра АКПП',
@@ -120,8 +197,8 @@ export default {
       'Хомути',
       'Шланги',
       'Термостати',
-      'Ручний гідравлічний прес',
-    ];
+      'Ручний гідравлічний прес'
+    ]
     const instrumentCat = [
       'Гідравлічний інструмент',
       'Інструмент для ремонту соленоїдів',
@@ -131,8 +208,8 @@ export default {
       'Інструмент для тестування',
       'Інструмент для металообробки',
       'Розхідники для миття',
-      'Інше обладнання',
-    ];
+      'Інше обладнання'
+    ]
     const repairCat = [
       'Ремонт гідротрансформатора',
       'Ремонт гідроблока',
@@ -145,8 +222,8 @@ export default {
       'Ремонт трубок охолодження',
       'Встановлення додаткового фільтру',
       'Початок ремонту',
-      'Діагностика On-line',
-    ];
+      'Діагностика On-line'
+    ]
     const informationCat = [
       'Відправка та доставка товарів',
       'Оплата',
@@ -156,17 +233,27 @@ export default {
       'Повертаємо автоматам надійність та чіткість переключення',
       'Наші співробітники',
       'Про нас',
-      'Вакансії',
-    ];
-    const searchStore = useSearchStore();
-    const router = useRouter();
+      'Вакансії'
+    ]
+    const searchStore = useSearchStore()
+    const router = useRouter()
+    const course = ref(0)
 
     const catalogSelect = (catalog) => {
-      searchStore.setSearch(catalog);
-      activeCatalog.value = catalog;
-      showSpoiler.value = false;
-      router.push('/Catalog');
-    };
+      searchStore.setSearch(catalog)
+      activeCatalog.value = catalog
+      showSpoiler.value = false
+      router.push('/Catalog')
+    }
+
+    onMounted(async () => {
+      try {
+        const data = await exchangeCourse()
+        course.value = data
+      } catch (error) {
+        console.error(error)
+      }
+    })
 
     return {
       showSpoiler,
@@ -176,13 +263,10 @@ export default {
       filtrationCat,
       instrumentCat,
       repairCat,
-      informationCat,
-      components: {
-        CurrentCourse,
-      }
-    };
-  },
-};
+      informationCat
+    }
+  }
+}
 </script>
 
 <style>

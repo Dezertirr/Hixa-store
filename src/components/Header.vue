@@ -39,7 +39,7 @@
           <input v-model="searchValue" placeholder="Search" class="searchInput" />
           <button type="submit" class="searchBtn">Search</button>
         </form>
-        <div><img src="@/images/shopping-basket.svg" /></div>
+        <button @click="goToCart"><img src="@/images/shopping-basket.svg" /></button>
       </div>
       <Catalogs></Catalogs>
     </div>
@@ -62,6 +62,9 @@ const searchValue = ref('')
 const isLoggedIn = ref(false)
 const isLogined = ref(false)
 
+const goToCart = () => {
+  router.push('/cart')
+}
 const filteredData = computed(() => {
   const searchText = searchStore.getSearch().toLowerCase()
   return jsonData.filter((item) => item.name.toLowerCase().includes(searchText))
@@ -78,14 +81,11 @@ onMounted(() => {
 })
 const logout = async () => {
   try {
-
-    await signOut(auth) 
-
+    await signOut(auth)
 
     isLoggedIn.value = false
 
-
-    router.push('/login') 
+    router.push('/login')
   } catch (error) {
     console.log('Ошибка при разлогине пользователя', error)
   }
@@ -115,15 +115,15 @@ provide('isLogined', isLogined)
 const auth = getAuth()
 onAuthStateChanged(auth, (user) => {
   isLoggedIn.value = user !== null
-  isLogined.value = isLoggedIn.value ? false : true 
+  isLogined.value = isLoggedIn.value ? false : true
 })
 
 const showLogin = () => {
-  isLogined.value = true 
+  isLogined.value = true
 }
 
 const loginSuccess = () => {
-  isLogined.value = false 
+  isLogined.value = false
 }
 </script>
 
@@ -152,7 +152,7 @@ const loginSuccess = () => {
 
 .headerNatItemBtn {
   padding: 10px;
-  background:inherit;
+  background: inherit;
   border: 0;
   color: #b0b0b0;
 }

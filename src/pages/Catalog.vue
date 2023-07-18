@@ -1,16 +1,22 @@
 <template>
-    <ListProducts></ListProducts>
-  </template>
-  
-  <script>
-  import ListProducts from '@/components/ListProducts.vue';
-  
-  export default {
-    components: {
-      ListProducts
-    },
-  };
-  </script>
-  
-  <style></style>
-  
+  <div>
+    <ListProducts :catalog="activeCatalog"></ListProducts>
+  </div>
+</template>
+
+<script>
+import ListProducts from '@/components/ListProducts.vue'
+
+export default {
+  components: {
+    ListProducts
+  },
+  data() {
+    return {
+      activeCatalog: ''
+    }
+  }
+}
+</script>
+
+<style></style>
