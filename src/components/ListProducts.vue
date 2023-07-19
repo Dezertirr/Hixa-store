@@ -2,7 +2,7 @@
   <div>
     <ul v-if="filteredData.length > 0" class="productList">
       <li v-for="item in filteredData" :key="item.id" class="productItem">
-        <div @click="goToProduct(item)" class="productItem">
+        <div @click="goToProduct(item)">
           <h3 class="productItemTitle">{{ item.brand }}</h3>
           <p class="productItemPhoto">Тут має бути фото</p>
           <p class="productItemText">{{ item.value }}</p>
@@ -81,9 +81,11 @@ export default {
   background: rgb(105, 105, 105);
   background: linear-gradient(126deg, rgba(105, 105, 105, 1) 0%, rgba(144, 144, 144, 1) 88%);
   border-radius: 10px;
+  margin: 0 auto;
 }
 
 .productItemTitle {
+  margin: 15px 105px;
 }
 
 .productItemPhoto {
@@ -91,6 +93,7 @@ export default {
   height: 200px;
   border: 1px solid #b0b0b0;
   border-radius: 10px;
+  margin: 0 auto;
 }
 
 .productItemText {

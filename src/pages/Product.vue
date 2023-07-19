@@ -4,15 +4,19 @@
       
       <div class="productCard">
         <div class="productImg"></div>
-        <div class="productHeader">
+
+        <div class="proudctInfo">
+          <div class="productHeader">
             <p class="productBrand">Виробник: {{ product.brand }}</p>
         <p class="productPrice"> Ціна:${{ product.price }}</p>
       </div>
-        <div class="proudctInfo">
-
         <p class="productFor">{{ product.mark }}</p>
-        <p class="productValue">{{ product.value }}</p>
-        <p class="productCode">{{ product.code }}</p>
+        <p class="productValue">Опис: {{ product.value }}</p>
+        <div class="productCart">
+        <p class="productCode">Код товару: {{ product.code }}</p>
+
+        <BasketBtn @click="addBusket(product)"></BasketBtn>
+      </div>
       </div>
       </div>
       </div>
@@ -26,6 +30,7 @@
   import { useRoute } from 'vue-router';
   import jsonArray from '../services/Catalog.json';
   import exchangeCourse from '../services/exchangeCourse';
+  import BasketBtn from '@/components/BasketBtn.vue'
   
   export default {
     setup() {
@@ -54,16 +59,29 @@ console.log(course);
         return getProductById(id);
       });
   
-      return {
-        product
-      };
+      const addBusket = (product) => {
+      const cartItems = JSON.parse(localStorage.getItem('cart')) || []
+      cartItems.push(product)
+      localStorage.setItem('cart', JSON.stringify(cartItems))
+      console.log('Товар добавлен в корзину', product)
+      console.log(product.id)
+      console.log(product.name)
+      console.log(product.brand)
     }
-  };
+    return {
+      product,
+      addBusket
+    }
+  },
+  components: {
+    BasketBtn
+  }
+}
   </script>
   
   <style scoped>
   .productCard {
-   margin: 0 auto;
+   margin: 30px auto;
    max-width: 1200px;
    border: 1px solid black;
    display: flex;
@@ -77,11 +95,13 @@ border: 1px solid black;
 }
 
 .proudctInfo {
-
+  width: 720px;
 }
 
 .productHeader {
-display: flex;
+  display: flex;
+    justify-content: space-between;
+    margin: 0 30px;
 }
 
 
@@ -103,6 +123,12 @@ display: flex;
 
 .productCode {
 
+}
+.productCart {
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 230px;
 }
 
   </style>

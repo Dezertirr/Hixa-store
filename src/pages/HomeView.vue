@@ -3,19 +3,22 @@
     <h1>This main Page</h1>
     <p v-if="isLoggedIn">Welcome back!</p>
     <p v-else>Please <router-link to="/login">login</router-link> to continue.</p>
-
     <router-view></router-view>
+
+    <Slider></Slider>
+    <MainCatalog></MainCatalog>
   </div>
-  <Slider></Slider>
 </template>
 
 <script>
 import { ref } from 'vue'
 import Slider from '../components/Slider.vue'
+import MainCatalog from '../components/MainCatalog.vue'
 
 export default {
   components: {
-    Slider
+    Slider,
+    MainCatalog
   },
   data() {
     return {

@@ -1,0 +1,315 @@
+[
+    {
+        "id": 1,
+      "brand": "BMW",
+      "name": "X6",
+      "smallcontent": "BMW Best Car of the world"
+    },
+    {
+        "id": 2,
+      "brand": "Audi",
+      "name": "A4",
+      "smallcontent": "Audi Reliable German Engineering"
+    },
+    {
+        "id": 3,
+      "brand": "Mercedes-Benz",
+      "name": "C-Class",
+      "smallcontent": "Luxury and Elegance in a Compact Package"
+    },
+    {
+        "id": 4,
+      "brand": "Tesla",
+      "name": "Model S",
+      "smallcontent": "Electric Performance and Innovation"
+    },
+    {
+        "id": 5,
+      "brand": "Toyota",
+      "name": "Camry",
+      "smallcontent": "Dependable and Fuel Efficient"
+    },
+    {
+        "id":6,
+      "brand": "Ford",
+      "name": "Mustang",
+      "smallcontent": "American Muscle and Iconic Styling"
+    },
+    {
+        "id": 7,
+      "brand": "Chevrolet",
+      "name": "Corvette",
+      "smallcontent": "Legendary Sports Car with Unmatched Performance"
+    },
+    {
+        "id": 8,
+      "brand": "Volkswagen",
+      "name": "Golf",
+      "smallcontent": "Reliable and Versatile Hatchback"
+    },
+    {
+        "id": 9,
+      "brand": "Honda",
+      "name": "Civic",
+      "smallcontent": "Efficient and Practical Compact Car"
+    },
+    {
+        "id": 10,
+      "brand": "Lamborghini",
+      "name": "Aventador",
+      "smallcontent": "Exotic Supercar with Jaw-Dropping Performance"
+    },
+    {
+        "id": 11,
+      "brand": "Porsche",
+      "name": "911",
+      "smallcontent": "Timeless Design and Thrilling Driving Experience"
+    },
+    {
+        "id": 12,
+      "brand": "Mazda",
+      "name": "MX-5 Miata",
+      "smallcontent": "Pure Driving Pleasure in a Roadster"
+    },
+    {
+        "id":13,
+      "brand": "Subaru",
+      "name": "Forester",
+      "smallcontent": "Versatile SUV with All-Wheel Drive Capability"
+    },
+    {
+        "id": 14,
+      "brand": "Nissan",
+      "name": "GT-R",
+      "smallcontent": "Japanese Supercar Engineering at its Finest"
+    },
+    {
+        "id": 15,
+      "brand": "Ferrari",
+      "name": "488 GTB",
+      "smallcontent": "Exhilarating Performance and Italian Luxury"
+    },
+    {
+        "id": 16,
+      "brand": "Jeep",
+      "name": "Wrangler",
+      "smallcontent": "Iconic Off-Road Capability and Adventure"
+    },
+    {
+        "id": 17,
+      "brand": "Volvo",
+      "name": "XC90",
+      "smallcontent": "Safety and Scandinavian Elegance"
+    },
+    {
+        "id": 18,
+      "brand": "Lexus",
+      "name": "RX",
+      "smallcontent": "Luxury SUV with Comfort and Reliability"
+    },
+    {
+        "id": 19,
+      "brand": "Land Rover",
+      "name": "Range Rover",
+      "smallcontent": "Premium SUV for Luxury and Off-Road Capability"
+    },
+    {
+        "id": 20,
+      "brand": "Maserati",
+      "name": "Ghibli",
+      "smallcontent": "Italian Style and Exclusivity"
+    },
+    {
+        "id": 21,
+      "brand": "Jaguar",
+      "name": "F-Type",
+      "smallcontent": "Sleek Sports Car with Striking Design"
+    },
+    {
+        "id": 22,
+      "brand": "Kia",
+      "name": "Telluride",
+      "smallcontent": "Spacious and Feature-Packed SUV"
+    },
+    {
+        "id":23,
+      "brand": "Hyundai",
+      "name": "Tucson",
+      "smallcontent": "Modern Design and Advanced Technology"
+    },
+    {
+        "id": 24,
+      "brand": "Acura",
+      "name": "NSX",
+      "smallcontent": "Hybrid Supercar with Precision Performance"
+    },
+    {
+        "id": 25,
+      "brand": "Buick",
+      "name": "Enclave",
+      "smallcontent": "Comfortable and Stylish Midsize SUV"
+    },
+    {
+        "id": 26,
+      "brand": "Cadillac",
+      "name": "Escalade",
+      "smallcontent": "Luxury SUV with Bold Presence"
+    },
+    {
+        "id": 27,
+      "brand": "Chrysler",
+      "name": "300",
+      "smallcontent": "Classically Styled Full-Size Sedan"
+    },
+    {
+        "id": 28,
+      "brand": "Dodge",
+      "name": "Challenger",
+      "smallcontent": "Muscle Car with Powerful Performance"
+    },
+    {
+        "id": 29,
+      "brand": "GMC",
+      "name": "Sierra",
+      "smallcontent": "Rugged and Capable Pickup Truck"
+    },
+    {
+        "id": 30,
+      "brand": "Infiniti",
+      "name": "Q50",
+      "smallcontent": "Luxury Sedan with Dynamic Performance"
+    },
+    {
+        "id": 31,
+      "brand": "Lincoln",
+      "name": "Navigator",
+      "smallcontent": "Spacious and Opulent Full-Size SUV"
+    },
+    {
+        "id": 32,
+      "brand": "Mini",
+      "name": "Cooper",
+      "smallcontent": "Iconic Compact Car with British Charm"
+    },
+    {
+        "id": 33,
+      "brand": "Mitsubishi",
+      "name": "Outlander",
+      "smallcontent": "Versatile SUV with All-Wheel Drive"
+    },
+    {
+        "id": 34,
+      "brand": "Ram",
+      "name": "1500",
+      "smallcontent": "Powerful and Capable Pickup Truck"
+    },
+    {
+        "id": 35,
+      "brand": "Rolls-Royce",
+      "name": "Phantom",
+      "smallcontent": "The Epitome of Luxury and Elegance"
+    },
+    {
+        "id": 36,
+      "brand": "Suzuki",
+      "name": "Swift",
+      "smallcontent": "Compact Hatchback with Fuel Efficiency"
+    },
+    {
+        "id": 37,
+      "brand": "Alfa Romeo",
+      "name": "Giulia",
+      "smallcontent": "Italian Luxury and Performance Sedan"
+    },
+    {
+        "id": 38,
+      "brand": "Bentley",
+      "name": "Continental GT",
+      "smallcontent": "Exquisite Grand Touring Coupe"
+    },
+    {
+        "id": 39,
+      "brand": "Bugatti",
+      "name": "Chiron",
+      "smallcontent": "Unparalleled Speed and Engineering"
+    },
+    {
+        "id": 40,
+      "brand": "Fiat",
+      "name": "500",
+      "smallcontent": "Charming and Compact City Car"
+    },
+    {
+        "id": 41,
+      "brand": "Genesis",
+      "name": "G80",
+      "smallcontent": "Luxury Sedan with Attention to Detail"
+    },
+    {
+        "id": 42,
+      "brand": "Isuzu",
+      "name": "D-Max",
+      "smallcontent": "Reliable and Robust Pickup Truck"
+    },
+    {
+        "id":43,
+      "brand": "Lotus",
+      "name": "Elise",
+      "smallcontent": "Lightweight Sports Car for Pure Driving Experience"
+    },
+    {
+        "id": 44,
+      "brand": "McLaren",
+      "name": "720S",
+      "smallcontent": "Supercar Engineering and Precision"
+    },
+    {
+        "id": 45,
+      "brand": "Opel",
+      "name": "Corsa",
+      "smallcontent": "Compact Car with German Engineering"
+    },
+    {
+        "id": 46,
+      "brand": "Peugeot",
+      "name": "3008",
+      "smallcontent": "Stylish and Feature-Packed SUV"
+    },
+    {
+        "id": 47,
+      "brand": "Renault",
+      "name": "Clio",
+      "smallcontent": "Efficient and Fun-to-Drive Hatchback"
+    },
+    {
+        "id": 48,
+      "brand": "Seat",
+      "name": "Leon",
+      "smallcontent": "Dynamic and Sporty Hatchback"
+    },
+    {
+        "id": 49,
+      "brand": "Skoda",
+      "name": "Octavia",
+      "smallcontent": "Spacious and Practical Family Car"
+    },
+    {
+        "id":50,
+      "brand": "Vauxhall",
+      "name": "Corsa",
+      "smallcontent": "Reliable and Efficient Hatchback"
+    },
+    {
+        "id": 51,
+      "brand": "Volkswagen",
+      "name": "Tiguan",
+      "smallcontent": "Versatile and Capable Compact SUV"
+    },
+    {
+        "id": 52,
+      "brand": "Volvo",
+      "name": "XC40",
+      "smallcontent": "Compact SUV with Scandinavian Sophistication"
+    }
+  ]
+  
