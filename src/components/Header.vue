@@ -95,9 +95,8 @@ watch(search, (newValue) => {
 })
 
 const searchStart = () => {
-  search.value = searchValue.value
-  searchStore.setSearch(searchValue.value)
-  router.push('/Catalog')
+  const query = searchValue.value
+  router.push({ path: "Catalog", query: { search: query } });
 }
 
 const backMainPage = () => {

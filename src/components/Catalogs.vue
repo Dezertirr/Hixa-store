@@ -133,7 +133,7 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useSearchStore } from '../stores/counter'
 import { useRouter } from 'vue-router'
 import CurrentCourse from '@/components/CurrentCourse.vue'
@@ -143,6 +143,11 @@ export default {
   setup() {
     const showSpoiler = ref(false)
     const activeCatalog = ref(null)
+    const searchValue = ref('')
+    const searchStore = useSearchStore()
+    const router = useRouter()
+    const course = ref(0)
+
 
     const catalogs = [
       'AISIN WARNER',
@@ -235,16 +240,20 @@ export default {
       'Про нас',
       'Вакансії'
     ]
-    const searchStore = useSearchStore()
-    const router = useRouter()
-    const course = ref(0)
 
     const catalogSelect = (catalog) => {
-      searchStore.setSearch(catalog)
-      activeCatalog.value = catalog
-      showSpoiler.value = false
-      router.push('/Catalog')
+      searchValue.value = catalog
+      router.push({ path: 'Catalog', query: { search: searchValue.value } })
     }
+
+  
+    onMounted(() => {
+      searchValue.value = searchStore.getSearch()
+    })
+
+    watch(searchStore.getSearch, (newValue) => {
+      searchValue.value = newValue
+    })
 
     onMounted(async () => {
       try {
@@ -259,13 +268,8 @@ export default {
       showSpoiler,
       catalogs,
       catalogSelect,
-      hydroblocksCat,
-      filtrationCat,
-      instrumentCat,
-      repairCat,
-      informationCat
     }
-  }
+  },
 }
 </script>
 

@@ -20,7 +20,9 @@ const routes = [
   },
   {
     path: '/Catalog',
-    component: Catalog
+    name: 'Catalog',
+    component: Catalog,
+    props: (route) => ({ search: route.query.search || '' })
   },
   {
     path: '/404',

@@ -14,51 +14,46 @@
   </div>
 </template>
 
-<script>
-import { ref, computed } from 'vue'
-import jsonArray from '../services/Catalog.json'
-import { useSearchStore } from '../stores/counter'
-import { useRouter } from 'vue-router'
-import BasketBtn from '@/components/BasketBtn.vue'
+<script setup>
+import { ref, computed, defineProps } from 'vue';
+import jsonArray from '../services/Catalog.json';
+import { useSearchStore } from '../stores/counter';
+import { useRouter } from 'vue-router';
+import BasketBtn from '@/components/BasketBtn.vue';
 
-export default {
-  setup() {
-    const searchStore = useSearchStore()
-    const router = useRouter()
+const props = defineProps();
+const searchStore = useSearchStore();
+const router = useRouter();
 
-    const filteredData = computed(() => {
-      const searchText = searchStore.getSearch().toLowerCase()
-
-      return jsonArray.filter((item) => item.name.toLowerCase().includes(searchText))
-    })
-
-    const goToProduct = (item) => {
-      router.push({ path: '/Product', query: { id: item.id } })
-      console.log(item.id)
-      console.log(item.name)
-      console.log(item.brand)
-    }
-    const addBusket = (item) => {
-      router.push({ path: '/cart', query: { id: item.id } })
-      const cartItems = JSON.parse(localStorage.getItem('cart')) || []
-      cartItems.push(item)
-      localStorage.setItem('cart', JSON.stringify(cartItems))
-      console.log('Товар добавлен в корзину', item)
-      console.log(item.id)
-      console.log(item.name)
-      console.log(item.brand)
-    }
-    return {
-      filteredData,
-      goToProduct,
-      addBusket
-    }
-  },
-  components: {
-    BasketBtn
+const filteredData = computed(() => {
+  const searchText = searchStore.getSearch().toLowerCase();
+  return jsonArray.filter((item) => item.name.toLowerCase().includes(searchText));
+});
+router.afterEach((to) => {
+  if (to.query.search) {
+    searchStore.setSearch(to.query.search);
+  } else {
+    searchStore.setSearch('');
   }
-}
+});
+
+const goToProduct = (item) => {
+  router.push({ path: '/Product', query: { id: item.id } });
+};
+
+const addBusket = (item) => {
+  router.push({ path: '/cart', query: { id: item.id } });
+  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  cartItems.push(item);
+  localStorage.setItem('cart', JSON.stringify(cartItems));
+  console.log('Товар добавлен в корзину', item);
+  console.log(item.id);
+  console.log(item.name);
+  console.log(item.brand);
+};
+
 </script>
+
 
 <style scoped>
 .productList {
