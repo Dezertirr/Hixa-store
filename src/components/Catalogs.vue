@@ -7,7 +7,10 @@
         class="CatalogBig"
         @mouseleave="showSpoiler = false"
       >
-        <button v-for="(catalog, index) in catalogs" :key="index" @click="catalogSelect(catalog)">
+        <button 
+        v-for="(catalog, index) in catalogs" 
+        :key="index" 
+        @click="catalogSelect(catalog)">
           {{ catalog }}
         </button>
       </div>
@@ -268,6 +271,11 @@ export default {
       showSpoiler,
       catalogs,
       catalogSelect,
+      hydroblocksCat,
+      filtrationCat,
+      instrumentCat,
+      repairCat,
+      informationCat,
     }
   },
 }
