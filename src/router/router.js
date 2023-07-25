@@ -6,6 +6,7 @@ import Product from '@/pages/Product.vue'
 import RegistrationForm from '@/components/RegistrationForm.vue'
 import LoginForm from '@/components/LoginForm.vue'
 import Cart from '@/components/Cart.vue'
+import Information from '@/pages/Information.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -42,7 +43,15 @@ const routes = [
     name: 'Login',
     component: LoginForm
   },
-  { path: '/Cart', component: Cart }
+  { path: '/Cart', 
+  component: Cart 
+},
+  {
+    path: '/Info',
+    name: 'Information',
+    component: Information
+  },
+
 ]
 
 const router = createRouter({

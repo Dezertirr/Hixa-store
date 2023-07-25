@@ -3,17 +3,26 @@
       <h1>{{product.part}}</h1>
       
       <div class="productCard">
-        <div class="productImg"></div>
+        <img class="productImg" src="@/images/DSG-7.png"/>
 
         <div class="proudctInfo">
           <div class="productHeader">
             <p class="productBrand">Виробник: {{ product.brand }}</p>
         <p class="productPrice"> Ціна:${{ product.price }}</p>
       </div>
-        <p class="productFor">{{ product.mark }}</p>
-        <p class="productValue">Опис: {{ product.value }}</p>
+        <p class="productValue">{{ product.value }}</p>
+        <p>Номер деталей: {{ product.numPart }}</p>
         <div class="productCart">
-        <p class="productCode">Код товару: {{ product.code }}</p>
+        
+        <h5>Wenn Sie nicht sicher sind, dass die Mechatronik zu Ihrem Auto passt, setzen Sie, bitte, mit uns in Verbindung und kaufen die Ware nicht!</h5>
+        <h5>Der Artikel wurde vollkommen auseinander genommen, gereinigt und auf Abnutzung und Bruchstellen untersucht.
+           Alle abgenutzten und/oder nicht funktionierenden Teile wurden durch neue oder aufgearbeitete Komponenten ersetzt.
+            In seiner Funktionsweise entspricht das Teil einem neuen Teil und kann nicht von einem neuen Teil unterschieden werden.</h5>
+            <h5>Es wird -20% im Austausch verkauft. Der Preis gilt nur für ungeöffnete Steuergeräte, die keine Wasserschaden,
+              Brandschaden oder äußerliche Beschädigungen erlitten haben. Sie müssen Ihre Mechatronik einschicken, 
+              wir schicken erneute Mechatronik an Sie zurück. Wenn Sie damit nicht einverstanden sind, dann kaufen Sie bitte nicht.</h5>
+              <p class="productCode">Код товару: {{ product.code }}</p>
+
 
         <BasketBtn @click="addBusket(product)"></BasketBtn>
       </div>
@@ -91,7 +100,7 @@ console.log(course);
 margin:15px;
 width: 450px;
 height: 450px;
-border: 1px solid black;
+object-fit: contain ;
 }
 
 .proudctInfo {
@@ -128,7 +137,6 @@ border: 1px solid black;
   display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    gap: 230px;
 }
 
   </style>
