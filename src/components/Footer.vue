@@ -4,9 +4,9 @@
         <li class="listItemFooter">
             <h4>Інформація</h4>
             <ul class="listInfo">
-            <li class="listItemInfo">Гарантія</li>
-            <li class="listItemInfo">Напишіть нам</li>
-            <li class="listItemInfo">Повернення товару</li>
+            <li class="listItemInfo" @click="goToInformation">Гарантія</li>
+            <li class="listItemInfo" @click="goToInformation">Напишіть нам</li>
+            <li class="listItemInfo" @click="goToInformation">Повернення товару</li>
         </ul>
         </li>
         <li class="listItemFooter">
@@ -41,7 +41,23 @@
     </footer>
 </template>
 <script>
+import { useRouter } from 'vue-router'
+
+export default {
+  setup() {
+    const router = useRouter();
+
+    const goToInformation = () => {
+      router.push({ path: '/Info' });
+    };
+
+    return {
+      goToInformation
+    };
+  }
+}
 </script>
+
 <style>
 .footer {
     background: linear-gradient(to right, #222222, #555555);

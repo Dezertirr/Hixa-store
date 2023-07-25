@@ -115,13 +115,12 @@
         class="CatalogBig"
         @mouseleave="showSpoiler = false"
       >
-        <button
-          v-for="(information, index) in informationCat"
-          :key="index"
-          @click="catalogSelect(information)"
-        >
-          {{ information }}
-        </button>
+      <button @click="goToInformation(index)"
+       class="InformationListItem"
+        v-for="(information, index) in informationCat"
+         :key="index">
+    {{ information }}
+  </button>
       </div>
     </div>
     <a
@@ -142,6 +141,7 @@ import { useRouter } from 'vue-router'
 import CurrentCourse from '@/components/CurrentCourse.vue'
 import exchangeCourse from '@/services/exchangeCourse'
 
+
 export default {
   setup() {
     const showSpoiler = ref(false)
@@ -150,6 +150,7 @@ export default {
     const searchStore = useSearchStore()
     const router = useRouter()
     const course = ref(0)
+
 
 
     const catalogs = [
@@ -245,27 +246,30 @@ export default {
     ]
 
     const catalogSelect = (catalog) => {
-      searchValue.value = catalog
-      router.push({ path: 'Catalog', query: { search: searchValue.value } })
-    }
+      searchValue.value = catalog;
+      router.push({ path: 'Catalog', query: { search: searchValue.value } });
+    };
 
-  
+    const goToInformation = (index) => {
+      router.push({ path: 'Info' });
+    };
+
     onMounted(() => {
-      searchValue.value = searchStore.getSearch()
-    })
+      searchValue.value = searchStore.getSearch();
+    });
 
     watch(searchStore.getSearch, (newValue) => {
-      searchValue.value = newValue
-    })
+      searchValue.value = newValue;
+    });
 
     onMounted(async () => {
       try {
-        const data = await exchangeCourse()
-        course.value = data
+        const data = await exchangeCourse();
+        course.value = data;
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
-    })
+    });
 
     return {
       showSpoiler,
@@ -276,9 +280,11 @@ export default {
       instrumentCat,
       repairCat,
       informationCat,
-    }
+      goToInformation,
+    };
   },
-}
+};
+
 </script>
 
 <style>
