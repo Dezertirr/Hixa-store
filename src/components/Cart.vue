@@ -69,22 +69,87 @@ export default {
     async submitOrder() {
       // Генерируем идентификатор заказа
       this.customerData.orderId = Math.floor(Math.random() * 10000)
-
-      // Здесь вы можете отправить заказ в ваше приложение или обработать его как вам нужно
-
-      // Обновляем текст кнопки на "Обработано"
-      this.buttonText = 'Обработано'
-
-      // Помечаем заказ как обработанный
-      this.isOrderProcessed = true
-
-      this.closeModal()
-      this.customerData = {
-        name: '',
-        phone: '',
-        city: '',
-        orderId: ''
+      const orderData = {
+        cartItems: this.cartItems,
+        customerData: this.customerData
       }
+
+      try {
+        const botToken = '6524682564:AAHEo46Uim-eagPSyYijx_5s1uAK4P3qExI'
+        const chatId = '-938605598'
+
+        const message = this.constructMessage(orderData)
+
+        const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
+        const response = await axios.post(apiUrl, {
+          chat_id: chatId,
+          text: message,
+          parse_mode: 'HTML',
+          reply_markup: {
+            inline_keyboard: [
+              [
+                {
+                  text: 'Взять заказ на обработку',
+                  callback_data: 'take_order'
+                }
+              ]
+            ]
+          }
+        })
+        const messageId = response.data.result.message_id
+        this.$root.$on('telegramCallback', (data) => {
+          if (data.callback_query.data === 'take_order') {
+            this.updateButtonStatus(botToken, chatId, messageId)
+          }
+        })
+
+        this.closeModal()
+        this.customerData = {
+          name: '',
+          phone: '',
+          city: '',
+          orderId: ''
+        }
+      } catch (error) {
+        console.error('Ошибка отправки сообщения в Telegram:', error)
+      }
+    },
+
+    updateButtonStatus(botToken, chatId, messageId) {
+      const updatedMessage = 'Обработано'
+
+      const apiUrl = `https://api.telegram.org/bot${botToken}/editMessageText`
+      axios
+        .post(apiUrl, {
+          chat_id: chatId,
+          message_id: messageId,
+          text: updatedMessage,
+          parse_mode: 'HTML',
+          reply_markup: {
+            inline_keyboard: []
+          }
+        })
+        .then(() => {
+          this.buttonText = updatedMessage
+
+          this.isOrderProcessed = true
+        })
+        .catch((error) => {
+          console.error('Ошибка при обновлении текста кнопки:', error)
+        })
+    },
+
+    constructMessage(orderData) {
+      let message = `<b>Новый заказ</b>\n\n`
+      message += `<b>Идентификатор заказа:</b> ${orderData.customerData.orderId}\n`
+      message += `<b>Имя:</b> ${orderData.customerData.name}\n`
+      message += `<b>Телефон:</b> ${orderData.customerData.phone}\n`
+      message += `<b>Город:</b> ${orderData.customerData.city}\n\n`
+      message += '<b>Список товаров:</b>\n'
+      for (const item of orderData.cartItems) {
+        message += `- ${item.brand}: ${item.value}\n`
+      }
+      return message
     }
   }
 }
