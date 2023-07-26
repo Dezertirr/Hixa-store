@@ -2,13 +2,14 @@
   {
     "id": 1,
     "name": "AISIN WARNER",
-    "brand": "BMW",
-    "value": "Generalüberholte komplette ORIGINALE Mechatronik mit Getriebesteuergerät DSG 7 Gang DQ200 0AM/0CW für Audi SEAT Skoda VW",
+    "brand": "DQ200*D/G/K",
+    "value": "Повністю відремонтована ОРИГІНАЛЬНА мехатроніка з блоком управління КПП DSG 7-ступ. DQ200 0AM/0CW для Audi SEAT Skoda VW",
+    "CatValue": "КПП DSG 7-ступ. DQ200 0AM/0CW для Audi SEAT Skoda VW",
     "photo": "https://example.com/bmw_x6_photo.jpg",
     "numPart": "0AM927769D, 0AM927769K, 0AM927769G usw.",
     "price": 100,
     "code": "ABC123456",
-    "part": "Трансмиссия",
+    "part": "Mechatronik DQ200*D/G/K",
     "MainPhoto": "@/images/DSG-7.png",
     "SidePhoto": "@/images/DSG-8.png"
   },

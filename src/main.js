@@ -4,6 +4,7 @@ import { createPinia } from 'pinia';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
+
 import App from './App.vue';
 import router from './router/router';
 

@@ -8,19 +8,22 @@
         <div class="proudctInfo">
           <div class="productHeader">
             <p class="productBrand">Виробник: {{ product.brand }}</p>
+            
         <p class="productPrice"> Ціна:${{ product.price }}</p>
       </div>
+      <p>
+            Предмет був повністю розібраний, очищений і перевірений на знос і поломки.
+           Усі зношені та/або непрацюючі деталі були замінені на нові або відремонтовані компоненти.
+            Деталь функціонально еквівалентна новій частині, і її неможливо відрізнити від нової частини.</p>
         <p class="productValue">{{ product.value }}</p>
         <p>Номер деталей: {{ product.numPart }}</p>
         <div class="productCart">
         
-        <h5>Wenn Sie nicht sicher sind, dass die Mechatronik zu Ihrem Auto passt, setzen Sie, bitte, mit uns in Verbindung und kaufen die Ware nicht!</h5>
-        <h5>Der Artikel wurde vollkommen auseinander genommen, gereinigt und auf Abnutzung und Bruchstellen untersucht.
-           Alle abgenutzten und/oder nicht funktionierenden Teile wurden durch neue oder aufgearbeitete Komponenten ersetzt.
-            In seiner Funktionsweise entspricht das Teil einem neuen Teil und kann nicht von einem neuen Teil unterschieden werden.</h5>
-            <h5>Es wird -20% im Austausch verkauft. Der Preis gilt nur für ungeöffnete Steuergeräte, die keine Wasserschaden,
-              Brandschaden oder äußerliche Beschädigungen erlitten haben. Sie müssen Ihre Mechatronik einschicken, 
-              wir schicken erneute Mechatronik an Sie zurück. Wenn Sie damit nicht einverstanden sind, dann kaufen Sie bitte nicht.</h5>
+        <h5>Якщо ви не впевнені, що мехатронік підходить до вашого автомобіля, звертайтеся до нас!</h5>
+
+            <h5>Продається -20% на обмін. Ціна вказана тільки за нерозкриті контролери, які не мають пошкодження водою,
+              зазнав пожежі або фізичних пошкоджень. Ви повинні надіслати свою мехатроніку,
+              ми надішлемо вам нову мехатроніку. Якщо ви з цим не згодні, то, будь ласка, не купуйте.</h5>
               <p class="productCode">Код товару: {{ product.code }}</p>
 
 
@@ -111,6 +114,7 @@ object-fit: contain ;
   display: flex;
     justify-content: space-between;
     margin: 0 30px;
+    margin-bottom: 80px;
 }
 
 
@@ -137,6 +141,7 @@ object-fit: contain ;
   display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    margin-top: 80px;
 }
 
   </style>

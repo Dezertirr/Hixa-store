@@ -7,6 +7,7 @@ import RegistrationForm from '@/components/RegistrationForm.vue'
 import LoginForm from '@/components/LoginForm.vue'
 import Cart from '@/components/Cart.vue'
 import Information from '@/pages/Information.vue'
+import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -51,6 +52,12 @@ const routes = [
     name: 'Information',
     component: Information
   },
+  {
+    path: '/translate',
+    name: 'Translator',
+    component: LanguageSwitcher
+
+  }
 
 ]
 

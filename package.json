@@ -17,10 +17,13 @@
     "hooper": "^0.3.4",
     "nanoid": "^4.0.2",
     "pinia": "^2.1.4",
+    "sass": "^1.64.1",
     "slick-carousel": "^1.8.1",
     "vue": "^3.3.4",
+    "vue-i18n": "^9.2.2",
     "vue-router": "^4.2.2",
-    "vue-ssr-carousel": "^2.3.2"
+    "vue-ssr-carousel": "^2.3.2",
+    "vue-translation-manager": "^1.2.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",

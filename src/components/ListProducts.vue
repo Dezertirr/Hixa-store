@@ -2,10 +2,10 @@
   <div>
     <ul v-if="filteredData.length > 0" class="productList">
       <li v-for="item in filteredData" :key="item.id" class="productItem">
-        <div @click="goToProduct(item)">
+        <div @click="goToProduct(item)" class="productFlex">
           <h3 class="productItemTitle">{{ item.brand }}</h3>
-          <p class="productItemPhoto">Тут має бути фото</p>
-          <p class="productItemText">{{ item.value }}</p>
+          <img src="@/images/DSG-7.png" class="productItemPhoto" />
+          <p class="productItemText">{{ item.CatValue }}</p>
         </div>
         <BasketBtn @click="addBusket(item)"></BasketBtn>
       </li>
@@ -29,6 +29,7 @@ const filteredData = computed(() => {
   const searchText = searchStore.getSearch().toLowerCase();
   return jsonArray.filter((item) => item.name.toLowerCase().includes(searchText));
 });
+
 router.afterEach((to) => {
   if (to.query.search) {
     searchStore.setSearch(to.query.search);
@@ -79,6 +80,13 @@ const addBusket = (item) => {
   margin: 0 auto;
 }
 
+.productFlex {
+  width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .productItemTitle {
   margin: 15px 105px;
 }
@@ -89,6 +97,7 @@ const addBusket = (item) => {
   border: 1px solid #b0b0b0;
   border-radius: 10px;
   margin: 0 auto;
+  object-fit: contain ;
 }
 
 .productItemText {
