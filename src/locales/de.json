@@ -1,0 +1,15 @@
+{
+    "ourAddress": "Unsere Adresse",
+    "workingHours": "Öffnungszeiten",
+    "delivery": "Lieferung",
+    "payment": "Zahlung",
+    "reviews": "Bewertungen",
+    "language": "Sprache",
+    "theme": "Thema",
+    "personalArea": "Persönlicher Bereich",
+    "login": "Anmeldung",
+    "registration": "Registrierung",
+    "searchPlaceholder": "Suche",
+    "searchButton": "Suche",
+    "logout": "Ausloggen"
+  }

@@ -1,0 +1,15 @@
+{
+    "ourAddress": "Címünk",
+    "workingHours": "Nyitvatartási idő",
+    "delivery": "Szállítás",
+    "payment": "Fizetés",
+    "reviews": "Vélemények",
+    "language": "Nyelv",
+    "theme": "Téma",
+    "personalArea": "Személyes terület",
+    "login": "Bejelentkezés",
+    "registration": "Regisztráció",
+    "searchPlaceholder": "Keresés",
+    "searchButton": "Keresés",
+    "logout": "Kijelentkezés"
+  }

@@ -1,9 +1,10 @@
+
 import Vue from "vue";
 import VueI18n from "vue-i18n";
 
 Vue.use(VueI18n);
 
-// При изменении языка переключаем файл /locals/_language_.json
+// При изменении языка переключаем файл /locales/_language_.json
 function loadLocaleMessages() {
   const locales = require.context(
     "./locales",
@@ -29,9 +30,9 @@ function detectLanguage() {
     true,
     /[A-Za-z0-9-_,\s]+\.json$/i
   );
-  const lang = locales
-    .keys()
-    .find((key) => lng.includes(key.replace("./", "").replace(".json", "")));
+  const lang = locales.keys().find((key) =>
+    lng.includes(key.replace("./", "").replace(".json", ""))
+  );
   return lang ? lang.replace("./", "").replace(".json", "") : null;
 }
 
@@ -40,6 +41,6 @@ export default new VueI18n({
     localStorage.getItem("lang") ||
     detectLanguage() ||
     process.env.VUE_APP_I18N_LOCALE,
-  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || "ko",
+  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || "en",
   messages: loadLocaleMessages(),
 });

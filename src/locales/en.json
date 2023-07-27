@@ -1,0 +1,15 @@
+{
+    "ourAddress": "Our Address",
+    "workingHours": "Working Hours",
+    "delivery": "Delivery",
+    "payment": "Payment",
+    "reviews": "Reviews",
+    "language": "Language",
+    "theme": "Theme",
+    "personalArea": "Personal Area",
+    "login": "Login",
+    "registration": "Registration",
+    "searchPlaceholder": "Search",
+    "searchButton": "Search",
+    "logout": "Logout"
+  }

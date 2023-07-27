@@ -1,0 +1,15 @@
+{
+    "ourAddress": "Наша адреса",
+    "workingHours": "Час роботи",
+    "delivery": "Доставка",
+    "payment": "Оплата",
+    "reviews": "Відгуки",
+    "language": "Мова",
+    "theme": "Тема",
+    "personalArea": "Особистий кабінет",
+    "login": "Логін",
+    "registration": "Реєстрація",
+    "searchPlaceholder": "Пошук",
+    "searchButton": "Пошук",
+    "logout": "Вийти"
+  }

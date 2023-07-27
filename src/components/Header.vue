@@ -3,23 +3,28 @@
     <div class="sideBar">
       <ul class="headerMainNav">
         <li class="headerNavItem">
-          <button type="button" @click="testClick" class="headerNatItemBtn">Наша адреса</button>
-        </li>
-        <li class="headerNavItem">
-          <button type="button" @click="testClick" class="headerNatItemBtn">Час роботи</button>
-        </li>
-        <li class="headerNavItem">
-          <button type="button" @click="testClick" class="headerNatItemBtn">Доставка</button>
-        </li>
-        <li class="headerNavItem">
-          <button type="button" @click="testClick" class="headerNatItemBtn">Оплата</button>
-        </li>
-        <li class="headerNavItem">
-          <button type="button" @click="testClick" class="headerNatItemBtn">Відгуки</button>
-        </li>
+    <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('ourAddress') }}</button>
+  </li>
+  <li class="headerNavItem">
+    <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('workingHours') }}</button>
+  </li>
+  <li class="headerNavItem">
+    <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('delivery') }}</button>
+  </li>
+  <li class="headerNavItem">
+    <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('payment') }}</button>
+  </li>
+  <li class="headerNavItem">
+    <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('reviews') }}</button>
+  </li>
       </ul>
       <ul class="headerNavSec">
         <li class="headerNavSecItem"><a class="langSelect">Мова</a></li>
+        <li @click="changeLanguage('en')">English</li>
+    <li @click="changeLanguage('pl')">Polish</li>
+    <li @click="changeLanguage('de')">German</li>
+    <li @click="changeLanguage('hu')">Hungarian</li>
+    <li @click="changeLanguage('uk')">Ukrainian</li>
         <li class="headerNavSecItem"><a>Тема</a></li>
         <li class="headerNavSecItem">
           <a v-if="isLoggedIn" class="personalArea" @click="goToPersonalArea">Особистий кабінет</a>
@@ -36,8 +41,8 @@
       <div class="SearchLine">
         <a @click="backMainPage"><img src="@/images/logo.svg" /></a>
         <form @submit.prevent="searchStart">
-          <input v-model="searchValue" placeholder="Search" class="searchInput" />
-          <button type="submit" class="searchBtn">Search</button>
+          <input v-model="searchValue" :placeholder="$t('searchPlaceholder')" class="searchInput" />
+  <button type="submit" class="searchBtn">{{ $t('searchButton') }}</button>
         </form>
         <button @click="goToCart"><img src="@/images/shopping-basket.svg" /></button>
       </div>
@@ -53,6 +58,8 @@ import Catalogs from './Catalogs.vue'
 import jsonArray from '../services/Catalog.json'
 import { useSearchStore } from '../stores/counter'
 import { useRouter } from 'vue-router'
+import { i18n } from 'i18n';
+
 
 const search = ref('')
 const jsonData = jsonArray
@@ -106,6 +113,10 @@ const backMainPage = () => {
 const testClick = () => {
   console.log('hi')
 }
+
+const changeLanguage = (locale) => {
+  i18n.locale = locale;
+};
 
 provide('filteredData', filteredData)
 provide('isLoggedIn', isLoggedIn)
