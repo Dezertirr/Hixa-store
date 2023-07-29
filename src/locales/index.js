@@ -5,7 +5,7 @@ import pl from './pl.json';
 import uk from './uk.json';
 
 
-export const defaultLocale = 'uk'
+export const defaultLocale = 'en'
 
 export const  languages = {
     en,

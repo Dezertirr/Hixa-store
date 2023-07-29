@@ -18,5 +18,17 @@
       "german": "Deutsch",
       "hungarian": "Magyar",
       "ukrainian": "Українська"
+    },
+    "Buttons": {
+      "Cart": "Wózek"
+    },
+    "Product" : {
+      "Warning" : "Jeśli nie jesteś pewien czy mechatronika pasuje do Twojego auta, skontaktuj się z nami i nie kupuj towaru!",
+      "Detail" : "Przedmiot został całkowicie zdemontowany, oczyszczony i sprawdzony pod kątem zużycia i pęknięć. Wszystkie zużyte i/lub niedziałające części zostały wymienione na nowe lub odnowione. Część jest funkcjonalnie równoważna nowej części i nie można jej odróżnić od nowej części.",
+      "Exchange": "Jest sprzedawany -20% w zamian. Cena dotyczy tylko nieotwartych kontrolerów, które nie zostały uszkodzone przez wodę, ogień lub uszkodzenia zewnętrzne. Musisz wysłać swoją mechatronikę, a my odeślemy Ci nową mechatronikę. Jeśli nie zgadzasz się z tym, nie kupuj.",
+      "PartNum" : "numer przedmiotu",
+      "ProdCode" : "Kod produktu",
+      "Producer": "Producent",
+      "Price": "Cena"
     }
   }

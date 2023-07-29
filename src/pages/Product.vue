@@ -7,24 +7,20 @@
 
         <div class="proudctInfo">
           <div class="productHeader">
-            <p class="productBrand">Виробник: {{ product.brand }}</p>
+            <p class="productBrand">{{  $t('Product.Producer') }}: {{ product.brand }}</p>
             
-        <p class="productPrice"> Ціна:${{ product.price }}</p>
+        <p class="productPrice"> {{  $t('Product.Price') }}:${{ product.price }}</p>
       </div>
       <p>
-            Предмет був повністю розібраний, очищений і перевірений на знос і поломки.
-           Усі зношені та/або непрацюючі деталі були замінені на нові або відремонтовані компоненти.
-            Деталь функціонально еквівалентна новій частині, і її неможливо відрізнити від нової частини.</p>
+        {{  $t('Product.Detail') }}</p>
         <p class="productValue">{{ product.value }}</p>
-        <p>Номер деталей: {{ product.numPart }}</p>
+        <p>{{  $t('Product.PartNum') }}: {{ product.numPart }}</p>
         <div class="productCart">
         
-        <h5>Якщо ви не впевнені, що мехатронік підходить до вашого автомобіля, звертайтеся до нас!</h5>
+        <h5>{{  $t('Product.Warning') }}</h5>
 
-            <h5>Продається -20% на обмін. Ціна вказана тільки за нерозкриті контролери, які не мають пошкодження водою,
-              зазнав пожежі або фізичних пошкоджень. Ви повинні надіслати свою мехатроніку,
-              ми надішлемо вам нову мехатроніку. Якщо ви з цим не згодні, то, будь ласка, не купуйте.</h5>
-              <p class="productCode">Код товару: {{ product.code }}</p>
+            <h5>{{  $t('Product.Exchange') }}</h5>
+              <p class="productCode">{{  $t('Product.ProdCode') }}: {{ product.code }}</p>
 
 
         <BasketBtn @click="addBusket(product)"></BasketBtn>

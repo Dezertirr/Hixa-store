@@ -18,5 +18,17 @@
       "german": "Deutsch",
       "hungarian": "Magyar",
       "ukrainian": "Українська"
+    },
+    "Buttons": {
+      "Cart": "Kosár"
+    },
+    "Product" : {
+      "Warning" : "Ha nem biztos abban, hogy a mechatronika illik az Ön autójához, forduljon hozzánk és ne vásárolja meg az árut!",
+      "Detail" : "Az elemet teljesen szétszerelték, kitisztították és kopás-ellenőrzésre kerültek. Minden kopott és/vagy nem működő alkatrészt új vagy felújított alkatrészekre cseréltek. Az alkatrész funkcionálisan egyenértékű egy új alkatrészrel, és nem különböztethető meg egy új alkatrésztől.",
+      "Exchange": "-20% cserébe eladó. Az ár csak azokra a bontatlan vezérlőkre vonatkozik, amelyek nem szenvedtek víz-, tűz- vagy külső sérülést. Be kell küldenie a mechatronikát, mi visszaküldjük Önnek az új mechatronikát. Ha nem ért egyet ezzel, kérem, ne vásároljon.",
+      "PartNum" : "Сikkszám",
+      "ProdCode" : "Termékkód",
+      "Producer": "Gyártó",
+      "Price": "Ár"
     }
   }

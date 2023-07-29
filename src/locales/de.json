@@ -18,5 +18,17 @@
       "german": "Deutsch",
       "hungarian": "Magyar",
       "ukrainian": "Українська"
+    },
+    "Buttons": {
+      "Cart": "Wagen"
+    },
+    "Product" : {
+      "Warning" : "Wenn Sie nicht sicher sind, dass die Mechatronik zu Ihrem Auto passt, setzen Sie, bitte, mit uns in Verbindung und kaufen die Ware nicht!",
+      "Detail" : "Der Artikel wurde vollkommen auseinander genommen, gereinigt und auf Abnutzung und Bruchstellen untersucht. Alle abgenutzten und/oder nicht funktionierenden Teile wurden durch neue oder aufgearbeitete Komponenten ersetzt. In seiner Funktionsweise entspricht das Teil einem neuen Teil und kann nicht von einem neuen Teil unterschieden werden.",
+      "Exchange": "Es wird -20% im Austausch verkauft. Der Preis gilt nur für ungeöffnete Steuergeräte, die keine Wasserschaden, Brandschaden oder äußerliche Beschädigungen erlitten haben. Sie müssen Ihre Mechatronik einschicken, wir schicken erneute Mechatronik an Sie zurück. Wenn Sie damit nicht einverstanden sind, dann kaufen Sie bitte nicht.",
+      "PartNum" : "Artikelnummer",
+      "ProdCode" : "Produktcode",
+      "Producer": "Hersteller",
+      "Price": "Preis"
     }
   }

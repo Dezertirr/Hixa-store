@@ -1,8 +1,6 @@
 <template>
   <div>
     <h1>{{ $t("ThisMainPage") }}</h1>
-    <p v-if="isLoggedIn">{{ $t("Welcome") }}</p>
-    <p v-else>Please <router-link to="/login">login</router-link> to continue.</p>
     <router-view></router-view>
 
     <Slider></Slider>

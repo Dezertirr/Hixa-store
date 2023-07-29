@@ -19,7 +19,17 @@
       "hungarian": "Magyar",
       "ukrainian": "Українська"
     },
-    "ThisMainPage": "This Main Page123",
-    "Welcome": "Welcome Back"
+    "Buttons": {
+      "Cart": "Cart"
+    },
+    "Product" : {
+      "Warning" : "If you are not sure that the mechatronic fits your car, please contact us and do not buy the goods!",
+      "Detail" : "The item has been completely disassembled, cleaned and inspected for wear and breakage. All worn and/or non-functioning parts have been replaced with new or refurbished components. The part is functionally equivalent to a new part and cannot be distinguished from a new part.",
+      "Exchange": "It is sold -20% in exchange. The price applies only to unopened controllers that have not suffered water damage, fire damage or external damage. You have to send in your mechatronics, we will send new mechatronics back to you. If you don't agree with this, then please don't buy.",
+      "PartNum" : "Part number",
+      "ProdCode" : "Product Code",
+      "Producer": "Producer",
+      "Price": "Price"
+    }
     
   }

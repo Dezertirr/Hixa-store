@@ -1,5 +1,5 @@
 <template>
-  <button class="basketBtn" @click="addToCart">До корзини</button>
+  <button class="basketBtn" @click="addToCart">{{ $t('Buttons.Cart') }}</button>
 </template>
 
 <script>
