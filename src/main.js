@@ -4,9 +4,10 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { createI18n } from 'vue-i18n'; // Импортируйте createI18n
+import { createI18n } from 'vue-i18n';
 import App from './App.vue';
 import router from './router/router';
+import { languages, defaultLocale } from './locales/index';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDBup_VXH-6gJf0qhuibWs1JRSomtBR6Ak",
@@ -17,16 +18,12 @@ const firebaseConfig = {
   appId: "hix-store"
 };
 
+const messages = Object.assign(languages)
 const i18n = createI18n({ // Создайте экземпляр i18n перед использованием
-  locale: 'en',
+  locale: defaultLocale,
   fallbackLocale: 'en',
-  messages: {
-    en: () => import('./locales/en.json'),
-    pl: () => import('./locales/pl.json'),
-    de: () => import('./locales/de.json'),
-    hu: () => import('./locales/hu.json'),
-    uk: () => import('./locales/uk.json'),
-  },
+  legacy:false,
+  messages
 });
 
 const firebaseApp = initializeApp(firebaseConfig);
@@ -34,7 +31,15 @@ const auth = getAuth(firebaseApp);
 
 const app = createApp(App);
 app.use(createPinia());
-app.use(i18n); // Используйте i18n
 app.use(router);
 
+// Верное размещение блока setup() внутри объекта app
+app.setup = () => {
+  const { t } = useI18n()
+  return { t }
+};
+
+app.use(i18n); // Подключение i18n экземпляра
+
 app.mount('#app');
+

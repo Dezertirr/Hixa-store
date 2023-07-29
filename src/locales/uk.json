@@ -11,5 +11,12 @@
     "registration": "Реєстрація",
     "searchPlaceholder": "Пошук",
     "searchButton": "Пошук",
-    "logout": "Вийти"
+    "logout": "Вийти",
+    "languages": {
+      "english": "English",
+      "polish": "Polski",
+      "german": "Deutsch",
+      "hungarian": "Magyar",
+      "ukrainian": "Українська"
+    }
   }

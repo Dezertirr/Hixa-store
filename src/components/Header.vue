@@ -3,36 +3,35 @@
     <div class="sideBar">
       <ul class="headerMainNav">
         <li class="headerNavItem">
-    <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('ourAddress') }}</button>
-  </li>
-  <li class="headerNavItem">
-    <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('workingHours') }}</button>
-  </li>
-  <li class="headerNavItem">
-    <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('delivery') }}</button>
-  </li>
-  <li class="headerNavItem">
-    <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('payment') }}</button>
-  </li>
-  <li class="headerNavItem">
-    <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('reviews') }}</button>
-  </li>
+          <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('ourAddress') }}</button>
+        </li>
+        <li class="headerNavItem">
+          <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('workingHours') }}</button>
+        </li>
+        <li class="headerNavItem">
+          <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('delivery') }}</button>
+        </li>
+        <li class="headerNavItem">
+          <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('payment') }}</button>
+        </li>
+        <li class="headerNavItem">
+          <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('reviews') }}</button>
+        </li>
       </ul>
       <ul class="headerNavSec">
-        <li class="headerNavSecItem"><a class="langSelect">Мова</a></li>
-        <li @click="changeLanguage('en')">English</li>
-    <li @click="changeLanguage('pl')">Polish</li>
-    <li @click="changeLanguage('de')">German</li>
-    <li @click="changeLanguage('hu')">Hungarian</li>
-    <li @click="changeLanguage('uk')">Ukrainian</li>
-        <li class="headerNavSecItem"><a>Тема</a></li>
+        <li class="headerNavSecItem"><a class="langSelect">{{ $t('language') }}</a></li>
+        <li @click="changeLanguage('en')">{{ $t('languages.english') }}</li>
+        <li @click="changeLanguage('pl')">{{ $t('languages.polish') }}</li>
+        <li @click="changeLanguage('de')">{{ $t('languages.german') }}</li>
+        <li @click="changeLanguage('hu')">{{ $t('languages.hungarian') }}</li>
+        <li @click="changeLanguage('uk')">{{ $t('languages.ukrainian') }}</li>
+        <li class="headerNavSecItem"><a>{{ $t('theme') }}</a></li>
         <li class="headerNavSecItem">
-          <a v-if="isLoggedIn" class="personalArea" @click="goToPersonalArea">Особистий кабінет</a>
-          <button v-if="isLoggedIn" class="personalArea" @click="logout">Logout</button>
-
+          <a v-if="isLoggedIn" class="personalArea" @click="goToPersonalArea">{{ $t('personalArea') }}</a>
+          <button v-if="isLoggedIn" class="personalArea" @click="logout">{{ $t('logout') }}</button>
           <div v-else>
-            <button @click="goToLogin">Логін</button>
-            <button @click="goToRegistration">Реєстрація</button>
+            <button @click="goToLogin">{{ $t('login') }}</button>
+            <button @click="goToRegistration">{{ $t('registration') }}</button>
           </div>
         </li>
       </ul>
@@ -42,7 +41,7 @@
         <a @click="backMainPage"><img src="@/images/logo.svg" /></a>
         <form @submit.prevent="searchStart">
           <input v-model="searchValue" :placeholder="$t('searchPlaceholder')" class="searchInput" />
-  <button type="submit" class="searchBtn">{{ $t('searchButton') }}</button>
+          <button type="submit" class="searchBtn">{{ $t('searchButton') }}</button>
         </form>
         <button @click="goToCart"><img src="@/images/shopping-basket.svg" /></button>
       </div>
@@ -51,92 +50,124 @@
   </header>
 </template>
 
-<script setup>
-import { ref, onMounted, computed, watch, provide } from 'vue'
-import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
-import Catalogs from './Catalogs.vue'
-import jsonArray from '../services/Catalog.json'
-import { useSearchStore } from '../stores/counter'
-import { useRouter } from 'vue-router'
-import { i18n } from 'i18n';
+<script>
+import { ref, onMounted, computed, watch, provide } from 'vue';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import Catalogs from './Catalogs.vue';
+import jsonArray from '../services/Catalog.json';
+import { useSearchStore } from '../stores/counter';
+import { useRouter } from 'vue-router';
+
+import { useI18n } from 'vue-i18n';
+
+export default {
+  setup() {
+    const search = ref('');
+    const jsonData = jsonArray;
+    const searchStore = useSearchStore();
+    const router = useRouter();
+    const searchValue = ref('');
+    const isLoggedIn = ref(false);
+    const isLogined = ref(false);
+    const { t, i18n } = useI18n()
+
+    const goToCart = () => {
+      router.push('/cart');
+    };
+    const filteredData = computed(() => {
+      const searchText = searchStore.getSearch().toLowerCase();
+      return jsonData.filter((item) => item.name.toLowerCase().includes(searchText));
+    });
+    const goToLogin = () => {
+      router.push('/login');
+    };
+
+    const goToRegistration = () => {
+      router.push('/register');
+    };
+    onMounted(() => {
+      search.value = searchStore.getSearch();
+    });
+    const logout = async () => {
+      try {
+        await signOut(auth);
+
+        isLoggedIn.value = false;
+
+        router.push('/login');
+      } catch (error) {
+        console.log('Ошибка при разлогине пользователя', error);
+      }
+    };
+    watch(search, (newValue) => {
+      searchStore.setSearch(newValue);
+    });
+
+    const searchStart = () => {
+      const query = searchValue.value;
+      router.push({ path: 'Catalog', query: { search: query } });
+    };
+
+    const backMainPage = () => {
+      router.push('/');
+    };
+
+    const testClick = () => {
+      console.log('hi');
+    };
 
 
-const search = ref('')
-const jsonData = jsonArray
-const searchStore = useSearchStore()
-const router = useRouter()
-const searchValue = ref('')
-const isLoggedIn = ref(false)
-const isLogined = ref(false)
 
-const goToCart = () => {
-  router.push('/cart')
-}
-const filteredData = computed(() => {
-  const searchText = searchStore.getSearch().toLowerCase()
-  return jsonData.filter((item) => item.name.toLowerCase().includes(searchText))
-})
-const goToLogin = () => {
-  router.push('/login')
-}
+    const changeLanguage = (changeLang) => {
+      // Используйте метод locale для установки языка
+      i18n.locale = changeLang
+    };
 
-const goToRegistration = () => {
-  router.push('/register')
-}
-onMounted(() => {
-  search.value = searchStore.getSearch()
-})
-const logout = async () => {
-  try {
-    await signOut(auth)
+    provide('filteredData', filteredData);
+    provide('isLoggedIn', isLoggedIn);
+    provide('isLogined', isLogined);
 
-    isLoggedIn.value = false
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      isLoggedIn.value = user !== null;
+      isLogined.value = isLoggedIn.value ? false : true;
+    });
 
-    router.push('/login')
-  } catch (error) {
-    console.log('Ошибка при разлогине пользователя', error)
-  }
-}
-watch(search, (newValue) => {
-  searchStore.setSearch(newValue)
-})
+    const showLogin = () => {
+      isLogined.value = true;
+    };
 
-const searchStart = () => {
-  const query = searchValue.value
-  router.push({ path: "Catalog", query: { search: query } });
-}
+    const loginSuccess = () => {
+      isLogined.value = false;
+    };
 
-const backMainPage = () => {
-  router.push('/')
-}
-
-const testClick = () => {
-  console.log('hi')
-}
-
-const changeLanguage = (locale) => {
-  i18n.locale = locale;
+    return {
+      search,
+      jsonData,
+      searchStore,
+      router,
+      searchValue,
+      isLoggedIn,
+      isLogined,
+      goToCart,
+      filteredData,
+      goToLogin,
+      goToRegistration,
+      logout,
+      searchStart,
+      backMainPage,
+      testClick,
+      changeLanguage,
+      auth,
+      showLogin,
+      loginSuccess,
+    };
+  },
+  components: {
+    Catalogs,
+  },
 };
-
-provide('filteredData', filteredData)
-provide('isLoggedIn', isLoggedIn)
-provide('isLogined', isLogined)
-
-const auth = getAuth()
-onAuthStateChanged(auth, (user) => {
-  isLoggedIn.value = user !== null
-  isLogined.value = isLoggedIn.value ? false : true
-})
-
-const showLogin = () => {
-  isLogined.value = true
-}
-
-const loginSuccess = () => {
-  isLogined.value = false
-}
 </script>
-
 <style scoped>
 .header {
 }

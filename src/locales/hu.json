@@ -11,5 +11,12 @@
     "registration": "Regisztráció",
     "searchPlaceholder": "Keresés",
     "searchButton": "Keresés",
-    "logout": "Kijelentkezés"
+    "logout": "Kijelentkezés",
+    "languages": {
+      "english": "English",
+      "polish": "Polski",
+      "german": "Deutsch",
+      "hungarian": "Magyar",
+      "ukrainian": "Українська"
+    }
   }

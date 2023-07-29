@@ -13,6 +13,7 @@ import Footer from '@/components/Footer.vue';
 import ListProducts from '@/components/ListProducts.vue';
 import { RouterView } from 'vue-router';
 
+
 // Create the Pinia instance
 const pinia = createPinia();
 provide('pinia', pinia);

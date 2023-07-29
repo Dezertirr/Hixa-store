@@ -11,5 +11,12 @@
     "registration": "Registrierung",
     "searchPlaceholder": "Suche",
     "searchButton": "Suche",
-    "logout": "Ausloggen"
+    "logout": "Ausloggen",
+    "languages": {
+      "english": "English",
+      "polish": "Polski",
+      "german": "Deutsch",
+      "hungarian": "Magyar",
+      "ukrainian": "Українська"
+    }
   }

@@ -11,5 +11,15 @@
     "registration": "Registration",
     "searchPlaceholder": "Search",
     "searchButton": "Search",
-    "logout": "Logout"
+    "logout": "Logout",
+    "languages": {
+      "english": "English",
+      "polish": "Polski",
+      "german": "Deutsch",
+      "hungarian": "Magyar",
+      "ukrainian": "Українська"
+    },
+    "ThisMainPage": "This Main Page123",
+    "Welcome": "Welcome Back"
+    
   }
