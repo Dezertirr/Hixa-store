@@ -11,13 +11,20 @@
         <input type="password" id="password" v-model="password" required />
       </div>
       <button type="submit">Login</button>
+      <button @click="loginWithGoogle">Login with Google</button>
+      <button @click="loginWithFacebook">Login with Facebook</button>
     </form>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue'
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import {
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  FacebookAuthProvider
+} from 'firebase/auth'
 import { getAuth } from 'firebase/auth'
 
 export default {
@@ -37,6 +44,30 @@ export default {
         this.$router.push('/') // Перенаправляем на главную страницу после успешной аутентификации
       } catch (error) {
         alert(`Login failed: ${error.message}`)
+      }
+    },
+    async loginWithGoogle() {
+      try {
+        const auth = getAuth()
+        const provider = new GoogleAuthProvider()
+        await signInWithPopup(auth, provider)
+        alert('Google login successful!')
+        localStorage.setItem('isLoggedIn', 'true') // Сохраняем статус логина в localStorage
+        this.$router.push('/') // Перенаправляем на главную страницу после успешной аутентификации
+      } catch (error) {
+        alert(`Google login failed: ${error.message}`)
+      }
+    },
+    async loginWithFacebook() {
+      try {
+        const auth = getAuth()
+        const provider = new FacebookAuthProvider()
+        await signInWithPopup(auth, provider)
+        alert('Facebook login successful!')
+        localStorage.setItem('isLoggedIn', 'true') // Сохраняем статус логина в localStorage
+        this.$router.push('/') // Перенаправляем на главную страницу после успешной аутентификации
+      } catch (error) {
+        alert(`Facebook login failed: ${error.message}`)
       }
     }
   }
