@@ -147,7 +147,7 @@ export default {
     const showSpoiler = ref(false)
     const activeCatalog = ref(null)
     const searchValue = ref('')
-    const searchStore = useSearchStore()
+    let searchStore = useSearchStore()
     const router = useRouter()
     const course = ref(0)
 
@@ -246,9 +246,9 @@ export default {
     ]
 
     const catalogSelect = (catalog) => {
-      searchValue.value = catalog;
-      router.push({ path: 'Catalog', query: { search: searchValue.value } });
-    };
+  searchStore.setSearch(catalog); // Update the value instead of reassigning.
+  router.push({ path: 'Catalog', query: { search: catalog } });
+};
 
     const goToInformation = (index) => {
       router.push({ path: 'Info' });

@@ -25,7 +25,6 @@
         <li @click="changeLanguage('de')">{{ $t('languages.german') }}</li>
         <li @click="changeLanguage('hu')">{{ $t('languages.hungarian') }}</li>
         <li @click="changeLanguage('uk')">{{ $t('languages.ukrainian') }}</li>
-        <li class="headerNavSecItem"><a>{{ $t('theme') }}</a></li>
         <li class="headerNavSecItem">
           <a v-if="isLoggedIn" class="personalArea" @click="goToPersonalArea">{{ $t('personalArea') }}</a>
           <button v-if="isLoggedIn" class="personalArea" @click="logout">{{ $t('logout') }}</button>
