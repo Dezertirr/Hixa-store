@@ -1,6 +1,6 @@
 <template>
   <div v-if="product">
-      <h1>{{product.part}}</h1>
+      <h1>{{product.part[locale]}}</h1>
       
       <div class="productCard">
         <img class="productImg" src="@/images/DSG-7.png"/>
@@ -13,7 +13,7 @@
       </div>
       <p>
         {{  $t('Product.Detail') }}</p>
-        <p class="productValue">{{ product.value }}</p>
+        <p>{{ product.value[locale] }}</p>
         <p>{{  $t('Product.PartNum') }}: {{ product.numPart }}</p>
         <div class="productCart">
         
@@ -38,29 +38,32 @@
   import { useRoute } from 'vue-router';
   import jsonArray from '../services/Catalog.json';
   import exchangeCourse from '../services/exchangeCourse';
-  import BasketBtn from '@/components/BasketBtn.vue'
+  import BasketBtn from '@/components/BasketBtn.vue';
+  import { useI18n } from 'vue-i18n';
+
+
   
   export default {
     setup() {
       const route = useRoute();
       const products = ref(jsonArray);
       const course = ref(0);
-console.log(course);
+      console.log(course);
+      const { t, locale } = useI18n();
 
+  
       onMounted(async () => {
-  try {
-    const data = await exchangeCourse();
-    course.value = data;
-  } catch (error) {
-    console.error(error);
-  }
-});
+        try {
+          const data = await exchangeCourse();
+          course.value = data;
+        } catch (error) {
+          console.error(error);
+        }
+      });
   
       const getProductById = (id) => {
         return products.value.find((product) => product.id === id);
       };
-
-
   
       const product = computed(() => {
         const id = Number(route.query.id);
@@ -68,24 +71,27 @@ console.log(course);
       });
   
       const addBusket = (product) => {
-      const cartItems = JSON.parse(localStorage.getItem('cart')) || []
-      cartItems.push(product)
-      localStorage.setItem('cart', JSON.stringify(cartItems))
-      console.log('Товар добавлен в корзину', product)
-      console.log(product.id)
-      console.log(product.name)
-      console.log(product.brand)
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        cartItems.push(product);
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+        console.log('Товар добавлен в корзину', product);
+        console.log(product.id);
+        console.log(product.name);
+        console.log(product.brand);
+      };
+  
+      return {
+        product,
+        addBusket,
+        locale
+      };
+    },
+    components: {
+      BasketBtn
     }
-    return {
-      product,
-      addBusket
-    }
-  },
-  components: {
-    BasketBtn
-  }
-}
+  };
   </script>
+  
   
   <style scoped>
   .productCard {

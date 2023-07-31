@@ -32,14 +32,6 @@ const auth = getAuth(firebaseApp);
 const app = createApp(App);
 app.use(createPinia());
 app.use(router);
-
-// Верное размещение блока setup() внутри объекта app
-app.setup = () => {
-  const { t } = useI18n()
-  return { t }
-};
-
-app.use(i18n); // Подключение i18n экземпляра
+app.use(i18n); // Используем экземпляр i18n
 
 app.mount('#app');
-

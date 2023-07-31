@@ -3,13 +3,26 @@
     "id": 1,
     "name": "AISIN WARNER",
     "brand": "DQ200*D/G/K",
-    "value": "Повністю відремонтована ОРИГІНАЛЬНА мехатроніка з блоком управління КПП DSG 7-ступ. DQ200 0AM/0CW для Audi SEAT Skoda VW",
+    "value": {
+      "uk":"Повністю відремонтована ОРИГІНАЛЬНА мехатроніка з блоком управління КПП DSG 7-ступ. DQ200 0AM/0CW для Audi SEAT Skoda VW",
+      "en":"Refurbished ORIGINAL mechatronics with gearbox control unit DSG 7-speed. DQ200 0AM/0CW for Audi SEAT Skoda VW",
+      "de":"Generalüberholte ORIGINAL-Mechatronik mit Getriebesteuergerät DSG 7-Gang. DQ200 0AM/0CW für Audi SEAT Skoda VW",
+      "pl":"Zregenerowana ORYGINALNA mechatronika ze sterownikiem skrzyni biegów DSG 7-biegowa. DQ200 0AM/0CW dla Audi SEAT Skoda VW",
+      "hu":"Felújított EREDETI mechatronika DSG 7-sebességes sebességváltó vezérlőegységgel. DQ200 0AM/0CW Audi SEAT Skoda VW-hez"
+    },
+
     "CatValue": "КПП DSG 7-ступ. DQ200 0AM/0CW для Audi SEAT Skoda VW",
     "photo": "https://example.com/bmw_x6_photo.jpg",
     "numPart": "0AM927769D, 0AM927769K, 0AM927769G usw.",
     "price": 100,
     "code": "ABC123456",
-    "part": "Mechatronik DQ200*D/G/K",
+    "part": {
+      "uk":"Мехатронік DQ200*D/G/K",
+      "en":"Mechatronics DQ200*D/G/K",
+      "de":"Mechatronik DQ200*D/G/K",
+      "pl":"Mechatronika DQ200*D/G/K",
+      "hu":"Mechatronika DQ200*D/G/K"
+    },
     "MainPhoto": "@/images/DSG-7.png",
     "SidePhoto": "@/images/DSG-8.png"
   },

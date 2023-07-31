@@ -30,6 +30,7 @@
       "ProdCode" : "Product Code",
       "Producer": "Producer",
       "Price": "Price"
-    }
+    },
+    "SomeDefaultTranslationKey":"This towar inlimeted"
     
   }

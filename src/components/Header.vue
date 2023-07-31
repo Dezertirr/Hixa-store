@@ -69,7 +69,7 @@ export default {
     const searchValue = ref('');
     const isLoggedIn = ref(false);
     const isLogined = ref(false);
-    const { t, i18n } = useI18n()
+    const { t, locale } = useI18n();
 
     const goToCart = () => {
       router.push('/cart');
@@ -119,8 +119,7 @@ export default {
 
 
     const changeLanguage = (changeLang) => {
-      // Используйте метод locale для установки языка
-      i18n.locale = changeLang
+      locale.value = changeLang; // Устанавливаем локаль с помощью экземпляра i18n
     };
 
     provide('filteredData', filteredData);
