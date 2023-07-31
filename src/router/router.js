@@ -7,6 +7,7 @@ import RegistrationForm from '@/components/RegistrationForm.vue'
 import LoginForm from '@/components/LoginForm.vue'
 import Cart from '@/components/Cart.vue'
 import Information from '@/pages/Information.vue'
+import AdminPanel from '@/pages/AdminPanel.vue'
 import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
@@ -57,6 +58,11 @@ const routes = [
     name: 'Translator',
     component: LanguageSwitcher
 
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: AdminPanel
   }
 
 ]
