@@ -30,5 +30,41 @@
       "ProdCode" : "Produktcode",
       "Producer": "Hersteller",
       "Price": "Preis"
+    },
+    "SomeDefaultTranslationKey": "Dieses Produkt ist unbegrenzt",
+    "Cart": {
+      "title": "Warenkorb",
+      "empty": "Der Warenkorb ist leer",
+      "orderStart": "Bestellung absenden",
+      "ordering": "Bestellung wird aufgegeben",
+      "name": "Name:",
+      "number": "Nummer:",
+      "city": "Stadt:"
+    },
+    "Footer": {
+      "info": "Information",
+      "guarantee": "Garantie",
+      "send": "Schreiben Sie uns",
+      "returnProd": "Rückgabe von Waren",
+      "buyPart": "Ersatzteile kaufen",
+      "telphoneDe": "De: +49 152 377 112 76",
+      "telphonePl": "Pl: +48 5063 887 98",
+      "telphoneUa": "Ua: +380 97 803 34 85",
+      "schedule": "Arbeitszeit der Verkaufsabteilung",
+      "workTime": "Mo-Fr: 9:00-18:00",
+      "weekend": "Sa-So: Geschlossen",
+      "serviceTime": "Öffnungszeiten der Service-Station",
+      "adressTitle": "Unsere Adresse",
+      "adress": "«DSG Service Berlin» Gärtnerstraße 17, 13055 Berlin"
+    },
+    "emptyCat": "Leider haben wir dieses Produkt nicht",
+    "Registr": {
+      "registr": "Registrierung",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "complete": "Registrieren"
     }
+    
+    
+    
   }

@@ -30,5 +30,41 @@
       "ProdCode" : "Kod produktu",
       "Producer": "Producent",
       "Price": "Cena"
+    },
+    "SomeDefaultTranslationKey": "Ten produkt jest nieograniczony",
+    "Cart": {
+      "title": "Koszyk",
+      "empty": "Koszyk jest pusty",
+      "orderStart": "Wyślij zamówienie",
+      "ordering": "Trwa składanie zamówienia",
+      "name": "Imię:",
+      "number": "Numer:",
+      "city": "Miasto:"
+    },
+    "Footer": {
+      "info": "Informacje",
+      "guarantee": "Gwarancja",
+      "send": "Napisz do nas",
+      "returnProd": "Zwrot towaru",
+      "buyPart": "Kup części zamienne",
+      "telphoneDe": "De: +49 152 377 112 76</a>",
+      "telphonePl": "Pl: +48 5063 887 98</a>",
+      "telphoneUa": "Ua: +380 97 803 34 85</a>",
+      "schedule": "Godziny pracy działu sprzedaży",
+      "workTime": "Pon-pt: 9:00-18:00",
+      "weekend": "Sob-niedz: Nieczynne",
+      "serviceTime": "Godziny działu serwisowego",
+      "adressTitle": "Nasz adres",
+      "adress": "Południowa 29, 71-001 Szczecin"
+    },
+    "emptyCat": "Przepraszamy, nie mamy tego produktu",
+    "Registr": {
+      "registr": "Rejestracja",
+      "email": "E-mail",
+      "password": "Hasło",
+      "complete": "Zarejestruj"
     }
+    
+    
+    
   }

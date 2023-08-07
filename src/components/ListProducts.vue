@@ -10,7 +10,7 @@
         <BasketBtn @click="addBusket(item)"></BasketBtn>
       </li>
     </ul>
-    <p v-else>Вибачте, такого товару в нас немає</p>
+    <p v-else>{{ $t("emptyCat") }}</p>
   </div>
 </template>
 

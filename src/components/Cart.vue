@@ -1,28 +1,29 @@
 <template>
   <div>
-    <h2>Корзина</h2>
+    <h2>{{ $t('Cart.title') }}</h2>
     <ul v-if="cartItems.length > 0">
       <li v-for="(item, index) in cartItems" :key="index">
         <h3 v-if="item">{{ item.brand }}</h3>
         <p v-if="item">{{ item.value }}</p>
       </li>
     </ul>
-    <p v-else>Корзина пуста</p>
+    <p v-else>{{ $t('Cart.empty') }}</p>
 
-    <button @click="openModal">Отправить заказ</button>
+    <button @click="openModal">{{ $t('Cart.orderStart') }}</button>
 
     <div v-if="isModalOpen" class="modal">
-      <h3>Оформление заказа</h3>
-      <label for="name">Имя:</label>
+      <h3>{{ $t('Cart.ordering') }}</h3>
+      <label for="name">{{ $t('Cart.name') }}</label>
       <input type="text" id="name" v-model="customerData.name" required />
 
-      <label for="phone">Телефон:</label>
+      <label for="phone">{{ $t('Cart.number') }}</label>
       <input type="text" id="phone" v-model="customerData.phone" required />
 
-      <label for="city">Город:</label>
+      <label for="city">{{ $t('Cart.city') }}</label>
       <input type="text" id="city" v-model="customerData.city" required />
 
-      <button @click="submitOrder">Отправить заказ</button>
+      <button @click="submitOrder">{{ $t('Cart.orderStart') }}</button>
+      <button @click="closeModal">Close Order</button>
     </div>
   </div>
 </template>
@@ -72,6 +73,7 @@ export default {
       const orderData = {
         cartItems: this.cartItems,
         customerData: this.customerData
+        
       }
 
       try {

@@ -30,5 +30,41 @@
       "ProdCode" : "Termékkód",
       "Producer": "Gyártó",
       "Price": "Ár"
+    },
+    "SomeDefaultTranslationKey": "Ez a termék korlátlan",
+    "Cart": {
+      "title": "Kosár",
+      "empty": "A kosár üres",
+      "orderStart": "Rendelés elküldése",
+      "ordering": "Rendelés folyamatban",
+      "name": "Név:",
+      "number": "Szám:",
+      "city": "Város:"
+    },
+    "Footer": {
+      "info": "Információk",
+      "guarantee": "Garancia",
+      "send": "Írjon nekünk",
+      "returnProd": "Termékvisszaküldés",
+      "buyPart": "Vásároljon alkatrészeket",
+      "telphoneDe": "De: +49 152 377 112 76",
+      "telphonePl": "Pl: +48 5063 887 98",
+      "telphoneUa": "Ua: +380 97 803 34 85",
+      "schedule": "Az értékesítési osztály munkaideje",
+      "workTime": "Hétfő-péntek: 9:00-18:00",
+      "weekend": "Szombat-vasárnap: Zárva",
+      "serviceTime": "Szervizidők",
+      "adressTitle": "Címünk",
+      "adress": "«DSG Service Berlin» Gärtnerstraße 17, 13055 Berlin"
+    },
+    "emptyCat": "Sajnos nem rendelkezünk ezzel a termékkel",
+    "Registr": {
+      "registr": "Regisztráció",
+      "email": "E-mail",
+      "password": "Jelszó",
+      "complete": "Regisztráció"
     }
+    
+    
+    
   }

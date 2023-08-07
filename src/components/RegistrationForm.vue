@@ -1,16 +1,16 @@
 <template>
   <div>
-    <h2>Registration</h2>
+    <h2>{{ $t("Registr.registr") }}</h2>
     <form @submit.prevent="register">
       <div>
-        <label for="email">Email:</label>
+        <label for="email">{{ $t("Registr.email") }}</label>
         <input type="email" id="email" v-model="email" required />
       </div>
       <div>
-        <label for="password">Password:</label>
+        <label for="password">{{ $t("Registr.password") }}</label>
         <input type="password" id="password" v-model="password" required />
       </div>
-      <button type="submit">Register</button>
+      <button type="submit">{{ $t("Registr.complete") }}</button>
     </form>
   </div>
 </template>

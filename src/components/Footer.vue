@@ -2,38 +2,38 @@
     <footer class="footer">
         <ul class="footerList">
         <li class="listItemFooter">
-            <h4>Інформація</h4>
+            <h4>{{$t("Footer.info")}}</h4>
             <ul class="listInfo">
-            <li class="listItemInfo" @click="goToInformation">Гарантія</li>
-            <li class="listItemInfo" @click="goToInformation">Напишіть нам</li>
-            <li class="listItemInfo" @click="goToInformation">Повернення товару</li>
+            <li class="listItemInfo" @click="goToInformation"> {{$t("Footer.guarantee")}}</li>
+            <li class="listItemInfo" @click="goToInformation">{{$t("Footer.send")}}</li>
+            <li class="listItemInfo" @click="goToInformation">{{$t("Footer.returnProd")}}</li>
         </ul>
         </li>
         <li class="listItemFooter">
-            <h4>Купити запчастини</h4>
+            <h4>{{ $t("Footer.buyPart") }}</h4>
             <ul>
-                <li class="listTel"><a tel="+380978033485">+380 97 80 33 485</a></li>
-                <li class="listTel"><a tel="+380978033485">+380 97 80 33 485</a></li>
-                <li class="listTel"><a tel="+380978033485">+380 97 80 33 485</a></li>
+                <li class="listTel"><a tel='+4915237711276'>{{ $t("Footer.telphoneDe")}}</a></li>
+                <li class="listTel"><a tel='+48506388798'>{{ $t("Footer.telphonePl")}}</a></li>
+                <li class="listTel"><a tel='+380978033485'>{{ $t("Footer.telphoneUa")}}</a></li>
             </ul>
         </li>
         <li class="listItemFooter">
             <ul class="listWork">
                 <li  class="listItemWork">
-                    <h4>Графік роботи відділу продажу</h4>
-                    <p class="listItemWork">ПН-ПТ: 9:00-18:00</p>
-                    <p class="listItemWork">Сб-Нд:вихідний</p>
+                    <h4>{{ $t("Footer.schedule") }}</h4>
+                    <p class="listItemWork">{{ $t("Footer.workTime") }}</p>
+                    <p class="listItemWork">{{ $t("Footer.weekend") }}</p>
                 </li>
                 <li class="listItemWork">
-                    <h4>Графік роботи СТО</h4>
-                    <p class="listItemWork">ПН-CБ: 9:00 -18.00</p>
-                    <p class="listItemWork">НД: вихідний</p>
+                    <h4>{{ $t("Footer.serviceTime") }}</h4>
+                    <p class="listItemWork">{{ $t("Footer.workTime") }}</p>
+                    <p class="listItemWork">{{ $t("Footer.weekend") }}</p>
                 </li>
             </ul>
         </li>
         <li class="listItemFooter">
-            <h4>Наша адреса</h4>
-            <p class="listItemWork adreesSTO">Львівська область Пустомитівський р-н с, вулиця Львівська, 61, Зимна Вода, 81110</p>
+            <h4>{{ $t("Footer.adressTitle") }}</h4>
+            <p class="listItemWork adreesSTO">{{ $t("Footer.adress") }}</p>
         </li>
     </ul>
 
