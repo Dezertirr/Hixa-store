@@ -30,6 +30,9 @@
 
 <script>
 import axios from 'axios'
+import { ref, onMounted } from 'vue'
+import { getAuth } from 'firebase/auth'
+import { getFirestore, collection, doc, updateDoc, addDoc } from 'firebase/firestore'
 
 export default {
   data() {
@@ -41,9 +44,7 @@ export default {
         phone: '',
         city: '',
         orderId: ''
-      },
-      buttonText: 'Взять заказ на обработку',
-      isOrderProcessed: false
+      }
     }
   },
   mounted() {
@@ -55,10 +56,6 @@ export default {
       this.cartItems = storedItems
     },
 
-    takeOrder() {
-      this.openModal()
-    },
-
     openModal() {
       this.isModalOpen = true
     },
@@ -68,22 +65,30 @@ export default {
     },
 
     async submitOrder() {
-      // Генерируем идентификатор заказа
       this.customerData.orderId = Math.floor(Math.random() * 10000)
       const orderData = {
         cartItems: this.cartItems,
         customerData: this.customerData
-        
       }
 
       try {
+        const db = getFirestore()
+        const user = getAuth().currentUser
+        if (user) {
+          const userRef = doc(collection(db, 'users'), user.uid)
+
+          await updateDoc(userRef, {
+            order: orderData
+          })
+        }
+
         const botToken = '6524682564:AAHEo46Uim-eagPSyYijx_5s1uAK4P3qExI'
         const chatId = '-938605598'
 
         const message = this.constructMessage(orderData)
 
         const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
-        const response = await axios.post(apiUrl, {
+        await axios.post(apiUrl, {
           chat_id: chatId,
           text: message,
           parse_mode: 'HTML',
@@ -98,12 +103,6 @@ export default {
             ]
           }
         })
-        const messageId = response.data.result.message_id
-        this.$root.$on('telegramCallback', (data) => {
-          if (data.callback_query.data === 'take_order') {
-            this.updateButtonStatus(botToken, chatId, messageId)
-          }
-        })
 
         this.closeModal()
         this.customerData = {
@@ -113,32 +112,8 @@ export default {
           orderId: ''
         }
       } catch (error) {
-        console.error('Ошибка отправки сообщения в Telegram:', error)
+        console.error('Ошибка отправки заказа в Firestore:', error)
       }
-    },
-
-    updateButtonStatus(botToken, chatId, messageId) {
-      const updatedMessage = 'Обработано'
-
-      const apiUrl = `https://api.telegram.org/bot${botToken}/editMessageText`
-      axios
-        .post(apiUrl, {
-          chat_id: chatId,
-          message_id: messageId,
-          text: updatedMessage,
-          parse_mode: 'HTML',
-          reply_markup: {
-            inline_keyboard: []
-          }
-        })
-        .then(() => {
-          this.buttonText = updatedMessage
-
-          this.isOrderProcessed = true
-        })
-        .catch((error) => {
-          console.error('Ошибка при обновлении текста кнопки:', error)
-        })
     },
 
     constructMessage(orderData) {

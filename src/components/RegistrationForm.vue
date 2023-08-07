@@ -1,16 +1,28 @@
 <template>
   <div>
-    <h2>{{ $t("Registr.registr") }}</h2>
+    <h2>Registration</h2>
     <form @submit.prevent="register">
       <div>
-        <label for="email">{{ $t("Registr.email") }}</label>
+        <label for="email">Email:</label>
         <input type="email" id="email" v-model="email" required />
       </div>
       <div>
-        <label for="password">{{ $t("Registr.password") }}</label>
+        <label for="password">Password:</label>
         <input type="password" id="password" v-model="password" required />
       </div>
-      <button type="submit">{{ $t("Registr.complete") }}</button>
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" v-model="name" required />
+      </div>
+      <div>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" v-model="phone" required />
+      </div>
+      <div>
+        <label for="city">City:</label>
+        <input type="text" id="city" v-model="city" required />
+      </div>
+      <button type="submit">Register</button>
     </form>
   </div>
 </template>
@@ -19,23 +31,46 @@
 import { ref } from 'vue'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { getAuth } from 'firebase/auth'
+import { getFirestore, collection, doc, setDoc } from 'firebase/firestore'
 
 export default {
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      name: '',
+      phone: '',
+      city: ''
     }
   },
   methods: {
     async register() {
       try {
         const auth = getAuth()
-        await createUserWithEmailAndPassword(auth, this.email, this.password)
+        const userCredentials = await createUserWithEmailAndPassword(
+          auth,
+          this.email,
+          this.password
+        )
+        const user = userCredentials.user
+        // Сохраняем данные пользователя в Firestore
+        await this.saveUserData(user)
         alert('Registration successful!')
       } catch (error) {
         alert(`Registration failed: ${error.message}`)
       }
+    },
+    async saveUserData(user) {
+      const db = getFirestore()
+      const userRef = doc(collection(db, 'users'), user.uid)
+
+      const userData = {
+        name: this.name,
+        phone: this.phone,
+        city: this.city
+      }
+
+      await setDoc(userRef, userData)
     }
   }
 }

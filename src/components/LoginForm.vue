@@ -41,7 +41,7 @@ export default {
         await signInWithEmailAndPassword(auth, this.email, this.password)
         alert('Login successful!')
         localStorage.setItem('isLoggedIn', 'true') // Сохраняем статус логина в localStorage
-        this.$router.push('/') // Перенаправляем на главную страницу после успешной аутентификации
+        this.$router.push('/')
       } catch (error) {
         alert(`Login failed: ${error.message}`)
       }
@@ -50,10 +50,18 @@ export default {
       try {
         const auth = getAuth()
         const provider = new GoogleAuthProvider()
-        await signInWithPopup(auth, provider)
+        const result = await signInWithPopup(auth, provider)
+        const user = result.user
         alert('Google login successful!')
-        localStorage.setItem('isLoggedIn', 'true') // Сохраняем статус логина в localStorage
-        this.$router.push('/') // Перенаправляем на главную страницу после успешной аутентификации
+        localStorage.setItem('isLoggedIn', 'true')
+
+        const userData = {
+          name: user.displayName,
+          email: user.email
+        }
+        localStorage.setItem('user', JSON.stringify(userData))
+
+        this.$router.push('/')
       } catch (error) {
         alert(`Google login failed: ${error.message}`)
       }
@@ -64,8 +72,8 @@ export default {
         const provider = new FacebookAuthProvider()
         await signInWithPopup(auth, provider)
         alert('Facebook login successful!')
-        localStorage.setItem('isLoggedIn', 'true') // Сохраняем статус логина в localStorage
-        this.$router.push('/') // Перенаправляем на главную страницу после успешной аутентификации
+        localStorage.setItem('isLoggedIn', 'true')
+        this.$router.push('/')
       } catch (error) {
         alert(`Facebook login failed: ${error.message}`)
       }

@@ -3,30 +3,44 @@
     <div class="sideBar">
       <ul class="headerMainNav">
         <li class="headerNavItem">
-          <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('ourAddress') }}</button>
+          <button type="button" @click="testClick" class="headerNatItemBtn">
+            {{ $t('ourAddress') }}
+          </button>
         </li>
         <li class="headerNavItem">
-          <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('workingHours') }}</button>
+          <button type="button" @click="testClick" class="headerNatItemBtn">
+            {{ $t('workingHours') }}
+          </button>
         </li>
         <li class="headerNavItem">
-          <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('delivery') }}</button>
+          <button type="button" @click="testClick" class="headerNatItemBtn">
+            {{ $t('delivery') }}
+          </button>
         </li>
         <li class="headerNavItem">
-          <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('payment') }}</button>
+          <button type="button" @click="testClick" class="headerNatItemBtn">
+            {{ $t('payment') }}
+          </button>
         </li>
         <li class="headerNavItem">
-          <button type="button" @click="testClick" class="headerNatItemBtn">{{ $t('reviews') }}</button>
+          <button type="button" @click="testClick" class="headerNatItemBtn">
+            {{ $t('reviews') }}
+          </button>
         </li>
       </ul>
       <ul class="headerNavSec">
-        <li class="headerNavSecItem"><a class="langSelect">{{ $t('language') }}</a></li>
+        <li class="headerNavSecItem">
+          <a class="langSelect">{{ $t('language') }}</a>
+        </li>
         <li @click="changeLanguage('en')">{{ $t('languages.english') }}</li>
         <li @click="changeLanguage('pl')">{{ $t('languages.polish') }}</li>
         <li @click="changeLanguage('de')">{{ $t('languages.german') }}</li>
         <li @click="changeLanguage('hu')">{{ $t('languages.hungarian') }}</li>
         <li @click="changeLanguage('uk')">{{ $t('languages.ukrainian') }}</li>
         <li class="headerNavSecItem">
-          <a v-if="isLoggedIn" class="personalArea" @click="goToPersonalArea">{{ $t('personalArea') }}</a>
+          <router-link v-if="isLoggedIn" class="personalArea" :to="{ name: 'personal-area' }">
+            {{ $t('personalArea') }}
+          </router-link>
           <button v-if="isLoggedIn" class="personalArea" @click="logout">{{ $t('logout') }}</button>
           <div v-else>
             <button @click="goToLogin">{{ $t('login') }}</button>
@@ -50,94 +64,104 @@
 </template>
 
 <script>
-import { ref, onMounted, computed, watch, provide } from 'vue';
-import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
-import Catalogs from './Catalogs.vue';
-import jsonArray from '../services/Catalog.json';
-import { useSearchStore } from '../stores/counter';
-import { useRouter } from 'vue-router';
+import { ref, onMounted, computed, watch, provide } from 'vue'
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
+import { getFirestore, collection, addDoc } from 'firebase/firestore'
+import Catalogs from './Catalogs.vue'
+import jsonArray from '../services/Catalog.json'
+import { useSearchStore } from '../stores/counter'
+import { useRouter } from 'vue-router'
 
-import { useI18n } from 'vue-i18n';
+import { useI18n } from 'vue-i18n'
 
 export default {
   setup() {
-    const search = ref('');
-    const jsonData = jsonArray;
-    const searchStore = useSearchStore();
-    const router = useRouter();
-    const searchValue = ref('');
-    const isLoggedIn = ref(false);
-    const isLogined = ref(false);
-    const { t, locale } = useI18n();
+    const search = ref('')
+    const jsonData = jsonArray
+    const searchStore = useSearchStore()
+    const router = useRouter()
+    const searchValue = ref('')
+    const isLoggedIn = ref(false)
+    const userDisplayName = ref('')
+    const { t, locale } = useI18n()
 
     const goToCart = () => {
-      router.push('/cart');
-    };
+      router.push('/cart')
+    }
+
     const filteredData = computed(() => {
-      const searchText = searchStore.getSearch().toLowerCase();
-      return jsonData.filter((item) => item.name.toLowerCase().includes(searchText));
-    });
+      const searchText = searchStore.getSearch().toLowerCase()
+      return jsonData.filter((item) => item.name.toLowerCase().includes(searchText))
+    })
+
     const goToLogin = () => {
-      router.push('/login');
-    };
+      router.push('/login')
+    }
 
     const goToRegistration = () => {
-      router.push('/register');
-    };
+      router.push('/register')
+    }
+
     onMounted(() => {
-      search.value = searchStore.getSearch();
-    });
+      search.value = searchStore.getSearch()
+    })
+
     const logout = async () => {
       try {
-        await signOut(auth);
+        await signOut(auth)
 
-        isLoggedIn.value = false;
+        isLoggedIn.value = false
+        userDisplayName.value = ''
 
-        router.push('/login');
+        router.push('/login')
+        localStorage.removeItem('user')
       } catch (error) {
-        console.log('Ошибка при разлогине пользователя', error);
+        console.log('Ошибка при разлогине пользователя', error)
       }
-    };
+    }
+
     watch(search, (newValue) => {
-      searchStore.setSearch(newValue);
-    });
+      searchStore.setSearch(newValue)
+    })
 
     const searchStart = () => {
-      const query = searchValue.value;
-      router.push({ path: 'Catalog', query: { search: query } });
-    };
+      const query = searchValue.value
+      router.push({ path: 'Catalog', query: { search: query } })
+    }
 
     const backMainPage = () => {
-      router.push('/');
-    };
+      router.push('/')
+    }
 
     const testClick = () => {
-      console.log('hi');
-    };
-
-
+      console.log('hi')
+    }
 
     const changeLanguage = (changeLang) => {
-      locale.value = changeLang; // Устанавливаем локаль с помощью экземпляра i18n
-    };
+      locale.value = changeLang // Устанавливаем локаль с помощью экземпляра i18n
+    }
 
-    provide('filteredData', filteredData);
-    provide('isLoggedIn', isLoggedIn);
-    provide('isLogined', isLogined);
+    provide('filteredData', filteredData)
+    provide('isLoggedIn', isLoggedIn)
+    provide('userDisplayName', userDisplayName)
 
-    const auth = getAuth();
+    const auth = getAuth()
     onAuthStateChanged(auth, (user) => {
-      isLoggedIn.value = user !== null;
-      isLogined.value = isLoggedIn.value ? false : true;
-    });
+      isLoggedIn.value = user !== null
+      if (user) {
+        userDisplayName.value = user.displayName
+      } else {
+        userDisplayName.value = ''
+      }
+    })
 
     const showLogin = () => {
-      isLogined.value = true;
-    };
+      isLogined.value = true
+    }
 
     const loginSuccess = () => {
-      isLogined.value = false;
-    };
+      isLogined.value = false
+    }
 
     return {
       search,
@@ -146,7 +170,7 @@ export default {
       router,
       searchValue,
       isLoggedIn,
-      isLogined,
+      userDisplayName,
       goToCart,
       filteredData,
       goToLogin,
@@ -155,16 +179,13 @@ export default {
       searchStart,
       backMainPage,
       testClick,
-      changeLanguage,
-      auth,
-      showLogin,
-      loginSuccess,
-    };
+      changeLanguage
+    }
   },
   components: {
-    Catalogs,
-  },
-};
+    Catalogs
+  }
+}
 </script>
 <style scoped>
 .header {
