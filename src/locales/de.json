@@ -80,6 +80,101 @@
       "price": "Preis",
       "value": "Wert",
       "hisEmpty": "Kein Bestellverlauf verfügbar"
+    },
+    "Catalogs": {
+      "catalog": [
+        "AISIN WARNER",
+        "ALASON",
+        "AUDI, VOLKSWAGEN, SKODA",
+        "BMW",
+        "CHINESE CARS",
+        "CHRYSLER, DODGE",
+        "CITROEN, PEUGEOT, RENAULT",
+        "FORD",
+        "GENERAL MOTORS",
+        "HALDEX",
+        "HONDA",
+        "ACURA",
+        "HYUNDAI, KIA",
+        "JAGUAR",
+        "LAND ROVER",
+        "MAZDA",
+        "MERCEDES-BENZ",
+        "MITSUBISHI",
+        "NISSAN, INFINITI, JATCO",
+        "OPEL",
+        "PORSCHE",
+        "SSANGYONG",
+        "SUBARU",
+        "SUZUKI",
+        "TOYOTA, LEXUS",
+        "VOLVO",
+        "ZF",
+        "Hydraulikblöcke",
+        "Schmierstoffe für Automatikgetriebe",
+        "Differenzialfilter",
+        "Ersatzteile für Drehmomentwandler"
+      ],
+      "hydroblocsCat": [
+        "Ventile in Standardgröße",
+        "Reparaturbuchsen und Ventile",
+        "Erweiterungen",
+        "Werkzeuge",
+        "Hydraulische Plattenrestaurierung",
+        "Separatorplatten",
+        "Buchsen und Kolben"
+    ],
+    "filtrationCat": [
+        "ATF-Adapter",
+        "Zusätzliche ATF-Filteradapter",
+        "Schnellkupplungen",
+        "Zusätzliche Filtrationssätze",
+        "Streifenkühler",
+        "Rohrkühler",
+        "Kühlrohrreparaturdienste",
+        "Armaturen",
+        "Schellen",
+        "Schläuche",
+        "Thermostate",
+        "Manuelle Hydraulikpresse"
+    ],
+    "instrumentCat": [
+        "Hydraulikwerkzeuge",
+        "Werkzeuge zur Solenoidreparatur",
+        "Werkzeuge zur Buchseninstallation",
+        "Werkzeuge zur ATF-Reparatur",
+        "Werkzeuge zur hydraulischen Blockreinigung",
+        "Testwerkzeuge",
+        "Metallbearbeitungswerkzeuge",
+        "Reinigungsverbrauchsmaterialien",
+        "Sonstige Ausrüstung"
+    ],
+    "repairCat": [
+        "Hydrotransformatorreparatur",
+        "Hydraulikblockreparatur",
+        "Getriebegehäusereparatur",
+        "Solenoidreparatur",
+        "ECU-Reparatur und -Flashen",
+        "Ölpumpenreparatur",
+        "PowerShift Ford/Volvo Reparatur",
+        "DSG-Reparatur",
+        "Kühlrohrreparatur",
+        "Zusätzliche Filterinstallation",
+        "Reparaturinitiierung",
+        "Online-Diagnose"
+    ],
+    "informationCat": [
+        "Versand und Lieferung",
+        "Zahlung",
+        "Garantie",
+        "Kontakte",
+        "Produktrückgaben",
+        "Wiederherstellung von Zuverlässigkeit und Klarheit für Getriebe",
+        "Unsere Mitarbeiter",
+        "Über uns",
+        "Stellenangebote"
+    ]
+    
     }
     
     

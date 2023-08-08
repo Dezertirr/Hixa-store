@@ -8,13 +8,13 @@
         @mouseleave="showSpoiler = false"
       >
         <button 
-        v-for="(catalog, index) in catalogs" 
-        :key="index" 
-        @click="catalogSelect(catalog)">
+          v-for="(catalog, index) in catalogs" 
+          :key="index" 
+          @click="catalogSelect(catalog)">
           {{ catalog }}
         </button>
       </div>
-    </div>
+  </div>
 
     <a
       class="CatalogAll"
@@ -140,6 +140,8 @@ import { useSearchStore } from '../stores/counter'
 import { useRouter } from 'vue-router'
 import CurrentCourse from '@/components/CurrentCourse.vue'
 import exchangeCourse from '@/services/exchangeCourse'
+import { useI18n } from 'vue-i18n'
+
 
 
 export default {
@@ -150,99 +152,106 @@ export default {
     let searchStore = useSearchStore()
     const router = useRouter()
     const course = ref(0)
+    const i18n = useI18n()
 
 
 
     const catalogs = [
-      'AISIN WARNER',
-      'ALASON',
-      'AUDI, VOLKSWAGEN, SKODA',
-      'BMW',
-      'CHINESE CARS',
-      'CHRYSLER, DODGE',
-      'CITROEN, PEUGEOT, RENAULT',
-      'FORD',
-      'GENERAL MOTORS',
-      'HALDEX',
-      'HONDA, ACURA',
-      'HYUNDAI, KIA',
-      'JAGUAR',
-      'LAND ROVER',
-      'MAZDA',
-      'MERCEDES-BENZ',
-      'MITSUBISHI',
-      'NISSAN, INFINITI, JATCO',
-      'OPEL',
-      'PORSCHE',
-      'SSANGYONG',
-      'SUBARU',
-      'SUZUKI',
-      'TOYOTA, LEXUS',
-      'VOLVO',
-      'ZF',
-      'Гідроблоки',
-      'Мастила для АКПП',
-      'Фільтра діференціалів',
-      'Запчастини для гідротрансформаторів'
+    i18n.t('Catalogs.catalog.0'),
+    i18n.t('Catalogs.catalog.1'),
+    i18n.t('Catalogs.catalog.2'),
+    i18n.t('Catalogs.catalog.3'),
+    i18n.t('Catalogs.catalog.4'),
+    i18n.t('Catalogs.catalog.5'),
+    i18n.t('Catalogs.catalog.6'),
+    i18n.t('Catalogs.catalog.7'),
+    i18n.t('Catalogs.catalog.8'),
+    i18n.t('Catalogs.catalog.9'),
+    i18n.t('Catalogs.catalog.10'),
+    i18n.t('Catalogs.catalog.11'),
+    i18n.t('Catalogs.catalog.12'),
+    i18n.t('Catalogs.catalog.13'),
+    i18n.t('Catalogs.catalog.14'),
+    i18n.t('Catalogs.catalog.15'),
+    i18n.t('Catalogs.catalog.16'),
+    i18n.t('Catalogs.catalog.17'),
+    i18n.t('Catalogs.catalog.18'),
+    i18n.t('Catalogs.catalog.19'),
+    i18n.t('Catalogs.catalog.20'),
+    i18n.t('Catalogs.catalog.21'),
+    i18n.t('Catalogs.catalog.22'),
+    i18n.t('Catalogs.catalog.23'),
+    i18n.t('Catalogs.catalog.24'),
+    i18n.t('Catalogs.catalog.25'),
+    i18n.t('Catalogs.catalog.26'),
+    i18n.t('Catalogs.catalog.27'),
+    i18n.t('Catalogs.catalog.28'),
+    i18n.t('Catalogs.catalog.29'),
+    i18n.t('Catalogs.catalog.30'),
     ]
+
     const hydroblocksCat = [
-      'Клапани в стандартному розмірі',
-      'Ремонтні фтулки та клапани',
-      'Розгортки',
-      'Інструмент',
-      'Відновлення гідравлічної плити',
-      'Сепараторні пластини',
-      'Втулки та плунжери'
+    i18n.t('Catalogs.hydroblocsCat.0'),
+    i18n.t('Catalogs.hydroblocsCat.1'),
+    i18n.t('Catalogs.hydroblocsCat.2'),
+    i18n.t('Catalogs.hydroblocsCat.3'),
+    i18n.t('Catalogs.hydroblocsCat.4'),
+    i18n.t('Catalogs.hydroblocsCat.5'),
+    i18n.t('Catalogs.hydroblocsCat.6'),
+
     ]
     const filtrationCat = [
-      'Адаптери АКПП',
-      'Адаптери додаткового фільтра АКПП',
-      'Швидкісний фітинг',
-      'Комплекти додаткової фільтрації',
-      'Радіатори охолодження стрічкові',
-      'Радіатори трубчасті охолодження',
-      'Послуги з ремонту трубок охолодження',
-      'Фітинги',
-      'Хомути',
-      'Шланги',
-      'Термостати',
-      'Ручний гідравлічний прес'
+    i18n.t('Catalogs.filtrationCat.0'),
+    i18n.t('Catalogs.filtrationCat.1'),
+    i18n.t('Catalogs.filtrationCat.2'),
+    i18n.t('Catalogs.filtrationCat.3'),
+    i18n.t('Catalogs.filtrationCat.4'),
+    i18n.t('Catalogs.filtrationCat.5'),
+    i18n.t('Catalogs.filtrationCat.6'),
+    i18n.t('Catalogs.filtrationCat.7'),
+    i18n.t('Catalogs.filtrationCat.8'),
+    i18n.t('Catalogs.filtrationCat.9'),
+    i18n.t('Catalogs.filtrationCat.10'),
+    i18n.t('Catalogs.filtrationCat.11'),
+
     ]
     const instrumentCat = [
-      'Гідравлічний інструмент',
-      'Інструмент для ремонту соленоїдів',
-      'Інструмент для встановлення втулок',
-      'Інструмент для ремонту АКПП',
-      'Інструмент для чистки гідроблока',
-      'Інструмент для тестування',
-      'Інструмент для металообробки',
-      'Розхідники для миття',
-      'Інше обладнання'
+    i18n.t('Catalogs.instrumentCat.0'),
+    i18n.t('Catalogs.instrumentCat.1'),
+    i18n.t('Catalogs.instrumentCat.2'),
+    i18n.t('Catalogs.instrumentCat.3'),
+    i18n.t('Catalogs.instrumentCat.4'),
+    i18n.t('Catalogs.instrumentCat.5'),
+    i18n.t('Catalogs.instrumentCat.6'),
+    i18n.t('Catalogs.instrumentCat.7'),
+    i18n.t('Catalogs.instrumentCat.8'),
+
     ]
     const repairCat = [
-      'Ремонт гідротрансформатора',
-      'Ремонт гідроблока',
-      'Ремонт корпуса АКПП',
-      'Ремонт соленоїдів',
-      'Ремонт і прошивка ЕБУ',
-      'Ремонт масляного насоса',
-      'Ремонт PowerShift Ford/Volvo',
-      'Ремонт DSG',
-      'Ремонт трубок охолодження',
-      'Встановлення додаткового фільтру',
-      'Початок ремонту',
-      'Діагностика On-line'
+    i18n.t('Catalogs.repairCat.0'),
+    i18n.t('Catalogs.repairCat.1'),
+    i18n.t('Catalogs.repairCat.2'),
+    i18n.t('Catalogs.repairCat.3'),
+    i18n.t('Catalogs.repairCat.4'),
+    i18n.t('Catalogs.repairCat.5'),
+    i18n.t('Catalogs.repairCat.6'),
+    i18n.t('Catalogs.repairCat.7'),
+    i18n.t('Catalogs.repairCat.8'),
+    i18n.t('Catalogs.repairCat.9'),
+    i18n.t('Catalogs.repairCat.10'),
+    i18n.t('Catalogs.repairCat.11'),
     ]
     const informationCat = [
-      'Відправка та доставка товарів',
-      'Оплата',
-      'Гарантія',
-      'Контакти',
-      'Повернення товару',
-      'Повертаємо автоматам надійність та чіткість переключення',
-      'Наші співробітники',
-      'Про нас',
-      'Вакансії'
+    i18n.t('Catalogs.informationCat.0'),
+    i18n.t('Catalogs.informationCat.1'),
+    i18n.t('Catalogs.informationCat.2'),
+    i18n.t('Catalogs.informationCat.3'),
+    i18n.t('Catalogs.informationCat.4'),
+    i18n.t('Catalogs.informationCat.5'),
+    i18n.t('Catalogs.informationCat.6'),
+    i18n.t('Catalogs.informationCat.7'),
+    i18n.t('Catalogs.informationCat.8'),
+    
     ]
 
     const catalogSelect = (catalog) => {
@@ -272,8 +281,8 @@ export default {
     });
 
     return {
-      showSpoiler,
       catalogs,
+      showSpoiler,
       catalogSelect,
       hydroblocksCat,
       filtrationCat,

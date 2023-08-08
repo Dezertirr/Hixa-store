@@ -83,5 +83,100 @@
       "price": "Price",
       "value": "Value",
       "hisEmpty": "No order History available"
+    },
+    "Catalogs": {
+      "catalog": [
+        "AISIN WARNER",
+        "ALASON",
+        "AUDI, VOLKSWAGEN, SKODA",
+        "BMW",
+        "CHINESE CARS",
+        "CHRYSLER, DODGE",
+        "CITROEN, PEUGEOT, RENAULT",
+        "FORD",
+        "GENERAL MOTORS",
+        "HALDEX",
+        "HONDA",
+        "ACURA",
+        "HYUNDAI, KIA",
+        "JAGUAR",
+        "LAND ROVER",
+        "MAZDA",
+        "MERCEDES-BENZ",
+        "MITSUBISHI",
+        "NISSAN, INFINITI, JATCO",
+        "OPEL",
+        "PORSCHE",
+        "SSANGYONG",
+        "SUBARU",
+        "SUZUKI",
+        "TOYOTA, LEXUS",
+        "VOLVO",
+        "ZF",
+        "Hydraulic blocks",
+        "Lubricants for automatic transmission",
+        "Differential filter",
+        "Spare parts for torque converters"
+      ],
+      "hydroblocsCat": [
+        "Valves in standard size",
+        "Repair bushings and valves",
+        "Expansions",
+        "Tools",
+        "Hydraulic plate restoration",
+        "Separator plates",
+        "Bushings and plungers"
+    ],
+    "filtrationCat": [
+        "ATF Adapters",
+        "Additional ATF Filter Adapters",
+        "Quick Fittings",
+        "Additional Filtration Kits",
+        "Strip Radiators",
+        "Tube Radiators",
+        "Cooling Pipe Repair Services",
+        "Fittings",
+        "Clamps",
+        "Hoses",
+        "Thermostats",
+        "Manual Hydraulic Press"
+    ],
+    "instrumentCat": [
+        "Hydraulic Tools",
+        "Tools for Solenoid Repair",
+        "Tools for Bushing Installation",
+        "Tools for ATF Repair",
+        "Tools for Hydraulic Block Cleaning",
+        "Testing Tools",
+        "Metalworking Tools",
+        "Cleaning Consumables",
+        "Other Equipment"
+    ],
+    "repairCat": [
+        "Hydrotransformer Repair",
+        "Hydraulic Block Repair",
+        "Transmission Case Repair",
+        "Solenoid Repair",
+        "ECU Repair and Flashing",
+        "Oil Pump Repair",
+        "PowerShift Ford/Volvo Repair",
+        "DSG Repair",
+        "Cooling Pipe Repair",
+        "Additional Filter Installation",
+        "Repair Initiation",
+        "Online Diagnostics"
+    ],
+    "informationCat": [
+        "Shipping and Delivery",
+        "Payment",
+        "Warranty",
+        "Contacts",
+        "Product Returns",
+        "Restoring Reliability and Clarity to Transmissions",
+        "Our Employees",
+        "About Us",
+        "Job Opportunities"
+    ]
+    
     }
-  }
+}

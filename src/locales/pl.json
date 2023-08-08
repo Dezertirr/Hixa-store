@@ -80,6 +80,101 @@
       "price": "Cena",
       "value": "Wartość",
       "hisEmpty": "Brak historii zamówień"
+    },
+    "Catalogs": {
+      "catalog": [
+        "AISIN WARNER",
+        "ALASON",
+        "AUDI, VOLKSWAGEN, SKODA",
+        "BMW",
+        "CHINESE CARS",
+        "CHRYSLER, DODGE",
+        "CITROEN, PEUGEOT, RENAULT",
+        "FORD",
+        "GENERAL MOTORS",
+        "HALDEX",
+        "HONDA",
+        "ACURA",
+        "HYUNDAI, KIA",
+        "JAGUAR",
+        "LAND ROVER",
+        "MAZDA",
+        "MERCEDES-BENZ",
+        "MITSUBISHI",
+        "NISSAN, INFINITI, JATCO",
+        "OPEL",
+        "PORSCHE",
+        "SSANGYONG",
+        "SUBARU",
+        "SUZUKI",
+        "TOYOTA, LEXUS",
+        "VOLVO",
+        "ZF",
+        "Bloki hydrauliczne",
+        "Smary do automatycznych skrzyń biegów",
+        "Filtr różnicowy",
+        "Części zamienne do przemienników momentu obrotowego"
+      ],
+      "hydroblocsCat": [
+        "Zawory w standardowym rozmiarze",
+        "Naprawa tulei i zaworów",
+        "Rozszerzenia",
+        "Narzędzia",
+        "Odzyskiwanie hydraulicznych płyt",
+        "Płyty separatorowe",
+        "Tuleje i tłoki"
+    ],
+    "filtrationCat": [
+        "Adaptery ATF",
+        "Dodatkowe adaptery filtrów ATF",
+        "Szybkie złączki",
+        "Dodatkowe zestawy filtracyjne",
+        "Chłodnice pasowe",
+        "Chłodnice rurowe",
+        "Usługi naprawy rur chłodzenia",
+        "Złączki",
+        "Obciski",
+        "Węże",
+        "Termostaty",
+        "Ręczna prasa hydrauliczna"
+    ],
+    "instrumentCat": [
+        "Narzędzia hydrauliczne",
+        "Narzędzia do naprawy elektrozaworów",
+        "Narzędzia do montażu tulei",
+        "Narzędzia do naprawy ATF",
+        "Narzędzia do czyszczenia bloków hydraulicznych",
+        "Narzędzia do testowania",
+        "Narzędzia do obróbki metalu",
+        "Materiały czyszczące",
+        "Inne urządzenia"
+    ],
+    "repairCat": [
+        "Naprawa hydrotransformatora",
+        "Naprawa bloku hydraulicznego",
+        "Naprawa obudowy skrzyni biegów",
+        "Naprawa elektrozaworów",
+        "Naprawa i programowanie sterowników ECU",
+        "Naprawa pompy olejowej",
+        "Naprawa PowerShift Ford/Volvo",
+        "Naprawa skrzyni DSG",
+        "Naprawa rur chłodzenia",
+        "Instalacja dodatkowego filtra",
+        "Inicjacja naprawy",
+        "Diagnostyka online"
+    ],
+    "informationCat": [
+        "Wysyłka i dostawa",
+        "Płatność",
+        "Gwarancja",
+        "Kontakty",
+        "Zwroty produktów",
+        "Przywracamy niezawodność i klarowność transmisjom",
+        "Nasi pracownicy",
+        "O nas",
+        "Oferty pracy"
+    ]
+    
     }
     
     

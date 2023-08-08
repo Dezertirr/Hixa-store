@@ -80,6 +80,101 @@
       "price": "Ár",
       "value": "Érték",
       "hisEmpty": "Nincs rendelési előzmény"
+    },
+    "Catalogs": {
+      "catalog": [
+        "AISIN WARNER",
+        "ALASON",
+        "AUDI, VOLKSWAGEN, SKODA",
+        "BMW",
+        "CHINESE CARS",
+        "CHRYSLER, DODGE",
+        "CITROEN, PEUGEOT, RENAULT",
+        "FORD",
+        "GENERAL MOTORS",
+        "HALDEX",
+        "HONDA",
+        "ACURA",
+        "HYUNDAI, KIA",
+        "JAGUAR",
+        "LAND ROVER",
+        "MAZDA",
+        "MERCEDES-BENZ",
+        "MITSUBISHI",
+        "NISSAN, INFINITI, JATCO",
+        "OPEL",
+        "PORSCHE",
+        "SSANGYONG",
+        "SUBARU",
+        "SUZUKI",
+        "TOYOTA, LEXUS",
+        "VOLVO",
+        "ZF",
+        "Hidraulikus blokkok",
+        "Kenőanyagok automata sebességváltóhoz",
+        "Differenciálszűrő",
+        "Pótalkatrészek nyomatékváltókhoz"
+      ],
+      "hydroblocsCat": [
+        "Szelepek standard méretben",
+        "Tömítőgyűrűk és szelepek javítása",
+        "Bővítések",
+        "Szerszámok",
+        "Hidraulikus lemez helyreállítás",
+        "Elválasztó lapok",
+        "Tüskék és dugattyúk"
+    ],
+    "filtrationCat": [
+        "ATF adapterek",
+        "További ATF szűrő adapterek",
+        "Gyors csatlakozók",
+        "További szűrő készletek",
+        "Csík hűtők",
+        "Cső hűtők",
+        "Hűtőcső javítási szolgáltatások",
+        "Csatlakozók",
+        "Rögzítő bilincsek",
+        "Csövek",
+        "Hőszabályozók",
+        "Kézi hidraulikus sajtó"
+    ],
+    "instrumentCat": [
+        "Hidraulikus szerszámok",
+        "Szerszámok szolnoid javításához",
+        "Szerszámok dugattyú beépítéshez",
+        "Szerszámok ATF javításához",
+        "Szerszámok hidraulikus blokk tisztításához",
+        "Tesztszerszámok",
+        "Fém megmunkáló szerszámok",
+        "Tisztító anyagok",
+        "Egyéb felszerelések"
+    ],
+    "repairCat": [
+        "Hidrotranszformátor javítás",
+        "Hidraulikus blokk javítás",
+        "Váltóház javítás",
+        "Szolnoid javítás",
+        "ECU javítás és frissítés",
+        "Olajszivattyú javítás",
+        "PowerShift Ford/Volvo javítás",
+        "DSG javítás",
+        "Hűtőcső javítás",
+        "További szűrő telepítés",
+        "Javítás kezdeményezése",
+        "Online diagnosztika"
+    ],
+    "informationCat": [
+        "Szállítás és kiszállítás",
+        "Fizetés",
+        "Garancia",
+        "Kapcsolatok",
+        "Termék visszaküldés",
+        "Visszaállítjuk a megbízhatóságot és a tisztaságot a váltóknak",
+        "Munkatársaink",
+        "Rólunk",
+        "Álláslehetőségek"
+    ]
+    
     }
     
     
