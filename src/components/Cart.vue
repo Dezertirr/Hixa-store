@@ -28,107 +28,110 @@
   </div>
 </template>
 
-<script>
-import axios from 'axios'
+<script setup>
 import { ref, onMounted } from 'vue'
+import axios from 'axios'
 import { getAuth } from 'firebase/auth'
-import { getFirestore, collection, doc, updateDoc, addDoc } from 'firebase/firestore'
+import {
+  getFirestore,
+  collection,
+  doc,
+  updateDoc,
+  addDoc
+} from 'firebase/firestore'
+import { useI18n } from 'vue-i18n'
 
-export default {
-  data() {
-    return {
-      cartItems: [],
-      isModalOpen: false,
-      customerData: {
-        name: '',
-        phone: '',
-        city: '',
-        orderId: ''
-      }
-    }
-  },
-  mounted() {
-    this.loadCartItems()
-  },
-  methods: {
-    loadCartItems() {
-      const storedItems = JSON.parse(localStorage.getItem('cart')) || []
-      this.cartItems = storedItems
-    },
+const cartItems = ref([])
+const isModalOpen = ref(false)
+const customerData = ref({
+  name: '',
+  phone: '',
+  city: '',
+  orderId: ''
+})
 
-    openModal() {
-      this.isModalOpen = true
-    },
+const { locale } = useI18n()
 
-    closeModal() {
-      this.isModalOpen = false
-    },
+onMounted(() => {
+  loadCartItems()
+})
 
-    async submitOrder() {
-      this.customerData.orderId = Math.floor(Math.random() * 10000)
-      const orderData = {
-        cartItems: this.cartItems,
-        customerData: this.customerData
-      }
+function loadCartItems() {
+  const storedItems = JSON.parse(localStorage.getItem('cart')) || []
+  cartItems.value = storedItems
+}
 
-      try {
-        const db = getFirestore()
-        const user = getAuth().currentUser
-        if (user) {
-          const userRef = doc(collection(db, 'users'), user.uid)
+function openModal() {
+  isModalOpen.value = true
+}
 
-          await updateDoc(userRef, {
-            order: orderData
-          })
-        }
+function closeModal() {
+  isModalOpen.value = false
+}
 
-        const botToken = '6524682564:AAHEo46Uim-eagPSyYijx_5s1uAK4P3qExI'
-        const chatId = '-938605598'
-
-        const message = this.constructMessage(orderData)
-
-        const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
-        await axios.post(apiUrl, {
-          chat_id: chatId,
-          text: message,
-          parse_mode: 'HTML',
-          reply_markup: {
-            inline_keyboard: [
-              [
-                {
-                  text: 'Взять заказ на обработку',
-                  callback_data: 'take_order'
-                }
-              ]
-            ]
-          }
-        })
-
-        this.closeModal()
-        this.customerData = {
-          name: '',
-          phone: '',
-          city: '',
-          orderId: ''
-        }
-      } catch (error) {
-        console.error('Ошибка отправки заказа в Firestore:', error)
-      }
-    },
-
-    constructMessage(orderData) {
-      let message = `<b>Новый заказ</b>\n\n`
-      message += `<b>Идентификатор заказа:</b> ${orderData.customerData.orderId}\n`
-      message += `<b>Имя:</b> ${orderData.customerData.name}\n`
-      message += `<b>Телефон:</b> ${orderData.customerData.phone}\n`
-      message += `<b>Город:</b> ${orderData.customerData.city}\n\n`
-      message += '<b>Список товаров:</b>\n'
-      for (const item of orderData.cartItems) {
-        message += `- ${item.brand}: ${item.value}\n`
-      }
-      return message
-    }
+async function submitOrder() {
+  customerData.value.orderId = Math.floor(Math.random() * 10000)
+  const orderData = {
+    cartItems: cartItems.value,
+    customerData: customerData.value
   }
+
+  try {
+    const db = getFirestore()
+    const user = getAuth().currentUser
+    if (user) {
+      const userRef = doc(collection(db, 'users'), user.uid)
+
+      await updateDoc(userRef, {
+        order: orderData
+      })
+    }
+
+    const botToken = '6524682564:AAHEo46Uim-eagPSyYijx_5s1uAK4P3qExI'
+    const chatId = '-938605598'
+
+    const message = constructMessage(orderData)
+
+    const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
+    await axios.post(apiUrl, {
+      chat_id: chatId,
+      text: message,
+      parse_mode: 'HTML',
+      reply_markup: {
+        inline_keyboard: [
+          [
+            {
+              text: 'Взять заказ на обработку',
+              callback_data: 'take_order'
+            }
+          ]
+        ]
+      }
+    })
+
+    closeModal()
+    customerData.value = {
+      name: '',
+      phone: '',
+      city: '',
+      orderId: ''
+    }
+  } catch (error) {
+    console.error('Ошибка отправки заказа в Firestore:', error)
+  }
+}
+
+function constructMessage(orderData) {
+  let message = `<b>Новый заказ</b>\n\n`
+  message += `<b>Идентификатор заказа:</b> ${orderData.customerData.orderId}\n`
+  message += `<b>Имя:</b> ${orderData.customerData.name}\n`
+  message += `<b>Телефон:</b> ${orderData.customerData.phone}\n`
+  message += `<b>Город:</b> ${orderData.customerData.city}\n\n`
+  message += '<b>Список товаров:</b>\n'
+  for (const item of orderData.cartItems) {
+    message += `- ${item.brand}: ${item.value[locale.value]}\n`
+  }
+  return message
 }
 </script>
 

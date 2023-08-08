@@ -19,7 +19,7 @@
               <h4>{{ item.brand }} - {{ item.mark }} - {{ item.part }}</h4>
               <p>Code: {{ item.code }}</p>
               <p>Price: {{ item.price }}</p>
-              <p>Value: {{ item.value }}</p>
+              <p>Value: {{ item.value[locale] }}</p>
             </li>
           </ul>
         </li>
@@ -43,12 +43,15 @@
 import { ref, onMounted } from 'vue'
 import { getAuth } from 'firebase/auth'
 import { getFirestore, collection, doc, getDoc } from 'firebase/firestore'
+import { useI18n } from 'vue-i18n';
 
 export default {
   setup() {
     const user = ref(null)
     const editingUser = ref(false)
     const editedUser = ref({})
+    const { t, locale } = useI18n();
+;
 
     onMounted(async () => {
       await fetchUserData()
@@ -95,7 +98,9 @@ export default {
       editedUser,
       editUser,
       saveChanges,
-      cancelEdit
+      cancelEdit,
+      locale,
+      t
     }
   }
 }
