@@ -29,8 +29,7 @@
 
 <script>
 import { ref } from 'vue'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { getAuth } from 'firebase/auth'
+import { createUserWithEmailAndPassword, sendEmailVerification, getAuth } from 'firebase/auth'
 import { getFirestore, collection, doc, setDoc } from 'firebase/firestore'
 
 export default {
@@ -53,9 +52,11 @@ export default {
           this.password
         )
         const user = userCredentials.user
-        // Сохраняем данные пользователя в Firestore
+
+        await sendEmailVerification(user)
+
         await this.saveUserData(user)
-        alert('Registration successful!')
+        alert('Registration successful! Please check your email for verification.')
       } catch (error) {
         alert(`Registration failed: ${error.message}`)
       }
