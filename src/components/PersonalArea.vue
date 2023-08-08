@@ -1,40 +1,40 @@
 <template>
   <div>
-    <h2>Personal Area</h2>
+    <h2>{{ $t("PersonalArea.title")}}</h2>
     <div v-if="user">
-      <h3>User Information</h3>
-      <p>Name: {{ user.name }}</p>
-      <p>Phone: {{ user.phone }}</p>
-      <p>City: {{ user.city }}</p>
-      <button @click="editUser">Edit User Info</button>
+      <h3>{{ $t("PersonalArea.userInfo")}}</h3>
+      <p>{{ $t("PersonalArea.name")}}: {{ user.name }}</p>
+      <p>{{ $t("PersonalArea.phone")}}: {{ user.phone }}</p>
+      <p>{{ $t("PersonalArea.city")}}: {{ user.city }}</p>
+      <button @click="editUser">{{ $t("PersonalArea.edit")}}</button>
     </div>
     <div v-if="user && user.order && user.order.cartItems && user.order.cartItems.length > 0">
-      <h3>Order History</h3>
+      <h3>{{ $t("PersonalArea.titleOrderHis")}}</h3>
       <ul>
         <li>
-          <p>Order ID: {{ user.order.customerData.orderId }}</p>
-          <p>Number of Items: {{ user.order.cartItems.length }}</p>
+          <p>{{ $t("PersonalArea.orderID")}}: {{ user.order.customerData.orderId }}</p>
+          <p>{{ $t("PersonalArea.numItem")}}: {{ user.order.cartItems.length }}</p>
           <ul>
             <li v-for="item in user.order.cartItems" :key="item.id">
               <h4>{{ item.brand }} - {{ item.mark }} - {{ item.part }}</h4>
-              <p>Code: {{ item.code }}</p>
-              <p>Price: {{ item.price }}</p>
-              <p>Value: {{ item.value[locale] }}</p>
+              <p>{{ $t("PersonalArea.code")}}: {{ item.code }}</p>
+              <p>{{ $t("PersonalArea.price")}}: {{ item.price }}</p>
+              <p>{{ $t("PersonalArea.value")}}: {{ item.value[locale] }}</p>
             </li>
           </ul>
         </li>
       </ul>
     </div>
     <div v-else>
-      <p>No order history available.</p>
+      <p>{{ $t("PersonalArea.hisEmpty")}}</p>
     </div>
     <div v-if="editingUser">
-      <h3>Edit User Info</h3>
+      <h3>{{ $t("PersonalArea.edit")}}</h3>
       <input type="text" v-model="editedUser.name" />
       <input type="text" v-model="editedUser.phone" />
       <input type="text" v-model="editedUser.city" />
-      <button @click="saveChanges">Save Changes</button>
-      <button @click="cancelEdit">Cancel</button>
+      <button @click="saveChanges">{{ $t("PersonalArea.save")}}</button>
+      <button @click="cancelEdit">{{ $t("PersonalArea.cancel")}}</button>
     </div>
   </div>
 </template>

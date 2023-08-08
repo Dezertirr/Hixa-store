@@ -66,6 +66,22 @@
     },
     "Information": {
       
+    },
+    "PersonalArea": {
+      "title": "Personal Area",
+      "userInfo": "User Information",
+      "name": "Name",
+      "phone": "Phone",
+      "city": "City",
+      "edit": "Edit User Info",
+      "save": "Save Changes",
+      "cancel": "Cancel",
+      "titleOrderHis": "Order History",
+      "orderID": "Order ID",
+      "numItem": "Number of items",
+      "code": "Code",
+      "price": "Price",
+      "value": "Value",
+      "hisEmpty": "No order History available"
     }
-    
   }

@@ -63,7 +63,25 @@
       "email": "E-Mail",
       "password": "Passwort",
       "complete": "Registrieren"
+    },
+    "PersonalArea": {
+      "title": "Persönlicher Bereich",
+      "userInfo": "Benutzerinformationen",
+      "name": "Name",
+      "phone": "Telefon",
+      "city": "Stadt",
+      "edit": "Benutzerinformationen bearbeiten",
+      "save": "Änderungen speichern",
+      "cancel": "Abbrechen",
+      "titleOrderHis": "Bestellverlauf",
+      "orderID": "Bestellnummer",
+      "numItem": "Anzahl der Artikel",
+      "code": "Code",
+      "price": "Preis",
+      "value": "Wert",
+      "hisEmpty": "Kein Bestellverlauf verfügbar"
     }
+    
     
     
     

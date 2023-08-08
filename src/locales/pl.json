@@ -63,7 +63,25 @@
       "email": "E-mail",
       "password": "Hasło",
       "complete": "Zarejestruj"
+    },
+    "PersonalArea": {
+      "title": "Obszar osobisty",
+      "userInfo": "Informacje o użytkowniku",
+      "name": "Imię",
+      "phone": "Telefon",
+      "city": "Miasto",
+      "edit": "Edytuj informacje o użytkowniku",
+      "save": "Zapisz zmiany",
+      "cancel": "Anuluj",
+      "titleOrderHis": "Historia zamówień",
+      "orderID": "Numer zamówienia",
+      "numItem": "Liczba przedmiotów",
+      "code": "Kod",
+      "price": "Cena",
+      "value": "Wartość",
+      "hisEmpty": "Brak historii zamówień"
     }
+    
     
     
     

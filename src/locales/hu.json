@@ -63,7 +63,25 @@
       "email": "E-mail",
       "password": "Jelszó",
       "complete": "Regisztráció"
+    },
+    "PersonalArea": {
+      "title": "Személyes terület",
+      "userInfo": "Felhasználói információk",
+      "name": "Név",
+      "phone": "Telefonszám",
+      "city": "Város",
+      "edit": "Felhasználói információk szerkesztése",
+      "save": "Változtatások mentése",
+      "cancel": "Mégse",
+      "titleOrderHis": "Rendelési előzmények",
+      "orderID": "Rendelésszám",
+      "numItem": "Tételek száma",
+      "code": "Kód",
+      "price": "Ár",
+      "value": "Érték",
+      "hisEmpty": "Nincs rendelési előzmény"
     }
+    
     
     
     
