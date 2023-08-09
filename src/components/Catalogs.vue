@@ -157,7 +157,7 @@ export default {
 
 
     const catalogs = [
-     locale('Catalogs.catalog.0'),
+     t('Catalogs.catalog.0'),
      t('Catalogs.catalog.1'),
      t('Catalogs.catalog.2'),
      t('Catalogs.catalog.3'),

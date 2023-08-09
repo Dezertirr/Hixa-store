@@ -26,6 +26,7 @@ import {
   FacebookAuthProvider
 } from 'firebase/auth'
 import { getAuth } from 'firebase/auth'
+import { notify } from "@kyvg/vue3-notification";
 
 export default {
   data() {
@@ -42,8 +43,16 @@ export default {
         alert('Login successful!')
         localStorage.setItem('isLoggedIn', 'true') // Сохраняем статус логина в localStorage
         this.$router.push('/')
+        notify ({
+          title: 'Login succesful',
+          type: 'success'
+        })
       } catch (error) {
-        alert(`Login failed: ${error.message}`)
+        
+        notify({
+          title: 'Error!',
+          text: `${error.message}`
+        })
       }
     },
     async loginWithGoogle() {
@@ -62,8 +71,16 @@ export default {
         localStorage.setItem('user', JSON.stringify(userData))
 
         this.$router.push('/')
+        notify ({
+          title: 'Login succesful',
+          type: 'success'
+        })
+        
       } catch (error) {
-        alert(`Google login failed: ${error.message}`)
+        notify({
+          title: 'Error!',
+          text: `${error.message}`
+        })
       }
     },
     async loginWithFacebook() {
@@ -74,8 +91,15 @@ export default {
         alert('Facebook login successful!')
         localStorage.setItem('isLoggedIn', 'true')
         this.$router.push('/')
+        notify ({
+          title: 'Login succesful',
+          type: 'success'
+        })
       } catch (error) {
-        alert(`Facebook login failed: ${error.message}`)
+        notify({
+          title: 'Error!',
+          text: `${error.message}`
+        })
       }
     }
   }

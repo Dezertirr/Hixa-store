@@ -2,7 +2,7 @@
   <Header></Header>
     <router-view></router-view>
     <Footer></Footer>
-  
+    <notifications position="bottom right" />
 </template>
 
 <script setup>

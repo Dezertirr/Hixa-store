@@ -8,6 +8,7 @@ import { createI18n } from 'vue-i18n';
 import App from './App.vue';
 import router from './router/router';
 import { languages, defaultLocale } from './locales/index';
+import Notifications from '@kyvg/vue3-notification'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDBup_VXH-6gJf0qhuibWs1JRSomtBR6Ak",
@@ -33,5 +34,5 @@ const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 app.use(i18n); // Используем экземпляр i18n
-
+app.use(Notifications)
 app.mount('#app');

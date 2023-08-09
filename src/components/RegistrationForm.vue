@@ -31,6 +31,7 @@
 import { ref } from 'vue'
 import { createUserWithEmailAndPassword, sendEmailVerification, getAuth } from 'firebase/auth'
 import { getFirestore, collection, doc, setDoc } from 'firebase/firestore'
+import { notify } from "@kyvg/vue3-notification";
 
 export default {
   data() {
@@ -56,9 +57,18 @@ export default {
         await sendEmailVerification(user)
 
         await this.saveUserData(user)
-        alert('Registration successful! Please check your email for verification.')
+        notify({
+    title: 'Succeful',
+    text: 'Registration successful! Please check your email for verification.',
+    type: 'success'
+  });
       } catch (error) {
-        alert(`Registration failed: ${error.message}`)
+        notify({
+    title: 'Error',
+    text: `An error has occurred!
+    ${error.message}`,
+    type: 'error'
+  });
       }
     },
     async saveUserData(user) {

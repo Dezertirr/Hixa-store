@@ -40,6 +40,7 @@ import {
   addDoc
 } from 'firebase/firestore'
 import { useI18n } from 'vue-i18n'
+import { notify } from "@kyvg/vue3-notification";
 
 const cartItems = ref([])
 const isModalOpen = ref(false)
@@ -70,29 +71,29 @@ function closeModal() {
 }
 
 async function submitOrder() {
-  customerData.value.orderId = Math.floor(Math.random() * 10000)
+  customerData.value.orderId = Math.floor(Math.random() * 10000);
   const orderData = {
     cartItems: cartItems.value,
     customerData: customerData.value
-  }
+  };
 
   try {
-    const db = getFirestore()
-    const user = getAuth().currentUser
+    const db = getFirestore();
+    const user = getAuth().currentUser;
     if (user) {
-      const userRef = doc(collection(db, 'users'), user.uid)
+      const userRef = doc(collection(db, 'users'), user.uid);
 
       await updateDoc(userRef, {
         order: orderData
-      })
+      });
     }
 
-    const botToken = '6524682564:AAHEo46Uim-eagPSyYijx_5s1uAK4P3qExI'
-    const chatId = '-938605598'
+    const botToken = '6524682564:AAHEo46Uim-eagPSyYijx_5s1uAK4P3qExI';
+    const chatId = '-938605598';
 
-    const message = constructMessage(orderData)
+    const message = constructMessage(orderData);
 
-    const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
+    const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
     await axios.post(apiUrl, {
       chat_id: chatId,
       text: message,
@@ -107,19 +108,29 @@ async function submitOrder() {
           ]
         ]
       }
-    })
+    });
 
-    closeModal()
+    notify({
+      title: 'Successful',
+      text: 'Order submitted successfully!',
+      type: 'success'
+    });
+
+    closeModal();
     customerData.value = {
       name: '',
       phone: '',
       city: '',
       orderId: ''
-    }
+    };
   } catch (error) {
-    console.error('Ошибка отправки заказа в Firestore:', error)
+    notify({
+      title: 'Error',
+      text: `Error! error`
+    });
   }
 }
+
 
 function constructMessage(orderData) {
   let message = `<b>Новый заказ</b>\n\n`

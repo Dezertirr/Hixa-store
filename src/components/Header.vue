@@ -73,6 +73,7 @@ import { useSearchStore } from '../stores/counter'
 import { useRouter } from 'vue-router'
 
 import { useI18n } from 'vue-i18n'
+import { notify } from '@kyvg/vue3-notification'
 
 export default {
   setup() {
@@ -115,8 +116,17 @@ export default {
 
         router.push('/login')
         localStorage.removeItem('user')
+        notify({
+          title: `Goodbay`,
+          text: `Logout succeful`,
+          type: 'success'
+        })
       } catch (error) {
-        console.log('Ошибка при разлогине пользователя', error)
+        notify({
+          title: `Error`,
+          text: `Logout error! ${error}`,
+          type: 'success'
+        })
       }
     }
 

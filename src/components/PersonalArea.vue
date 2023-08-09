@@ -44,6 +44,7 @@ import { ref, onMounted } from 'vue'
 import { getAuth } from 'firebase/auth'
 import { getFirestore, collection, doc, getDoc } from 'firebase/firestore'
 import { useI18n } from 'vue-i18n';
+import { notify } from "@kyvg/vue3-notification";
 
 export default {
   setup() {
@@ -86,6 +87,10 @@ export default {
       user.value = { ...editedUser.value }
       localStorage.setItem('user', JSON.stringify(editedUser.value))
       editingUser.value = false
+      notify ({
+          title: 'Edit succesful',
+          type: 'success'
+        })
     }
 
     const cancelEdit = () => {
