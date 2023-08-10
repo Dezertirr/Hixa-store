@@ -300,8 +300,8 @@ export default {
 .catalogs {
   display: flex;
   height: 35px;
-  background: linear-gradient(to right, #222222, #555555);
-  color: #b0b0b0;
+  background: linear-gradient(to right, #013F48 50%, #15575e 70%);
+  color: #ffffff;
   align-items: center;
   justify-content: center;
 }

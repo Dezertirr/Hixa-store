@@ -37,14 +37,15 @@
         <li @click="changeLanguage('de')">{{ $t('languages.german') }}</li>
         <li @click="changeLanguage('hu')">{{ $t('languages.hungarian') }}</li>
         <li @click="changeLanguage('uk')">{{ $t('languages.ukrainian') }}</li>
+        
         <li class="headerNavSecItem">
           <router-link v-if="isLoggedIn" class="personalArea" :to="{ name: 'personal-area' }">
             {{ $t('personalArea') }}
           </router-link>
           <button v-if="isLoggedIn" class="personalArea" @click="logout">{{ $t('logout') }}</button>
           <div v-else>
-            <button @click="goToLogin">{{ $t('login') }}</button>
-            <button @click="goToRegistration">{{ $t('registration') }}</button>
+            <button class="btnAuth" @click="goToLogin">{{ $t('login') }}</button>
+            <button class="btnAuth" @click="goToRegistration">{{ $t('registration') }}</button>
           </div>
         </li>
       </ul>
@@ -204,8 +205,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to right, #222222, #555555);
-  color: #b0b0b0;
+  background: linear-gradient(to right, #013F48 50%, #15575e 70%);
+  color: #ffffff;
   height: 50px;
 }
 .headerMainNav {
@@ -217,14 +218,17 @@ export default {
   list-style: none;
   display: flex;
   align-items: center;
-  border-left: 1px solid;
+  border-right: 1px solid;
 }
 
 .headerNatItemBtn {
   padding: 10px;
   background: inherit;
   border: 0;
-  color: #b0b0b0;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  margin: 0;
 }
 
 .headerNavSec {
@@ -233,7 +237,7 @@ export default {
 
 .headerNavSecItem {
   list-style: none;
-  margin: 15px;
+  
   color: #bdb9b9;
 }
 
@@ -241,6 +245,15 @@ export default {
 }
 
 .personalArea {
+}
+.btnAuth {
+  background: #013F48;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+  padding: 15px;
+  margin: 0;
 }
 
 .SearchLine {
