@@ -33,11 +33,11 @@
           <a class="langSelect">{{ $t('language') }}</a>
         </li>
 
-        <li @click="changeLanguage('en')">{{ $t('languages.english') }}</li>
-        <li @click="changeLanguage('pl')">{{ $t('languages.polish') }}</li>
-        <li @click="changeLanguage('de')">{{ $t('languages.german') }}</li>
-        <li @click="changeLanguage('hu')">{{ $t('languages.hungarian') }}</li>
-        <li @click="changeLanguage('uk')">{{ $t('languages.ukrainian') }}</li>
+        <li class="language" @click="changeLanguage('en')">{{ $t('languages.english') }}</li>
+        <li class="language" @click="changeLanguage('pl')">{{ $t('languages.polish') }}</li>
+        <li class="language" @click="changeLanguage('de')">{{ $t('languages.german') }}</li>
+        <li class="language" @click="changeLanguage('hu')">{{ $t('languages.hungarian') }}</li>
+        <li class="language" @click="changeLanguage('uk')">{{ $t('languages.ukrainian') }}</li>
 
         <li class="headerNavSecItem">
           <router-link v-if="isLoggedIn" class="personalArea" :to="{ name: 'personal-area' }">
@@ -204,6 +204,20 @@ export default {
 }
 </script>
 <style scoped>
+.language {
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ffffff;
+  transition: ease-in-out 0.4s;
+}
+li {
+  list-style: none;
+}
 .header {
 }
 .sideBar {
@@ -245,6 +259,9 @@ export default {
 
 .headerNavSec {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
 }
 
 .headerNavSecItem {
@@ -254,6 +271,14 @@ export default {
 }
 
 .langSelect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 5px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ffffff;
 }
 
 .personalArea {
