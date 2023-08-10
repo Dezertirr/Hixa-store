@@ -32,17 +32,20 @@
         <li class="headerNavSecItem">
           <a class="langSelect">{{ $t('language') }}</a>
         </li>
+
         <li @click="changeLanguage('en')">{{ $t('languages.english') }}</li>
         <li @click="changeLanguage('pl')">{{ $t('languages.polish') }}</li>
         <li @click="changeLanguage('de')">{{ $t('languages.german') }}</li>
         <li @click="changeLanguage('hu')">{{ $t('languages.hungarian') }}</li>
         <li @click="changeLanguage('uk')">{{ $t('languages.ukrainian') }}</li>
-        
+
         <li class="headerNavSecItem">
           <router-link v-if="isLoggedIn" class="personalArea" :to="{ name: 'personal-area' }">
             {{ $t('personalArea') }}
           </router-link>
-          <button v-if="isLoggedIn" class="personalArea" @click="logout">{{ $t('logout') }}</button>
+          <button v-if="isLoggedIn" class="personalArea_logout" @click="logout">
+            {{ $t('logout') }}
+          </button>
           <div v-else>
             <button class="btnAuth" @click="goToLogin">{{ $t('login') }}</button>
             <button class="btnAuth" @click="goToRegistration">{{ $t('registration') }}</button>
@@ -57,7 +60,9 @@
           <input v-model="searchValue" :placeholder="$t('searchPlaceholder')" class="searchInput" />
           <button type="submit" class="searchBtn">{{ $t('searchButton') }}</button>
         </form>
-        <button @click="goToCart" class="cartBtn"><img src="@/images/shopping-basket.svg" /></button>
+        <button @click="goToCart" class="cartBtn">
+          <img src="@/images/shopping-basket.svg" />
+        </button>
       </div>
       <Catalogs></Catalogs>
     </div>
@@ -205,7 +210,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to right, #013F48 50%, #15575e 70%);
+  background: linear-gradient(to right, #013f48 50%, #15575e 70%);
   color: #ffffff;
   height: 50px;
 }
@@ -244,7 +249,7 @@ export default {
 
 .headerNavSecItem {
   list-style: none;
-  
+
   color: #bdb9b9;
 }
 
@@ -254,7 +259,7 @@ export default {
 .personalArea {
 }
 .btnAuth {
-  background: #013F48;
+  background: #013f48;
   border: none;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
@@ -266,7 +271,7 @@ export default {
 }
 
 .btnAuth:hover,
-.btnAuth:focus{
+.btnAuth:focus {
   background: #027081;
 }
 
@@ -291,7 +296,7 @@ export default {
   font-weight: 400;
 }
 .searchInput:hover,
-.searchInput:focus{
+.searchInput:focus {
   outline: none;
 }
 .searchBtn {
@@ -308,18 +313,34 @@ export default {
   transition: ease-in-out 0.4s;
 }
 .searchBtn:focus,
-.searchBtn:hover{
+.searchBtn:hover {
   background: #0391a7;
 }
 
-.cartBtn{
+.cartBtn {
   border: 0;
   background: none;
   cursor: pointer;
   transition: ease-in-out 0.4s;
 }
 .cartBtn:hover,
-.cartBtn:focus{
+.cartBtn:focus {
   scale: 1.25;
+}
+.personalArea {
+  text-decoration: underline;
+  color: white;
+  cursor: pointer;
+}
+.personalArea_logout {
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  background: #013f48;
+  border-color: transparent;
+  margin: 0 10px 0 10px;
+}
+.personalArea_logout:hover {
+  background: #027081;
 }
 </style>

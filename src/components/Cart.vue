@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="cart_container">
     <h2>{{ $t('Cart.title') }}</h2>
-    <ul v-if="cartItems.length > 0">
+    <ul v-if="cartItems.length > 0" class="items">
       <li v-for="(item, index) in cartItems" :key="index">
         <h3 v-if="item">{{ item.brand }}</h3>
         <p v-if="item">{{ item.value }}</p>
@@ -9,7 +9,7 @@
     </ul>
     <p v-else>{{ $t('Cart.empty') }}</p>
 
-    <button @click="openModal">{{ $t('Cart.orderStart') }}</button>
+    <button class="submit_order" @click="openModal">{{ $t('Cart.orderStart') }}</button>
 
     <div v-if="isModalOpen" class="modal">
       <h3>{{ $t('Cart.ordering') }}</h3>
@@ -23,7 +23,7 @@
       <input type="text" id="city" v-model="customerData.city" required />
 
       <button @click="submitOrder">{{ $t('Cart.orderStart') }}</button>
-      <button @click="closeModal">Close Order</button>
+      <button class="close" @click="closeModal">Close Order</button>
     </div>
   </div>
 </template>
@@ -32,15 +32,9 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { getAuth } from 'firebase/auth'
-import {
-  getFirestore,
-  collection,
-  doc,
-  updateDoc,
-  addDoc
-} from 'firebase/firestore'
+import { getFirestore, collection, doc, updateDoc, addDoc } from 'firebase/firestore'
 import { useI18n } from 'vue-i18n'
-import { notify } from "@kyvg/vue3-notification";
+import { notify } from '@kyvg/vue3-notification'
 
 const cartItems = ref([])
 const isModalOpen = ref(false)
@@ -71,29 +65,29 @@ function closeModal() {
 }
 
 async function submitOrder() {
-  customerData.value.orderId = Math.floor(Math.random() * 10000);
+  customerData.value.orderId = Math.floor(Math.random() * 10000)
   const orderData = {
     cartItems: cartItems.value,
     customerData: customerData.value
-  };
+  }
 
   try {
-    const db = getFirestore();
-    const user = getAuth().currentUser;
+    const db = getFirestore()
+    const user = getAuth().currentUser
     if (user) {
-      const userRef = doc(collection(db, 'users'), user.uid);
+      const userRef = doc(collection(db, 'users'), user.uid)
 
       await updateDoc(userRef, {
         order: orderData
-      });
+      })
     }
 
-    const botToken = '6524682564:AAHEo46Uim-eagPSyYijx_5s1uAK4P3qExI';
-    const chatId = '-938605598';
+    const botToken = '6524682564:AAHEo46Uim-eagPSyYijx_5s1uAK4P3qExI'
+    const chatId = '-938605598'
 
-    const message = constructMessage(orderData);
+    const message = constructMessage(orderData)
 
-    const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
     await axios.post(apiUrl, {
       chat_id: chatId,
       text: message,
@@ -108,29 +102,28 @@ async function submitOrder() {
           ]
         ]
       }
-    });
+    })
 
     notify({
       title: 'Successful',
       text: 'Order submitted successfully!',
       type: 'success'
-    });
+    })
 
-    closeModal();
+    closeModal()
     customerData.value = {
       name: '',
       phone: '',
       city: '',
       orderId: ''
-    };
+    }
   } catch (error) {
     notify({
       title: 'Error',
       text: `Error! error`
-    });
+    })
   }
 }
-
 
 function constructMessage(orderData) {
   let message = `<b>Новый заказ</b>\n\n`
@@ -147,17 +140,32 @@ function constructMessage(orderData) {
 </script>
 
 <style>
+.cart_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+}
+.items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 70%;
+}
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: white;
 }
 
 .modal h3 {
@@ -170,19 +178,41 @@ function constructMessage(orderData) {
 }
 
 .modal input {
+  font-size: 16px;
   margin-bottom: 10px;
-  padding: 5px;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 .modal button {
+  width: 200px;
   padding: 8px 15px;
-  background-color: #007bff;
+  background-color: #1d7d87;
   color: white;
+  padding: 15px;
+  border-radius: 10px;
+  gap: 20px;
   border: none;
   cursor: pointer;
 }
 
 .modal button:hover {
-  background-color: #0056b3;
+  background-color: #259eac;
+}
+.submit_order {
+  padding: 15px;
+  border-radius: 10px;
+  text-transform: capitalize;
+  background-color: #1d7d87;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+}
+.submit_order:hover {
+  background-color: #259eac;
+}
+.modal button.close {
+  background-color: #dc3545;
 }
 </style>
