@@ -2,7 +2,7 @@
   <div class="MainCatalogSection">
     <button @click="swiper.slidePrev()">Назад</button>
     <div ref="swiperContainer" class="swiper-container">
-      <div class="swiper-wrapper">
+      <div class="swiper-wrapper  mainCatSlide">
         <div v-for="(product, index) in displayedProducts" :key="product.id" @click="goToProduct(product)" class="swiper-slide MainCatalogItem">
           <p class="MainCatalogText MainCatalogTitle">{{ product.brand }}</p>
           <div class="MainCatalogPhoto">Тут має бути фото</div>
@@ -43,9 +43,13 @@ export default {
     // Initialize Swiper after the component is mounted
     onMounted(() => {
       swiper.value = new Swiper('.swiper-container', {
-        slidesPerView: 6,
-        spaceBetween: 25,
-      });
+  slidesPerView: 6,
+  spaceBetween: 25,
+  slidesPerColumn: 2, // Добавьте этот параметр для двух рядов
+  grid: {
+    rows: 2,
+  },
+});
     });
 
     return {
@@ -67,6 +71,8 @@ export default {
 .swiper-container {
   width: 100%;
   overflow: hidden;
+  display: flex; /* Добавьте это, чтобы элементы flex обертки встали в два ряда */
+  flex-wrap: wrap; /* Добавьте это, чтобы элементы переходили на новую строку */
 }
 
 .swiper-wrapper {
@@ -100,9 +106,10 @@ export default {
   margin: 15px 0 0 15px;
 }
 
-
-
 button {
   margin-top: 10px;
+}
+.mainCatSlide {
+  display: flex;
 }
 </style>

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>{{ $t("ThisMainPage") }}</h1>
     <router-view></router-view>
 
     <Slider></Slider>

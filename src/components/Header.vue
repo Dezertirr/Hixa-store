@@ -52,12 +52,12 @@
     </div>
     <div>
       <div class="SearchLine">
-        <a @click="backMainPage"><img src="@/images/logo.svg" /></a>
+        <a @click="backMainPage" class="logo"><img src="@/images/logo.svg" /></a>
         <form @submit.prevent="searchStart">
           <input v-model="searchValue" :placeholder="$t('searchPlaceholder')" class="searchInput" />
           <button type="submit" class="searchBtn">{{ $t('searchButton') }}</button>
         </form>
-        <button @click="goToCart"><img src="@/images/shopping-basket.svg" /></button>
+        <button @click="goToCart" class="cartBtn"><img src="@/images/shopping-basket.svg" /></button>
       </div>
       <Catalogs></Catalogs>
     </div>
@@ -222,13 +222,20 @@ export default {
 }
 
 .headerNatItemBtn {
-  padding: 10px;
+  padding: 15px 10px;
   background: inherit;
   border: 0;
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   margin: 0;
+  transition: ease-in-out 0.4s;
+  cursor: pointer;
+}
+
+.headerNatItemBtn:hover,
+.headerNatItemBtn:focus {
+  background: #027081;
 }
 
 .headerNavSec {
@@ -253,7 +260,18 @@ export default {
   font-weight: 400;
   color: #ffffff;
   padding: 15px;
-  margin: 0;
+  margin: 0 10px 0 10px;
+  cursor: pointer;
+  transition: ease-in-out 0.4s;
+}
+
+.btnAuth:hover,
+.btnAuth:focus{
+  background: #027081;
+}
+
+.logo {
+  cursor: pointer;
 }
 
 .SearchLine {
@@ -268,12 +286,40 @@ export default {
   height: 35px;
   border: 0;
   border-radius: 5px;
+  padding-left: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+.searchInput:hover,
+.searchInput:focus{
+  outline: none;
 }
 .searchBtn {
   height: 35px;
-  background-color: var(--main-bg-color);
-  border: 2px solid #b0b0b0;
+  width: 58px;
   margin-left: -57px;
-  border-radius: 5px;
+  border-radius: 0 5px 5px 0;
+  background: #027081;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  border: 0;
+  cursor: pointer;
+  transition: ease-in-out 0.4s;
+}
+.searchBtn:focus,
+.searchBtn:hover{
+  background: #0391a7;
+}
+
+.cartBtn{
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transition: ease-in-out 0.4s;
+}
+.cartBtn:hover,
+.cartBtn:focus{
+  scale: 1.25;
 }
 </style>

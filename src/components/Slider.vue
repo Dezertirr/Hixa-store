@@ -6,17 +6,12 @@
           <div
             class=" SliderTitle"
             :style="{ backgroundImage: 'url(' + sliderPhoto[index] + ')' }"
+            @click="goToCatalog"
           >
-            <button type="button" @click="previosSlide" class="SliderBtnPrev">
-              <img src="../images/arrow-left.png">
-            </button>
+
             <p class="sliderText">{{ value }}</p>
-            <button type="button" class="SliderCatBtn" @click="goToCatalog">
-              До каталогу
-            </button>
-            <button type="button" @click="nextSlide" class="SliderBtnNext">
-              <img src="../images/arrow-right.png">
-            </button>
+
+
           </div>
         </div>
       </div>
@@ -61,7 +56,7 @@ export default {
     const goToCatalog = () => {
       const catalog = sliderCatalog[currentIndex];
       searchStore.setSearch(catalog);
-      router.push({ name: 'Catalog' }); // Make sure 'Catalog' matches the name used in your router configuration
+      router.push({ name: 'Catalog', query: sliderCatalog }); // Make sure 'Catalog' matches the name used in your router configuration
     };
 
     const initSwiper = () => {
@@ -102,7 +97,7 @@ export default {
 
 .swiperContainer {
   width: 100%; /* Ensure the container takes the full width */
-  height: 250px;
+  height: 450px;
 }
 
 .swiper-slide {
@@ -114,13 +109,14 @@ export default {
 
 .SliderTitle {
   width: 100%;
-  height: 100%;
+  height: 450px;
   background-repeat: no-repeat;
   background-size: cover; /* Make the image cover the entire block */
   background-position: center;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .sliderText {

@@ -7,11 +7,12 @@
         class="CatalogBig"
         @mouseleave="showSpoiler = false"
       >
-        <button 
+        <button class="catBtn"
           v-for="(catalog, index) in catalogs" 
           :key="index" 
           @click="catalogSelect(catalog)">
           {{ catalog }}
+          
         </button>
       </div>
   </div>
@@ -52,7 +53,7 @@
         class="CatalogBig"
         @mouseleave="showSpoiler = false"
       >
-        <button
+        <button class="catBtn"
           v-for="(filtration, index) in filtrationCat"
           :key="index"
           @click="catalogSelect(filtration)"
@@ -74,7 +75,7 @@
         class="CatalogBig"
         @mouseleave="showSpoiler = false"
       >
-        <button
+        <button class="catBtn"
           v-for="(instrument, index) in instrumentCat"
           :key="index"
           @click="catalogSelect(instrument)"
@@ -97,7 +98,7 @@
         class="CatalogBig"
         @mouseleave="showSpoiler = false"
       >
-        <button v-for="(repair, index) in repairCat" :key="index" @click="catalogSelect(repair)">
+        <button class="catBtn" v-for="(repair, index) in repairCat" :key="index" @click="catalogSelect(repair)">
           {{ repair }}
         </button>
       </div>
@@ -110,13 +111,13 @@
       Ремонт АКПП
     </a>
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
-      <div
+      <div 
         v-if="showSpoiler && activeCatalog === 'Інформація'"
         class="CatalogBig"
         @mouseleave="showSpoiler = false"
       >
-      <button @click="goToInformation(index)"
-       class="InformationListItem"
+      <button @click="goToInformation(index)" 
+      class="catBtn"
         v-for="(information, index) in informationCat"
          :key="index">
     {{ information }}
@@ -130,7 +131,6 @@
     >
       Інформація
     </a>
-    <p class="headerNavSecItem">Курс $: <CurrentCourse></CurrentCourse> UAH</p>
   </div>
 </template>
 
@@ -172,22 +172,7 @@ export default {
      t('Catalogs.catalog.12'),
      t('Catalogs.catalog.13'),
      t('Catalogs.catalog.14'),
-     t('Catalogs.catalog.15'),
-     t('Catalogs.catalog.16'),
-     t('Catalogs.catalog.17'),
-     t('Catalogs.catalog.18'),
-     t('Catalogs.catalog.19'),
-     t('Catalogs.catalog.20'),
-     t('Catalogs.catalog.21'),
-     t('Catalogs.catalog.22'),
-     t('Catalogs.catalog.23'),
-     t('Catalogs.catalog.24'),
-     t('Catalogs.catalog.25'),
-     t('Catalogs.catalog.26'),
-     t('Catalogs.catalog.27'),
-     t('Catalogs.catalog.28'),
-     t('Catalogs.catalog.29'),
-     t('Catalogs.catalog.30'),
+
     ]
 
     const hydroblocksCat = [
@@ -304,6 +289,8 @@ export default {
   color: #ffffff;
   align-items: center;
   justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
 }
 
 .spoiler-trigger {
@@ -330,20 +317,36 @@ export default {
 }
 
 .CatalogBig > * {
-  box-shadow: 0px 4px 6px rgba(1, 35, 228, 0.1);
+  box-shadow: 0px 4px 6px rgba(1, 35, 228, 0.15);
   width: 150px;
-  border: 1px solid black;
+  border: 0;
   padding: 4px;
-  background-color: rgb(178, 209, 238);
+  background: #0391a7;
   border-radius: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color: #ffffff;
 }
 
 .CatalogAll {
   display: inline-block;
   padding: 15px;
-  font-weight: 400;
+  font-weight: 300;
+  font-size: 14px;
   line-height: 1.5;
+  
+}
+
+.catBtn{
+margin-top: 5px;
+cursor: pointer;
+transition: ease-in-out 0.4s;
+}
+
+.catBtn:hover,
+.catBtn:focus{
+  background: #025461; ;
 }
 </style>
