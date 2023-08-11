@@ -82,7 +82,7 @@ async function submitOrder() {
       })
     }
 
-    const botToken = '6524682564:AAHEo46Uim-eagPSyYijx_5s1uAK4P3qExI'
+    const botToken = '6524682564:AAFkKRbE_63m9PtEqLMvNC592VXeCY23EZM'
     const chatId = '-938605598'
 
     const message = constructMessage(orderData)
@@ -120,7 +120,7 @@ async function submitOrder() {
   } catch (error) {
     notify({
       title: 'Error',
-      text: `Error! error`
+      text: `Error! ${error.message}`
     })
   }
 }
