@@ -82,27 +82,36 @@ async function submitOrder() {
       })
     }
 
-    const botToken = '6524682564:AAHEo46Uim-eagPSyYijx_5s1uAK4P3qExI'
+    const botToken = '6524682564:AAFkKRbE_63m9PtEqLMvNC592VXeCY23EZM'
     const chatId = '-938605598'
 
     const message = constructMessage(orderData)
 
     const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
-    await axios.post(apiUrl, {
-      chat_id: chatId,
-      text: message,
-      parse_mode: 'HTML',
-      reply_markup: {
-        inline_keyboard: [
-          [
-            {
-              text: 'Взять заказ на обработку',
-              callback_data: 'take_order'
-            }
-          ]
-        ]
+
+    ;(async () => {
+      try {
+        const response = await axios.post(apiUrl, {
+          chat_id: chatId,
+          text: message,
+          parse_mode: 'HTML',
+          reply_markup: {
+            inline_keyboard: [
+              [
+                {
+                  text: 'Взять заказ на обработку',
+                  callback_data: 'take_order'
+                }
+              ]
+            ]
+          }
+        })
+
+        console.log(response.data)
+      } catch (error) {
+        console.error(error)
       }
-    })
+    })()
 
     notify({
       title: 'Successful',
@@ -120,7 +129,7 @@ async function submitOrder() {
   } catch (error) {
     notify({
       title: 'Error',
-      text: `Error! error`
+      text: `Error! ${error.message}`
     })
   }
 }
