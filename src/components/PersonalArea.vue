@@ -25,7 +25,7 @@
         </li>
       </ul>
     </div>
-    <div v-if="editingUser">
+    <div v-if="editingUser" class="edit_data_user">
       <h3>{{ $t('PersonalArea.edit') }}</h3>
       <input class="edit_info_field" placeholder="Name" type="text" v-model="editedUser.name" />
       <input class="edit_info_field" placeholder="Phone" type="text" v-model="editedUser.phone" />
@@ -33,7 +33,7 @@
       <button class="save_changes" @click="saveChanges">{{ $t('PersonalArea.save') }}</button>
       <button class="cancel_changes" @click="cancelEdit">{{ $t('PersonalArea.cancel') }}</button>
     </div>
-    <div v-else>
+    <div v-else class="history_cart">
       <p>{{ $t('PersonalArea.hisEmpty') }}</p>
     </div>
   </div>
@@ -116,13 +116,13 @@ body {
 .info_user {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   margin-left: 14px;
   font-size: 20px;
 }
 .button_edit {
   margin-top: 10px;
-  width: 100px;
+  min-width: 100px;
   height: 30px;
   background-color: #4caf50;
   color: white;
@@ -141,7 +141,7 @@ body {
 }
 .save_changes {
   margin: 5px;
-  width: 100px;
+  min-width: 100px;
   height: 30px;
   background-color: #4caf50;
   color: white;
@@ -151,12 +151,25 @@ body {
 }
 .cancel_changes {
   margin: 5px;
-  width: 100px;
+  min-width: 100px;
   height: 30px;
   background-color: #f44336;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.history_cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 14px;
+  font-size: 20px;
+}
+.edit_data_user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>
