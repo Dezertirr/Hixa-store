@@ -154,8 +154,9 @@ export default {
     }
 
     const changeLanguage = (changeLang) => {
-      locale.value = changeLang // Устанавливаем локаль с помощью экземпляра i18n
-    }
+      locale.value = changeLang; // Обновляем язык с помощью экземпляра i18n
+      localStorage.setItem('lang', changeLang); // Сохраняем выбранный язык в localStorage
+    };
 
     provide('filteredData', filteredData)
     provide('isLoggedIn', isLoggedIn)
@@ -262,12 +263,14 @@ li {
   flex-direction: row;
   justify-content: center;
   align-self: center;
+  align-items: center;
 }
 
 .headerNavSecItem {
   list-style: none;
 
   color: #bdb9b9;
+
 }
 
 .langSelect {

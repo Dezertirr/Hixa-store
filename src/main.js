@@ -1,4 +1,3 @@
-
 import './assets/main.css';
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
@@ -11,21 +10,26 @@ import { languages, defaultLocale } from './locales/index';
 import Notifications from '@kyvg/vue3-notification'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDBup_VXH-6gJf0qhuibWs1JRSomtBR6Ak",
-  authDomain: "hix-store.firebaseapp.com",
-  projectId: "hix-store",
-  storageBucket: "hix-store.appspot.com",
-  messagingSenderId: "736688927113",
-  appId: "hix-store"
+  apiKey: "...",
+  authDomain: "...",
+  projectId: "...",
+  storageBucket: "...",
+  messagingSenderId: "...",
+  appId: "..."
 };
 
 const messages = Object.assign(languages)
-const i18n = createI18n({ // Создайте экземпляр i18n перед использованием
+const i18n = createI18n({
   locale: defaultLocale,
   fallbackLocale: 'en',
-  legacy:false,
+  legacy: false,
   messages
 });
+
+const savedLanguage = localStorage.getItem('lang');
+if (savedLanguage) {
+  i18n.global.locale.value = savedLanguage;
+}
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
@@ -33,6 +37,6 @@ const auth = getAuth(firebaseApp);
 const app = createApp(App);
 app.use(createPinia());
 app.use(router);
-app.use(i18n); // Используем экземпляр i18n
+app.use(i18n);
 app.use(Notifications)
 app.mount('#app');

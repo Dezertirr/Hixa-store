@@ -47,9 +47,9 @@
     "send": "Напишіть нам",
     "returnProd": "Повернення товару",
     "buyPart": "Купити запчастини",
-    "telphoneDe": "Нім: +49 152 377 112 76</a></li>",
-    "telphonePl": "Пол: +48 5063 887 98</a></li>",
-    "telphoneUa": "Укр: +380 97 803 34 85</a></li>",
+    "telphoneDe": "Нім: +49 152 377 112 76",
+    "telphonePl": "Пол: +48 5063 887 98",
+    "telphoneUa": "Укр: +380 97 803 34 85",
     "schedule": "Робочий графік відділу продажу",
     "workTime": "Пн-пт: 9:00-18:00",
     "weekend": "Сб-нд: Вихідний",
@@ -173,6 +173,13 @@
       "Наші співробітники",
       "Про нас",
       "Вакансії"
-    ]
+    ],
+    "catalog1": "Catalog",
+    "catalog2": "Spare parts for hydroblocks",
+    "catalog3": "Cooling and filtration",
+    "catalog4": "Tools and equipment",
+    "catalog5": "Automatic transmission repair",
+    "catalog6": "Information"
+
   }
 }

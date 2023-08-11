@@ -123,6 +123,7 @@ export default {
   margin-right: 25px;
 }
 
+
 .MainCatalogTitle {
   margin: 0 auto;
 }
@@ -137,6 +138,8 @@ export default {
 
 .MainCatalogText {
   margin: 15px 0 0 15px;
+  font-weight: 400;
+  font-size: small;
 }
 
 button {

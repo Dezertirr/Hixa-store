@@ -9,8 +9,6 @@
             @click="goToCatalog"
           >
 
-            <p class="sliderText">{{ value }}</p>
-
 
           </div>
         </div>
@@ -63,6 +61,7 @@ export default {
       mySwiper = new Swiper('.swiperContainer', {
         // Swiper options here
         loop: true,
+        Autoplay: 1000,
         navigation: {
           nextEl: '.SliderBtnNext',
           prevEl: '.SliderBtnPrev'

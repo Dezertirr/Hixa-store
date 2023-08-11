@@ -64,7 +64,7 @@ export default {
 
 <style>
 .footer {
-  background: linear-gradient(to right, #222222, #555555);
+  background: linear-gradient(to right, #013f48 50%, #15575e 70%);
   color: #b0b0b0;
   padding: 15px;
 }

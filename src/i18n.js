@@ -24,12 +24,13 @@ function loadLocaleMessages() {
 
 // Определяем предустановленный язык браузера и устанавливаем его при запуске
 function detectLanguage() {
+  const savedLang = localStorage.getItem('lang');
+  if (savedLang) {
+    return savedLang;
+  }
+
   const lng = window.navigator.userLanguage || window.navigator.language;
-  const locales = require.context(
-    "./locales",
-    true,
-    /[A-Za-z0-9-_,\s]+\.json$/i
-  );
+  const locales = require.context("./locales", true, /[A-Za-z0-9-_,\s]+\.json$/i);
   const lang = locales.keys().find((key) =>
     lng.includes(key.replace("./", "").replace(".json", ""))
   );
