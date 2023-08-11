@@ -19,13 +19,14 @@
     <swiper
       :slidesPerView="6"
       :grid="{ rows: 2 }"
-      :spaceBetween="25"
+      :spaceBetween="20"
       :modules="modules"
       :direction="'horizontal'"
       class="mySwiper"
       @swiper="onSwiper"
     >
       <swiper-slide
+        class="swiper-slide cat"
         v-for="(product, index) in displayedProducts"
         :key="product.id"
         @click="goToProduct(product)"
@@ -110,12 +111,13 @@ export default {
   overflow: hidden;
 }
 
-.swiper-slide {
+.swiper-slide.cat {
   /* flex-shrink: 0; */
   width: auto;
   height: 300px;
   border: 1px solid black;
   opacity: 1;
+  max-width: 370px;
   transition: opacity 1s ease-in-out;
   border-radius: 15px;
   margin-right: 25px;
