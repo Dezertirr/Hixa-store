@@ -88,21 +88,30 @@ async function submitOrder() {
     const message = constructMessage(orderData)
 
     const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
-    await axios.post(apiUrl, {
-      chat_id: chatId,
-      text: message,
-      parse_mode: 'HTML',
-      reply_markup: {
-        inline_keyboard: [
-          [
-            {
-              text: 'Взять заказ на обработку',
-              callback_data: 'take_order'
-            }
-          ]
-        ]
+
+    ;(async () => {
+      try {
+        const response = await axios.post(apiUrl, {
+          chat_id: chatId,
+          text: message,
+          parse_mode: 'HTML',
+          reply_markup: {
+            inline_keyboard: [
+              [
+                {
+                  text: 'Взять заказ на обработку',
+                  callback_data: 'take_order'
+                }
+              ]
+            ]
+          }
+        })
+
+        console.log(response.data)
+      } catch (error) {
+        console.error(error)
       }
-    })
+    })()
 
     notify({
       title: 'Successful',
