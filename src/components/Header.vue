@@ -142,7 +142,16 @@ export default {
 
     const searchStart = () => {
       const query = searchValue.value
-      router.push({ path: 'Catalog', query: { search: query } })
+      if (query === '') {
+        notify({
+          title: `Warning`,
+          text: `Search engine cannot be empty`,
+          type: 'warning'
+        })
+      } else {
+        router.push({ path: 'Catalog', query: { search: query } }
+        )}
+      
     }
 
     const backMainPage = () => {
@@ -328,7 +337,7 @@ li {
   outline: none;
 }
 .searchBtn {
-  height: 35px;
+  height: 37px;
   width: 58px;
   margin-left: -57px;
   border-radius: 0 5px 5px 0;

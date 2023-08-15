@@ -174,12 +174,12 @@
       "Про нас",
       "Вакансії"
     ],
-    "catalog1": "Catalog",
-    "catalog2": "Spare parts for hydroblocks",
-    "catalog3": "Cooling and filtration",
-    "catalog4": "Tools and equipment",
-    "catalog5": "Automatic transmission repair",
-    "catalog6": "Information"
-
+    "catalog1": "Каталог",
+    "catalog2": "Запчастини для гідроблоків",
+    "catalog3": "Охолодження та фільтрація",
+    "catalog4": "Інструменти та обладнання",
+    "catalog5": "Ремонт АКПП",
+    "catalog6": "Інформація"
+    
   }
 }

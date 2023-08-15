@@ -4,7 +4,7 @@
       <li v-for="item in filteredData" :key="item.id" class="productItem">
         <div @click="goToProduct(item)" class="productFlex">
           <h3 class="productItemTitle">{{ item.brand }}</h3>
-          <img src="@/images/DSG-7.png" class="productItemPhoto" />
+          <img src="@/images/DSG-7.png" class="productItemPhoto" loading="lazy" />
           <p class="productItemText">{{ item.CatValue }}</p>
         </div>
         <BasketBtn @click="addBusket(item)"></BasketBtn>
@@ -74,8 +74,8 @@ const addBusket = (item) => {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background: rgb(105, 105, 105);
-  background: linear-gradient(126deg, rgba(105, 105, 105, 1) 0%, rgba(144, 144, 144, 1) 88%);
+
+  background: linear-gradient(167deg, rgba(0,151,157,1) 22%, rgba(0,97,102,1) 78%);
   border-radius: 10px;
   margin: 0 auto;
 }
@@ -88,13 +88,12 @@ const addBusket = (item) => {
 }
 
 .productItemTitle {
-  margin: 15px 105px;
+  margin: 15px 0;
 }
 
 .productItemPhoto {
   width: 225px;
   height: 200px;
-  border: 1px solid #b0b0b0;
   border-radius: 10px;
   margin: 0 auto;
   object-fit: contain ;

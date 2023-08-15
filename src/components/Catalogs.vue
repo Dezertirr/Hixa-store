@@ -22,7 +22,7 @@
       @mouseenter=";(showSpoiler = true), (activeCatalog = 'Каталог')"
       @mouseleave="showSpoiler = false"
     >
-      Каталог
+    {{ $t('Catalogs.catalog1') }}
     </a>
     <!-- Catalog 2 -->
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
@@ -45,7 +45,7 @@
       @mouseenter=";(showSpoiler = true), (activeCatalog = 'Гідроблоки')"
       @mouseleave="showSpoiler = false"
     >
-      Запчастини для гідроблоків
+    {{ $t('Catalogs.catalog2') }}
     </a>
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
       <div
@@ -67,7 +67,7 @@
       @mouseenter=";(showSpoiler = true), (activeCatalog = 'Охолодження')"
       @mouseleave="showSpoiler = false"
     >
-      Охолодження та фільтрація
+    {{ $t('Catalogs.catalog3') }}
     </a>
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
       <div
@@ -89,7 +89,7 @@
       @mouseenter=";(showSpoiler = true), (activeCatalog = 'Інструмент та обладнання')"
       @mouseleave="showSpoiler = false"
     >
-      Інструмент та обладнання
+    {{ $t('Catalogs.catalog4') }}
     </a>
 
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
@@ -108,7 +108,7 @@
       @mouseenter=";(showSpoiler = true), (activeCatalog = 'Ремонт АКПП')"
       @mouseleave="showSpoiler = false"
     >
-      Ремонт АКПП
+    {{ $t('Catalogs.catalog5') }}
     </a>
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
       <div 
@@ -129,7 +129,7 @@
       @mouseenter=";(showSpoiler = true), (activeCatalog = 'Інформація')"
       @mouseleave="showSpoiler = false"
     >
-      Інформація
+    {{ $t('Catalogs.catalog6') }}
     </a>
   </div>
 </template>
