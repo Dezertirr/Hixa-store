@@ -39,7 +39,14 @@
     "ordering": "Trwa składanie zamówienia",
     "name": "Imię:",
     "number": "Numer:",
-    "city": "Miasto:"
+    "city": "Miasto:",
+    "brand": "Nazwa produktu",
+    "value": "Wartość",
+    "quantity": "Ilość",
+    "price": "Cena",
+    "remove": "Usuń produkt",
+    "totalPrice": "Całkowita cena",
+    "orderEnd": "Wyczyść koszyk"
   },
   "Footer": {
     "info": "Informacje",

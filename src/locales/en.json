@@ -39,7 +39,15 @@
     "ordering": "Ordering",
     "name": "Name:",
     "number": "Number:",
-    "city": "City:"
+    "city": "City:",
+    "brand": "Product Name",
+    "value": "Value",
+    "quantity": "Quantity",
+    "price": "Price",
+    "remove": "Remove Product",
+    "totalPrice": "Total Price",
+    "orderEnd": "Clear Cart"
+
   },
   "Footer": {
     "info": "Information",

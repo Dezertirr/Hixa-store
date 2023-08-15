@@ -1,15 +1,37 @@
 <template>
   <div class="cart_container">
     <h2>{{ $t('Cart.title') }}</h2>
-    <ul v-if="cartItems.length > 0" class="items">
-      <li v-for="(item, index) in cartItems" :key="index">
-        <h3 v-if="item">{{ item.brand }}</h3>
-        <p v-if="item">{{ item.value }}</p>
-      </li>
-    </ul>
+    <table v-if="cartItems.length > 0" class="items">
+      <thead>
+        <tr>
+          <th>{{ $t('Cart.brand') }}</th>
+          <th>{{ $t('Cart.value') }}</th>
+          <th>{{ $t('Cart.quantity') }}</th>
+          <th>{{ $t('Cart.price') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item, index) in cartItemsWithQuantity" :key="index">
+          <td class="cartTableItem">{{ item.brand }}</td>
+          <td class="cartTableItem">{{ item.value[locale] }}</td>
+          <td class="cartTableItem">{{ item.quantity }}</td>
+          <td class="cartTableItem">{{ item.price }}</td>
+           
+            <button @click="removeItem(index)" class="submit_order">{{ $t('Cart.remove') }}</button>
+          
+        </tr>
+      </tbody>
+    </table>
     <p v-else>{{ $t('Cart.empty') }}</p>
 
+      <p v-if="cartItems.length > 0" class="total_price">
+      <span>{{ $t('Cart.totalPrice') }}:</span> {{ totalPrice }}
+      
+    </p>
+    <div class="btnPlace">
+    <button class="submit_order" @click="clearCart">{{ $t('Cart.orderEnd') }}</button>
     <button class="submit_order" @click="openModal">{{ $t('Cart.orderStart') }}</button>
+  </div>
 
     <div v-if="isModalOpen" class="modal">
       <h3>{{ $t('Cart.ordering') }}</h3>
@@ -29,7 +51,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
 import { getAuth } from 'firebase/auth'
 import { getFirestore, collection, doc, updateDoc, addDoc } from 'firebase/firestore'
@@ -46,6 +68,7 @@ const customerData = ref({
 })
 
 const { locale } = useI18n()
+const totalPrice = ref(0) // Шаг 1: Определение ref для общей стоимости
 
 onMounted(() => {
   loadCartItems()
@@ -60,9 +83,48 @@ function openModal() {
   isModalOpen.value = true
 }
 
-function closeModal() {
-  isModalOpen.value = false
+function groupItemsByBrand(items) {
+  const groupedItems = {}
+  for (const item of items) {
+    if (!groupedItems[item.brand]) {
+      groupedItems[item.brand] = []
+    }
+    groupedItems[item.brand].push(item)
+  }
+  return groupedItems
 }
+
+const cartItemsWithQuantity = computed(() => {
+  const itemsWithQuantity = [];
+  const groupedItems = groupItemsByBrand(cartItems.value);
+  let total = 0; // Инициализация общей стоимости
+
+  for (const brand in groupedItems) {
+    const items = groupedItems[brand];
+    if (items.length > 1) {
+      const totalQuantity = items.reduce((total, item) => total + 1, 0);
+      const price = items[0].price * totalQuantity; // Расчет общей стоимости для этого бренда
+      total += price; // Добавление к общей стоимости
+      itemsWithQuantity.push({
+        brand,
+        value: items[0].value,
+        quantity: totalQuantity,
+        price: price,
+      });
+    } else {
+      total += items[0].price; // Добавление к общей стоимости
+      itemsWithQuantity.push({
+        brand,
+        value: items[0].value,
+        quantity: 1,
+        price: items[0].price,
+      });
+    }
+  }
+
+  totalPrice.value = total; // Обновление ref общей стоимости
+  return itemsWithQuantity;
+})
 
 async function submitOrder() {
   customerData.value.orderId = Math.floor(Math.random() * 10000)
@@ -133,6 +195,21 @@ async function submitOrder() {
     })
   }
 }
+function clearCart() {
+  cartItems.value = []; // Очищаем массив корзины
+  totalPrice.value = 0; // Сбрасываем общую стоимость
+  localStorage.removeItem('cart'); // Удаляем корзину из локального хранилища
+}
+function removeItem(index) {
+  const removedItem = cartItems.value.splice(index, 1)[0]; // Удаляем продукт из корзины и получаем его
+  const itemPrice = removedItem.price * removedItem.quantity; // Рассчитываем стоимость удаленного продукта
+  totalPrice.value -= itemPrice; // Вычитаем стоимость удаленного продукта из общей стоимости
+  updateLocalStorage(); // Обновляем локальное хранилище
+}
+
+function updateLocalStorage() {
+  localStorage.setItem('cart', JSON.stringify(cartItems.value)); // Обновляем данные в локальном хранилище
+}
 
 function constructMessage(orderData) {
   let message = `<b>Новый заказ</b>\n\n`
@@ -162,7 +239,20 @@ function constructMessage(orderData) {
   padding: 0;
   margin: 0;
   width: 70%;
+  border-collapse:collapse; 
+  align-items: center;
 }
+
+.cartTableItem {
+  border: 1px solid black;
+  border-collapse:collapse; 
+  padding: 0 0 0 10px;
+  min-width: 60px;
+}
+
+
+
+
 .modal {
   position: fixed;
   top: 0;
@@ -217,11 +307,28 @@ function constructMessage(orderData) {
   border: none;
   cursor: pointer;
   transition: ease-in-out 0.3s;
+  margin: 10px 0 0 10px;
 }
 .submit_order:hover {
   background-color: #259eac;
 }
 .modal button.close {
   background-color: #dc3545;
+}
+.total_price {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.total_price span {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.btnPlace {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 </style>

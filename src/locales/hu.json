@@ -39,7 +39,14 @@
     "ordering": "Rendelés folyamatban",
     "name": "Név:",
     "number": "Szám:",
-    "city": "Város:"
+    "city": "Város:",
+    "brand": "Termék neve",
+    "value": "Érték",
+    "quantity": "Mennyiség",
+    "price": "Ár",
+    "remove": "Termék eltávolítása",
+    "totalPrice": "Teljes ár",
+    "orderEnd": "Kosár ürítése"
   },
   "Footer": {
     "info": "Információk",

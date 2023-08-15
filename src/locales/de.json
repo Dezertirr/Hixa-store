@@ -39,7 +39,15 @@
     "ordering": "Bestellung wird aufgegeben",
     "name": "Name:",
     "number": "Nummer:",
-    "city": "Stadt:"
+    "city": "Stadt:",
+      "brand": "Produktname",
+      "value": "Wert",
+      "quantity": "Menge",
+      "price": "Preis",
+      "remove": "Produkt entfernen",
+      "totalPrice": "Gesamtpreis",
+      "orderEnd": "Warenkorb leeren"
+  
   },
   "Footer": {
     "info": "Information",

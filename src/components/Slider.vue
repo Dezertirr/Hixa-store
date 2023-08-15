@@ -52,7 +52,7 @@ export default {
     };
 
     const goToCatalog = () => {
-      const catalog = sliderCatalog[currentIndex];
+      const catalog = sliderCatalog[currentIndex.value];
       searchStore.setSearch(catalog);
       router.push({ name: 'Catalog', query: sliderCatalog }); // Make sure 'Catalog' matches the name used in your router configuration
     };
