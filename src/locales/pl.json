@@ -29,7 +29,10 @@
     "PartNum": "numer przedmiotu",
     "ProdCode": "Kod produktu",
     "Producer": "Producent",
-    "Price": "Cena"
+    "Price": "Cena",
+    "addCart": "Dodaj produkt do koszyka",
+    "addCartText": "sztuka(y) dodane do koszyka",
+    "quantity": "Ilość"
   },
   "SomeDefaultTranslationKey": "Ten produkt jest nieograniczony",
   "Cart": {

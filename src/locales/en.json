@@ -29,7 +29,10 @@
     "PartNum": "Part number",
     "ProdCode": "Product Code",
     "Producer": "Producer",
-    "Price": "Price"
+    "Price": "Price",
+    "addCart": "Add cart product",
+    "addCartText": "item(s) added to cart",
+    "quantity": "Quantity"
   },
   "SomeDefaultTranslationKey": "This towar inlimeted",
   "Cart": {

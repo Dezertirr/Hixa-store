@@ -306,10 +306,11 @@ function constructMessage(orderData) {
   color: white;
   border: none;
   cursor: pointer;
-  transition: ease-in-out 0.3s;
+  transition: ease-in-out 0.4s;
   margin: 10px 0 0 10px;
 }
-.submit_order:hover {
+.submit_order:hover,
+.submit_order:focus{
   background-color: #259eac;
 }
 .modal button.close {

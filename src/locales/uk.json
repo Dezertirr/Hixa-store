@@ -29,7 +29,10 @@
     "PartNum": "номер запчастини",
     "ProdCode": "Код продукту",
     "Producer": "Виробник",
-    "Price": "Ціна"
+    "Price": "Ціна",
+    "addCart": "Додано товарів до кошика",
+    "addCartText": "одиниць(и) додано до кошика",
+    "quantity": "Кількість"
   },
   "SomeDefaultTranslationKey": "Цей товар необмежений",
   "Cart": {

@@ -29,7 +29,10 @@
     "PartNum": "Artikelnummer",
     "ProdCode": "Produktcode",
     "Producer": "Hersteller",
-    "Price": "Preis"
+    "Price": "Preis",
+    "addCart": "Produkt zum Warenkorb hinzufügen",
+    "addCartText": "Produkt(e) wurde(n) zum Warenkorb hinzugefügt",
+    "quantity": "Menge"
   },
   "SomeDefaultTranslationKey": "Dieses Produkt ist unbegrenzt",
   "Cart": {

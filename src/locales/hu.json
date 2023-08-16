@@ -29,7 +29,10 @@
     "PartNum": "Сikkszám",
     "ProdCode": "Termékkód",
     "Producer": "Gyártó",
-    "Price": "Ár"
+    "Price": "Ár",
+    "addCart": "Termék hozzáadása a kosárhoz",
+    "addCartText": "termék(ek) hozzáadva a kosárhoz",
+    "quantity": "Mennyiség"
   },
   "SomeDefaultTranslationKey": "Ez a termék korlátlan",
   "Cart": {

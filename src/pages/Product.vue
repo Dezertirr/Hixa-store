@@ -22,8 +22,14 @@
             <h5>{{  $t('Product.Exchange') }}</h5>
               <p class="productCode">{{  $t('Product.ProdCode') }}: {{ product.code }}</p>
 
-
-        <BasketBtn @click="addBusket(product)"></BasketBtn>
+        <div class="cartQuantity">
+          <BasketBtn @click="addBasket(product, selectedQuantity)"></BasketBtn>
+          <label>
+    {{ $t('Product.quantity') }}
+    <input type="number" v-model="selectedQuantity" min="1" >
+  </label>
+        
+      </div>
       </div>
       </div>
       </div>
@@ -40,6 +46,7 @@
   import exchangeCourse from '../services/exchangeCourse';
   import BasketBtn from '@/components/BasketBtn.vue';
   import { useI18n } from 'vue-i18n';
+import { notify } from '@kyvg/vue3-notification';
 
 
   
@@ -50,6 +57,8 @@
       const course = ref(0);
       console.log(course);
       const { t, locale } = useI18n();
+      const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      const selectedQuantity = 1
 
   
       onMounted(async () => {
@@ -70,20 +79,29 @@
         return getProductById(id);
       });
   
-      const addBusket = (product) => {
-        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-        cartItems.push(product);
-        localStorage.setItem('cart', JSON.stringify(cartItems));
-        console.log('Товар добавлен в корзину', product);
-        console.log(product.id);
-        console.log(product.name);
-        console.log(product.brand);
-      };
+      const addBasket = (product, quantity) => {
+  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  for (let i = 0; i < quantity; i++) {
+    cartItems.push(product);
+  }
+  
+  localStorage.setItem('cart', JSON.stringify(cartItems));
+  
+ 
+
+  notify({
+      title: `${t('Product.addCart')}`,
+      text: `${quantity} ${t('Product.addCartText')}`, product,
+      type: 'success'
+    })
+};
   
       return {
         product,
-        addBusket,
-        locale
+        addBasket,
+        locale,
+        selectedQuantity
       };
     },
     components: {
@@ -144,6 +162,10 @@ object-fit: contain ;
     flex-direction: column;
     flex-wrap: wrap;
     margin-top: 80px;
+}
+.cartQuantity{
+  display: flex;
+  align-items: center;
 }
 
   </style>
