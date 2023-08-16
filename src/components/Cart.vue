@@ -81,6 +81,10 @@ function openModal() {
   isModalOpen.value = true
 }
 
+function closeModal() {
+  isModalOpen.value = false
+}
+
 function groupItemsByBrand(items) {
   const groupedItems = {}
   for (const item of items) {
@@ -194,19 +198,22 @@ async function submitOrder() {
   }
 }
 function clearCart() {
-  cartItems.value = [] // Очищаем массив корзины
-  totalPrice.value = 0 // Сбрасываем общую стоимость
-  localStorage.removeItem('cart') // Удаляем корзину из локального хранилища
+  cartItems.value = []
+  totalPrice.value = 0
+  localStorage.removeItem('cart')
 }
-function removeItem(index) {
-  const removedItem = cartItems.value.splice(index, 1)[0] // Удаляем продукт из корзины и получаем его
-  const itemPrice = removedItem.price * removedItem.quantity // Рассчитываем стоимость удаленного продукта
-  totalPrice.value -= itemPrice // Вычитаем стоимость удаленного продукта из общей стоимости
-  updateLocalStorage() // Обновляем локальное хранилище
+function removeItem(item) {
+  const index = cartItems.value.findIndex((cartItem) => cartItem.brand === item.brand)
+  if (index !== -1) {
+    const removedItem = cartItems.value.splice(index, 1)[0]
+    const itemPrice = removedItem.price * removedItem.quantity
+    totalPrice.value -= itemPrice
+    updateLocalStorage()
+  }
 }
 
 function updateLocalStorage() {
-  localStorage.setItem('cart', JSON.stringify(cartItems.value)) // Обновляем данные в локальном хранилище
+  localStorage.setItem('cart', JSON.stringify(cartItems.value))
 }
 
 function constructMessage(orderData) {
@@ -301,10 +308,11 @@ function constructMessage(orderData) {
   color: white;
   border: none;
   cursor: pointer;
-  transition: ease-in-out 0.3s;
+  transition: ease-in-out 0.4s;
   margin: 10px 0 0 10px;
 }
-.submit_order:hover {
+.submit_order:hover,
+.submit_order:focus {
   background-color: #259eac;
 }
 .modal button.close {
