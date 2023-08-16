@@ -16,22 +16,20 @@
           <td class="cartTableItem">{{ item.value[locale] }}</td>
           <td class="cartTableItem">{{ item.quantity }}</td>
           <td class="cartTableItem">{{ item.price }}</td>
-           
-            <button @click="removeItem(index)" class="submit_order">{{ $t('Cart.remove') }}</button>
-          
+
+          <button @click="removeItem(index)" class="submit_order">{{ $t('Cart.remove') }}</button>
         </tr>
       </tbody>
     </table>
     <p v-else>{{ $t('Cart.empty') }}</p>
 
-      <p v-if="cartItems.length > 0" class="total_price">
+    <p v-if="cartItems.length > 0" class="total_price">
       <span>{{ $t('Cart.totalPrice') }}:</span> {{ totalPrice }}
-      
     </p>
     <div class="btnPlace">
-    <button class="submit_order" @click="clearCart">{{ $t('Cart.orderEnd') }}</button>
-    <button class="submit_order" @click="openModal">{{ $t('Cart.orderStart') }}</button>
-  </div>
+      <button class="submit_order" @click="clearCart">{{ $t('Cart.orderEnd') }}</button>
+      <button class="submit_order" @click="openModal">{{ $t('Cart.orderStart') }}</button>
+    </div>
 
     <div v-if="isModalOpen" class="modal">
       <h3>{{ $t('Cart.ordering') }}</h3>
@@ -95,35 +93,35 @@ function groupItemsByBrand(items) {
 }
 
 const cartItemsWithQuantity = computed(() => {
-  const itemsWithQuantity = [];
-  const groupedItems = groupItemsByBrand(cartItems.value);
-  let total = 0; // Инициализация общей стоимости
+  const itemsWithQuantity = []
+  const groupedItems = groupItemsByBrand(cartItems.value)
+  let total = 0 // Инициализация общей стоимости
 
   for (const brand in groupedItems) {
-    const items = groupedItems[brand];
+    const items = groupedItems[brand]
     if (items.length > 1) {
-      const totalQuantity = items.reduce((total, item) => total + 1, 0);
-      const price = items[0].price * totalQuantity; // Расчет общей стоимости для этого бренда
-      total += price; // Добавление к общей стоимости
+      const totalQuantity = items.reduce((total, item) => total + 1, 0)
+      const price = items[0].price * totalQuantity // Расчет общей стоимости для этого бренда
+      total += price // Добавление к общей стоимости
       itemsWithQuantity.push({
         brand,
         value: items[0].value,
         quantity: totalQuantity,
-        price: price,
-      });
+        price: price
+      })
     } else {
-      total += items[0].price; // Добавление к общей стоимости
+      total += items[0].price // Добавление к общей стоимости
       itemsWithQuantity.push({
         brand,
         value: items[0].value,
         quantity: 1,
-        price: items[0].price,
-      });
+        price: items[0].price
+      })
     }
   }
 
-  totalPrice.value = total; // Обновление ref общей стоимости
-  return itemsWithQuantity;
+  totalPrice.value = total // Обновление ref общей стоимости
+  return itemsWithQuantity
 })
 
 async function submitOrder() {
@@ -144,7 +142,7 @@ async function submitOrder() {
       })
     }
 
-    const botToken = '6524682564:AAFkKRbE_63m9PtEqLMvNC592VXeCY23EZM'
+    const botToken = '6524682564:AAGeWt9agggxSVVyUC9VD_IHAZKLSV52Ekg'
     const chatId = '-938605598'
 
     const message = constructMessage(orderData)
@@ -196,19 +194,19 @@ async function submitOrder() {
   }
 }
 function clearCart() {
-  cartItems.value = []; // Очищаем массив корзины
-  totalPrice.value = 0; // Сбрасываем общую стоимость
-  localStorage.removeItem('cart'); // Удаляем корзину из локального хранилища
+  cartItems.value = [] // Очищаем массив корзины
+  totalPrice.value = 0 // Сбрасываем общую стоимость
+  localStorage.removeItem('cart') // Удаляем корзину из локального хранилища
 }
 function removeItem(index) {
-  const removedItem = cartItems.value.splice(index, 1)[0]; // Удаляем продукт из корзины и получаем его
-  const itemPrice = removedItem.price * removedItem.quantity; // Рассчитываем стоимость удаленного продукта
-  totalPrice.value -= itemPrice; // Вычитаем стоимость удаленного продукта из общей стоимости
-  updateLocalStorage(); // Обновляем локальное хранилище
+  const removedItem = cartItems.value.splice(index, 1)[0] // Удаляем продукт из корзины и получаем его
+  const itemPrice = removedItem.price * removedItem.quantity // Рассчитываем стоимость удаленного продукта
+  totalPrice.value -= itemPrice // Вычитаем стоимость удаленного продукта из общей стоимости
+  updateLocalStorage() // Обновляем локальное хранилище
 }
 
 function updateLocalStorage() {
-  localStorage.setItem('cart', JSON.stringify(cartItems.value)); // Обновляем данные в локальном хранилище
+  localStorage.setItem('cart', JSON.stringify(cartItems.value)) // Обновляем данные в локальном хранилище
 }
 
 function constructMessage(orderData) {
@@ -239,19 +237,16 @@ function constructMessage(orderData) {
   padding: 0;
   margin: 0;
   width: 70%;
-  border-collapse:collapse; 
+  border-collapse: collapse;
   align-items: center;
 }
 
 .cartTableItem {
   border: 1px solid black;
-  border-collapse:collapse; 
+  border-collapse: collapse;
   padding: 0 0 0 10px;
   min-width: 60px;
 }
-
-
-
 
 .modal {
   position: fixed;
