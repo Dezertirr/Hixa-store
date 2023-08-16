@@ -17,7 +17,7 @@
           <td class="cartTableItem">{{ item.quantity }}</td>
           <td class="cartTableItem">{{ item.price }}</td>
            
-            <button @click="removeItem(index)" class="submit_order">{{ $t('Cart.remove') }}</button>
+          <button @click="removeItem(item)" class="submit_order">{{ $t('Cart.remove') }}</button>
           
         </tr>
       </tbody>
@@ -83,6 +83,10 @@ function openModal() {
   isModalOpen.value = true
 }
 
+function closeModal() {
+  isModalOpen.value = false
+}
+
 function groupItemsByBrand(items) {
   const groupedItems = {}
   for (const item of items) {
@@ -144,7 +148,7 @@ async function submitOrder() {
       })
     }
 
-    const botToken = '6524682564:AAFkKRbE_63m9PtEqLMvNC592VXeCY23EZM'
+    const botToken = '6524682564:AAGeWt9agggxSVVyUC9VD_IHAZKLSV52Ekg'
     const chatId = '-938605598'
 
     const message = constructMessage(orderData)
@@ -196,19 +200,22 @@ async function submitOrder() {
   }
 }
 function clearCart() {
-  cartItems.value = []; // Очищаем массив корзины
-  totalPrice.value = 0; // Сбрасываем общую стоимость
-  localStorage.removeItem('cart'); // Удаляем корзину из локального хранилища
+  cartItems.value = []; 
+  totalPrice.value = 0; 
+  localStorage.removeItem('cart'); 
 }
-function removeItem(index) {
-  const removedItem = cartItems.value.splice(index, 1)[0]; // Удаляем продукт из корзины и получаем его
-  const itemPrice = removedItem.price * removedItem.quantity; // Рассчитываем стоимость удаленного продукта
-  totalPrice.value -= itemPrice; // Вычитаем стоимость удаленного продукта из общей стоимости
-  updateLocalStorage(); // Обновляем локальное хранилище
+function removeItem(item) {
+  const index = cartItems.value.findIndex(cartItem => cartItem.brand === item.brand);
+  if (index !== -1) {
+    const removedItem = cartItems.value.splice(index, 1)[0];
+    const itemPrice = removedItem.price * removedItem.quantity;
+    totalPrice.value -= itemPrice;
+    updateLocalStorage();
+  }
 }
 
 function updateLocalStorage() {
-  localStorage.setItem('cart', JSON.stringify(cartItems.value)); // Обновляем данные в локальном хранилище
+  localStorage.setItem('cart', JSON.stringify(cartItems.value)); 
 }
 
 function constructMessage(orderData) {
