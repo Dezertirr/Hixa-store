@@ -16,22 +16,20 @@
           <td class="cartTableItem">{{ item.value[locale] }}</td>
           <td class="cartTableItem">{{ item.quantity }}</td>
           <td class="cartTableItem">{{ item.price }}</td>
-           
-          <button @click="removeItem(item)" class="submit_order">{{ $t('Cart.remove') }}</button>
-          
+
+          <button @click="removeItem(index)" class="submit_order">{{ $t('Cart.remove') }}</button>
         </tr>
       </tbody>
     </table>
     <p v-else>{{ $t('Cart.empty') }}</p>
 
-      <p v-if="cartItems.length > 0" class="total_price">
+    <p v-if="cartItems.length > 0" class="total_price">
       <span>{{ $t('Cart.totalPrice') }}:</span> {{ totalPrice }}
-      
     </p>
     <div class="btnPlace">
-    <button class="submit_order" @click="clearCart">{{ $t('Cart.orderEnd') }}</button>
-    <button class="submit_order" @click="openModal">{{ $t('Cart.orderStart') }}</button>
-  </div>
+      <button class="submit_order" @click="clearCart">{{ $t('Cart.orderEnd') }}</button>
+      <button class="submit_order" @click="openModal">{{ $t('Cart.orderStart') }}</button>
+    </div>
 
     <div v-if="isModalOpen" class="modal">
       <h3>{{ $t('Cart.ordering') }}</h3>
@@ -99,35 +97,35 @@ function groupItemsByBrand(items) {
 }
 
 const cartItemsWithQuantity = computed(() => {
-  const itemsWithQuantity = [];
-  const groupedItems = groupItemsByBrand(cartItems.value);
-  let total = 0; // Инициализация общей стоимости
+  const itemsWithQuantity = []
+  const groupedItems = groupItemsByBrand(cartItems.value)
+  let total = 0 // Инициализация общей стоимости
 
   for (const brand in groupedItems) {
-    const items = groupedItems[brand];
+    const items = groupedItems[brand]
     if (items.length > 1) {
-      const totalQuantity = items.reduce((total, item) => total + 1, 0);
-      const price = items[0].price * totalQuantity; // Расчет общей стоимости для этого бренда
-      total += price; // Добавление к общей стоимости
+      const totalQuantity = items.reduce((total, item) => total + 1, 0)
+      const price = items[0].price * totalQuantity // Расчет общей стоимости для этого бренда
+      total += price // Добавление к общей стоимости
       itemsWithQuantity.push({
         brand,
         value: items[0].value,
         quantity: totalQuantity,
-        price: price,
-      });
+        price: price
+      })
     } else {
-      total += items[0].price; // Добавление к общей стоимости
+      total += items[0].price // Добавление к общей стоимости
       itemsWithQuantity.push({
         brand,
         value: items[0].value,
         quantity: 1,
-        price: items[0].price,
-      });
+        price: items[0].price
+      })
     }
   }
 
-  totalPrice.value = total; // Обновление ref общей стоимости
-  return itemsWithQuantity;
+  totalPrice.value = total // Обновление ref общей стоимости
+  return itemsWithQuantity
 })
 
 async function submitOrder() {
@@ -200,22 +198,22 @@ async function submitOrder() {
   }
 }
 function clearCart() {
-  cartItems.value = []; 
-  totalPrice.value = 0; 
-  localStorage.removeItem('cart'); 
+  cartItems.value = []
+  totalPrice.value = 0
+  localStorage.removeItem('cart')
 }
 function removeItem(item) {
-  const index = cartItems.value.findIndex(cartItem => cartItem.brand === item.brand);
+  const index = cartItems.value.findIndex((cartItem) => cartItem.brand === item.brand)
   if (index !== -1) {
-    const removedItem = cartItems.value.splice(index, 1)[0];
-    const itemPrice = removedItem.price * removedItem.quantity;
-    totalPrice.value -= itemPrice;
-    updateLocalStorage();
+    const removedItem = cartItems.value.splice(index, 1)[0]
+    const itemPrice = removedItem.price * removedItem.quantity
+    totalPrice.value -= itemPrice
+    updateLocalStorage()
   }
 }
 
 function updateLocalStorage() {
-  localStorage.setItem('cart', JSON.stringify(cartItems.value)); 
+  localStorage.setItem('cart', JSON.stringify(cartItems.value))
 }
 
 function constructMessage(orderData) {
@@ -246,19 +244,16 @@ function constructMessage(orderData) {
   padding: 0;
   margin: 0;
   width: 70%;
-  border-collapse:collapse; 
+  border-collapse: collapse;
   align-items: center;
 }
 
 .cartTableItem {
   border: 1px solid black;
-  border-collapse:collapse; 
+  border-collapse: collapse;
   padding: 0 0 0 10px;
   min-width: 60px;
 }
-
-
-
 
 .modal {
   position: fixed;
@@ -317,7 +312,7 @@ function constructMessage(orderData) {
   margin: 10px 0 0 10px;
 }
 .submit_order:hover,
-.submit_order:focus{
+.submit_order:focus {
   background-color: #259eac;
 }
 .modal button.close {
