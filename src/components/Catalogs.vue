@@ -334,9 +334,15 @@ export default {
   display: inline-block;
   padding: 15px;
   font-weight: 300;
-  font-size: 14px;
-  line-height: 1.5;
-  
+  font-size: 12px;
+  line-height: 1.3;
+}
+@media only screen and (min-width: 1200px) {
+  .CatalogAll {
+    padding: 15px;
+font-size: 14px;
+line-height: 1.5;
+  }
 }
 
 .catBtn{

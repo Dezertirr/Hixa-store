@@ -15,28 +15,27 @@
 </template>
 
 <script setup>
-import { ref, computed, defineProps } from 'vue';
-import jsonArray from '../services/Catalog.json';
+import { ref } from 'vue';
 import { useSearchStore } from '../stores/counter';
 import { useRouter } from 'vue-router';
 import BasketBtn from '@/components/BasketBtn.vue';
 
-const props = defineProps();
 const searchStore = useSearchStore();
 const router = useRouter();
 
-const filteredData = computed(() => {
-  const searchText = searchStore.getSearch().toLowerCase();
-  return jsonArray.filter((item) => item.name.toLowerCase().includes(searchText));
-});
+const filteredData = ref([]);
 
-router.afterEach((to) => {
-  if (to.query.search) {
-    searchStore.setSearch(to.query.search);
-  } else {
-    searchStore.setSearch('');
+
+const fetchProducts = async () => {
+  try {
+    const response = await searchStore.fetchProducts(); 
+    filteredData.value = response; 
+  } catch (error) {
+    console.error('Ошибка при загрузке данных с бекенда:', error);
   }
-});
+};
+
+fetchProducts(); 
 
 const goToProduct = (item) => {
   router.push({ path: '/Product', query: { id: item.id } });
@@ -52,10 +51,7 @@ const addBusket = (item) => {
   console.log(item.name);
   console.log(item.brand);
 };
-
 </script>
-
-
 <style scoped>
 .productList {
   display: flex;

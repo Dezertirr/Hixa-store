@@ -14,7 +14,7 @@
         </ul>
       </div>
       <div class="InformationTextBorder">
-        <p>{{ selectedInformation }}</p>
+        <p class="InformationText">{{ selectedInformation }}</p>
       </div>
     </div>
   </template>
@@ -55,10 +55,21 @@
   }
 
   .InformationBar {
-    background-color: #116975;
+    background: linear-gradient(to right, #013f48 30%, #15575e 70%);
     margin: 15px;
     border-radius: 15px;
-    max-height: 335px;
+    max-height: 500px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .InformationBar {
+      font-weight: 400;
+  font-size: 14px;
+    }
   }
 
   .InformationList {
@@ -73,6 +84,17 @@
 
   .InformationTextBorder {
     max-width: 780px;
+  }
+  .InformationText {
+    font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  }
+  @media only screen and (min-width: 1200px) {
+    .InformationText {
+      font-weight: 400;
+  font-size: 14px;
+    }
   }
 
 </style>

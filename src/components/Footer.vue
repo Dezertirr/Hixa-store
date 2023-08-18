@@ -11,7 +11,7 @@
       </li>
       <li class="listItemFooter">
         <h4>{{ $t('Footer.buyPart') }}</h4>
-        <ul>
+        <ul class="listTeleph">
           <li class="listTel">
             <a tel="+4915237711276">{{ $t('Footer.telphoneDe') }}</a>
           </li>
@@ -67,6 +67,13 @@ export default {
   background: linear-gradient(to right, #013f48 50%, #15575e 70%);
   color: #b0b0b0;
   padding: 15px;
+  font-size: 12px;
+}
+@media only screen and (min-width: 1200px) {
+  .footer {
+    padding: 15px;
+    font-size: 14px;
+  }
 }
 .footerList {
   list-style: none;
@@ -86,11 +93,20 @@ export default {
 }
 .listTel {
   list-style: none;
-  margin-top: 8px;
+  margin-top: 6px;
+    margin-left: 4px;
+    font-size: 12px;
+    width: 136px;
+}
+@media only screen and (min-width: 1200px) {
+  .listTel{
+    margin-top: 8px;
   margin-left: 18px;
+  }
 }
 .listWork {
   list-style: none;
+  width: 150px;
 }
 
 .listItemWork {

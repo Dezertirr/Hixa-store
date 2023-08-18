@@ -1,6 +1,6 @@
 <template>
   <div v-if="product">
-      <h1>{{product.part[locale]}}</h1>
+      <h1 class="titleProd">{{product.part[locale]}}</h1>
       
       <div class="productCard">
         <img class="productImg" src="@/images/DSG-7.png"/>
@@ -11,10 +11,9 @@
             
         <p class="productPrice"> {{  $t('Product.Price') }}:${{ product.price }}</p>
       </div>
-      <p>
-        {{  $t('Product.Detail') }}</p>
-        <p>{{ product.value[locale] }}</p>
-        <p>{{  $t('Product.PartNum') }}: {{ product.numPart }}</p>
+      <p class="productText">{{  $t('Product.Detail') }}</p>
+        <p class="productText">{{ product.value[locale] }}</p>
+        <p class="productText">{{  $t('Product.PartNum') }}: {{ product.numPart }}</p>
         <div class="productCart">
         
         <h5>{{  $t('Product.Warning') }}</h5>
@@ -26,7 +25,7 @@
           <BasketBtn @click="addBasket(product, selectedQuantity)"></BasketBtn>
           <label>
     {{ $t('Product.quantity') }}
-    <input type="number" v-model="selectedQuantity" min="1" >
+    <input type="number" v-model="selectedQuantity" min="1" class="cartQuantityInput">
   </label>
         
       </div>
@@ -112,18 +111,34 @@ import { notify } from '@kyvg/vue3-notification';
   
   
   <style scoped>
+  .titleProd {
+    font-size: 22px;
+  }
   .productCard {
    margin: 30px auto;
    max-width: 1200px;
    border: 1px solid black;
-   display: flex;
+   display: inline-block;
+  }
+  @media only screen and (min-width: 1200px) {
+    .productCard {
+      display: flex;
+    }
   }
 
 .productImg {
-margin:15px;
-width: 450px;
-height: 450px;
+  display: flex;
+margin:15px auto ;
+width: 400px;
+height: 400px;
 object-fit: contain ;
+}
+@media only screen and (min-width: 1200px) {
+  .productImg {
+    margin:15px ;
+    width: 450px;
+height: 450px;
+  }
 }
 
 .proudctInfo {
@@ -133,8 +148,13 @@ object-fit: contain ;
 .productHeader {
   display: flex;
     justify-content: space-between;
-    margin: 0 30px;
+    margin: 0 45px;
+    margin-bottom: 40px;
+}
+@media only screen and (min-width: 1200px) {
+  .productHeader {
     margin-bottom: 80px;
+  }
 }
 
 
@@ -144,6 +164,9 @@ object-fit: contain ;
 
 .productPrice {
 
+}
+.productText {
+  margin: 0 45px 25px 15px;
 }
 
 .productFor {
@@ -162,10 +185,23 @@ object-fit: contain ;
     flex-direction: column;
     flex-wrap: wrap;
     margin-top: 80px;
+    margin: 0 45px 0 15px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .productCart {
+    
+  }
 }
 .cartQuantity{
   display: flex;
   align-items: center;
+
+}
+
+.cartQuantityInput{
+  height: 25px;
+  border-radius: 15px;
 }
 
   </style>

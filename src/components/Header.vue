@@ -55,7 +55,7 @@
     </div>
     <div>
       <div class="SearchLine">
-        <a @click="backMainPage" class="logo"><img src="@/images/logo.svg" /></a>
+        <a @click="backMainPage" class="logo"><img class="logo" src="@/images/logo.svg" /></a>
         <form @submit.prevent="searchStart">
           <input v-model="searchValue" :placeholder="$t('searchPlaceholder')" class="searchInput" />
           <button type="submit" class="searchBtn">{{ $t('searchButton') }}</button>
@@ -218,12 +218,25 @@ export default {
   text-align: center;
   justify-content: center;
   cursor: pointer;
+  padding: 8px 8px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: #ffffff;
+  transition: ease-in-out 0.4s;
+}
+@media only screen and (min-width: 1200px) {
+  .language {
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
   padding: 10px 10px;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #ffffff;
   transition: ease-in-out 0.4s;
+}
 }
 li {
   list-style: none;
@@ -251,15 +264,23 @@ li {
 }
 
 .headerNatItemBtn {
-  padding: 15px 10px;
+  padding: 12px 4px;
   background: inherit;
   border: 0;
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
-  font-weight: 400;
+  font-weight: 300;
+  font-size: 12px;
   margin: 0;
   transition: ease-in-out 0.4s;
   cursor: pointer;
+}
+@media only screen and (min-width: 1200px) {
+  .headerNatItemBtn{ 
+    padding: 15px 10px;
+    font-weight: 400;
+    
+  }
 }
 
 .headerNatItemBtn:hover,
@@ -286,11 +307,19 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px 5px;
+  padding: 4px 4px;
   font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
+  font-weight: 300;
+  font-size: 12px;
   color: #ffffff;
+}
+
+@media only screen and (min-width: 1200px) {
+  .langSelect {
+    padding: 5px 5px;
+    font-weight: 400;
+  font-size: 14px;
+  }
 }
 
 .personalArea {
@@ -299,12 +328,21 @@ li {
   background: #013f48;
   border: none;
   font-family: 'Poppins', sans-serif;
-  font-weight: 400;
+  font-weight: 300;
+  font-size:12px ;
   color: #ffffff;
-  padding: 15px;
-  margin: 0 10px 0 10px;
+  padding: 16px 8px;
+  margin: 0 5px 0 0;
   cursor: pointer;
   transition: ease-in-out 0.4s;
+}
+@media only screen and (min-width: 1200px) {
+  .btnAuth {
+    font-weight: 400;
+padding: 15px;
+margin: 0 10px 0 10px;
+    
+  }
 }
 
 .btnAuth:hover,
@@ -313,7 +351,14 @@ li {
 }
 
 .logo {
+  height: 50px;
+
   cursor: pointer;
+}
+@media only screen and (min-width: 1200px) {
+   .logo {
+    height: 72px;
+  }
 }
 
 .SearchLine {
@@ -324,30 +369,48 @@ li {
 }
 
 .searchInput {
-  width: 400px;
-  height: 35px;
+  width: 300px;
+  height: 30px;
   border: 0;
   border-radius: 5px;
-  padding-left: 15px;
+  padding-left: 10px;
   font-family: 'Poppins', sans-serif;
-  font-weight: 400;
+  font-weight: 300;
+}
+
+@media only screen and (min-width: 1200px) {
+  .searchInput {
+    width: 400px;
+  height: 35px;
+padding-left: 15px;
+font-weight: 400;
+  }
 }
 .searchInput:hover,
 .searchInput:focus {
   outline: none;
 }
 .searchBtn {
-  height: 37px;
+  height: 32px;
   width: 58px;
   margin-left: -57px;
   border-radius: 0 5px 5px 0;
   background: #027081;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
+  font-size: 12px;
   color: #ffffff;
   border: 0;
   cursor: pointer;
   transition: ease-in-out 0.4s;
+}
+@media only screen and (min-width: 1200px) {
+  .searchBtn {
+    height: 37px;
+width: 58px;
+margin-left: -57px;
+  font-weight: 300;
+  }
 }
 .searchBtn:focus,
 .searchBtn:hover {
@@ -359,6 +422,12 @@ li {
   background: none;
   cursor: pointer;
   transition: ease-in-out 0.4s;
+  height: 30px;
+}
+@media only screen and (min-width: 1200px) {
+  .cartBtn{
+    height: 34px;
+  }
 }
 .cartBtn:hover,
 .cartBtn:focus {
