@@ -3,30 +3,25 @@
     <div class="sideBar">
       <ul class="headerMainNav">
         <li class="headerNavItem">
-          <button type="button" @click="testClick" class="headerNatItemBtn">
-            {{ $t('ourAddress') }}
-          </button>
-        </li>
-        <li class="headerNavItem">
-          <button type="button" @click="testClick" class="headerNatItemBtn">
-            {{ $t('workingHours') }}
-          </button>
-        </li>
-        <li class="headerNavItem">
-          <button type="button" @click="testClick" class="headerNatItemBtn">
-            {{ $t('delivery') }}
-          </button>
-        </li>
-        <li class="headerNavItem">
-          <button type="button" @click="testClick" class="headerNatItemBtn">
-            {{ $t('payment') }}
-          </button>
-        </li>
-        <li class="headerNavItem">
-          <button type="button" @click="testClick" class="headerNatItemBtn">
-            {{ $t('reviews') }}
-          </button>
-        </li>
+          <router-link to="#footer" class="headerNatItemBtn" @click="scrollToSection('footer')">
+  {{ $t('ourAddress') }}
+</router-link>
+</li>
+<li class="headerNavItem">
+<router-link to="#footer" class="headerNatItemBtn" @click="scrollToSection('footer')">
+  {{ $t('workingHours') }}
+</router-link>
+</li>
+<li class="headerNavItem">
+  <a  class="headerNatItemBtn" @click="goToInformation(1)">
+    {{ $t('delivery') }}
+  </a>
+</li>
+<li class="headerNavItem">
+  <a  class="headerNatItemBtn" @click="goToInformation(2)">
+    {{ $t('payment') }}
+  </a>
+</li>
       </ul>
       <ul class="headerNavSec">
         <li class="headerNavSecItem">
@@ -74,7 +69,7 @@ import { ref, onMounted, computed, watch, provide } from 'vue'
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
 import { getFirestore, collection, addDoc } from 'firebase/firestore'
 import Catalogs from './Catalogs.vue'
-import jsonArray from '../services/Catalog.json'
+import { fetchProducts } from '@/services/ProductAPI'
 import { useSearchStore } from '../stores/counter'
 import { useRouter } from 'vue-router'
 
@@ -84,7 +79,6 @@ import { notify } from '@kyvg/vue3-notification'
 export default {
   setup() {
     const search = ref('')
-    const jsonData = jsonArray
     const searchStore = useSearchStore()
     const router = useRouter()
     const searchValue = ref('')
@@ -98,7 +92,7 @@ export default {
 
     const filteredData = computed(() => {
       const searchText = searchStore.getSearch().toLowerCase()
-      return jsonData.filter((item) => item.name.toLowerCase().includes(searchText))
+      return filteredData.value.filter((item) => item.name.toLowerCase().includes(searchText))
     })
 
     const goToLogin = () => {
@@ -108,6 +102,18 @@ export default {
     const goToRegistration = () => {
       router.push('/register')
     }
+
+    const goToInformation = (index) => {
+      router.push({ path: 'Info' });
+      
+    };
+
+    const scrollToSection = (sectionId) => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
 
     onMounted(() => {
       search.value = searchStore.getSearch()
@@ -140,19 +146,48 @@ export default {
       searchStore.setSearch(newValue)
     })
 
-    const searchStart = () => {
-      const query = searchValue.value
-      if (query === '') {
+    const searchStart = async () => {
+  const query = searchValue.value;
+  if (query === '') {
+    notify({
+      title: `Warning`,
+      text: `Search engine cannot be empty`,
+      type: 'warning'
+    });
+  } else {
+    try {
+      const products = await fetchProducts(); // Получаем список продуктов из API
+      console.log(products); // Убедитесь, что данные загружены корректно
+
+      const searchText = query.toLowerCase();
+      const filteredProducts = products.filter(item => {
+        if (typeof item.brand === 'string') {
+          return item.brand.toLowerCase().includes(searchText);
+        }
+        return false;
+      });
+
+      if (filteredProducts.length === 0) {
         notify({
-          title: `Warning`,
-          text: `Search engine cannot be empty`,
+          title: `No results`,
+          text: `No products found`,
           type: 'warning'
-        })
+        });
       } else {
-        router.push({ path: 'Catalog', query: { search: query } }
-        )}
-      
+        // Переход на страницу Catalog с передачей параметра поиска
+        router.push({ path: 'Catalog', query: { search: query } });
+      }
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      notify({
+        title: `Error`,
+        text: `Error fetching products`,
+        type: 'error'
+      });
     }
+  }
+};
+
 
     const backMainPage = () => {
       router.push('/')
@@ -163,8 +198,8 @@ export default {
     }
 
     const changeLanguage = (changeLang) => {
-      locale.value = changeLang; // Обновляем язык с помощью экземпляра i18n
-      localStorage.setItem('lang', changeLang); // Сохраняем выбранный язык в localStorage
+      locale.value = changeLang; 
+      localStorage.setItem('lang', changeLang); 
     };
 
     provide('filteredData', filteredData)
@@ -191,7 +226,6 @@ export default {
 
     return {
       search,
-      jsonData,
       searchStore,
       router,
       searchValue,
@@ -205,7 +239,9 @@ export default {
       searchStart,
       backMainPage,
       testClick,
-      changeLanguage
+      changeLanguage,
+      scrollToSection,
+      goToInformation
     }
   },
   components: {
@@ -434,9 +470,15 @@ margin-left: -57px;
   scale: 1.25;
 }
 .personalArea {
-  text-decoration: underline;
+  text-decoration: none;
   color: white;
   cursor: pointer;
+  font-size: 12px;
+}
+@media only screen and (min-width: 1200px) {
+  .personalArea {
+    font-size: 14px;
+  }
 }
 .personalArea_logout {
   padding: 10px;
@@ -444,7 +486,16 @@ margin-left: -57px;
   cursor: pointer;
   background: #013f48;
   border-color: transparent;
+  padding: 15px 8px;
   margin: 0 10px 0 10px;
+
+}
+@media only screen and (min-width: 1200px) {
+.personalArea_logout{
+
+  margin: 0 10px 0 10px;
+  padding: 10px;
+  }
 }
 .personalArea_logout:hover {
   background: #027081;

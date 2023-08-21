@@ -38,12 +38,12 @@
       };
     },
     methods: {
-      showInformation(index) {
-        this.selectedInformation = this.Information[index];
-      }
+    showInformation(index) {
+      this.selectedInformation = this.Information[index];
     }
-  };
-  </script>
+  }
+};
+</script>
   
   <style>
   .InformationSide {

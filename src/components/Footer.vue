@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer" id='footer'>
     <ul class="footerList">
       <li class="listItemFooter">
         <h4>{{ $t('Footer.info') }}</h4>

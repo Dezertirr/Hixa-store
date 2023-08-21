@@ -17,9 +17,9 @@
       </svg>
     </button>
     <swiper
-      :slidesPerView="6"
+      :slides-per-view="slidesPerView"
       :grid="{ rows: 2 }"
-      :spaceBetween="20"
+      :space-between="20"
       :modules="modules"
       :direction="'horizontal'"
       class="mySwiper"
@@ -60,12 +60,12 @@
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/grid'
+import 'swiper/css/navigation'
 
 import jsonArray from '@/services/MainCatalog.json'
-import { ref, computed, onMounted } from 'vue'
+import { onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-
-import { Grid } from 'swiper/modules'
+import { Grid, Navigation } from 'swiper/modules'
 
 export default {
   components: {
@@ -75,8 +75,8 @@ export default {
   setup() {
     const route = useRoute()
     const router = useRouter()
-    const products = ref(jsonArray.map((product) => ({ ...product })))
-    const displayedProducts = computed(() => products.value)
+    const products = jsonArray.map((product) => ({ ...product }))
+    const displayedProducts = ref(products)
     const onSwiper = (swiperInstance) => {
       swiper.value = swiperInstance
     }
@@ -85,19 +85,49 @@ export default {
     }
 
     const swiper = ref(null)
-    const modules = [Grid]
+    const modules = [Grid, Navigation]
+    const slidesPerView = ref(getSlidesPerView())
+
+    function getSlidesPerView() {
+      const screenWidth = window.innerWidth
+      if (screenWidth < 700) {
+        return 1
+      } else if (screenWidth < 1200) {
+        return 2
+      } else {
+        return 6
+      }
+    }
+
+    function handleResize() {
+      slidesPerView.value = getSlidesPerView()
+    }
+
+    onMounted(() => {
+      window.addEventListener('resize', handleResize)
+    })
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('resize', handleResize)
+    })
+
+    watch(slidesPerView, () => {
+      if (swiper.value) {
+        swiper.value.update()
+      }
+    })
 
     return {
       displayedProducts,
       goToProduct,
       swiper,
       modules,
-      onSwiper
+      onSwiper,
+      slidesPerView
     }
   }
 }
 </script>
-
 <style>
 .MainCatalogSection {
   display: flex;
@@ -109,6 +139,8 @@ export default {
   width: 100%;
   height: 630px;
   overflow: hidden;
+
+
 }
 
 .swiper-slide.cat {
@@ -117,7 +149,7 @@ export default {
   height: 300px;
   border: 1px solid black;
   opacity: 1;
-  max-width: 370px;
+  max-width: 365px;
   transition: opacity 1s ease-in-out;
   border-radius: 15px;
   margin-right: 25px;
