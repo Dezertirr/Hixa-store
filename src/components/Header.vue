@@ -4,24 +4,24 @@
       <ul class="headerMainNav">
         <li class="headerNavItem">
           <router-link to="#footer" class="headerNatItemBtn" @click="scrollToSection('footer')">
-  {{ $t('ourAddress') }}
-</router-link>
-</li>
-<li class="headerNavItem">
-<router-link to="#footer" class="headerNatItemBtn" @click="scrollToSection('footer')">
-  {{ $t('workingHours') }}
-</router-link>
-</li>
-<li class="headerNavItem">
-  <a  class="headerNatItemBtn" @click="goToInformation(1)">
-    {{ $t('delivery') }}
-  </a>
-</li>
-<li class="headerNavItem">
-  <a  class="headerNatItemBtn" @click="goToInformation(2)">
-    {{ $t('payment') }}
-  </a>
-</li>
+            {{ $t('ourAddress') }}
+          </router-link>
+        </li>
+        <li class="headerNavItem">
+          <router-link to="#footer" class="headerNatItemBtn" @click="scrollToSection('footer')">
+            {{ $t('workingHours') }}
+          </router-link>
+        </li>
+        <li class="headerNavItem">
+          <a class="headerNatItemBtn" @click="goToInformation(1)">
+            {{ $t('delivery') }}
+          </a>
+        </li>
+        <li class="headerNavItem">
+          <a class="headerNatItemBtn" @click="goToInformation(2)">
+            {{ $t('payment') }}
+          </a>
+        </li>
       </ul>
       <ul class="headerNavSec">
         <li class="headerNavSecItem">
@@ -104,16 +104,15 @@ export default {
     }
 
     const goToInformation = (index) => {
-      router.push({ path: 'Info' });
-      
-    };
+      router.push({ path: 'Info' })
+    }
 
     const scrollToSection = (sectionId) => {
-      const section = document.getElementById(sectionId);
+      const section = document.getElementById(sectionId)
       if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
+        section.scrollIntoView({ behavior: 'smooth' })
       }
-    };
+    }
 
     onMounted(() => {
       search.value = searchStore.getSearch()
@@ -147,47 +146,46 @@ export default {
     })
 
     const searchStart = async () => {
-  const query = searchValue.value;
-  if (query === '') {
-    notify({
-      title: `Warning`,
-      text: `Search engine cannot be empty`,
-      type: 'warning'
-    });
-  } else {
-    try {
-      const products = await fetchProducts(); // Получаем список продуктов из API
-      console.log(products); // Убедитесь, что данные загружены корректно
-
-      const searchText = query.toLowerCase();
-      const filteredProducts = products.filter(item => {
-        if (typeof item.brand === 'string') {
-          return item.brand.toLowerCase().includes(searchText);
-        }
-        return false;
-      });
-
-      if (filteredProducts.length === 0) {
+      const query = searchValue.value
+      if (query === '') {
         notify({
-          title: `No results`,
-          text: `No products found`,
+          title: `Warning`,
+          text: `Search engine cannot be empty`,
           type: 'warning'
-        });
+        })
       } else {
-        // Переход на страницу Catalog с передачей параметра поиска
-        router.push({ path: 'Catalog', query: { search: query } });
-      }
-    } catch (error) {
-      console.error('Error fetching products:', error);
-      notify({
-        title: `Error`,
-        text: `Error fetching products`,
-        type: 'error'
-      });
-    }
-  }
-};
+        try {
+          const products = await fetchProducts() // Получаем список продуктов из API
+          console.log(products) // Убедитесь, что данные загружены корректно
 
+          const searchText = query.toLowerCase()
+          const filteredProducts = products.filter((item) => {
+            if (typeof item.brand === 'string') {
+              return item.brand.toLowerCase().includes(searchText)
+            }
+            return false
+          })
+
+          if (filteredProducts.length === 0) {
+            notify({
+              title: `No results`,
+              text: `No products found`,
+              type: 'warning'
+            })
+          } else {
+            // Переход на страницу Catalog с передачей параметра поиска
+            router.push({ path: 'Catalog', query: { search: query } })
+          }
+        } catch (error) {
+          console.error('Error fetching products:', error)
+          notify({
+            title: `Error`,
+            text: `Error fetching products`,
+            type: 'error'
+          })
+        }
+      }
+    }
 
     const backMainPage = () => {
       router.push('/')
@@ -198,9 +196,9 @@ export default {
     }
 
     const changeLanguage = (changeLang) => {
-      locale.value = changeLang; 
-      localStorage.setItem('lang', changeLang); 
-    };
+      locale.value = changeLang
+      localStorage.setItem('lang', changeLang)
+    }
 
     provide('filteredData', filteredData)
     provide('isLoggedIn', isLoggedIn)
@@ -263,16 +261,16 @@ export default {
 }
 @media only screen and (min-width: 1200px) {
   .language {
-  text-align: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 10px 10px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  color: #ffffff;
-  transition: ease-in-out 0.4s;
-}
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 10px 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #ffffff;
+    transition: ease-in-out 0.4s;
+  }
 }
 li {
   list-style: none;
@@ -312,10 +310,9 @@ li {
   cursor: pointer;
 }
 @media only screen and (min-width: 1200px) {
-  .headerNatItemBtn{ 
+  .headerNatItemBtn {
     padding: 15px 10px;
     font-weight: 400;
-    
   }
 }
 
@@ -336,7 +333,6 @@ li {
   list-style: none;
 
   color: #bdb9b9;
-
 }
 
 .langSelect {
@@ -354,7 +350,7 @@ li {
   .langSelect {
     padding: 5px 5px;
     font-weight: 400;
-  font-size: 14px;
+    font-size: 14px;
   }
 }
 
@@ -365,7 +361,7 @@ li {
   border: none;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size:12px ;
+  font-size: 12px;
   color: #ffffff;
   padding: 16px 8px;
   margin: 0 5px 0 0;
@@ -375,9 +371,8 @@ li {
 @media only screen and (min-width: 1200px) {
   .btnAuth {
     font-weight: 400;
-padding: 15px;
-margin: 0 10px 0 10px;
-    
+    padding: 15px;
+    margin: 0 10px 0 10px;
   }
 }
 
@@ -392,7 +387,7 @@ margin: 0 10px 0 10px;
   cursor: pointer;
 }
 @media only screen and (min-width: 1200px) {
-   .logo {
+  .logo {
     height: 72px;
   }
 }
@@ -417,9 +412,9 @@ margin: 0 10px 0 10px;
 @media only screen and (min-width: 1200px) {
   .searchInput {
     width: 400px;
-  height: 35px;
-padding-left: 15px;
-font-weight: 400;
+    height: 35px;
+    padding-left: 15px;
+    font-weight: 400;
   }
 }
 .searchInput:hover,
@@ -443,9 +438,9 @@ font-weight: 400;
 @media only screen and (min-width: 1200px) {
   .searchBtn {
     height: 37px;
-width: 58px;
-margin-left: -57px;
-  font-weight: 300;
+    width: 58px;
+    margin-left: -57px;
+    font-weight: 300;
   }
 }
 .searchBtn:focus,
@@ -461,7 +456,7 @@ margin-left: -57px;
   height: 30px;
 }
 @media only screen and (min-width: 1200px) {
-  .cartBtn{
+  .cartBtn {
     height: 34px;
   }
 }
@@ -488,13 +483,11 @@ margin-left: -57px;
   border-color: transparent;
   padding: 15px 8px;
   margin: 0 10px 0 10px;
-
 }
 @media only screen and (min-width: 1200px) {
-.personalArea_logout{
-
-  margin: 0 10px 0 10px;
-  padding: 10px;
+  .personalArea_logout {
+    margin: 0 10px 0 10px;
+    padding: 10px;
   }
 }
 .personalArea_logout:hover {

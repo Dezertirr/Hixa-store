@@ -1,57 +1,57 @@
 <template>
   <div>
-    <ul v-if="filteredData && filteredData.length > 0" class="productList">
-      <li v-for="item in filteredData" :key="item.id" class="productItem">
+    <ul v-if="products && products.length > 0" class="productList">
+      <li v-for="item in products" :key="item.id" class="productItem">
         <div @click="goToProduct(item)" class="productFlex">
           <h3 class="productItemTitle">{{ item.brand }}</h3>
-          <img :src="'@/images/DSG-7.png'" class="productItemPhoto" loading="lazy" />
-          <p class="productItemText">{{ item.value }}</p>
+
+          <p class="productItemText">{{ item.name }}</p>
+          <!-- Исправлено здесь -->
         </div>
         <BasketBtn @click="addBusket(item)"></BasketBtn>
       </li>
     </ul>
-    <p v-else>{{ $t("emptyCat") }}</p>
+    <p v-else>{{ $t('emptyCat') }}</p>
   </div>
 </template>
 
-
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useSearchStore } from '../stores/counter';
-import { useRouter } from 'vue-router';
-import BasketBtn from '@/components/BasketBtn.vue';
+import { ref, onMounted } from 'vue'
+import { useSearchStore } from '../stores/counter'
+import { useRouter } from 'vue-router'
+import BasketBtn from '@/components/BasketBtn.vue'
 
-const searchStore = useSearchStore();
-const router = useRouter();
+const searchStore = useSearchStore()
+const router = useRouter()
 
-const filteredData = ref([]);
+const products = ref([])
 
 const fetchProducts = async () => {
   try {
-    const response = await searchStore.fetchProducts(); 
-    console.log(response);
-    return response; // Добавьте это
+    const response = await searchStore.fetchProducts()
+    return response
   } catch (error) {
-    console.error('Ошибка при загрузке данных с бекенда:', error);
+    console.error('Ошибка при загрузке данных с бекенда:', error)
   }
-};
-
+}
 
 const goToProduct = (item) => {
-  router.push({ path: '/Product', query: { id: item.id } });
-};
+  router.push({ path: '/Product', query: { id: item.id } })
+}
 
 const addBusket = (item) => {
-  router.push({ path: '/cart', query: { id: item.id } });
-  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-  cartItems.push(item);
-  localStorage.setItem('cart', JSON.stringify(cartItems));
-  console.log('Товар добавлен в корзину', item);
-};
+  router.push({ path: '/cart', query: { id: item.id } })
+  const cartItems = JSON.parse(localStorage.getItem('cart')) || []
+  cartItems.push(item)
+  localStorage.setItem('cart', JSON.stringify(cartItems))
+  console.log('Товар добавлен в корзину', item)
+}
 
 onMounted(async () => {
-  filteredData.value = await fetchProducts();
-});
+  const fetchedProducts = await fetchProducts() // Заполняем реактивное состояние данными
+  products.value = fetchedProducts
+  console.log(products)
+})
 </script>
 <style scoped>
 .productList {
@@ -72,16 +72,16 @@ onMounted(async () => {
   justify-content: space-between;
   align-items: center;
 
-  background: linear-gradient(167deg, rgba(0,151,157,1) 22%, rgba(0,97,102,1) 78%);
+  background: linear-gradient(167deg, rgba(0, 151, 157, 1) 22%, rgba(0, 97, 102, 1) 78%);
   border-radius: 10px;
   margin: 0 auto;
 }
 
 .productFlex {
   width: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .productItemTitle {
@@ -93,7 +93,7 @@ onMounted(async () => {
   height: 200px;
   border-radius: 10px;
   margin: 0 auto;
-  object-fit: contain ;
+  object-fit: contain;
 }
 
 .productItemText {
