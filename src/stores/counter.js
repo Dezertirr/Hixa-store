@@ -16,7 +16,7 @@ export const useSearchStore = defineStore({
   actions: {
     async setSearch(search) {
       this.search = search;
-      await this.fetchProducts(); // Вызываем fetchProducts при обновлении поискового запроса
+      await this.fetchProducts();
     },
     getSearch() {
       return this.search;
@@ -31,10 +31,13 @@ export const useSearchStore = defineStore({
       try {
         const response = await api.get('/api/products');
         this.products = response.data;
+        return response.data; // Вернуть данные из метода
       } catch (error) {
         console.error('Ошибка при загрузке данных с бекенда:', error);
         this.products = [];
+        return []; // Вернуть пустой массив в случае ошибки
       }
     },
+    
   },
 });

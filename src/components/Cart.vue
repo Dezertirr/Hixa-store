@@ -13,11 +13,11 @@
       <tbody>
         <tr v-for="(item, index) in cartItemsWithQuantity" :key="index">
           <td class="cartTableItem">{{ item.brand }}</td>
-          <td class="cartTableItem">{{ item.value[locale] }}</td>
+          <td class="cartTableItem">{{ item.value }}</td>
           <td class="cartTableItem">{{ item.quantity }}</td>
           <td class="cartTableItem">{{ item.price }}</td>
 
-          <button @click="removeItem(index)" class="submit_order">{{ $t('Cart.remove') }}</button>
+          <button @click="removeItem(item.id)" class="submit_order">{{ $t('Cart.remove') }}</button>
         </tr>
       </tbody>
     </table>
@@ -205,7 +205,7 @@ function clearCart() {
 function removeItem(item) {
   const index = cartItems.value.findIndex((cartItem) => cartItem.brand === item.brand)
   if (index !== -1) {
-    const removedItem = cartItems.value.splice(index, 1)[0]
+    const removedItem = cartItems.value.splice(id, 1)[0]
     const itemPrice = removedItem.price * removedItem.quantity
     totalPrice.value -= itemPrice
     updateLocalStorage()
@@ -224,7 +224,7 @@ function constructMessage(orderData) {
   message += `<b>Город:</b> ${orderData.customerData.city}\n\n`
   message += '<b>Список товаров:</b>\n'
   for (const item of orderData.cartItems) {
-    message += `- ${item.brand}: ${item.value[locale.value]}\n`
+    message += `- ${item.brand}: ${item.value}\n`
   }
   return message
 }

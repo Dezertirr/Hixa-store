@@ -4,9 +4,9 @@
       <li v-for="item in products" :key="item.id" class="productItem">
         <div @click="goToProduct(item)" class="productFlex">
           <h3 class="productItemTitle">{{ item.brand }}</h3>
+          <img src="@/images/DSG-7.png" class="productItemPhoto"/>
 
-          <p class="productItemText">{{ item.name }}</p>
-          <!-- Исправлено здесь -->
+          <p class="productItemText">{{ item.name[locale] }}</p>
         </div>
         <BasketBtn @click="addBusket(item)"></BasketBtn>
       </li>
@@ -21,6 +21,7 @@ import { useSearchStore } from '../stores/counter'
 import { useRouter } from 'vue-router'
 import BasketBtn from '@/components/BasketBtn.vue'
 
+
 const searchStore = useSearchStore()
 const router = useRouter()
 
@@ -28,12 +29,14 @@ const products = ref([])
 
 const fetchProducts = async () => {
   try {
-    const response = await searchStore.fetchProducts()
-    return response
+    const response = await searchStore.fetchProducts();
+    console.log("Fetched products:", response); // Добавьте эту строку для отладки
+    return response;
   } catch (error) {
-    console.error('Ошибка при загрузке данных с бекенда:', error)
+    console.error('Ошибка при загрузке данных с бекенда:', error);
   }
-}
+};
+
 
 const goToProduct = (item) => {
   router.push({ path: '/Product', query: { id: item.id } })
@@ -48,10 +51,13 @@ const addBusket = (item) => {
 }
 
 onMounted(async () => {
-  const fetchedProducts = await fetchProducts() // Заполняем реактивное состояние данными
-  products.value = fetchedProducts
-  console.log(products)
-})
+  const fetchedProducts = await fetchProducts();
+  products.value = fetchedProducts;
+  console.log(products);
+});
+
+
+
 </script>
 <style scoped>
 .productList {
