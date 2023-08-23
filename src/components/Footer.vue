@@ -78,7 +78,19 @@ export default {
 .footerList {
   list-style: none;
   display: flex;
+  margin: 10px;
+  flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+@media only screen and (min-width: 700px) {
+.footerList{
   margin: 15px;
+  flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+  }
 }
 .listItemFooter {
   margin: 15px;

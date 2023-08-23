@@ -1,14 +1,14 @@
 <template>
   <div>
-    <ul v-if="products && products.length > 0" class="productList">
-      <li v-for="item in products" :key="item.id" class="productItem">
+    <ul v-if="filteredProducts && filteredProducts.length > 0" class="productList">
+  <li v-for="item in filteredProducts" :key="item.id" class="productItem">
         <div @click="goToProduct(item)" class="productFlex">
           <h3 class="productItemTitle">{{ item.brand }}</h3>
           <img src="@/images/DSG-7.png" class="productItemPhoto"/>
 
           <p class="productItemText">{{ item.name[locale] }}</p>
         </div>
-        <BasketBtn @click="addBusket(item)"></BasketBtn>
+        <BasketBtn  @click="addBusket(item)"></BasketBtn>
       </li>
     </ul>
     <p v-else>{{ $t('emptyCat') }}</p>
@@ -16,21 +16,33 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useSearchStore } from '../stores/counter'
-import { useRouter } from 'vue-router'
+import { ref, onMounted, computed, watch } from 'vue';
+import { useRouter } from 'vue-router';
+import { useSearchStore } from '../stores/counter';
 import BasketBtn from '@/components/BasketBtn.vue'
 
+const searchStore = useSearchStore();
+const router = useRouter();
+const products = ref([]);
+const searchQuery = ref(router.currentRoute.value.query.search || '');
 
-const searchStore = useSearchStore()
-const router = useRouter()
+const filteredProducts = computed(() => {
+  const searchText = searchQuery.value.toLowerCase();
+  return products.value.filter(item => item.brand.toLowerCase().includes(searchText));
+});
 
-const products = ref([])
+
+watch(searchQuery, newSearchQuery => {
+  const searchText = newSearchQuery.toLowerCase();
+
+  searchQuery.value = searchText;
+});
+
 
 const fetchProducts = async () => {
   try {
     const response = await searchStore.fetchProducts();
-    console.log("Fetched products:", response); // Добавьте эту строку для отладки
+
     return response;
   } catch (error) {
     console.error('Ошибка при загрузке данных с бекенда:', error);

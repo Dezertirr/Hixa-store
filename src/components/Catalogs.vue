@@ -332,10 +332,18 @@ export default {
 
 .CatalogAll {
   display: inline-block;
-  padding: 15px;
+  padding: 12px;
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+@media only screen and (min-width: 700px) {
+  .CatalogAll  {
+    padding: 15px;
   font-weight: 300;
   font-size: 12px;
-  line-height: 1.3;
+  }
 }
 @media only screen and (min-width: 1200px) {
   .CatalogAll {

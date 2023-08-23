@@ -279,15 +279,29 @@ li {
 }
 .sideBar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background: linear-gradient(to right, #013f48 50%, #15575e 70%);
   color: #ffffff;
   height: 50px;
+  gap: 15px;
+}
+
+@media only screen and (min-width: 700px) {
+  .sideBar {
+    justify-content: space-between;
+  }
 }
 .headerMainNav {
-  display: flex;
+  display: none;
   height: 50px;
+}
+
+@media only screen and (min-width: 700px) {
+  .headerMainNav {
+  display: flex;
+  height: 50px; 
+  }
 }
 
 .headerNavItem {
@@ -329,10 +343,16 @@ li {
   align-items: center;
 }
 
+
 .headerNavSecItem {
   list-style: none;
-
+  margin-left: 30px;
   color: #bdb9b9;
+}
+@media only screen and (min-width: 700px) {
+  .headerNavSecItem {
+    margin-left: 0;
+  }
 }
 
 .langSelect {
@@ -382,9 +402,15 @@ li {
 }
 
 .logo {
-  height: 50px;
+  height: 40px;
 
   cursor: pointer;
+}
+
+@media only screen and (min-width: 700px) {
+  .logo {
+    height: 50px;
+  }
 }
 @media only screen and (min-width: 1200px) {
   .logo {
@@ -400,13 +426,21 @@ li {
 }
 
 .searchInput {
-  width: 300px;
+  width: 150px;
   height: 30px;
   border: 0;
   border-radius: 5px;
   padding-left: 10px;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
+}
+@media only screen and (min-width: 700px) {
+  .searchInput {
+    width: 300px;
+  height: 30px;
+padding-left: 10px;
+font-weight: 300;
+  }
 }
 
 @media only screen and (min-width: 1200px) {

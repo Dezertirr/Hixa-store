@@ -17,7 +17,7 @@
           <td class="cartTableItem">{{ item.quantity }}</td>
           <td class="cartTableItem">{{ item.price }}</td>
 
-          <button @click="removeItem(item.id)" class="submit_order">{{ $t('Cart.remove') }}</button>
+          <button @click="removeItem(item.brand)" class="submit_order">{{ $t('Cart.remove') }}</button>
         </tr>
       </tbody>
     </table>
@@ -66,7 +66,7 @@ const customerData = ref({
 })
 
 const { locale } = useI18n()
-const totalPrice = ref(0) // Шаг 1: Определение ref для общей стоимости
+const totalPrice = ref(0) 
 
 onMounted(() => {
   loadCartItems()
@@ -106,7 +106,7 @@ const cartItemsWithQuantity = computed(() => {
     if (items.length > 1) {
       const totalQuantity = items.reduce((total, item) => total + 1, 0)
       const price = items[0].price * totalQuantity // Расчет общей стоимости для этого бренда
-      total += price // Добавление к общей стоимости
+      total += Number(price) // Добавление к общей стоимости
       itemsWithQuantity.push({
         brand,
         value: items[0].value,
@@ -202,15 +202,13 @@ function clearCart() {
   totalPrice.value = 0
   localStorage.removeItem('cart')
 }
-function removeItem(item) {
-  const index = cartItems.value.findIndex((cartItem) => cartItem.brand === item.brand)
-  if (index !== -1) {
-    const removedItem = cartItems.value.splice(id, 1)[0]
-    const itemPrice = removedItem.price * removedItem.quantity
-    totalPrice.value -= itemPrice
-    updateLocalStorage()
-  }
+function removeItem(brand) {
+  // Отфильтровать элементы с другим brand
+  cartItems.value = cartItems.value.filter(item => item.brand !== brand);
+
+  updateLocalStorage(); // Обновить локальное хранилище после удаления элементов
 }
+
 
 function updateLocalStorage() {
   localStorage.setItem('cart', JSON.stringify(cartItems.value))
