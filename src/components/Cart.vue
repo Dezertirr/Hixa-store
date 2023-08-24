@@ -17,7 +17,9 @@
           <td class="cartTableItem">{{ item.quantity }}</td>
           <td class="cartTableItem">{{ item.price }}</td>
 
-          <button @click="removeItem(item.brand)" class="submit_order">{{ $t('Cart.remove') }}</button>
+          <button @click="removeItem(item.brand)" class="submit_order">
+            {{ $t('Cart.remove') }}
+          </button>
         </tr>
       </tbody>
     </table>
@@ -52,7 +54,7 @@
 import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
 import { getAuth } from 'firebase/auth'
-import { getFirestore, collection, doc, updateDoc, addDoc } from 'firebase/firestore'
+import { getFirestore, collection, doc, updateDoc, addDoc, getDoc } from 'firebase/firestore'
 import { useI18n } from 'vue-i18n'
 import { notify } from '@kyvg/vue3-notification'
 
@@ -66,7 +68,7 @@ const customerData = ref({
 })
 
 const { locale } = useI18n()
-const totalPrice = ref(0) 
+const totalPrice = ref(0)
 
 onMounted(() => {
   loadCartItems()
@@ -134,16 +136,28 @@ async function submitOrder() {
     cartItems: cartItems.value,
     customerData: customerData.value
   }
+  let historyOrders = []
 
   try {
     const db = getFirestore()
     const user = getAuth().currentUser
     if (user) {
       const userRef = doc(collection(db, 'users'), user.uid)
+      const userDoc = await getDoc(userRef)
 
-      await updateDoc(userRef, {
-        order: orderData
-      })
+      if (userDoc.exists()) {
+        const userData = userDoc.data()
+
+        if (userData.history) {
+          userData.history.push(orderData)
+        } else {
+          userData.history = [orderData]
+        }
+
+        await updateDoc(userRef, {
+          history: userData.history
+        })
+      }
     }
 
     const botToken = '6524682564:AAGeWt9agggxSVVyUC9VD_IHAZKLSV52Ekg'
@@ -204,11 +218,10 @@ function clearCart() {
 }
 function removeItem(brand) {
   // Отфильтровать элементы с другим brand
-  cartItems.value = cartItems.value.filter(item => item.brand !== brand);
+  cartItems.value = cartItems.value.filter((item) => item.brand !== brand)
 
-  updateLocalStorage(); // Обновить локальное хранилище после удаления элементов
+  updateLocalStorage() // Обновить локальное хранилище после удаления элементов
 }
-
 
 function updateLocalStorage() {
   localStorage.setItem('cart', JSON.stringify(cartItems.value))

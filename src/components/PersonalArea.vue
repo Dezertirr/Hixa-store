@@ -8,14 +8,16 @@
       <p>{{ $t('PersonalArea.city') }}: {{ user.city }}</p>
       <button class="button_edit" @click="editUser">{{ $t('PersonalArea.edit') }}</button>
     </div>
-    <div v-if="user && user.order && user.order.cartItems && user.order.cartItems.length > 0">
+    <div v-if="user && user.history">
       <h3>{{ $t('PersonalArea.titleOrderHis') }}</h3>
       <ul>
-        <li>
-          <p>{{ $t('PersonalArea.orderID') }}: {{ user.order.customerData.orderId }}</p>
-          <p>{{ $t('PersonalArea.numItem') }}: {{ user.order.cartItems.length }}</p>
+        <!-- Перебираем истории заказов -->
+        <li v-for="(historyItem, index) in user.history" :key="'history-' + index">
+          <p>{{ $t('PersonalArea.orderID') }}: {{ historyItem.customerData.orderId }}</p>
+          <p>{{ $t('PersonalArea.numItem') }}: {{ historyItem.cartItems.length }}</p>
           <ul>
-            <li v-for="item in user.order.cartItems" :key="item.id">
+            <!-- Перебираем товары в истории заказов -->
+            <li v-for="item in historyItem.cartItems" :key="item.id">
               <h4>{{ item.brand }} - {{ item.mark }} - {{ item.part }}</h4>
               <p>{{ $t('PersonalArea.code') }}: {{ item.code }}</p>
               <p>{{ $t('PersonalArea.price') }}: {{ item.price }}</p>
@@ -25,6 +27,7 @@
         </li>
       </ul>
     </div>
+
     <div v-if="editingUser" class="edit_data_user">
       <h3>{{ $t('PersonalArea.edit') }}</h3>
       <input class="edit_info_field" placeholder="Name" type="text" v-model="editedUser.name" />
