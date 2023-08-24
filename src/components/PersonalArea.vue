@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 >{{ $t('PersonalArea.title') }}</h2>
+    <h2>{{ $t('PersonalArea.title') }}</h2>
     <div v-if="user" class="info_user">
       <h3 class="">{{ $t('PersonalArea.userInfo') }}</h3>
       <p>{{ $t('PersonalArea.name') }}: {{ user.name }}</p>
@@ -8,46 +8,49 @@
       <p>{{ $t('PersonalArea.city') }}: {{ user.city }}</p>
       <button class="button_edit" @click="editUser">{{ $t('PersonalArea.edit') }}</button>
     </div>
-    <div v-if="user && user.order && user.order.cartItems && user.order.cartItems.length > 0">
+    <div v-if="user && user.history">
       <h3 class="historyTitle">{{ $t('PersonalArea.titleOrderHis') }}</h3>
       <ul class="historyList">
-        <li>
+        <!-- Перебираем истории заказов -->
+        <li v-for="(historyItem, index) in user.history" :key="'history-' + index">
           <div class="historyInfo">
-          <p>{{ $t('PersonalArea.orderID') }}: {{ user.order.customerData.orderId }}</p>
-          <p>{{ $t('PersonalArea.numItem') }}: {{ user.order.cartItems.length }}</p>
-        </div>
-          <thead>
-            <tr>
-              <td>{{ $t('Cart.nameprod') }}</td>
-              <td>{{ $t('Cart.code') }}</td>
-              <td>{{ $t('Cart.quantity')}}</td>
-              <td>{{ $t('Cart.price') }}</td>
-            </tr>
-          </thead>
-          <tbody>
-      <tr v-for="(item, index) in processedCartItems" :key="index" class="historyTR">
-        <td class="historyTD">{{ item.brand }} - {{ item.mark }}</td>
-        <td class="historyTD">{{ item.code }}</td>
-        <td class="historyTD">{{ item.quantity }}</td>
-        <td class="historyTD">{{ item.total }}</td>
-      </tr>
-    </tbody>
-    <p>{{ $t('Cart.total') }} {{ totalPrice }} </p>
+            <p>{{ $t('PersonalArea.orderID') }}: {{ historyItem.customerData.orderId }}</p>
+            <p>{{ $t('PersonalArea.numItem') }}: {{ historyItem.cartItems.length }}</p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <td>{{ $t('Cart.nameprod') }}</td>
+                <td>{{ $t('Cart.code') }}</td>
+                <td>{{ $t('Cart.quantity') }}</td>
+                <td>{{ $t('Cart.price') }}</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in historyItem.cartItems" :key="item.id" class="historyTR">
+                <td class="historyTD">{{ item.brand }} - {{ item.mark }}</td>
+                <td class="historyTD">{{ item.code }}</td>
+                <td class="historyTD">{{ item.quantity }}</td>
+                <td class="historyTD">{{ item.total }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>{{ $t('Cart.total') }} {{ totalPrice }}</p>
         </li>
       </ul>
     </div>
     <div v-else class="history_cart">
       <p>{{ $t('PersonalArea.hisEmpty') }}</p>
     </div>
+
     <div v-if="editingUser" class="edit_data_user">
-      <h3 >{{ $t('PersonalArea.edit') }}</h3>
+      <h3>{{ $t('PersonalArea.edit') }}</h3>
       <input class="edit_info_field" placeholder="Name" type="text" v-model="editedUser.name" />
       <input class="edit_info_field" placeholder="Phone" type="text" v-model="editedUser.phone" />
       <input class="edit_info_field" placeholder="City" type="text" v-model="editedUser.city" />
       <button class="save_changes" @click="saveChanges">{{ $t('PersonalArea.save') }}</button>
       <button class="cancel_changes" @click="cancelEdit">{{ $t('PersonalArea.cancel') }}</button>
     </div>
-
   </div>
 </template>
 
@@ -74,38 +77,36 @@ export default {
 
     const processedCartItems = computed(() => {
       if (!user.value || !user.value.order || !user.value.order.cartItems) {
-        return [];
+        return []
       }
 
-      const cartItems = user.value.order.cartItems;
-      const groupedItems = {};
+      const cartItems = user.value.order.cartItems
+      const groupedItems = {}
 
-      cartItems.forEach(item => {
-        const key = item.code;
+      cartItems.forEach((item) => {
+        const key = item.code
         if (!groupedItems[key]) {
           groupedItems[key] = {
             ...item,
             quantity: 1,
             total: item.price
-          };
+          }
         } else {
-          groupedItems[key].quantity += 1;
-          groupedItems[key].total += item.price;
+          groupedItems[key].quantity += 1
+          groupedItems[key].total += item.price
         }
-      });
+      })
 
-      return Object.values(groupedItems);
-    });
+      return Object.values(groupedItems)
+    })
 
     const totalPrice = computed(() => {
       if (!processedCartItems.value) {
-        return 0;
+        return 0
       }
 
-      return processedCartItems.value.reduce((total, item) => total + item.total, 0);
-    });
-
-
+      return processedCartItems.value.reduce((total, item) => total + item.total, 0)
+    })
 
     const fetchUserData = async () => {
       const auth = getAuth()
@@ -216,21 +217,21 @@ body {
   font-size: 20px;
 }
 
-.historyTitle{
+.historyTitle {
   display: flex;
   justify-content: center;
   margin: 50px 0 0 0;
 }
 
-.historyList{
+.historyList {
   display: flex;
-    list-style: none;
-    justify-content: space-around;
+  list-style: none;
+  justify-content: space-around;
 }
 
-.historyInfo{
+.historyInfo {
   display: flex;
-    justify-content: space-between;
+  justify-content: space-between;
 }
 .historyTR {
 }
