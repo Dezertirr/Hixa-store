@@ -49,7 +49,10 @@
     "price": "Price",
     "remove": "Remove Product",
     "totalPrice": "Total Price",
-    "orderEnd": "Clear Cart"
+    "orderEnd": "Clear Cart",
+    "nameprod": "Brand",
+    "code": "Code Product",
+    "total": "Total price order:"
 
   },
   "Footer": {

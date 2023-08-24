@@ -1,6 +1,7 @@
 <template>
   <div>
-    <ul v-if="filteredProducts && filteredProducts.length > 0" class="productList">
+    <p v-if="loading">Load</p>
+    <ul v-else-if="filteredProducts && filteredProducts.length > 0" class="productList">
   <li v-for="item in filteredProducts" :key="item.id" class="productItem">
         <div @click="goToProduct(item)" class="productFlex">
           <h3 class="productItemTitle">{{ item.brand }}</h3>
@@ -21,16 +22,28 @@ import { useRouter } from 'vue-router';
 import { useSearchStore } from '../stores/counter';
 import BasketBtn from '@/components/BasketBtn.vue'
 
+
 const searchStore = useSearchStore();
 const router = useRouter();
 const products = ref([]);
 const searchQuery = ref(router.currentRoute.value.query.search || '');
+const loading = ref(true);
 
 const filteredProducts = computed(() => {
   const searchText = searchQuery.value.toLowerCase();
   return products.value.filter(item => item.brand.toLowerCase().includes(searchText));
 });
 
+onMounted(async () => {
+  try {
+    const fetchedProducts = await fetchProducts();
+    products.value = fetchedProducts;
+    loading.value = false; // Set loading to false after data is fetched
+  } catch (error) {
+    console.error('Ошибка при загрузке данных с бекенда:', error);
+    loading.value = false; // Set loading to false in case of an error
+  }
+});
 
 watch(searchQuery, newSearchQuery => {
   const searchText = newSearchQuery.toLowerCase();

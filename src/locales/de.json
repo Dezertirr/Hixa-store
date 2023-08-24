@@ -49,7 +49,9 @@
       "price": "Preis",
       "remove": "Produkt entfernen",
       "totalPrice": "Gesamtpreis",
-      "orderEnd": "Warenkorb leeren"
+      "orderEnd": "Warenkorb leeren",
+      "nameprod": "Marke",
+      "code": "Produktcode"
   
   },
   "Footer": {

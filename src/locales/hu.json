@@ -49,7 +49,10 @@
     "price": "Ár",
     "remove": "Termék eltávolítása",
     "totalPrice": "Teljes ár",
-    "orderEnd": "Kosár ürítése"
+    "orderEnd": "Kosár ürítése",
+    "nameprod": "Márka",
+    "code": "Termékkód"
+    
   },
   "Footer": {
     "info": "Információk",

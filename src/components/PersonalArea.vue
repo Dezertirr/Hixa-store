@@ -9,23 +9,38 @@
       <button class="button_edit" @click="editUser">{{ $t('PersonalArea.edit') }}</button>
     </div>
     <div v-if="user && user.history">
-      <h3>{{ $t('PersonalArea.titleOrderHis') }}</h3>
-      <ul>
+      <h3 class="historyTitle">{{ $t('PersonalArea.titleOrderHis') }}</h3>
+      <ul class="historyList">
         <!-- Перебираем истории заказов -->
         <li v-for="(historyItem, index) in user.history" :key="'history-' + index">
-          <p>{{ $t('PersonalArea.orderID') }}: {{ historyItem.customerData.orderId }}</p>
-          <p>{{ $t('PersonalArea.numItem') }}: {{ historyItem.cartItems.length }}</p>
-          <ul>
-            <!-- Перебираем товары в истории заказов -->
-            <li v-for="item in historyItem.cartItems" :key="item.id">
-              <h4>{{ item.brand }} - {{ item.mark }} - {{ item.part }}</h4>
-              <p>{{ $t('PersonalArea.code') }}: {{ item.code }}</p>
-              <p>{{ $t('PersonalArea.price') }}: {{ item.price }}</p>
-              <p>{{ $t('PersonalArea.value') }}: {{ item.value[locale] }}</p>
-            </li>
-          </ul>
+          <div class="historyInfo">
+            <p>{{ $t('PersonalArea.orderID') }}: {{ historyItem.customerData.orderId }}</p>
+            <p>{{ $t('PersonalArea.numItem') }}: {{ historyItem.cartItems.length }}</p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <td>{{ $t('Cart.nameprod') }}</td>
+                <td>{{ $t('Cart.code') }}</td>
+                <td>{{ $t('Cart.quantity') }}</td>
+                <td>{{ $t('Cart.price') }}</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in historyItem.cartItems" :key="item.id" class="historyTR">
+                <td class="historyTD">{{ item.brand }} - {{ item.mark }}</td>
+                <td class="historyTD">{{ item.code }}</td>
+                <td class="historyTD">{{ item.quantity }}</td>
+                <td class="historyTD">{{ item.total }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>{{ $t('Cart.total') }} {{ totalPrice }}</p>
         </li>
       </ul>
+    </div>
+    <div v-else class="history_cart">
+      <p>{{ $t('PersonalArea.hisEmpty') }}</p>
     </div>
 
     <div v-if="editingUser" class="edit_data_user">
@@ -36,14 +51,11 @@
       <button class="save_changes" @click="saveChanges">{{ $t('PersonalArea.save') }}</button>
       <button class="cancel_changes" @click="cancelEdit">{{ $t('PersonalArea.cancel') }}</button>
     </div>
-    <div v-else class="history_cart">
-      <p>{{ $t('PersonalArea.hisEmpty') }}</p>
-    </div>
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { getAuth } from 'firebase/auth'
 import { getFirestore, collection, doc, getDoc } from 'firebase/firestore'
 import { useI18n } from 'vue-i18n'
@@ -61,6 +73,39 @@ export default {
       if (savedUser) {
         user.value = JSON.parse(savedUser)
       }
+    })
+
+    const processedCartItems = computed(() => {
+      if (!user.value || !user.value.order || !user.value.order.cartItems) {
+        return []
+      }
+
+      const cartItems = user.value.order.cartItems
+      const groupedItems = {}
+
+      cartItems.forEach((item) => {
+        const key = item.code
+        if (!groupedItems[key]) {
+          groupedItems[key] = {
+            ...item,
+            quantity: 1,
+            total: item.price
+          }
+        } else {
+          groupedItems[key].quantity += 1
+          groupedItems[key].total += item.price
+        }
+      })
+
+      return Object.values(groupedItems)
+    })
+
+    const totalPrice = computed(() => {
+      if (!processedCartItems.value) {
+        return 0
+      }
+
+      return processedCartItems.value.reduce((total, item) => total + item.total, 0)
     })
 
     const fetchUserData = async () => {
@@ -106,7 +151,9 @@ export default {
       saveChanges,
       cancelEdit,
       locale,
-      t
+      t,
+      processedCartItems,
+      totalPrice
     }
   }
 }
@@ -169,6 +216,30 @@ body {
   margin-left: 14px;
   font-size: 20px;
 }
+
+.historyTitle {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 0 0;
+}
+
+.historyList {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+
+.historyInfo {
+  display: flex;
+  justify-content: space-between;
+}
+.historyTR {
+}
+
+.historyTD {
+  border: 1px solid black;
+}
+
 .edit_data_user {
   display: flex;
   flex-direction: column;
