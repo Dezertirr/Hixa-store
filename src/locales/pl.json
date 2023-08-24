@@ -49,7 +49,9 @@
     "price": "Cena",
     "remove": "Usuń produkt",
     "totalPrice": "Całkowita cena",
-    "orderEnd": "Wyczyść koszyk"
+    "orderEnd": "Wyczyść koszyk",
+    "nameprod": "Marka",
+    "code": "Kod produktu"
   },
   "Footer": {
     "info": "Informacje",

@@ -39,10 +39,10 @@ const routes = [
   },
 
   {
-    path: '/personal-area', // Путь к вашей странице "Personal Area"
-    name: 'personal-area', // Имя маршрута для страницы "Personal Area"
-    component: PersonalArea, // Компонент для страницы "Personal Area"
-    meta: { requiresAuth: true } // Добавляем мета-информацию для проверки авторизации
+    path: '/personal-area', 
+    name: 'personal-area', 
+    component: PersonalArea, 
+    meta: { requiresAuth: true } 
   },
   {
     path: '/register',
