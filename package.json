@@ -16,7 +16,9 @@
     "axios": "^1.4.0",
     "firebase": "^10.0.0",
     "hooper": "^0.3.4",
+    "install": "^0.13.0",
     "nanoid": "^4.0.2",
+    "npm": "^9.8.1",
     "pinia": "^2.1.4",
     "sass": "^1.64.1",
     "slick-carousel": "^1.8.1",
@@ -25,7 +27,8 @@
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.2.2",
     "vue-ssr-carousel": "^2.3.2",
-    "vue-translation-manager": "^1.2.0"
+    "vue-translation-manager": "^1.2.0",
+    "vue3-spinner": "^0.0.17"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
