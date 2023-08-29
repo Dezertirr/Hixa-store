@@ -2,14 +2,14 @@
   <div>
     <p v-if="loading">Load</p>
     <ul v-else-if="filteredProducts && filteredProducts.length > 0" class="productList">
-  <li v-for="item in filteredProducts" :key="item.id" class="productItem">
+      <li v-for="item in filteredProducts" :key="item.id" class="productItem">
         <div @click="goToProduct(item)" class="productFlex">
           <h3 class="productItemTitle">{{ item.brand }}</h3>
-          <img src="@/images/DSG-7.png" class="productItemPhoto"/>
+          <img src="@/images/DSG-7.png" class="productItemPhoto" />
 
           <p class="productItemText">{{ item.name[locale] }}</p>
         </div>
-        <BasketBtn  @click="addBusket(item)"></BasketBtn>
+        <BasketBtn @click="addBusket(item)"></BasketBtn>
       </li>
     </ul>
     <p v-else>{{ $t('emptyCat') }}</p>
@@ -17,51 +17,48 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue';
-import { useRouter } from 'vue-router';
-import { useSearchStore } from '../stores/counter';
+import { ref, onMounted, computed, watch } from 'vue'
+import { useRouter } from 'vue-router'
+import { useSearchStore } from '../stores/counter'
 import BasketBtn from '@/components/BasketBtn.vue'
 
-
-const searchStore = useSearchStore();
-const router = useRouter();
-const products = ref([]);
-const searchQuery = ref(router.currentRoute.value.query.search || '');
-const loading = ref(true);
+const searchStore = useSearchStore()
+const router = useRouter()
+const products = ref([])
+const searchQuery = ref(router.currentRoute.value.query.search || '')
+const loading = ref(true)
 
 const filteredProducts = computed(() => {
-  const searchText = searchQuery.value.toLowerCase();
-  return products.value.filter(item => item.brand.toLowerCase().includes(searchText));
-});
+  const searchText = searchQuery.value.toLowerCase()
+  return products.value.filter((item) => item.brand.toLowerCase().includes(searchText))
+})
 
 onMounted(async () => {
   try {
-    const fetchedProducts = await fetchProducts();
-    products.value = fetchedProducts;
-    loading.value = false; // Set loading to false after data is fetched
+    const fetchedProducts = await fetchProducts()
+    products.value = fetchedProducts
+    loading.value = false // Set loading to false after data is fetched
   } catch (error) {
-    console.error('Ошибка при загрузке данных с бекенда:', error);
-    loading.value = false; // Set loading to false in case of an error
+    console.error('Ошибка при загрузке данных с бекенда:', error)
+    loading.value = false // Set loading to false in case of an error
   }
-});
+})
 
-watch(searchQuery, newSearchQuery => {
-  const searchText = newSearchQuery.toLowerCase();
+watch(searchQuery, (newSearchQuery) => {
+  const searchText = newSearchQuery.toLowerCase()
 
-  searchQuery.value = searchText;
-});
-
+  searchQuery.value = searchText
+})
 
 const fetchProducts = async () => {
   try {
-    const response = await searchStore.fetchProducts();
+    const response = await searchStore.fetchProducts()
 
-    return response;
+    return response
   } catch (error) {
-    console.error('Ошибка при загрузке данных с бекенда:', error);
+    console.error('Ошибка при загрузке данных с бекенда:', error)
   }
-};
-
+}
 
 const goToProduct = (item) => {
   router.push({ path: '/Product', query: { id: item.id } })
@@ -76,13 +73,10 @@ const addBusket = (item) => {
 }
 
 onMounted(async () => {
-  const fetchedProducts = await fetchProducts();
-  products.value = fetchedProducts;
-  console.log(products);
-});
-
-
-
+  const fetchedProducts = await fetchProducts()
+  products.value = fetchedProducts
+  console.log(products)
+})
 </script>
 <style scoped>
 .productList {
@@ -103,7 +97,7 @@ onMounted(async () => {
   justify-content: space-between;
   align-items: center;
 
-  background: linear-gradient(167deg, rgba(0, 151, 157, 1) 22%, rgba(0, 97, 102, 1) 78%);
+  background: linear-gradient(167deg, rgb(209, 213, 213) 26%, rgb(193, 195, 195) 78%);
   border-radius: 10px;
   margin: 0 auto;
 }
