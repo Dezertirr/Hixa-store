@@ -13,14 +13,12 @@
         <h4>{{ $t('Footer.buyPart') }}</h4>
         <ul class="listTeleph">
           <li class="listTel">
-            <a tel="+4915237711276">{{ $t('Footer.telphoneDe') }}</a>
+            <a :href="getPhoneNum()">{{ $t('Footer.telphone1') }}</a>
           </li>
           <li class="listTel">
-            <a tel="+48506388798">{{ $t('Footer.telphonePl') }}</a>
+            <p href="tel:+4915237711276">{{ $t('Footer.telphone2') }}</p>
           </li>
-          <li class="listTel">
-            <a tel="+380978033485">{{ $t('Footer.telphoneUa') }}</a>
-          </li>
+          
         </ul>
       </li>
       <li class="listItemFooter">
@@ -46,17 +44,25 @@
 </template>
 <script>
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 export default {
   setup() {
     const router = useRouter()
+    const { t } = useI18n()
+    
+    const getPhoneNum = () => {
+      const phoneNumber = t('Footer.telphoneTel');
+      return `tel:${phoneNumber}`;
+    }
 
     const goToInformation = () => {
       router.push({ path: '/Info' })
     }
 
     return {
-      goToInformation
+      goToInformation,
+      getPhoneNum
     }
   }
 }

@@ -8,6 +8,7 @@ import App from './App.vue'
 import router from './router/router'
 import { languages, defaultLocale } from './locales/index'
 import Notifications from '@kyvg/vue3-notification'
+import vue3Spinner from 'vue3-spinner'
 
 
 

@@ -3,9 +3,9 @@
     <div class="sideBar">
       <ul class="headerMainNav">
         <li class="headerNavItem">
-          <router-link to="#footer" class="headerNatItemBtn" @click="scrollToSection('footer')">
+          <a  class="headerNatItemBtn" href="https://www.google.com/maps/d/u/0/edit?mid=1aHgunP5BY_0ZRn2SddSAhL7AsBkouZo&usp=sharing" target="_blank _noopener _noreferrer" >
             {{ $t('ourAddress') }}
-          </router-link>
+          </a>
         </li>
         <li class="headerNavItem">
           <router-link to="#footer" class="headerNatItemBtn" @click="scrollToSection('footer')">
@@ -60,6 +60,7 @@
         </button>
       </div>
       <Catalogs></Catalogs>
+      <Cookies></Cookies>
     </div>
   </header>
 </template>
@@ -69,6 +70,7 @@ import { ref, onMounted, computed, watch, provide } from 'vue'
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
 import { getFirestore, collection, addDoc } from 'firebase/firestore'
 import Catalogs from './Catalogs.vue'
+import Cookies from './Cookies.vue'
 import { fetchProducts } from '@/services/ProductAPI'
 import { useSearchStore } from '../stores/counter'
 import { useRouter } from 'vue-router'
@@ -243,7 +245,8 @@ export default {
     }
   },
   components: {
-    Catalogs
+    Catalogs,
+    Cookies
   }
 }
 </script>

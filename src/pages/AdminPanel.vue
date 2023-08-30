@@ -1,10 +1,5 @@
 <template>
   <form class="AdminAll" @submit.prevent="addProduct">
-    <label class="AdminNameLabel"
-      >Назва для фільтрації(анг)
-      <input class="AdminInput" v-model="name.en" />
-    </label>
-
     <div class="AdminName">
       <label class="AdminNameLabel"
         >Назва товару (укр)
@@ -29,7 +24,7 @@
     </div>
 
     <label class="AdminNameLabel"
-      >Виробник
+      >Назва для фільтрації
       <input class="AdminInput" v-model="brand" />
     </label>
 

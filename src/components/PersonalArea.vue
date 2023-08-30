@@ -15,27 +15,8 @@
         <li v-for="(historyItem, index) in user.history" :key="'history-' + index">
           <div class="historyInfo">
             <p>{{ $t('PersonalArea.orderID') }}: {{ historyItem.customerData.orderId }}</p>
-            <p>{{ $t('PersonalArea.numItem') }}: {{ historyItem.cartItems.length }}</p>
           </div>
-          <table>
-            <thead>
-              <tr>
-                <td>{{ $t('Cart.nameprod') }}</td>
-                <td>{{ $t('Cart.code') }}</td>
-                <td>{{ $t('Cart.quantity') }}</td>
-                <td>{{ $t('Cart.price') }}</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="item in historyItem.cartItems" :key="item.id" class="historyTR">
-                <td class="historyTD">{{ item.brand }} - {{ item.mark }}</td>
-                <td class="historyTD">{{ item.code }}</td>
-                <td class="historyTD">{{ item.quantity }}</td>
-                <td class="historyTD">{{ item.total }}</td>
-              </tr>
-            </tbody>
-          </table>
-          <p>{{ $t('Cart.total') }} {{ totalPrice }}</p>
+
         </li>
       </ul>
     </div>
@@ -74,6 +55,22 @@ export default {
         user.value = JSON.parse(savedUser)
       }
     })
+
+    const getQuantityByCode = (cartItems, code) => {
+    const itemsWithSameCode = cartItems.filter(item => item.code === code);
+    return itemsWithSameCode.length;
+  };
+  const shouldShowItem = (cartItems, currentItem, currentIndex) => {
+  if (!currentItem) {
+    return false; // Если currentItem не существует, скрываем элемент
+  }
+  for (let i = 0; i < currentIndex; i++) {
+    if (cartItems[i].code === currentItem.code) {
+      return false; // Скрыть повторяющийся товар в пределах данной записи
+    }
+  }
+  return true; // Показать уникальный товар в пределах данной записи
+};
 
     const processedCartItems = computed(() => {
       if (!user.value || !user.value.order || !user.value.order.cartItems) {
@@ -153,7 +150,9 @@ export default {
       locale,
       t,
       processedCartItems,
-      totalPrice
+      totalPrice,
+      getQuantityByCode,
+      shouldShowItem
     }
   }
 }
@@ -227,6 +226,8 @@ body {
   display: flex;
   list-style: none;
   justify-content: space-around;
+      flex-direction: column;
+    align-items: center;
 }
 
 .historyInfo {

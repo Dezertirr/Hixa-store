@@ -232,8 +232,7 @@ export default {
      t('Catalogs.informationCat.2'),
      t('Catalogs.informationCat.3'),
      t('Catalogs.informationCat.4'),
-     t('Catalogs.informationCat.5'),
-     t('Catalogs.informationCat.6'),
+     
      t('Catalogs.informationCat.7'),
      t('Catalogs.informationCat.8'),
     
@@ -291,7 +290,10 @@ export default {
   justify-content: center;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
+
 }
+
+
 
 .spoiler-trigger {
   position: relative;
@@ -336,6 +338,8 @@ export default {
   font-weight: 300;
   font-size: 10px;
   line-height: 1.3;
+  transition: ease-in-out 0.4s;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 700px) {
@@ -347,10 +351,14 @@ export default {
 }
 @media only screen and (min-width: 1200px) {
   .CatalogAll {
-    padding: 15px;
-font-size: 14px;
+    padding: 7px 15px;
+    font-size: 14px;
 line-height: 1.5;
   }
+}
+.CatalogAll:hover,
+.CatalogAll:focus {
+  background: #027081;
 }
 
 .catBtn{

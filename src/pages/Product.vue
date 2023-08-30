@@ -140,7 +140,14 @@ const fetchProductById = async (id) => {
    margin: 30px auto;
    max-width: 1200px;
    border: 1px solid black;
-   display: inline-block;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+  }
+  @media only screen and (min-width: 700px) {
+    .productCard {
+      flex-direction: row;
+    }
   }
   @media only screen and (min-width: 1200px) {
     .productCard {
@@ -164,7 +171,7 @@ height: 450px;
 }
 
 .proudctInfo {
-  width: 720px;
+  max-width: 720px;
 }
 
 .productHeader {
