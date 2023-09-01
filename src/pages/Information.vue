@@ -63,9 +63,22 @@ export default {
 .InformationSide {
   display: flex;
   margin: 15px 45px;
-  gap: 100px;
+  gap: 30px;
   background-color: rgb(193, 193, 193);
   border-radius: 15px;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 700px) {
+  .InformationSide {
+    flex-direction: row;
+    
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .InformationSide {
+    gap: 100px;
+  }
 }
 
 .InformationBar {
@@ -78,10 +91,11 @@ export default {
   font-size: 12px;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 700px) {
   .InformationBar {
     font-weight: 400;
     font-size: 14px;
+    min-width: 225px;
   }
 }
 
@@ -96,6 +110,7 @@ export default {
 
 .InformationTextBorder {
   max-width: 780px;
+  padding: 15px
 }
 
 .InformationText {
