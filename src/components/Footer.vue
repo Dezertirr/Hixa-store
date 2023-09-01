@@ -56,12 +56,20 @@
     </a>
 </li>
 <li class="footerLinksItem">
+  <a :href="getMail()" target="_blank" rel="noopener noreferrer">
+    <svg width="32" height="32">
+        <use href="@/images/symbol-defs.svg#icon-envelope" class="footerSVG"></use>
+    </svg>
+    </a>
+</li>
+<li class="footerLinksItem">
   <a :href="getYoutube()" target="_blank" rel="noopener noreferrer">
-    <svg width="60" height="32">
+    <svg width="80" height="32">
         <use href="@/images/symbol-defs.svg#icon-youtube2" class="footerSVG"></use>
     </svg>
     </a>
 </li>
+
         </ul>
       </li>
     </ul>
@@ -98,7 +106,11 @@ export default {
     const getInsta = () => {
       const insta = t('Footer.insta')
       return insta
- }
+    }
+    const getMail = () => {
+      const mail = t('Footer.mail')
+      return `mailto:${mail}`
+    }
     const goToInformation = () => {
       router.push({ path: '/Info' })
     }
@@ -109,7 +121,8 @@ export default {
       getPhoneNum2,
       getFacebook,
       getYoutube,
-      getInsta
+      getInsta,
+      getMail
     }
   }
 }
