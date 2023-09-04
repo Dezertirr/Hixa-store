@@ -31,7 +31,7 @@
         <li class="language" @click="changeLanguage('en')">{{ $t('languages.english') }}</li>
         <li class="language" @click="changeLanguage('pl')">{{ $t('languages.polish') }}</li>
         <li class="language" @click="changeLanguage('de')">{{ $t('languages.german') }}</li>
-        <li class="language" @click="changeLanguage('hu')">{{ $t('languages.hungarian') }}</li>
+        <li class="language" @click="changeLanguage('hr')">{{ $t('languages.hungarian') }}</li>
         <li class="language" @click="changeLanguage('uk')">{{ $t('languages.ukrainian') }}</li>
 
         <li class="headerNavSecItem">
@@ -198,9 +198,10 @@ export default {
     }
 
     const changeLanguage = (changeLang) => {
-      locale.value = changeLang
-      localStorage.setItem('lang', changeLang)
-    }
+  locale.value = changeLang;
+  localStorage.setItem('lang', changeLang);
+  window.location.reload();
+}
 
     provide('filteredData', filteredData)
     provide('isLoggedIn', isLoggedIn)
