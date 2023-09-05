@@ -39,22 +39,51 @@ export default {
       'Василь Іванченко',
       t('Infornation.aboutMe'),
       'Ми нікого нажаль зараз не набираєм(',
-      'Використання кукі'
+      t('Infornation.document')
     ];
 
     const showInformation = (index) => {
       selectedInformation.value = Information[index];
     };
-
-    // Вызываем showInformation для инициализации selectedInformation
     showInformation(0);
 
     return { t, selectedInformation, showInformation };
   },
   computed: {
     formattedInformation() {
-      return this.selectedInformation.replace(/\n/g, '<br><br>');
-    },
+      
+  let formattedText = this.selectedInformation.replace(/\n/g, '<br><br>');
+
+  formattedText = formattedText.replace(/\\i/g, `<a href=${this.t('Footer.insta')} target="_blank" rel="noopener noreferrer" class="InformationLink">`);
+
+  formattedText = formattedText.replace(/\\I/g, '</a>');
+
+  formattedText = formattedText.replace(/\\y/g, `<a href=${this.t('Footer.youtube')} target="_blank" rel="noopener noreferrer" class="InformationLink">`);
+
+  formattedText = formattedText.replace(/\\Y/g, '</a>');
+
+  formattedText = formattedText.replace(/\\f/g, `<a href=${this.t('Footer.facebook')} target="_blank" rel="noopener noreferrer" class="InformationLink">`);
+
+  formattedText = formattedText.replace(/\\F/g, '</a>');
+
+  formattedText = formattedText.replace(/\\n/g, `<a href=tel:${this.t('Footer.telephoneLink1')} " class="InformationLink">`);
+
+  formattedText = formattedText.replace(/\\N/g, '</a>');
+
+  formattedText = formattedText.replace(/\\m/g, `<a href="mailto:${this.t('Footer.mail')}" class="InformationLink">`);
+
+  formattedText = formattedText.replace(/\\M/g, '</a>');
+
+  formattedText = formattedText.replace(/\\w/g, `<a href="https://www.google.com/maps/d/u/0/edit?mid=1aHgunP5BY_0ZRn2SddSAhL7AsBkouZo&ll=49.47426175003439%2C18.758484850000016&z=6" target="_blank" rel="noopener noreferrer" class="InformationLink"> `);
+
+  formattedText = formattedText.replace(/\\W/g, '</a>');
+
+  formattedText = formattedText.replace(/\\a/g, `<a href="https://docs.google.com/document/d/1N4vcSTLNoWKifOqdSJTyH-cHP2GsReOkEdTiqBf4VjU/edit" target="_blank" rel="noopener noreferrer" class="InformationLink"> `);
+
+formattedText = formattedText.replace(/\\A/g, '</a>');
+
+  return formattedText;
+}
   },
 };
 </script>
@@ -125,5 +154,18 @@ export default {
     font-weight: 400;
     font-size: 14px;
   }
+}
+
+.InformationLink {
+  font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    transition: ease-in-out 0.4s;
+}
+
+.InformationLink:hover,
+.InformationLink:focus{
+  color:blue;
+  font-size: 14.5px;
 }
 </style>
