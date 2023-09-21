@@ -1,4 +1,5 @@
 <template>
+  <div class="SliderSection">
   <div class="SliderMainCatalogSection">
     <div class="swiperContainer">
       <div class="swiper-wrapper">
@@ -15,6 +16,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -87,11 +89,17 @@ export default {
 };
 </script>
 <style>
+
+.SliderSection{
+  padding: 40px 140px;
+  background-color: #CCCCCC;
+}
 .SliderMainCatalogSection {
   display: flex;
   align-items: center;
   overflow: hidden;
-  margin-left: -55px;;
+  border-radius: 20px;
+  
 }
 
 .swiperContainer {

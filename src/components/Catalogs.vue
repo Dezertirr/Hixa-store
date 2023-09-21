@@ -283,13 +283,14 @@ export default {
 <style>
 .catalogs {
   display: flex;
-  height: 35px;
-  background: linear-gradient(to right, #013F48 50%, #15575e 70%);
+  height: 24px;
+  background: #687D83;
   color: #ffffff;
   align-items: center;
   justify-content: center;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
+
 
 }
 
@@ -352,7 +353,7 @@ export default {
 @media only screen and (min-width: 1200px) {
   .CatalogAll {
     padding: 7px 15px;
-    font-size: 14px;
+    font-size: 10px;
 line-height: 1.5;
   }
 }

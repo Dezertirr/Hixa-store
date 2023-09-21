@@ -23,6 +23,7 @@
           </a>
         </li>
       </ul>
+      <Catalogs v-show="showCatalogNotebook"></Catalogs>
       <ul class="headerNavSec">
         <li class="headerNavSecItem">
           <a class="langSelect">{{ $t('language') }}</a>
@@ -59,7 +60,7 @@
           <img src="@/images/shopping-basket.svg" />
         </button>
       </div>
-      <Catalogs></Catalogs>
+      <Catalogs v-show="showCatalogTablet"></Catalogs>
       <Cookies></Cookies>
     </div>
   </header>
@@ -87,10 +88,26 @@ export default {
     const isLoggedIn = ref(false)
     const userDisplayName = ref('')
     const { t, locale } = useI18n()
+    const windowInnerWidth = window.innerWidth
 
     const goToCart = () => {
       router.push('/cart')
     }
+    
+    const showCatalogNotebook = computed(() => {
+  if (window.innerWidth <= 1200) {
+    console.log(window.innerWidth);
+    return false;
+  }
+  return true;
+});
+const showCatalogTablet = computed(() => {
+  if (window.innerWidth >= 1200) {
+    console.log(window.innerWidth);
+    return false;
+  }
+  return true;
+});
 
     const filteredData = computed(() => {
       const searchText = searchStore.getSearch().toLowerCase()
@@ -232,6 +249,8 @@ export default {
       searchValue,
       isLoggedIn,
       userDisplayName,
+      showCatalogNotebook,
+      showCatalogTablet,
       goToCart,
       filteredData,
       goToLogin,
@@ -271,7 +290,7 @@ export default {
     padding: 10px 10px;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 10px;
     color: #ffffff;
     transition: ease-in-out 0.4s;
   }
@@ -285,9 +304,9 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #013f48 50%, #15575e 70%);
+  background: #687D83;
   color: #ffffff;
-  height: 50px;
+  height: 24px;
   gap: 15px;
 }
 
@@ -322,7 +341,7 @@ li {
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size: 12px;
+  font-size: 10px;
   margin: 0;
   transition: ease-in-out 0.4s;
   cursor: pointer;
@@ -352,6 +371,8 @@ li {
   list-style: none;
   margin-left: 30px;
   color: #bdb9b9;
+  display: flex;
+    align-items: center;
 }
 @media only screen and (min-width: 700px) {
   .headerNavSecItem {
@@ -366,7 +387,7 @@ li {
   padding: 4px 4px;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size: 12px;
+  font-size: 10px;
   color: #ffffff;
 }
 
@@ -374,7 +395,7 @@ li {
   .langSelect {
     padding: 5px 5px;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 10px;
   }
 }
 
@@ -506,26 +527,30 @@ font-weight: 300;
   text-decoration: none;
   color: white;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 10px;
 }
 @media only screen and (min-width: 1200px) {
   .personalArea {
-    font-size: 14px;
+    font-size: 10px;
   }
 }
 .personalArea_logout {
-  padding: 10px;
+  padding: 10px 6px;
   color: white;
   cursor: pointer;
-  background: #013f48;
+  background: #FF8049;
+  border-radius: 4px;
   border-color: transparent;
-  padding: 15px 8px;
-  margin: 0 10px 0 10px;
+  font-size: 10px;
+  display: flex;
+    align-items: center;
+
+  margin: 0 2px 0 2px;
 }
 @media only screen and (min-width: 1200px) {
   .personalArea_logout {
-    margin: 0 10px 0 10px;
-    padding: 10px;
+    margin: 0 0px 0 7px;
+    height: 24px;
   }
 }
 .personalArea_logout:hover {
