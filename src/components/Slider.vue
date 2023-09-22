@@ -109,7 +109,7 @@ export default {
   }
 }
 
-@media only screen and (min-width: 1200x) {
+@media only screen and (min-width: 1200px) {
   .SliderSection{
     padding: 40px 140px;
   }
