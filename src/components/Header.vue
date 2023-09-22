@@ -276,7 +276,7 @@ const showCatalogTablet = computed(() => {
   justify-content: center;
   cursor: pointer;
   padding: 8px 8px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 12px;
   color: #ffffff;
@@ -288,7 +288,7 @@ const showCatalogTablet = computed(() => {
     justify-content: center;
     cursor: pointer;
     padding: 10px 10px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 10px;
     color: #ffffff;
@@ -339,7 +339,7 @@ li {
   background: inherit;
   border: 0;
   color: #ffffff;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 10px;
   margin: 0;
@@ -385,7 +385,7 @@ li {
   justify-content: center;
   align-items: center;
   padding: 4px 4px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 10px;
   color: #ffffff;
@@ -404,7 +404,7 @@ li {
 .btnAuth {
   background: #013f48;
   border: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 12px;
   color: #ffffff;
@@ -456,7 +456,7 @@ li {
   border: 0;
   border-radius: 5px;
   padding-left: 10px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 300;
 }
 @media only screen and (min-width: 700px) {
@@ -486,7 +486,7 @@ font-weight: 300;
   margin-left: -57px;
   border-radius: 0 5px 5px 0;
   background: #027081;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 12px;
   color: #ffffff;
@@ -535,7 +535,6 @@ font-weight: 300;
   }
 }
 .personalArea_logout {
-  padding: 10px 6px;
   color: white;
   cursor: pointer;
   background: #FF8049;
@@ -550,7 +549,7 @@ font-weight: 300;
 @media only screen and (min-width: 1200px) {
   .personalArea_logout {
     margin: 0 0px 0 7px;
-    height: 24px;
+    height: 20px;
   }
 }
 .personalArea_logout:hover {

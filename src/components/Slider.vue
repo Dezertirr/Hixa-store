@@ -91,8 +91,20 @@ export default {
 <style>
 
 .SliderSection{
-  padding: 40px 140px;
+  padding: 15px 25px;
   background-color: #CCCCCC;
+}
+
+@media only screen and (min-width: 700px) {
+  .SliderSection{
+    padding: 22px 50px 32px 50px;
+  }
+}
+
+@media only screen and (min-width: 1200x) {
+  .SliderSection{
+    padding: 40px 140px;
+  }
 }
 .SliderMainCatalogSection {
   display: flex;
