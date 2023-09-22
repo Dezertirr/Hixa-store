@@ -6,7 +6,7 @@
         <div class="swiper-slide" v-for="(value, index) in slidersValue" :key="index">
           <div
             class=" SliderTitle"
-            :style="{ backgroundImage: 'url(' + sliderPhoto[index] + ')' }"
+            :style="{ backgroundImage: 'url(' + sliderPhoto + ')' }"
             @click="goToCatalog"
           >
 
@@ -17,6 +17,10 @@
     </div>
   </div>
 </div>
+
+
+
+
 </template>
 
 <script>
@@ -24,6 +28,9 @@ import { ref } from 'vue';
 import { useSearchStore } from '../stores/counter';
 import { useRouter } from 'vue-router';
 import Swiper from 'swiper';
+import mainPhoto from '../images/main-page-photo.png'
+import {SwiperSlide} from "swiper/vue";
+import {Navigation, Pagination} from "swiper/modules";
 
 export default {
   setup() {
@@ -33,9 +40,10 @@ export default {
       'Цей каталог з манжетами'
     ];
     const sliderPhoto = [
-      'https://gd2.alicdn.com/imgextra/i2/71058703/O1CN01lwV2ct2EA1XvDXmaf_!!71058703.jpg',
-      'https://www.topgear.com/sites/default/files/2022/03/1-Renault-Clio.jpg',
-      'https://i.infocar.ua/i/12/5878/1200x800.jpg'
+
+      mainPhoto,
+      // 'https://www.topgear.com/sites/default/files/2022/03/1-Renault-Clio.jpg',
+      // 'https://i.infocar.ua/i/12/5878/1200x800.jpg'
     ];
     const sliderCatalog = ['ALASON', 'FORD', 'Запчастини для гідротрансформаторів'];
     const currentIndex = ref(0);

@@ -317,13 +317,13 @@ li {
 }
 .headerMainNav {
   display: none;
-  height: 50px;
+  height: 24px;
 }
 
 @media only screen and (min-width: 700px) {
   .headerMainNav {
   display: flex;
-  height: 50px; 
+  height: 24px;
   }
 }
 
@@ -335,7 +335,7 @@ li {
 }
 
 .headerNatItemBtn {
-  padding: 12px 4px;
+  padding: 8px 4px;
   background: inherit;
   border: 0;
   color: #ffffff;
@@ -348,7 +348,7 @@ li {
 }
 @media only screen and (min-width: 1200px) {
   .headerNatItemBtn {
-    padding: 15px 10px;
+    padding: 6px 10px;
     font-weight: 400;
   }
 }
@@ -402,7 +402,8 @@ li {
 .personalArea {
 }
 .btnAuth {
-  background: #013f48;
+  border-radius: 4px;
+  background: #FF8049;
   border: none;
   font-family: 'Inter', sans-serif;
   font-weight: 300;
@@ -416,14 +417,14 @@ li {
 @media only screen and (min-width: 1200px) {
   .btnAuth {
     font-weight: 400;
-    padding: 15px;
+    padding: 4px 12px;
     margin: 0 10px 0 10px;
   }
 }
 
 .btnAuth:hover,
 .btnAuth:focus {
-  background: #027081;
+  background: #2E7592;
 }
 
 .logo {

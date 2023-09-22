@@ -18,8 +18,8 @@
     </button>
     <swiper
       :slides-per-view="slidesPerView"
-      :grid="{ rows: 2 }"
-      :space-between="20"
+      :grid="{ rows: 1 }"
+      :space-between="0"
       :modules="modules"
       :direction="'horizontal'"
       class="mySwiper"
@@ -54,6 +54,41 @@
       </svg>
     </button>
   </div>
+
+
+
+
+  <swiper
+      ref="{swiperRef}"
+      :slidesPerView="8"
+      :centeredSlides="false"
+      :spaceBetween="30"
+      :pagination="{
+      type: 'fraction',
+    }"
+      :navigation="true"
+      :modules="modules"
+      class="mySwipersecond"
+  >
+    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }" >Slide 1</swiper-slide>
+    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 2</swiper-slide>
+    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 3</swiper-slide>
+    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 4</swiper-slide>
+    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 5</swiper-slide>
+    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 6</swiper-slide>
+    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 7</swiper-slide>
+    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 8</swiper-slide>
+    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 9</swiper-slide>
+    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 10</swiper-slide>
+
+  </swiper>
+
+  <p class="append-buttons"></p>
+
+
+
+
+
 </template>
 
 <script>
@@ -65,7 +100,16 @@ import 'swiper/css/navigation'
 import jsonArray from '@/services/MainCatalog.json'
 import { onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { Grid, Navigation } from 'swiper/modules'
+import {Grid, Navigation, Pagination} from 'swiper/modules'
+import photosForSlide from '../images/secondslide/1.png'
+
+const sliderPhotoMain = [
+  photosForSlide
+
+
+
+]
+
 
 export default {
   components: {
@@ -129,15 +173,36 @@ export default {
 }
 </script>
 <style>
+
+.mySwipersecond{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-content: start;
+  margin-left: 20px;
+
+
+}
+
+
+.swiper-slide.second{
+  margin-top: 20px;
+  border:1px solid black;
+  max-width: 215px;
+  max-height: 235px;
+  border-radius:36px ;
+}
 .MainCatalogSection {
   display: flex;
   flex-direction: row;
-  margin: 15px;
+
+  padding: 15px 20px;
+  background-color: #CCCCCC;
 }
 
 .mySwiper {
   width: 100%;
-  height: 630px;
+  height: 310px;
   overflow: hidden;
 
 
@@ -182,6 +247,9 @@ button {
   background-color: transparent;
   border-color: transparent;
   transition: ease-in-out 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .next_slide {
   background-color: transparent;
@@ -193,5 +261,8 @@ button {
 }
 .prev_slide:hover {
   scale: 1.2;
+}
+.swiper-wrapper{
+  height: 300px;
 }
 </style>

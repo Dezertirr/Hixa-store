@@ -312,7 +312,7 @@ export default {
   column-gap: 80px;
   width: 150px;
   height: auto;
-  margin: 0;
+  margin: -5px;
   position: absolute;
   top: 100%;
   left: 0;
@@ -345,14 +345,14 @@ export default {
 
 @media only screen and (min-width: 700px) {
   .CatalogAll  {
-    padding: 15px;
+    padding: 12px;
   font-weight: 300;
   font-size: 12px;
   }
 }
 @media only screen and (min-width: 1200px) {
   .CatalogAll {
-    padding: 7px 15px;
+    padding: 6px 15px;
     font-size: 10px;
 line-height: 1.5;
   }
