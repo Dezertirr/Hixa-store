@@ -13,14 +13,18 @@ export default {
 .basketBtn {
   padding: 10px;
   margin: 10px;
-  border-radius: 10px;
+  border-radius: 7px;
+background: #FF8049;
   text-transform: capitalize;
-  background-color: #1d7d87;
+  display: flex;
+    justify-content: center;
+    align-items: center;
   color: white;
   border: none;
   cursor: pointer;
   transition: ease-in-out 0.4s;
-  width: 100px;
+  width: 105px;
+height: 35px;
 }
 @media only screen and (min-width: 1200px) {
   .basketBtn  {

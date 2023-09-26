@@ -1,13 +1,14 @@
 <template>
-   <div v-if="producte">
-      <h1 class="titleProd">{{producte.name[locale]}}</h1>
+   <div v-if="producte" class="productSection">
+    <div class="productTitle"><h1 class="titleProd">{{producte.name[locale]}}</h1> <h1 class="titleProd">{{ producte.brand }}</h1></div>
+      
       
       <div class="productCard">
         <img class="productImg" src="@/images/DSG-7.png"/>
 
         <div class="proudctInfo">
           <div class="productHeader">
-            <p class="productBrand">{{  $t('Product.Producer') }}: {{ producte.brand }}</p>
+            <p class="productBrand"> {{ producte.brand }}</p>
             
         <p class="productPrice"> {{  $t('Product.Price') }}:${{ producte.price }}</p>
       </div>
@@ -133,16 +134,26 @@ const fetchProductById = async (id) => {
   
   
   <style scoped>
+  .productSection {
+    background-color: #CCCCCC;
+  }
+
+  .productTitle {
+    display: flex;
+    font-family: Inter;
+font-size: medium;
+
+  }
   .titleProd {
     font-size: 22px;
+    padding: 21px 10px 36px;
   }
   .productCard {
-   margin: 30px auto;
    max-width: 1200px;
-   border: 1px solid black;
    display: flex;
    flex-direction: column;
-   align-items: center;
+   margin: 0 auto
+
   }
   @media only screen and (min-width: 700px) {
     .productCard {
@@ -152,6 +163,7 @@ const fetchProductById = async (id) => {
   @media only screen and (min-width: 1200px) {
     .productCard {
       display: flex;
+      
     }
   }
 
@@ -179,6 +191,7 @@ height: 450px;
     justify-content: space-between;
     margin: 0 45px;
     margin-bottom: 40px;
+    flex-direction: column;
 }
 @media only screen and (min-width: 1200px) {
   .productHeader {
@@ -188,14 +201,15 @@ height: 450px;
 
 
 .productBrand {
-
+  font-family: Inter;
+font-size: 29px;
 }
 
 .productPrice {
 
 }
 .productText {
-  margin: 0 45px 25px 15px;
+  margin: 0 45px 15px 15px;
 }
 
 .productFor {

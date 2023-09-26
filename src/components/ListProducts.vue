@@ -4,10 +4,11 @@
     <ul v-else-if="filteredProducts && filteredProducts.length > 0" class="productList">
       <li v-for="item in filteredProducts" :key="item.id" class="productItem">
         <div @click="goToProduct(item)" class="productFlex">
-          <h3 class="productItemTitle">{{ item.brand }}</h3>
           <img src="@/images/DSG-7.png" class="productItemPhoto" />
+          <h3 class="productItemTitle">{{ item.brand }}</h3>
+          
 
-          <p class="productItemText">{{ item.name[locale] }}</p>
+          <p class="productItemText">{{$t('Product.ProdCode') }}: {{ item.code }}</p>
         </div>
         <BasketBtn @click="addBusket(item)"></BasketBtn>
       </li>
@@ -91,14 +92,14 @@ onMounted(async () => {
 .productItem {
   width: 250px;
   height: 400px;
-  border: 1px solid #b0b0b0;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 
   background: linear-gradient(167deg, rgb(209, 213, 213) 26%, rgb(193, 195, 195) 78%);
-  border-radius: 10px;
+  border-radius: 23px 23px 0px 0px;
   margin: 0 auto;
 }
 
@@ -114,15 +115,21 @@ onMounted(async () => {
 }
 
 .productItemPhoto {
-  width: 225px;
-  height: 200px;
-  border-radius: 10px;
-  margin: 0 auto;
+  width: 251px;
+    height: 188px;
+  border-radius: 23px 23px 0px 0px;
   object-fit: contain;
+  padding: 0;
+  margin: 0
+
 }
 
 .productItemText {
-  margin: 0 15px;
+  font-family: Inter;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
 }
 
 .productItemBtn {
