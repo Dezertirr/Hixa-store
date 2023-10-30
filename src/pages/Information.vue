@@ -34,7 +34,7 @@ export default {
       t('Infornation.payment'),
       t('Infornation.guarantee'),
       t('Infornation.contact'),
-      'Повертаємо за наш рахунок',
+      t('Infornation.back'),
       'Ми надійність',
       'Василь Іванченко',
       t('Infornation.aboutMe'),
