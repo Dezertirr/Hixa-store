@@ -4,7 +4,7 @@
     <ul v-else-if="filteredProducts && filteredProducts.length > 0" class="productList">
       <li v-for="item in filteredProducts" :key="item.id" class="productItem">
         <div @click="goToProduct(item)" class="productFlex">
-          <img src="@/images/DSG-7.png" class="productItemPhoto" />
+          <img :src="item.photo" class="productItemPhoto" />
           <h3 class="productItemTitle">{{ item.brand }}</h3>
           
 

@@ -4,11 +4,11 @@
     <div class="swiperContainer">
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="(value, index) in slidersValue" :key="index">
-          <div
-            class=" SliderTitle"
-            :style="{ backgroundImage: 'url(' + sliderPhoto + ')' }"
-            @click="goToCatalog"
-          >
+  <div
+    class="SliderTitle"
+    :style="{ backgroundImage: 'url(' + sliderPhoto[index] + ')' }"
+    @click="goToCatalog"
+  >
 
 
           </div>
@@ -39,13 +39,14 @@ export default {
       'Це каталог з патруками для Renault',
       'Цей каталог з манжетами'
     ];
-    const sliderPhoto = [
+    const sliderPhoto = {
+  0: "https://i.ibb.co/M9KRsVv/IMG-2040.jpg",
+  1: "https://i.ibb.co/pZ7rM3j/photo-2023-10-30-20-50-55.jpg",
+  2: "https://i.ibb.co/v4QF3Nq/Clipchamp.gif",
+  3: mainPhoto,
+};
 
-      mainPhoto,
-      // 'https://www.topgear.com/sites/default/files/2022/03/1-Renault-Clio.jpg',
-      // 'https://i.infocar.ua/i/12/5878/1200x800.jpg'
-    ];
-    const sliderCatalog = ['0', '12342', 'BMW'];
+    const sliderCatalog = ['Mechatronik', 'Getriebe', 'Ventile'];
 const currentIndex = ref(0);
 const searchStore = useSearchStore();
 const router = useRouter();

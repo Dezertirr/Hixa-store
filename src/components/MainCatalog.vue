@@ -81,7 +81,7 @@
 </swiper-slide>
 
 <swiper-slide class="second" :style="{ 'backgroundImage': 'linear-gradient(196deg, rgba(74, 74, 74, 0.00) 0.9%, rgba(0, 0, 0, 0.00) 11.04%, rgba(22, 22, 22, 0.56) 46.99%, #2C2D36 105.41%), url(' + sliderPhotoMain + ')', 'background-repeat': 'no-repeat', 'background-size': 'cover', 'background-position': 'center', 'width': '235px', 'height': '215px' }">
-  <p class="secondText">Getriebesteuergerät S-Tronik DSG 7 Gang DL501 0B5 J/K/F/E</p>
+  <p class="secondText" @click="">Getriebesteuergerät S-Tronik DSG 7 Gang DL501 0B5 J/K/F/E</p>
 </swiper-slide>
 
 
