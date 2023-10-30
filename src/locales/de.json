@@ -206,5 +206,15 @@
     "aboutMe": "HIXA UG (haftungsbeschränkt) \n Gärtnerstraße 17 \n13055 Berlin\nvertr. d. d. Geschäftsführer: Anna Likhnenko \n \\n Telefon: +4915237711276 \\N \n \\mE-Mail: hixaug@gmail.com \\M \neingetragen im Handelsregister des Amtsgerichtes 14057 Charlottenburg (Berlin) \nHandelsregisternummer HRB HRB 247686 B \nUmsatzsteuer-Identifikationsnummer: DE361951053 ",
     "contact": "\\y YouTube \\Y \n \\i Instagram \\I \n  \\f Facebook \\F \n \\n +49 152 377 11 276 \\N \n \\m Post \\M \n \\w «DSG Service Berlin» Gärtnerstraße 17, 13055 Berlin \\W \n",
     "document": "\\a Vertrag \\A"
+  },
+  "InformationCat": {
+    "delivery": "Lieferung und Versand von Waren",
+"payment": "Zahlung",
+"guarantee": "Garantie",
+"contact": "Kontakt",
+"aboutMe": "Über uns",
+"useoOfCookies": "Verwendung von Cookies",
+"PurchaseReturns":"Rückgabe von Waren"
+
   }
 }

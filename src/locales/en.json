@@ -209,6 +209,16 @@
   "contact": "\\y YouTube \\Y \n \\i Instagram \\I \n  \\f Facebook \\F \n \\n +49 152 377 11 276 \\N \n \\m Mail \\M \n \\w «DSG Service Berlin» Gärtnerstraße 17, 13055 Berlin \\W \n",
   "document": "\\a Contract \\A"
 
+},
+"InformationCat": {
+  "delivery": "Delivery and Shipping of Goods",
+  "payment": "Payment",
+  "guarantee": "Guarantee",
+  "contact": "Contact",
+  "aboutMe": "About Us",
+  "useoOfCookies": "Use of Cookies",
+  "PurchaseReturns": "Return of Goods"
+
 }
 
 }

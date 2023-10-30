@@ -206,6 +206,16 @@
     "aboutMe":"HIXA UG (spółka z ograniczoną odpowiedzialnością) \n ul. Gärtnerstraße 17\n 13055 Berlin\n Reprezentowane przez Dyrektora Zarządzającego: Anna Likhnenko \n \\n Telefon: +4915237711276 \\N \n \\m Email: hixaug@gmail.com \\M \nZarejestrowane w Rejestrze Handlowym Sądu Rejonowego 14057 Charlottenburg (Berlin) \nNumer Rejestru Handlowego: HRB 247686 B \nNumer Identyfikacji Podatkowej VAT: DE361951053",
     "contact":"\\y YouTube \\Y \n \\i Instagram \\I \n  \\f Facebook \\F \n \\n +48 506 388 798 \\N \n \\m Poczta \\M \n \\w Poleska 43, 66-620 Gubin \\W \n",
     "document": "\\a Kontrakt \\A"
+},
+"InformationCat": {
+  "delivery": "Wysyłka i dostawa towarów",
+  "payment":"Płatność",
+  "guarantee": "Gwarancja",
+  "contact":"Kontakt",
+  "aboutMe": "O nas",
+  "useoOfCookies": "Użycie plików cookies",
+  "PurchaseReturns": "Zwrot towaru"
+
 }
 
 }

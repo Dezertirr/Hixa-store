@@ -206,5 +206,15 @@
     "aboutMe": "HIXA UG (ogranicena odgovornost) \nGärtnerstraße 17 \n13055 Berlin \nZastupa Direktor: Anna Likhnenko \n \\nTelefon: +4915237711276 \\N \n \\m Email: hixaug@gmail.com \\M \nUpisano u Trgovački registar Lokalnog suda 14057 Charlottenburg (Berlin) \nBroj Trgovačkog registra: HRB 247686 B \nPDV identifikacijski broj: DE361951053",
     "contact": "\\y YouTube \\Y \n \\i Instagram \\I \n  \\f Facebook \\F \n \\n +385 95 8805 295 \\N \n \\m pošta \\M \n \\w вул. Velika cesta 20, 10000, Odra, Kroatien \\W \n",
     "document": "\\a Ugovor \\A"
+  },
+  "InformationCat": {
+    "delivery": "Dostava i isporuka robe",
+    "payment": "Plaćanje",
+    "guarantee": "Jamstvo",
+    "contact": "Kontakt",
+    "aboutMe": "O nama",
+    "useoOfCookies": "Upotreba kolačića",
+    "PurchaseReturns": "Povrat robe"
+
   }
 }

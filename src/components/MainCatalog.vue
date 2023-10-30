@@ -31,10 +31,6 @@
         :key="product.id"
         @click="goToProduct(product)"
       >
-        <p class="MainCatalogText MainCatalogTitle">{{ product.brand }}</p>
-        <div class="MainCatalogPhoto">Тут має бути фото</div>
-        <p class="MainCatalogText">{{ product.name }}</p>
-        <p class="MainCatalogText">{{ product.smallcontent }}</p>
       </swiper-slide>
     </swiper>
     <button class="next_slide" @click="swiper.slideNext()">
@@ -70,16 +66,25 @@
       :modules="modules"
       class="mySwipersecond"
   >
-    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }" >Slide 1</swiper-slide>
-    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 2</swiper-slide>
-    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 3</swiper-slide>
-    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 4</swiper-slide>
-    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 5</swiper-slide>
-    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 6</swiper-slide>
-    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 7</swiper-slide>
-    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 8</swiper-slide>
-    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 9</swiper-slide>
-    <swiper-slide class="second" :style="{ backgroundImage: 'url(' + sliderPhotoMain + ')' }">Slide 10</swiper-slide>
+    
+  <swiper-slide class="second" :style="{ 'backgroundImage': 'linear-gradient(196deg, rgba(74, 74, 74, 0.00) 0.9%, rgba(0, 0, 0, 0.00) 11.04%, rgba(22, 22, 22, 0.56) 46.99%, #2C2D36 105.41%), url(' + sliderPhotoMain + ')', 'background-repeat': 'no-repeat', 'background-size': 'cover', 'background-position': 'center', 'width': '235px', 'height': '215px' }">
+  <p class="secondText">Getriebesteuergerät S-Tronik DSG 7 Gang DL501 0B5 J/K/F/E</p>
+</swiper-slide>
+
+
+<swiper-slide class="second" :style="{ 'backgroundImage': 'linear-gradient(196deg, rgba(74, 74, 74, 0.00) 0.9%, rgba(0, 0, 0, 0.00) 11.04%, rgba(22, 22, 22, 0.56) 46.99%, #2C2D36 105.41%), url(' + sliderPhotoMain + ')', 'background-repeat': 'no-repeat', 'background-size': 'cover', 'background-position': 'center', 'width': '235px', 'height': '215px' }">
+  <p class="secondText">Getriebesteuergerät S-Tronik DSG 7 Gang DL501 0B5 J/K/F/E</p>
+</swiper-slide>
+
+<swiper-slide class="second" :style="{ 'backgroundImage': 'linear-gradient(196deg, rgba(74, 74, 74, 0.00) 0.9%, rgba(0, 0, 0, 0.00) 11.04%, rgba(22, 22, 22, 0.56) 46.99%, #2C2D36 105.41%), url(' + sliderPhotoMain + ')', 'background-repeat': 'no-repeat', 'background-size': 'cover', 'background-position': 'center', 'width': '235px', 'height': '215px' }">
+  <p class="secondText">Getriebesteuergerät S-Tronik DSG 7 Gang DL501 0B5 J/K/F/E</p>
+</swiper-slide>
+
+<swiper-slide class="second" :style="{ 'backgroundImage': 'linear-gradient(196deg, rgba(74, 74, 74, 0.00) 0.9%, rgba(0, 0, 0, 0.00) 11.04%, rgba(22, 22, 22, 0.56) 46.99%, #2C2D36 105.41%), url(' + sliderPhotoMain + ')', 'background-repeat': 'no-repeat', 'background-size': 'cover', 'background-position': 'center', 'width': '235px', 'height': '215px' }">
+  <p class="secondText">Getriebesteuergerät S-Tronik DSG 7 Gang DL501 0B5 J/K/F/E</p>
+</swiper-slide>
+
+
 
   </swiper>
 
@@ -101,7 +106,7 @@ import jsonArray from '@/services/MainCatalog.json'
 import { onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import {Grid, Navigation, Pagination} from 'swiper/modules'
-import photosForSlide from '../images/secondslide/1.png'
+import photosForSlide from '../images/SliderCat1.jpg'
 
 const sliderPhotoMain = [
   photosForSlide
@@ -167,7 +172,8 @@ export default {
       swiper,
       modules,
       onSwiper,
-      slidesPerView
+      slidesPerView,
+      sliderPhotoMain
     }
   }
 }
@@ -177,7 +183,7 @@ export default {
 .mySwipersecond{
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: center;
   align-content: start;
   margin-left: 20px;
 
@@ -188,9 +194,10 @@ export default {
 .swiper-slide.second{
   margin-top: 20px;
   border:1px solid black;
-  max-width: 215px;
-  max-height: 235px;
   border-radius:36px ;
+  background: rgb(2,0,36);
+background: linear-gradient(196deg, rgba(2,0,36,0) 0%, rgba(0,0,0,0.8072478991596639) 100%);
+
 }
 .MainCatalogSection {
   display: flex;
@@ -202,7 +209,7 @@ export default {
 
 .mySwiper {
   width: 100%;
-  height: 310px;
+  height: 240px;
   overflow: hidden;
 
 
@@ -210,11 +217,10 @@ export default {
 
 .swiper-slide.cat {
   /* flex-shrink: 0; */
-  width: auto;
-  height: 300px;
+ 
   border: 1px solid black;
   opacity: 1;
-  max-width: 365px;
+
   transition: opacity 1s ease-in-out;
   border-radius: 15px;
   margin-right: 25px;
@@ -264,5 +270,29 @@ button {
 }
 .swiper-wrapper{
   height: 300px;
+}
+
+.second {
+ width: 235px;
+  height: 215px;
+  background: rgb(2,0,36);
+background: linear-gradient(196deg, rgba(2,0,36,0) 0%, rgba(0,0,0,0.8072478991596639) 100%);
+
+
+}
+
+.cat {
+  width: 193px;
+height: 187px;
+}
+.secondText {
+  display: flex;
+  color: white;
+  font-family: Inter;
+font-size: 15px;
+font-weight: 700;
+text-transform: uppercase;
+padding: 110px 10px 0 10px;
+
 }
 </style>

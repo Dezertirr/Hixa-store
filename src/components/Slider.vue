@@ -45,27 +45,27 @@ export default {
       // 'https://www.topgear.com/sites/default/files/2022/03/1-Renault-Clio.jpg',
       // 'https://i.infocar.ua/i/12/5878/1200x800.jpg'
     ];
-    const sliderCatalog = ['ALASON', 'FORD', 'Запчастини для гідротрансформаторів'];
-    const currentIndex = ref(0);
-    const searchStore = useSearchStore();
-    const router = useRouter();
+    const sliderCatalog = ['0', '12342', 'BMW'];
+const currentIndex = ref(0);
+const searchStore = useSearchStore();
+const router = useRouter();
 
-    // Swiper instance
-    let mySwiper;
+// Swiper instance
+let mySwiper;
 
-    const previosSlide = () => {
-      currentIndex.value = (currentIndex.value - 1 + slidersValue.length) % slidersValue.length;
-    };
+const previosSlide = () => {
+  currentIndex.value = (currentIndex.value - 1 + sliderCatalog.length) % sliderCatalog.length;
+};
 
-    const nextSlide = () => {
-      currentIndex.value = (currentIndex.value + 1) % slidersValue.length;
-    };
+const nextSlide = () => {
+  currentIndex.value = (currentIndex.value + 1) % sliderCatalog.length;
+};
 
-    const goToCatalog = () => {
-      const catalog = sliderCatalog[currentIndex.value];
-      searchStore.setSearch(catalog);
-      router.push({ name: 'Catalog', query: sliderCatalog }); // Make sure 'Catalog' matches the name used in your router configuration
-    };
+const goToCatalog = () => {
+  const catalog = sliderCatalog[currentIndex.value]; // Получить значение из sliderCatalog на основе currentIndex
+  searchStore.setSearch(catalog);
+  router.push({ path: 'Catalog', query: { search: catalog } }); // Передать выбранное значение в параметре 'search'
+};
 
     const initSwiper = () => {
       mySwiper = new Swiper('.swiperContainer', {

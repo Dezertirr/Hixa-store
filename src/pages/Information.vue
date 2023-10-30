@@ -2,16 +2,16 @@
   <div class="InformationSide">
     <div class="InformationBar">
       <ul class="InformationList">
-        <li @click="showInformation(0)" class="InformationListItem">Відправка та доставка товарів</li>
-        <li @click="showInformation(1)" class="InformationListItem">Оплата</li>
-        <li @click="showInformation(2)" class="InformationListItem">Гарантія</li>
-        <li @click="showInformation(3)" class="InformationListItem">Контакти</li>
-        <li @click="showInformation(4)" class="InformationListItem">Повернення товару</li>
+        <li @click="showInformation(0)" class="InformationListItem">{{ $t('InformationCat.delivery') }}</li>
+        <li @click="showInformation(1)" class="InformationListItem">{{ $t('InformationCat.payment') }}</li>
+        <li @click="showInformation(2)" class="InformationListItem">{{ $t('InformationCat.guarantee') }}</li>
+        <li @click="showInformation(3)" class="InformationListItem">{{ $t('InformationCat.contact') }}</li>
+        <li @click="showInformation(4)" class="InformationListItem">{{ $t('InformationCat.PurchaseReturns') }}</li>
         <!-- <li @click="showInformation(5)" class="InformationListItem">Повертаємо автоматам надійність та чіткість переключення</li>
         <li @click="showInformation(6)" class="InformationListItem">Наші співробітники</li> -->
-        <li @click="showInformation(7)" class="InformationListItem">Про нас</li>
+        <li @click="showInformation(7)" class="InformationListItem">{{ $t('InformationCat.aboutMe') }}</li>
         <!-- <li @click="showInformation(8)" class="InformationListItem">Вакансії</li> -->
-        <li @click="showInformation(9)" class="InformationListItem">Використання кукі</li>
+        <li @click="showInformation(9)" class="InformationListItem">{{ $t('InformationCat.useoOfCookies') }}</li>
       </ul>
     </div>
     <div class="InformationTextBorder">
