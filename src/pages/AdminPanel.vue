@@ -96,7 +96,7 @@ export default {
 
       try {
         await axios.post(
-          'https://adminhixanew-5212f266e6b8.herokuapp.com/api/addProduct',
+          'https://hixanew.onrender.com/api/addProduct',
           newProduct
         )
         this.resetForm()
@@ -109,7 +109,7 @@ export default {
     async deleteProduct() {
       try {
         const response = await axios.delete(
-          `https://adminhixanew-5212f266e6b8.herokuapp.com/api/deleteProduct/${this.deleteCode}`
+          `https://hixanew.onrender.com/api/deleteProduct/${this.deleteCode}`
         )
         alert('Product deleted successfully')
       } catch (error) {

@@ -4,7 +4,8 @@
       
       
       <div class="productCard">
-        <img class="productImg" src="@/images/DSG-7.png"/>
+        <img class="productImg" :src="producte.photo"/>
+
 
         <div class="proudctInfo">
           <div class="productHeader">
@@ -50,7 +51,6 @@ import { notify } from '@kyvg/vue3-notification';
 import axios from 'axios';
 
 
-  
   export default {
     setup() {
     const route = useRoute();
@@ -79,10 +79,10 @@ const fetchProductById = async (id) => {
 })
   console.log('Fetching product with ID:', id);
   try {
-    const response = await axios.get(`https://adminhixanew-5212f266e6b8.herokuapp.com/api/products/${id}`);
+    const response = await axios.get(`https://hixanew.onrender.com/api/products/${id}`);
     console.log('Response data:', response.data);
     let producte = response.data
-    console.log(producte.name, producte.brand);
+    console.log(producte.photo);
     return producte;
   } catch (error) {
     console.error('Ошибка при загрузке продукта с бэкенда:', error);
@@ -90,24 +90,28 @@ const fetchProductById = async (id) => {
   }
 };
 
+let photoProd={};
   
       const product = computed(() => {
   const id = Number(route.query.id);
   const foundProduct = fetchProductById(id);
+  if(foundProduct){
+    photoProd.value=foundProduct.photo;
+  }
   console.log("Found product in Product component:", foundProduct); // Добавьте эту строку для отладки
   return foundProduct;
 });
 
-  
+
       const addBasket = (product, quantity) => {
   const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-  
+
   for (let i = 0; i < quantity; i++) {
     cartItems.push(product);
   }
   
   localStorage.setItem('cart', JSON.stringify(cartItems));
-  
+
  
 
   notify({
@@ -115,6 +119,7 @@ const fetchProductById = async (id) => {
       text: `${quantity} ${t('Product.addCartText')}`, product,
       type: 'success'
     })
+        window.location.reload();
 };
   
       return {
@@ -123,6 +128,7 @@ const fetchProductById = async (id) => {
         locale,
         selectedQuantity,
         producte,
+        photoProd
 
       };
     },

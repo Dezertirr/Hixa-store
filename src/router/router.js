@@ -13,6 +13,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
 import PersonalArea from '@/components/PersonalArea.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
+import Catalogs from "@/pages/Categories.vue";
 
 const routes = [
   {
@@ -36,6 +37,12 @@ const routes = [
   {
     path: '/Product',
     component: Product
+  },
+
+  {
+    path: '/categories',
+    name: 'Categories',
+    component: Catalogs
   },
 
   {

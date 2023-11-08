@@ -1,6 +1,8 @@
 <template>
-  <div class="catalogs">
+
+  <div class="catalogs" :class="{ 'fullscreen': showCatalogMenu }">
     <!-- Catalog 1 -->
+
     <div @mouseenter="showSpoiler = true" class="spoiler-trigger">
       <div
         v-if="showSpoiler && activeCatalog === 'Каталог'"
@@ -131,6 +133,7 @@
     >
     {{ $t('Catalogs.catalog6') }}
     </a>
+
   </div>
 </template>
 
@@ -153,6 +156,10 @@ export default {
     const router = useRouter()
     const course = ref(0)
     const { t, locale } = useI18n();
+    const showCatalogMenu = ref(false);
+    const toggleCatalogMenu = () => {
+      showCatalogMenu.value = !showCatalogMenu.value;
+    };
    
 
 
@@ -274,6 +281,7 @@ export default {
       repairCat,
       informationCat,
       goToInformation,
+      showCatalogMenu,toggleCatalogMenu
     };
   },
 };
@@ -284,6 +292,7 @@ export default {
 .catalogs {
   display: flex;
   height: 24px;
+  font-size: 30px;
   background: #687D83;
   color: #ffffff;
   align-items: center;
@@ -291,6 +300,13 @@ export default {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
 
+
+}
+@media screen and(width<900){
+  .catalogs{
+    display: flex;
+    flex-direction: column;
+  }
 
 }
 
@@ -335,14 +351,20 @@ export default {
 
 .CatalogAll {
   display: inline-block;
-  padding: 12px;
+  padding: 10px;
   font-weight: 300;
   font-size: 10px;
   line-height: 1.3;
   transition: ease-in-out 0.4s;
   cursor: pointer;
 }
-
+@media only screen and (max-width: 699px) {
+  .CatalogAll  {
+    padding: 12px;
+    font-weight: 300;
+    font-size: 12px;
+  }
+}
 @media only screen and (min-width: 700px) {
   .CatalogAll  {
     padding: 12px;
@@ -353,7 +375,7 @@ export default {
 @media only screen and (min-width: 1200px) {
   .CatalogAll {
     padding: 6px 15px;
-    font-size: 10px;
+    font-size: 15px;
 line-height: 1.5;
   }
 }

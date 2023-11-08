@@ -18,7 +18,7 @@
           <td class="cartTableItem">{{ item.price }}</td>
 
           <button @click="removeItem(item.brand)" class="submit_order">
-            {{ $t('Cart.remove') }}
+            <img src="../images/bucket.svg" alt="" width="20">
           </button>
         </tr>
       </tbody>
@@ -41,8 +41,11 @@
       <label for="phone">{{ $t('Cart.number') }}</label>
       <input type="text" id="phone" v-model="customerData.phone" required />
 
+
       <label for="city">{{ $t('Cart.city') }}</label>
       <input type="text" id="city" v-model="customerData.city" required />
+      <label for="city">Country </label>
+      <input type="text" id="city" v-model="customerData.country" required />
 
       <button @click="submitOrder">{{ $t('Cart.orderStart') }}</button>
       <button class="close" @click="closeModal">Close Order</button>
@@ -64,7 +67,8 @@ const customerData = ref({
   name: '',
   phone: '',
   city: '',
-  orderId: ''
+  orderId: '',
+  country:''
 })
 
 const { locale } = useI18n()
@@ -74,7 +78,7 @@ onMounted(() => {
   loadCartItems()
 })
 
-function loadCartItems() {
+ function loadCartItems() {
   const storedItems = JSON.parse(localStorage.getItem('cart')) || []
   cartItems.value = storedItems
 }
@@ -159,15 +163,15 @@ async function submitOrder() {
         })
       }
     }
-
+console.log(customerData.value)
     const botToken = '6524682564:AAGeWt9agggxSVVyUC9VD_IHAZKLSV52Ekg'
     const chatId = '-938605598'
 
     const message = constructMessage(orderData)
 
-    const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
 
-    ;(async () => {
+    const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    (async () => {
       try {
         const response = await axios.post(apiUrl, {
           chat_id: chatId,
@@ -215,6 +219,7 @@ function clearCart() {
   cartItems.value = []
   totalPrice.value = 0
   localStorage.removeItem('cart')
+
 }
 function removeItem(brand) {
   // Отфильтровать элементы с другим brand
@@ -233,6 +238,7 @@ function constructMessage(orderData) {
   message += `<b>Имя:</b> ${orderData.customerData.name}\n`
   message += `<b>Телефон:</b> ${orderData.customerData.phone}\n`
   message += `<b>Город:</b> ${orderData.customerData.city}\n\n`
+  message += `<b>Cтрана:</b> ${orderData.customerData.country}\n\n`
   message += '<b>Список товаров:</b>\n'
   for (const item of orderData.cartItems) {
     message += `- ${item.brand}: ${item.value}\n`
@@ -249,6 +255,12 @@ function constructMessage(orderData) {
   justify-content: center;
   padding: 20px;
   width: 100%;
+  border-radius: 10px;
+}
+@media screen and (max-width: 600px) {
+  .cart_container{
+    width: 85%;
+  }
 }
 .items {
   list-style: none;
@@ -345,4 +357,73 @@ function constructMessage(orderData) {
   justify-content: center;
   gap: 15px;
 }
+
+
+
+.cart_container {
+  margin: 20px;
+}
+
+/* Style the table header */
+.items th {
+  background-color: #1d7d87;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  border-radius: 0px 0px 0px 0px;
+}
+
+/* Style the table rows */
+
+
+
+/* Style the table cells */
+.items td {
+  padding: 10px;
+
+}
+
+/* Style the remove button */
+.submit_order {
+  padding: 8px 15px;
+  border-radius: 10px;
+  text-transform: capitalize;
+  background-color: #1d7d87; /* Change button color */
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: ease-in-out 0.4s;
+  margin-left: 10px; /* Add some margin to separate buttons */
+}
+
+/* Add hover effect to remove button */
+.submit_order:hover,
+.submit_order:focus {
+  background-color: #dc3545; /* Darker red */
+}
+
+/* Add some spacing between buttons */
+.btnPlace button {
+  margin-right: 10px;
+}
+
+/* Style the modal background */
+.modal {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Style the modal content */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Style the modal buttons */
+.modal button {
+  margin-top: 10px;
+}
+
+
 </style>

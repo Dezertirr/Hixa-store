@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'https://adminhixanew-5212f266e6b8.herokuapp.com'
+  baseURL: 'https://hixanew.onrender.com/'
 })
 
 export const fetchProducts = async () => {

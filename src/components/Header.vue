@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="sideBar">
-      <ul class="headerMainNav">
+      <ul class="headerMainNav ">
         <li class="headerNavItem">
           <a  class="headerNatItemBtn" href="https://www.google.com/maps/d/u/0/edit?mid=1aHgunP5BY_0ZRn2SddSAhL7AsBkouZo&usp=sharing" target="_blank _noopener _noreferrer" >
             {{ $t('ourAddress') }}
@@ -23,8 +23,13 @@
           </a>
         </li>
       </ul>
-      <Catalogs v-show="showCatalogNotebook"></Catalogs>
-      <ul class="headerNavSec">
+
+
+
+
+
+
+      <ul class="headerNavSec ">
         <li class="headerNavSecItem">
           <a class="langSelect">{{ $t('language') }}</a>
         </li>
@@ -57,10 +62,13 @@
           <button type="submit" class="searchBtn">{{ $t('searchButton') }}</button>
         </form>
         <button @click="goToCart" class="cartBtn">
-          <img src="@/images/shopping-basket.svg" />
+          <img src="../images/shopping-basket2.svg" />
+<p class="value-ofitems">{{localValueOfCart}}</p>
         </button>
       </div>
-      <Catalogs v-show="showCatalogTablet"></Catalogs>
+      <div class="div-button"><button @click="toggleCatalogMenu" class="button-show"> {{ showCatalogMenu ? 'Show menu' : 'Hide menu' }}</button></div>
+
+      <Catalogs :class="catalogComponentClass"  ></Catalogs>
       <Cookies></Cookies>
     </div>
   </header>
@@ -89,6 +97,19 @@ export default {
     const userDisplayName = ref('')
     const { t, locale } = useI18n()
     const windowInnerWidth = window.innerWidth
+    const showCatalogTablet = ref(false);
+    const catalogComponentClass = ref('');
+    const showCatalogMenu = ref(true);
+
+    const toggleCatalogMenu = () => {
+      showCatalogMenu.value = !showCatalogMenu.value;
+      catalogComponentClass.value = showCatalogMenu.value ? 'catalogs custom-class' : '';
+      console.log("click")
+      console.log(showCatalogMenu.value)
+    };
+
+
+
 
     const goToCart = () => {
       router.push('/cart')
@@ -101,13 +122,7 @@ export default {
   }
   return true;
 });
-const showCatalogTablet = computed(() => {
-  if (window.innerWidth >= 1200) {
-    console.log(window.innerWidth);
-    return false;
-  }
-  return true;
-});
+
 
     const filteredData = computed(() => {
       const searchText = searchStore.getSearch().toLowerCase()
@@ -125,6 +140,16 @@ const showCatalogTablet = computed(() => {
     const goToInformation = (index) => {
       router.push({ path: 'Info' })
     }
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemCount = ref(cartItems.length);
+
+
+
+    let valueOfCart = localStorage.setItem('valueOfCart', cartItemCount.value);
+    let localValueOfCart = localStorage.getItem('valueOfCart')
+    console.log(valueOfCart)
+
+    // console.log(cartItemCount.value)
 
     const scrollToSection = (sectionId) => {
       const section = document.getElementById(sectionId)
@@ -261,7 +286,14 @@ const showCatalogTablet = computed(() => {
       testClick,
       changeLanguage,
       scrollToSection,
-      goToInformation
+      goToInformation,
+      cartItemCount,
+      localValueOfCart,
+      showCatalogMenu,
+      toggleCatalogMenu,
+      windowInnerWidth,
+      catalogComponentClass
+
     }
   },
   components: {
@@ -271,6 +303,21 @@ const showCatalogTablet = computed(() => {
 }
 </script>
 <style scoped>
+.div-button{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  cursor: pointer;
+}
+@media only screen and (min-width: 599px) {
+  .div-button{
+    display: none;
+  }
+}
+.catalogs.custom-class{
+  display:none;}
+
+
 .language {
   text-align: center;
   justify-content: center;
@@ -298,11 +345,28 @@ const showCatalogTablet = computed(() => {
 li {
   list-style: none;
 }
+.value-ofitems{
+  text-align: center;
+  color: white;
+  background-color: #FF8049;
+  border: 1px solid transparent;
+  border-radius: 45%;
+  padding:5px 10px;
+  margin: 0;
+}
 .header {
+
+}
+.button-show{
+  background: #027081;
+  color: white;
+  padding:10px;
+  border-radius: 10px;
+  align-items: center;
 }
 .sideBar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background: #687D83;
   color: #ffffff;
@@ -312,17 +376,30 @@ li {
 
 @media only screen and (min-width: 700px) {
   .sideBar {
-    justify-content: space-between;
+    padding-top: 10px;
+padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    padding-bottom: 15px;
+    align-items: center;
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 699px) {
+  .sideBar {
+display: none;
   }
 }
 .headerMainNav {
   display: none;
   height: 24px;
+
 }
 
 @media only screen and (min-width: 700px) {
   .headerMainNav {
   display: flex;
+
   height: 24px;
   }
 }
@@ -460,6 +537,14 @@ li {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
 }
+@media only screen and (min-width: 200px) {
+  .searchInput {
+    width: 100px;
+    height: 30px;
+    padding-left: 10px;
+    font-weight: 300;
+  }
+}
 @media only screen and (min-width: 700px) {
   .searchInput {
     width: 300px;
@@ -509,11 +594,14 @@ font-weight: 300;
 }
 
 .cartBtn {
+  display: flex ;
+  flex-wrap: nowrap;
+align-items: center;
   border: 0;
   background: none;
   cursor: pointer;
   transition: ease-in-out 0.4s;
-  height: 30px;
+  height: 20px;
 }
 @media only screen and (min-width: 1200px) {
   .cartBtn {
@@ -555,5 +643,86 @@ font-weight: 300;
 }
 .personalArea_logout:hover {
   background: #027081;
+}
+@media screen and (min-width: 1200px) {
+  .hideOnMobile {
+    display: inline;
+  }
+}
+@media screen and (min-width: 200px) and (max-width: 600px) {
+  .hideOnMobile {
+    display: none;
+  }
+}
+.showCatalogButton {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  background-color: #027081;
+  color: #ffffff;
+  cursor: pointer;
+}
+@media only screen and (max-width: 599px) {
+  .catalogs{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 200px;
+    padding-bottom: 250px;
+  }
+
+}
+
+.catalogs.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.catalogs.fullscreen .closeButton {
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.catalogs.fullscreen .CatalogBig {
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.catalogs.fullscreen .CatalogAll {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 12px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.3;
+  transition: ease-in-out 0.4s;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 700px) {
+  .catalogs.fullscreen .CatalogAll  {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .catalogs.fullscreen .CatalogAll {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+.categories{
+  display: flex;
+  gap: 120px;
 }
 </style>
